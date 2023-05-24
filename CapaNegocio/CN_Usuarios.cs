@@ -60,12 +60,6 @@ namespace CapaNegocio
             var perid = dc.Tbl_Person.FirstOrDefault(per => per.Per_id.Equals(id) && per.Per_estado == "AP");
             return perid;
         }
-        ////metodo para obtener los cedula por id persona
-        //public static Tbl_Personas obtenerCedulaxIdPersona(int id)
-        //{
-        //    var respid = dc.Tbl_Personas.FirstOrDefault(per => per.Per_id.Equals(id) && per.Per_estado == "A");
-        //    return respid;
-        //}
         //Metodo para obtener contraseña anterior
         public static bool autentificarxUsuario(int per, string pass)
         {
