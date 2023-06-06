@@ -23,6 +23,7 @@ namespace SistemaECU911.views.Doctores
 
         private Tbl_Person per = new Tbl_Person();
         private Tbl_Empresa emp = new Tbl_Empresa();
+        private Tbl_Centro cen = new Tbl_Centro();
         private Tbl_Certificado certi = new Tbl_Certificado();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -191,7 +192,7 @@ namespace SistemaECU911.views.Doctores
                         }
 
                         txt_nomEmpresa.Text = emp.Emp_nombre.ToString();
-                        txt_rucEmp.Text = emp.Emp_RUC.ToString();
+                        txt_rucEmp.Text = cen.cent_ruc.ToString();
                         txt_priNombre.Text = per.Per_priNombre.ToString();
                         txt_segNombre.Text = per.Per_segNombre.ToString();
                         txt_priApellido.Text = per.Per_priApellido.ToString();
@@ -283,11 +284,12 @@ namespace SistemaECU911.views.Doctores
 
             var lista = from c in dc.Tbl_Person
                         join e in dc.Tbl_Empresa on c.Emp_id equals e.Emp_id
+                        join ce in dc.Tbl_Centro on c.cent_id equals ce.cent_id
                         where c.Per_cedula == cedula
                         select new
                         {
                             e.Emp_nombre,
-                            e.Emp_RUC,
+                            ce.cent_ruc,
                             c.Per_priNombre,
                             c.Per_segNombre,
                             c.Per_priApellido,
@@ -304,7 +306,7 @@ namespace SistemaECU911.views.Doctores
                 string nomEmpresa = item.Emp_nombre;
                 txt_nomEmpresa.Text = nomEmpresa;
 
-                string rucEmpresa = item.Emp_RUC;
+                string rucEmpresa = item.cent_ruc;
                 txt_rucEmp.Text = rucEmpresa;
 
                 string priNombre = item.Per_priNombre;

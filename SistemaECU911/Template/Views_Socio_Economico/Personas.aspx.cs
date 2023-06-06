@@ -61,7 +61,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                     }
                 }
                 Timer1.Enabled = false;
-                CargarZonales();
+                //CargarZonales();
                 Validaciones();
             }
         }
@@ -175,16 +175,16 @@ namespace SistemaECU911.Template.Views_Socio_Economico
             Response.Redirect("~/Template/Views/Inicio.aspx");
         }
 
-        private void CargarZonales()
-        {
-            List<Tbl_Empresa> listaEmp = new List<Tbl_Empresa>();
-            listaEmp = CN_Personas.ObtenerEmpresa();
-            listaEmp.Insert(0, new Tbl_Empresa() { Emp_zonal = "Seleccione...." });
+        //private void CargarZonales()
+        //{
+        //    List<Tbl_Empresa> listaEmp = new List<Tbl_Empresa>();
+        //    listaEmp = CN_Personas.ObtenerEmpresa();
+        //    listaEmp.Insert(0, new Tbl_Empresa() { Emp_zonal = "Seleccione...." });
 
-            ddl_zonal.DataSource = listaEmp;
-            ddl_zonal.DataTextField = "Emp_zonal";
-            ddl_zonal.DataValueField = "Emp_id";
-            ddl_zonal.DataBind();
-        }
+        //    ddl_zonal.DataSource = listaEmp;
+        //    ddl_zonal.DataTextField = "Emp_zonal";
+        //    ddl_zonal.DataValueField = "Emp_id";
+        //    ddl_zonal.DataBind();
+        //}
     }
 }

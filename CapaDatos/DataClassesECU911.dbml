@@ -14,6 +14,16 @@
       <Association Name="Tbl_TipoUsuario_Tbl_Person" Member="Tbl_Person" ThisKey="tusu_id" OtherKey="tusu_id" Type="Tbl_Person" />
     </Type>
   </Table>
+  <Table Name="dbo.Tbl_Centro" Member="Tbl_Centro">
+    <Type Name="Tbl_Centro">
+      <Column Name="cent_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cent_nombre" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="cent_ruc" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="cent_dirrecionInstitucional" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="cent_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Association Name="Tbl_Centro_Tbl_Person" Member="Tbl_Person" ThisKey="cent_id" OtherKey="cent_id" Type="Tbl_Person" />
+    </Type>
+  </Table>
   <Table Name="dbo.Tbl_Certificado" Member="Tbl_Certificado">
     <Type Name="Tbl_Certificado">
       <Column Name="certi_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -55,10 +65,8 @@
     <Type Name="Tbl_Empresa">
       <Column Name="Emp_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Emp_nombre" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="Emp_zonal" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="Emp_RUC" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
-      <Column Name="Emp_dirrecionInstitucional" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Emp_estado" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="Emp_descripcion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Emp_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Empresa_Tbl_Certificado" Member="Tbl_Certificado" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Certificado" />
       <Association Name="Tbl_Empresa_Tbl_Evolucion" Member="Tbl_Evolucion" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Evolucion" />
       <Association Name="Tbl_Empresa_Tbl_FichasMedicas" Member="Tbl_FichasMedicas" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_FichasMedicas" />
@@ -66,6 +74,7 @@
       <Association Name="Tbl_Empresa_Tbl_Inmunizaciones" Member="Tbl_Inmunizaciones" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Inmunizaciones" />
       <Association Name="Tbl_Empresa_Tbl_PedidoExamenes" Member="Tbl_PedidoExamenes" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_PedidoExamenes" />
       <Association Name="Tbl_Empresa_Tbl_Periodica" Member="Tbl_Periodica" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Periodica" />
+      <Association Name="Tbl_Empresa_Tbl_Person" Member="Tbl_Person" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Person" />
       <Association Name="Tbl_Empresa_Tbl_Reintegro" Member="Tbl_Reintegro" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Reintegro" />
       <Association Name="Tbl_Empresa_Tbl_Retiro" Member="Tbl_Retiro" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Retiro" />
       <Association Name="Tbl_Empresa_Tbl_SocioEconomico" Member="Tbl_SocioEconomico" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_SocioEconomico" />
@@ -1545,6 +1554,7 @@
       <Column Name="Emp_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="tusu_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Per_estado" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="cent_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Tbl_Person_Tbl_Certificado" Member="Tbl_Certificado" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Certificado" />
       <Association Name="Tbl_Person_Tbl_Evolucion" Member="Tbl_Evolucion" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Evolucion" />
       <Association Name="Tbl_Person_Tbl_FichasMedicas" Member="Tbl_FichasMedicas" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_FichasMedicas" />
@@ -1555,6 +1565,8 @@
       <Association Name="Tbl_Person_Tbl_Reintegro" Member="Tbl_Reintegro" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Reintegro" />
       <Association Name="Tbl_Person_Tbl_Retiro" Member="Tbl_Retiro" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Retiro" />
       <Association Name="Tbl_Person_Tbl_SocioEconomico" Member="Tbl_SocioEconomico" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_SocioEconomico" />
+      <Association Name="Tbl_Centro_Tbl_Person" Member="Tbl_Centro" ThisKey="cent_id" OtherKey="cent_id" Type="Tbl_Centro" IsForeignKey="true" />
+      <Association Name="Tbl_Empresa_Tbl_Person" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
       <Association Name="Tbl_TipoUsuario_Tbl_Person" Member="Tbl_TipoUsuario" ThisKey="tusu_id" OtherKey="tusu_id" Type="Tbl_TipoUsuario" IsForeignKey="true" />
     </Type>
   </Table>
