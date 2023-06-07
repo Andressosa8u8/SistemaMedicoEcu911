@@ -176,7 +176,7 @@ namespace SistemaECU911.views.Doctores
             {
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["conexion"].ToString());
                 con.Open();
-                SqlCommand cmd = new SqlCommand("select top(10) Per_Cedula from Tbl_Personas where Per_Cedula LIKE + @Cedula + '%'", con);
+                SqlCommand cmd = new SqlCommand("select top(10) Per_cedula from Tbl_Person where Per_cedula LIKE + @Cedula + '%'", con);
                 cmd.Parameters.AddWithValue("@Cedula", prefixText);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
 
@@ -207,11 +207,11 @@ namespace SistemaECU911.views.Doctores
             string cedula = txt_numHClinica.Text;
 
             var lista = from c in dc.Tbl_Person
-                        join e in dc.Tbl_Empresa on c.Emp_id equals e.Emp_id
+                        //join e in dc.Tbl_Empresa on c.Emp_id equals e.Emp_id
                         where c.Per_cedula == cedula
                         select new
                         {
-                            e.Emp_nombre,
+                            //e.Emp_nombre,
                             c.Per_priNombre,
                             c.Per_segNombre,
                             c.Per_priApellido,
@@ -222,8 +222,8 @@ namespace SistemaECU911.views.Doctores
 
             foreach (var item in lista)
             {
-                string nomEmpresa = item.Emp_nombre;
-                txt_nomEmpresa.Text = nomEmpresa;
+                //string nomEmpresa = item.Emp_nombre;
+                //txt_nomEmpresa.Text = nomEmpresa;
 
                 string priNombre = item.Per_priNombre;
                 txt_priNombre.Text = priNombre;
