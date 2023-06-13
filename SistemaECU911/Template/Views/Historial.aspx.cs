@@ -691,7 +691,17 @@ namespace SistemaECU911.Template.Views
             tblapTitulo.AddCell(new PdfPCell(new Paragraph("DESCRIPCIÓN", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER });
             pdfDoc.Add(tblapTitulo);
             var tblapDatos = new PdfPTable(new float[] { 50f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
-            tblapDatos.AddCell(new PdfPCell(new Paragraph(ddl_tipoAntPer.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+
+            if (ddl_tipoAntPer.SelectedItem.Value == "0")
+            {
+                tblapDatos.AddCell(new PdfPCell(new Paragraph("", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+            else
+            {
+                tblapDatos.AddCell(new PdfPCell(new Paragraph(ddl_tipoAntPer.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+
+            //tblapDatos.AddCell(new PdfPCell(new Paragraph(ddl_tipoAntPer.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblapDatos.AddCell(new PdfPCell(new Paragraph(txt_antePersonales.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblapDatos.AddCell(new PdfPCell(new Paragraph(txt_antePerDescripcion.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblapDatos);
@@ -705,7 +715,17 @@ namespace SistemaECU911.Template.Views
             tblafTitulo.AddCell(new PdfPCell(new Paragraph("DESCRIPCIÓN", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER });
             pdfDoc.Add(tblafTitulo);
             var tblafDatos = new PdfPTable(new float[] { 50f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
-            tblafDatos.AddCell(new PdfPCell(new Paragraph(ddl_tipoAntFam.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+
+            if (ddl_tipoAntFam.SelectedItem.Value == "0")
+            {
+                tblafDatos.AddCell(new PdfPCell(new Paragraph("", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+            else
+            {
+                tblafDatos.AddCell(new PdfPCell(new Paragraph(ddl_tipoAntFam.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+
+            //tblafDatos.AddCell(new PdfPCell(new Paragraph(ddl_tipoAntFam.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblafDatos.AddCell(new PdfPCell(new Paragraph(txt_anteFamiliares.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblafDatos.AddCell(new PdfPCell(new Paragraph(txt_anteFamDescripcion.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblafDatos);
@@ -727,62 +747,188 @@ namespace SistemaECU911.Template.Views
             pdfDoc.Add(tblosTitulo);
             var tblosDatos = new PdfPTable(new float[] { 50f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblosDatos.AddCell(new PdfPCell(new Paragraph("Órganos de los Sentido", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(204, 255, 255), HorizontalAlignment = Element.ALIGN_LEFT });
-            tblosDatos.AddCell(new PdfPCell(new Paragraph(ddl_orgSistemas.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+
+
+
+            if (ddl_orgSistemas.SelectedItem.Value == "0")
+            {
+                tblosDatos.AddCell(new PdfPCell(new Paragraph("", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+            else
+            {
+                tblosDatos.AddCell(new PdfPCell(new Paragraph(ddl_orgSistemas.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+
+
+
+            //tblosDatos.AddCell(new PdfPCell(new Paragraph(ddl_orgSistemas.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblosDatos.AddCell(new PdfPCell(new Paragraph(txt_descOrgSistemas.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblosDatos);
             var tblosDatos1 = new PdfPTable(new float[] { 50f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblosDatos1.AddCell(new PdfPCell(new Paragraph("Respiratorio", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(204, 255, 255), HorizontalAlignment = Element.ALIGN_LEFT });
-            tblosDatos1.AddCell(new PdfPCell(new Paragraph(ddl_respiratorio.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+
+
+            if (ddl_respiratorio.SelectedItem.Value == "0")
+            {
+                tblosDatos1.AddCell(new PdfPCell(new Paragraph("", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+            else
+            {
+                tblosDatos1.AddCell(new PdfPCell(new Paragraph(ddl_respiratorio.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+
+
+            //tblosDatos1.AddCell(new PdfPCell(new Paragraph(ddl_respiratorio.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblosDatos1.AddCell(new PdfPCell(new Paragraph(txt_descRespiratorio.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblosDatos1);
             var tblosDatos2 = new PdfPTable(new float[] { 50f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblosDatos2.AddCell(new PdfPCell(new Paragraph("Cardio Vascular", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(204, 255, 255), HorizontalAlignment = Element.ALIGN_LEFT });
-            tblosDatos2.AddCell(new PdfPCell(new Paragraph(ddl_carVascular.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+
+            if (ddl_carVascular.SelectedItem.Value == "0")
+            {
+                tblosDatos2.AddCell(new PdfPCell(new Paragraph("", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+            else
+            {
+                tblosDatos2.AddCell(new PdfPCell(new Paragraph(ddl_carVascular.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+
+            //tblosDatos2.AddCell(new PdfPCell(new Paragraph(ddl_carVascular.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblosDatos2.AddCell(new PdfPCell(new Paragraph(txt_descCarVascular.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblosDatos2);
             var tblosDatos3 = new PdfPTable(new float[] { 50f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblosDatos3.AddCell(new PdfPCell(new Paragraph("Digestivo", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(204, 255, 255), HorizontalAlignment = Element.ALIGN_LEFT });
-            tblosDatos3.AddCell(new PdfPCell(new Paragraph(ddl_digestivo.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+
+            if (ddl_digestivo.SelectedItem.Value == "0")
+            {
+                tblosDatos3.AddCell(new PdfPCell(new Paragraph("", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+            else
+            {
+                tblosDatos3.AddCell(new PdfPCell(new Paragraph(ddl_digestivo.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+
+            //tblosDatos3.AddCell(new PdfPCell(new Paragraph(ddl_digestivo.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblosDatos3.AddCell(new PdfPCell(new Paragraph(txt_descDigestivo.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblosDatos3);
             var tblosDatos4 = new PdfPTable(new float[] { 50f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblosDatos4.AddCell(new PdfPCell(new Paragraph("Genital", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(204, 255, 255), HorizontalAlignment = Element.ALIGN_LEFT });
-            tblosDatos4.AddCell(new PdfPCell(new Paragraph(ddl_genital.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+
+            if (ddl_genital.SelectedItem.Value == "0")
+            {
+                tblosDatos4.AddCell(new PdfPCell(new Paragraph("", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+            else
+            {
+                tblosDatos4.AddCell(new PdfPCell(new Paragraph(ddl_genital.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+
+            //tblosDatos4.AddCell(new PdfPCell(new Paragraph(ddl_genital.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblosDatos4.AddCell(new PdfPCell(new Paragraph(txt_descGenital.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblosDatos4);
             var tblosDatos5 = new PdfPTable(new float[] { 50f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblosDatos5.AddCell(new PdfPCell(new Paragraph("Urinario", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(204, 255, 255), HorizontalAlignment = Element.ALIGN_LEFT });
-            tblosDatos5.AddCell(new PdfPCell(new Paragraph(ddl_urinario.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+
+            if (ddl_urinario.SelectedItem.Value == "0")
+            {
+                tblosDatos5.AddCell(new PdfPCell(new Paragraph("", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+            else
+            {
+                tblosDatos5.AddCell(new PdfPCell(new Paragraph(ddl_urinario.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+
+            //tblosDatos5.AddCell(new PdfPCell(new Paragraph(ddl_urinario.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblosDatos5.AddCell(new PdfPCell(new Paragraph(txt_descUrinario.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblosDatos5);
             var tblosDatos6 = new PdfPTable(new float[] { 50f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblosDatos6.AddCell(new PdfPCell(new Paragraph("Muscular", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(204, 255, 255), HorizontalAlignment = Element.ALIGN_LEFT });
-            tblosDatos6.AddCell(new PdfPCell(new Paragraph(ddl_muscular.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+
+            if (ddl_muscular.SelectedItem.Value == "0")
+            {
+                tblosDatos6.AddCell(new PdfPCell(new Paragraph("", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+            else
+            {
+                tblosDatos6.AddCell(new PdfPCell(new Paragraph(ddl_muscular.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+
+            //tblosDatos6.AddCell(new PdfPCell(new Paragraph(ddl_muscular.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblosDatos6.AddCell(new PdfPCell(new Paragraph(txt_descMuscular.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblosDatos6);
             var tblosDatos7 = new PdfPTable(new float[] { 50f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblosDatos7.AddCell(new PdfPCell(new Paragraph("Esquelético", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(204, 255, 255), HorizontalAlignment = Element.ALIGN_LEFT });
-            tblosDatos7.AddCell(new PdfPCell(new Paragraph(ddl_esqueletico.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+
+            if (ddl_esqueletico.SelectedItem.Value == "0")
+            {
+                tblosDatos7.AddCell(new PdfPCell(new Paragraph("", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+            else
+            {
+                tblosDatos7.AddCell(new PdfPCell(new Paragraph(ddl_esqueletico.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+
+            //tblosDatos7.AddCell(new PdfPCell(new Paragraph(ddl_esqueletico.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblosDatos7.AddCell(new PdfPCell(new Paragraph(txt_descEsqueletico.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblosDatos7);
             var tblosDatos8 = new PdfPTable(new float[] { 50f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblosDatos8.AddCell(new PdfPCell(new Paragraph("Nervioso", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(204, 255, 255), HorizontalAlignment = Element.ALIGN_LEFT });
-            tblosDatos8.AddCell(new PdfPCell(new Paragraph(ddl_nervioso.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+
+            if (ddl_nervioso.SelectedItem.Value == "0")
+            {
+                tblosDatos8.AddCell(new PdfPCell(new Paragraph("", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+            else
+            {
+                tblosDatos8.AddCell(new PdfPCell(new Paragraph(ddl_nervioso.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+
+            //tblosDatos8.AddCell(new PdfPCell(new Paragraph(ddl_nervioso.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblosDatos8.AddCell(new PdfPCell(new Paragraph(txt_descNervioso.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblosDatos8);
             var tblosDatos9 = new PdfPTable(new float[] { 50f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblosDatos9.AddCell(new PdfPCell(new Paragraph("Endocrino", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(204, 255, 255), HorizontalAlignment = Element.ALIGN_LEFT });
-            tblosDatos9.AddCell(new PdfPCell(new Paragraph(ddl_endocrino.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+
+            if (ddl_endocrino.SelectedItem.Value == "0")
+            {
+                tblosDatos9.AddCell(new PdfPCell(new Paragraph("", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+            else
+            {
+                tblosDatos9.AddCell(new PdfPCell(new Paragraph(ddl_endocrino.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+
+            //tblosDatos9.AddCell(new PdfPCell(new Paragraph(ddl_endocrino.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblosDatos9.AddCell(new PdfPCell(new Paragraph(txt_descEndocrino.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblosDatos9);
             var tblosDatos10 = new PdfPTable(new float[] { 50f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblosDatos10.AddCell(new PdfPCell(new Paragraph("Hemo Linfático", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(204, 255, 255), HorizontalAlignment = Element.ALIGN_LEFT });
-            tblosDatos10.AddCell(new PdfPCell(new Paragraph(ddl_hemoLinfatico.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+
+            if (ddl_hemoLinfatico.SelectedItem.Value == "0")
+            {
+                tblosDatos10.AddCell(new PdfPCell(new Paragraph("", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+            else
+            {
+                tblosDatos10.AddCell(new PdfPCell(new Paragraph(ddl_hemoLinfatico.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+
+            //tblosDatos10.AddCell(new PdfPCell(new Paragraph(ddl_hemoLinfatico.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblosDatos10.AddCell(new PdfPCell(new Paragraph(txt_descHemoLinfatico.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblosDatos10);
             var tblosDatos11 = new PdfPTable(new float[] { 50f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblosDatos11.AddCell(new PdfPCell(new Paragraph("Tegumentario (Piel y Faneras)", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(204, 255, 255), HorizontalAlignment = Element.ALIGN_LEFT });
-            tblosDatos11.AddCell(new PdfPCell(new Paragraph(ddl_tegumentario.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+
+            if (ddl_tegumentario.SelectedItem.Value == "0")
+            {
+                tblosDatos11.AddCell(new PdfPCell(new Paragraph("", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+            else
+            {
+                tblosDatos11.AddCell(new PdfPCell(new Paragraph(ddl_tegumentario.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            }
+
+            //tblosDatos11.AddCell(new PdfPCell(new Paragraph(ddl_tegumentario.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblosDatos11.AddCell(new PdfPCell(new Paragraph(txt_descTegumentario.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblosDatos11);
             pdfDoc.Add(new Paragraph(" "));
@@ -829,7 +975,7 @@ namespace SistemaECU911.Template.Views
             tblefTitulo.AddCell(new PdfPCell(new Paragraph("DESCRIPCIÓN", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER });
             pdfDoc.Add(tblefTitulo);
             var tblefDatos = new PdfPTable(new float[] { 50f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
-            tblefDatos.AddCell(new PdfPCell(new Paragraph(ddl_tipoAntFam.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            //tblefDatos.AddCell(new PdfPCell(new Paragraph(ddl_tipoAntFam.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblefDatos.AddCell(new PdfPCell(new Paragraph(txt_anteFamiliares.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblefDatos.AddCell(new PdfPCell(new Paragraph(txt_anteFamDescripcion.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblefDatos);
