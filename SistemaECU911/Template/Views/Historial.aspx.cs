@@ -18,6 +18,8 @@ using iTextSharp.tool.xml;
 using ListItem = System.Web.UI.WebControls.ListItem;
 using iTextSharp.text.html.simpleparser;
 using System.Configuration;
+using iTextSharp.tool.xml.css.apply;
+using System.ComponentModel.DataAnnotations;
 
 namespace SistemaECU911.Template.Views
 {
@@ -38,7 +40,7 @@ namespace SistemaECU911.Template.Views
                 {
                     int codigo = Convert.ToInt32(Request["cod"]);
                     fichasmedicas = CN_HistorialMedico.ObtenerFichasMedicasPorId(codigo);
-                    int personasid = Convert.ToInt32(fichasmedicas.Per_id.ToString());  
+                    int personasid = Convert.ToInt32(fichasmedicas.Per_id.ToString());
                     per = CN_HistorialMedico.ObtenerPersonasxId(personasid);
                     int empresaid = Convert.ToInt32(fichasmedicas.Emp_id.ToString());
                     emp = CN_HistorialMedico.ObtenerEmpresaxId(empresaid);
@@ -119,19 +121,20 @@ namespace SistemaECU911.Template.Views
                             txt_descripcionDiagnostico.Text = fichasmedicas.descripcionDiag.ToString();
                             txt_tratamiento.Text = fichasmedicas.planTratamiento.ToString();
                             txt_evolucion.Text = fichasmedicas.evolucion.ToString();
-                            txt_prescipciones.Text = fichasmedicas.prescripciones.ToString();                           
+                            txt_prescipciones.Text = fichasmedicas.prescripciones.ToString();
                             ddl_especialidad.SelectedValue = fichasmedicas.espec_id.ToString();
                             ddl_profesional.SelectedValue = fichasmedicas.prof_id.ToString();
                             txt_codigo.Text = fichasmedicas.codigoPro.ToString();
                         }
                     }
                 }
+                txt_numHClinica.MaxLength = 10;
                 Timer1.Enabled = false;
                 cargarEspecialidad();
                 cargarProfesional();
 
                 txt_fechahora.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
-            }            
+            }
         }
 
         //protected void timerFechaHora_Tick(object sender, EventArgs e)
@@ -199,6 +202,7 @@ namespace SistemaECU911.Template.Views
 
         protected void txt_numHClinica_TextChanged(object sender, EventArgs e)
         {
+            lbl_numHClinica.Text = "";
             ObtenerCedula();
         }
 
@@ -217,7 +221,7 @@ namespace SistemaECU911.Template.Views
                             c.Per_priApellido,
                             c.Per_segApellido,
                             c.Per_genero,
-                            c.Per_fechaNacimiento                            
+                            c.Per_fechaNacimiento
                         };
 
             foreach (var item in lista)
@@ -387,7 +391,7 @@ namespace SistemaECU911.Template.Views
                 fichasmedicas.codigoPro = txt_codigo.Text.ToUpper();
                 fichasmedicas.Per_id = perso;
                 fichasmedicas.Emp_id = empre;
-                
+
 
                 CN_HistorialMedico.GuardarFichaMedica(fichasmedicas);
 
@@ -399,7 +403,7 @@ namespace SistemaECU911.Template.Views
             catch (Exception)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Datos No Guardados', 'error')", true);
-            }            
+            }
         }
 
         private void ModificarHistorial(Tbl_FichasMedicas fichasmedicas)
@@ -409,7 +413,7 @@ namespace SistemaECU911.Template.Views
                 fichasmedicas.moConsulta = txt_moConsulta.Text.ToUpper();
                 fichasmedicas.seAcompañanteMc = txt_segAcompa.Text.ToUpper();
                 fichasmedicas.idTipAntecedentePer = Convert.ToInt32(ddl_tipoAntPer.SelectedValue);
-                fichasmedicas.antecedentePer = txt_antePersonales.Text.ToUpper(); 
+                fichasmedicas.antecedentePer = txt_antePersonales.Text.ToUpper();
                 fichasmedicas.descripcionPer = txt_antePerDescripcion.Text.ToUpper();
                 fichasmedicas.idTipAntecedenteFam = Convert.ToInt32(ddl_tipoAntFam.SelectedValue);
                 fichasmedicas.antecedenteFam = txt_anteFamiliares.Text.ToUpper();
@@ -498,8 +502,64 @@ namespace SistemaECU911.Template.Views
 
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
-            Guardar_modificar_datos(Convert.ToInt32(Request["cod"]));
+            bool camposCompletos = true;
+
+            if (string.IsNullOrEmpty(txt_numHClinica.Text))
+            {
+                lbl_numHClinica.Text = "CAMPO OBLIGATORIO";
+                camposCompletos = false;
+            }
+            else
+            {
+                lbl_numHClinica.Text = "";
+            }
+
+            if (string.IsNullOrEmpty(ddl_especialidad.SelectedValue) || ddl_especialidad.SelectedValue == "0")
+            {
+                lbl_especialidad.Text = "CAMPO OBLIGATORIO";
+                camposCompletos = false;
+            }
+            else
+            {
+                lbl_especialidad.Text = "";
+            }
+
+            if (string.IsNullOrEmpty(ddl_profesional.SelectedValue) || ddl_profesional.SelectedValue == "0")
+            {
+                lbl_profesional.Text = "CAMPO OBLIGATORIO";
+                camposCompletos = false;
+            }
+            else
+            {
+                lbl_profesional.Text = "";
+            }
+
+            if (camposCompletos)
+            {
+                // Todos los campos están completos, continuar con el procesamiento
+                Guardar_modificar_datos(Convert.ToInt32(Request["cod"]));
+            }
+            else
+            {
+                // Al menos uno de los campos está incompleto, enfocar el primer campo vacío
+                if (string.IsNullOrEmpty(txt_numHClinica.Text))
+                {
+                    txt_numHClinica.Focus();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ScrollToField", "window.scrollTo(0, document.getElementById('" + txt_numHClinica.ClientID + "').offsetTop);", true);
+                }
+                else if (string.IsNullOrEmpty(ddl_especialidad.SelectedValue) || ddl_especialidad.SelectedValue == "0")
+                {
+                    ddl_especialidad.Focus();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ScrollToField", "window.scrollTo(0, document.getElementById('" + ddl_especialidad.ClientID + "').offsetTop);", true);
+                }
+                else if (string.IsNullOrEmpty(ddl_profesional.SelectedValue) || ddl_profesional.SelectedValue == "0")
+                {
+                    ddl_profesional.Focus();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ScrollToField", "window.scrollTo(0, document.getElementById('" + ddl_profesional.ClientID + "').offsetTop);", true);
+                }
+            }
         }
+
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
@@ -546,7 +606,7 @@ namespace SistemaECU911.Template.Views
         protected void txt_peso_TextChanged(object sender, EventArgs e)
         {
             try
-            {                
+            {
                 int peso = Convert.ToInt32(txt_peso.Text);
                 decimal talla = Convert.ToDecimal(txt_talla.Text);
                 decimal toTalla = (talla * talla) / 10000;

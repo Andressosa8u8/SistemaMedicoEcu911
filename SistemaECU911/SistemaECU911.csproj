@@ -2741,6 +2741,8 @@
     <Content Include="Template\Template Principal\images\LogoECU.png" />
     <Content Include="Template\Template Principal\images\User.png" />
     <Content Include="Template\Template Principal\js\screen.js" />
+    <Content Include="Template\Template Principal\js\SoloNumeros.js" />
+    <Content Include="Template\Template Principal\js\windowsScrollValidator.js" />
     <Content Include="Template\Template Principal\vendors\css\core.css" />
     <Content Include="Template\Template Principal\vendors\css\icon-font.min.css" />
     <Content Include="Template\Template Principal\css\style-andres.css" />
