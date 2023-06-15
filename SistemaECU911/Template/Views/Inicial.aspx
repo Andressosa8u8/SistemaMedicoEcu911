@@ -111,8 +111,9 @@
                                     <asp:TextBox runat="server" ID="txt_estableSalud" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" Text="Consultorio Médico" ReadOnly="true"></asp:TextBox>
                                 </asp:TableCell>
                                 <asp:TableCell Style="background-color: white; font-size: 14px">
-                                    <asp:TextBox runat="server" ID="txt_numHClinica" BorderStyle="None" OnTextChanged="txt_numHClinica_TextChanged" AutoPostBack="true" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfv_numHClinica" runat="server" ForeColor="Red" ControlToValidate="txt_numHClinica" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
+                                    <asp:TextBox runat="server" ID="txt_numHClinica" BorderStyle="None" OnTextChanged="txt_numHClinica_TextChanged" AutoPostBack="true" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" onkeypress="return SoloNumeros(event)" oninput="borrarMensaje()"></asp:TextBox>
+                                    <asp:Label ID="lbl_numHClinica" ForeColor="Red" runat="server"></asp:Label>
+                                    <%--<asp:RequiredFieldValidator ID="rfv_numHClinica" runat="server" ForeColor="Red" ControlToValidate="txt_numHClinica" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>--%>
                                     <ajaxToolkit:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server" CompletionInterval="10" DelimiterCharacters="" Enabled="True"
                                         MinimumPrefixLength="1" ServiceMethod="ObtenerNumHClinica"
                                         TargetControlID="txt_numHClinica" CompletionListCssClass="CompletionList"
@@ -2982,13 +2983,13 @@
                             <asp:TableRow>
                                 <asp:TableCell Style="width: 100px; background-color: #cdfecc; font-size:15px">FECHA Y HORA</asp:TableCell>
                                 <asp:TableCell Style="width: 150px; background-color: white; font-size: 14px">
-                                    <%--<asp:Timer ID="timerFechaHora"  OnTick="timerFechaHora_Tick" runat="server" Interval="15000"></asp:Timer>--%>
                                     <asp:TextBox runat="server" BorderStyle="None" ID="txt_fechahora" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" TextMode="DateTimeLocal"></asp:TextBox>
                                 </asp:TableCell>
                                 <asp:TableCell Style="width: 100px; background-color: #cdfecc; font-size:15px">NOMBRES Y APELLIDOS</asp:TableCell>
                                 <asp:TableCell Style="width: 375px; background-color: white; font-size: 14px">
-                                    <asp:DropDownList ID="ddl_profesional" CssClass="form-check" Style="width: 100%; border: none; background-color: transparent; text-align:center; text-transform:uppercase" runat="server"></asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="rfv_profesional" runat="server" ForeColor="Red" InitialValue="0" ControlToValidate="ddl_profesional" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
+                                    <asp:DropDownList ID="ddl_profesional" CssClass="form-check" Style="width: 100%; border: none; background-color: transparent; text-align:center; text-transform:uppercase" onchange="borrarMensaje();" runat="server"></asp:DropDownList>
+                                    <asp:Label ID="lbl_profesional" ForeColor="Red" runat="server"></asp:Label>
+                                    <%--<asp:RequiredFieldValidator ID="rfv_profesional" runat="server" ForeColor="Red" InitialValue="0" ControlToValidate="ddl_profesional" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>--%>
                                 </asp:TableCell>
                                 <asp:TableCell Style="width: 75px; background-color: #cdfecc; font-size:15px">CÓDIGO</asp:TableCell>
                                 <asp:TableCell Style="width: 125px; background-color: white; font-size: 14px">
@@ -3027,4 +3028,30 @@
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
+    <script type="text/javascript">
+        function SoloNumeros(e) {
+            // Verificar el código de la tecla presionada
+            var key = e.which || e.keyCode;
+            if (key < 48 || key > 57) {
+                // Si el código de la tecla no está en el rango de dígitos (0-9), se cancela el evento
+                e.preventDefault();
+                return false;
+            }
+        }
+    </script>
+
+    <script>
+        function borrarMensaje() {
+            var lblNumHClinica = document.getElementById("<%= lbl_numHClinica.ClientID %>");
+            var lblProfesional = document.getElementById("<%= lbl_profesional.ClientID %>");
+
+            if (lblNumHClinica) {
+                lblNumHClinica.innerHTML = "";
+            }
+
+            if (lblProfesional) {
+                lblProfesional.innerHTML = "";
+            }
+        }
+    </script>
 </asp:Content>

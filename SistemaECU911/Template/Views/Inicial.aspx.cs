@@ -3810,6 +3810,7 @@ namespace SistemaECU911.Template.Views
 
         protected void txt_numHClinica_TextChanged(object sender, EventArgs e)
         {
+            lbl_numHClinica.Text = "";
             ObtenerCedula();
         }
 
@@ -8900,7 +8901,47 @@ namespace SistemaECU911.Template.Views
 
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
-            Guardar_modificar_datos(Convert.ToInt32(Request["cod"]));
+            bool camposCompletos = true;
+
+            if (string.IsNullOrEmpty(txt_numHClinica.Text))
+            {
+                lbl_numHClinica.Text = "CAMPO OBLIGATORIO";
+                camposCompletos = false;
+            }
+            else
+            {
+                lbl_numHClinica.Text = "";
+            }
+
+            if (string.IsNullOrEmpty(ddl_profesional.SelectedValue) || ddl_profesional.SelectedValue == "0")
+            {
+                lbl_profesional.Text = "CAMPO OBLIGATORIO";
+                camposCompletos = false;
+            }
+            else
+            {
+                lbl_profesional.Text = "";
+            }
+
+            if (camposCompletos)
+            {
+                // Todos los campos están completos, continuar con el procesamiento
+                Guardar_modificar_datos(Convert.ToInt32(Request["cod"]));
+            }
+            else
+            {
+                // Al menos uno de los campos está incompleto, enfocar el primer campo vacío
+                if (string.IsNullOrEmpty(txt_numHClinica.Text))
+                {
+                    txt_numHClinica.Focus();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ScrollToField", "window.scrollTo(0, document.getElementById('" + txt_numHClinica.ClientID + "').offsetTop);", true);
+                }
+                else if (string.IsNullOrEmpty(ddl_profesional.SelectedValue) || ddl_profesional.SelectedValue == "0")
+                {
+                    ddl_profesional.Focus();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ScrollToField", "window.scrollTo(0, document.getElementById('" + ddl_profesional.ClientID + "').offsetTop);", true);
+                }
+            }
         }
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
