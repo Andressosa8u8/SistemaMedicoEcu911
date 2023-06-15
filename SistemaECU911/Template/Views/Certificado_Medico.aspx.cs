@@ -179,7 +179,16 @@ namespace SistemaECU911.Template.Views
                 + txt_Atencion.Text + ", el antes mencionado se desempeña como " + txt_Cargo.Text + " en " + txt_Institución.Text + "", parrafo)
             { Alignment = Element.ALIGN_JUSTIFIED });
             pdfDoc.Add(new Chunk(Chunk.NEWLINE));
-            pdfDoc.Add(new Paragraph("Tipo de contingencia: " + ddl_tipoContingencia.SelectedItem, parrafo) { Alignment = Element.ALIGN_JUSTIFIED });
+            if (ddl_tipoContingencia.SelectedItem.Value == "0")
+            {
+                pdfDoc.Add(new Paragraph("Tipo de contingencia: " + "", parrafo) { Alignment = Element.ALIGN_JUSTIFIED });
+            }
+            else
+            {
+                pdfDoc.Add(new Paragraph("Tipo de contingencia: " + ddl_tipoContingencia.SelectedItem, parrafo) { Alignment = Element.ALIGN_JUSTIFIED });
+            }
+
+            //pdfDoc.Add(new Paragraph("Tipo de contingencia: " + ddl_tipoContingencia.SelectedItem, parrafo) { Alignment = Element.ALIGN_JUSTIFIED });            
             pdfDoc.Add(new Chunk(Chunk.NEWLINE));
             pdfDoc.Add(new Paragraph("Diagnóstico: " + txt_diagnostico.Text + "  " + "CIE 10: " + txt_cie.Text, parrafo) { Alignment = Element.ALIGN_JUSTIFIED });
             pdfDoc.Add(new Chunk(Chunk.NEWLINE));
