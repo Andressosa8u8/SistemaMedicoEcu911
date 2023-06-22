@@ -1,13 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SistemaECU911" Class="DataClassesECU911DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=SistemaECU911;Integrated Security=True" SettingsObjectName="CapaDatos.Properties.Settings" SettingsPropertyName="SistemaECU911ConnectionString4" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Tbl_TipoUsuario" Member="Tbl_TipoUsuario">
-    <Type Name="Tbl_TipoUsuario">
-      <Column Name="tusu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="tusu_nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="tusu_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
-      <Association Name="Tbl_TipoUsuario_Tbl_Person" Member="Tbl_Person" ThisKey="tusu_id" OtherKey="tusu_id" Type="Tbl_Person" />
-    </Type>
-  </Table>
   <Table Name="dbo.cie10" Member="cie10">
     <Type Name="cie10">
       <Column Name="id10" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -18,9 +10,9 @@
     <Type Name="Tbl_Centro">
       <Column Name="cent_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="cent_nombre" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
-      <Column Name="cent_ruc" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
       <Column Name="cent_dirrecionInstitucional" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="cent_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="cent_ruc" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
       <Association Name="Tbl_Centro_Tbl_Person" Member="Tbl_Person" ThisKey="cent_id" OtherKey="cent_id" Type="Tbl_Person" />
     </Type>
   </Table>
@@ -65,7 +57,8 @@
     <Type Name="Tbl_Empresa">
       <Column Name="Emp_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Emp_nombre" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="Emp_descripcion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Emp_RUC" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="Emp_dirrecionInstitucional" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Emp_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Empresa_Tbl_Certificado" Member="Tbl_Certificado" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Certificado" />
       <Association Name="Tbl_Empresa_Tbl_Evolucion" Member="Tbl_Evolucion" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Evolucion" />
@@ -74,7 +67,6 @@
       <Association Name="Tbl_Empresa_Tbl_Inmunizaciones" Member="Tbl_Inmunizaciones" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Inmunizaciones" />
       <Association Name="Tbl_Empresa_Tbl_PedidoExamenes" Member="Tbl_PedidoExamenes" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_PedidoExamenes" />
       <Association Name="Tbl_Empresa_Tbl_Periodica" Member="Tbl_Periodica" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Periodica" />
-      <Association Name="Tbl_Empresa_Tbl_Person" Member="Tbl_Person" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Person" />
       <Association Name="Tbl_Empresa_Tbl_Reintegro" Member="Tbl_Reintegro" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Reintegro" />
       <Association Name="Tbl_Empresa_Tbl_Retiro" Member="Tbl_Retiro" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Retiro" />
       <Association Name="Tbl_Empresa_Tbl_SocioEconomico" Member="Tbl_SocioEconomico" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_SocioEconomico" />
@@ -1566,7 +1558,6 @@
       <Association Name="Tbl_Person_Tbl_Retiro" Member="Tbl_Retiro" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Retiro" />
       <Association Name="Tbl_Person_Tbl_SocioEconomico" Member="Tbl_SocioEconomico" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_SocioEconomico" />
       <Association Name="Tbl_Centro_Tbl_Person" Member="Tbl_Centro" ThisKey="cent_id" OtherKey="cent_id" Type="Tbl_Centro" IsForeignKey="true" />
-      <Association Name="Tbl_Empresa_Tbl_Person" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
       <Association Name="Tbl_TipoUsuario_Tbl_Person" Member="Tbl_TipoUsuario" ThisKey="tusu_id" OtherKey="tusu_id" Type="Tbl_TipoUsuario" IsForeignKey="true" />
     </Type>
   </Table>
@@ -2100,16 +2091,19 @@
       <Column Name="TiEnf_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.Tbl_TipoUsuario" Member="Tbl_TipoUsuario">
+    <Type Name="Tbl_TipoUsuario">
+      <Column Name="tusu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tusu_nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="tusu_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Association Name="Tbl_TipoUsuario_Tbl_Person" Member="Tbl_Person" ThisKey="tusu_id" OtherKey="tusu_id" Type="Tbl_Person" />
+    </Type>
+  </Table>
   <Function Name="dbo.AutentificarxUsuario" Method="AutentificarxUsuario">
     <Parameter Name="Usuario" Parameter="usuario" Type="System.String" DbType="VarChar(25)" />
     <ElementType Name="AutentificarxUsuarioResult">
       <Column Name="Per_nomlogin" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
     </ElementType>
-  </Function>
-  <Function Name="dbo.RegistrarImagen" Method="RegistrarImagen">
-    <Parameter Name="cedula" Type="System.String" DbType="VarChar(10)" />
-    <Parameter Name="imagen" Type="System.Data.Linq.Binary" DbType="Image" />
-    <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.CargarImagen" Method="CargarImagen">
     <Parameter Name="img_id" Type="System.Int32" DbType="Int" />
@@ -2136,6 +2130,17 @@
       <Column Name="Per_cedula" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="prof_NomApe" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="fechaHoraGuardado" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.RegistrarImagen" Method="RegistrarImagen">
+    <Parameter Name="cedula" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="imagen" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Sp_Npersona_puestoTrabajo" Method="Sp_Npersona_puestoTrabajo">
+    <ElementType Name="Sp_Npersona_puestoTrabajoResult">
+      <Column Name="Per_puestoTrabajo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="numero_personas" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

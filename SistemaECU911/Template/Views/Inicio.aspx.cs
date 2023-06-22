@@ -3,8 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Services;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CapaNegocio;
 
 namespace SistemaECU911.Template.Views
 {
@@ -48,6 +51,29 @@ namespace SistemaECU911.Template.Views
             {
                 Response.Redirect("~/Template/Views/Personas.aspx?cod=" + codigo, true);
             }
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static object[] ListaNPersonas()
+        {
+            //object olista;
+            List<Sp_Npersona_puestoTrabajoResult> olista = new List<Sp_Npersona_puestoTrabajoResult>();
+            olista = CN_Reporte_NPersona.Reporte_NPersona().ToList();
+            
+            var objetoLista = new object[olista.Count + 1];
+            objetoLista[0] = new object[]{
+                "",
+                ""
+            };
+            int j = 0;
+            foreach (var i in olista)
+            {
+                j++;
+                objetoLista[j] = new object[] { i.Per_puestoTrabajo, i.numero_personas };
+            }
+            return objetoLista;
+
         }
     }
 }
