@@ -67,7 +67,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-lg-6 login-half-bg d-flex flex-row" style="background-image:url('resources/images/Login.jpg')">
+                    <div class="col-lg-6 login-half-bg d-flex flex-row" style="background-image:url('resources/images/Login.jpg'); background-size: cover">
                         <p class="text-black font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2023  Todos los derechos reservados.</p>
                     </div>
                 </div>
