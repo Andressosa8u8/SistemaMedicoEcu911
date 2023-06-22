@@ -65,7 +65,7 @@
                 <asp:Table class="table table-bordered text-center" runat="server">
                     <asp:TableRow>
                         <asp:TableCell Style="font-family: Arial; width: 400px" RowSpan="4">
-                                    <img src="../Template Principal/images/ecu911.jpg" Style="width:50%; height:35%" runat="server"/>
+                            <img src="../Template Principal/images/ecu911.jpg" Style="width:50%; height:35%" runat="server"/>
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>

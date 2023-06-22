@@ -30,12 +30,12 @@ namespace CapaDatos
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnCreated();
-    partial void Insertcie10(cie10 instance);
-    partial void Updatecie10(cie10 instance);
-    partial void Deletecie10(cie10 instance);
     partial void InsertTbl_TipoUsuario(Tbl_TipoUsuario instance);
     partial void UpdateTbl_TipoUsuario(Tbl_TipoUsuario instance);
     partial void DeleteTbl_TipoUsuario(Tbl_TipoUsuario instance);
+    partial void Insertcie10(cie10 instance);
+    partial void Updatecie10(cie10 instance);
+    partial void Deletecie10(cie10 instance);
     partial void InsertTbl_Centro(Tbl_Centro instance);
     partial void UpdateTbl_Centro(Tbl_Centro instance);
     partial void DeleteTbl_Centro(Tbl_Centro instance);
@@ -119,19 +119,19 @@ namespace CapaDatos
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<cie10> cie10
-		{
-			get
-			{
-				return this.GetTable<cie10>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Tbl_TipoUsuario> Tbl_TipoUsuario
 		{
 			get
 			{
 				return this.GetTable<Tbl_TipoUsuario>();
+			}
+		}
+		
+		public System.Data.Linq.Table<cie10> cie10
+		{
+			get
+			{
+				return this.GetTable<cie10>();
 			}
 		}
 		
@@ -314,92 +314,6 @@ namespace CapaDatos
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.cie10")]
-	public partial class cie10 : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _id10;
-		
-		private string _dec10;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid10Changing(string value);
-    partial void Onid10Changed();
-    partial void Ondec10Changing(string value);
-    partial void Ondec10Changed();
-    #endregion
-		
-		public cie10()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id10", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string id10
-		{
-			get
-			{
-				return this._id10;
-			}
-			set
-			{
-				if ((this._id10 != value))
-				{
-					this.Onid10Changing(value);
-					this.SendPropertyChanging();
-					this._id10 = value;
-					this.SendPropertyChanged("id10");
-					this.Onid10Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dec10", DbType="VarChar(400)")]
-		public string dec10
-		{
-			get
-			{
-				return this._dec10;
-			}
-			set
-			{
-				if ((this._dec10 != value))
-				{
-					this.Ondec10Changing(value);
-					this.SendPropertyChanging();
-					this._dec10 = value;
-					this.SendPropertyChanged("dec10");
-					this.Ondec10Changed();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tbl_TipoUsuario")]
 	public partial class Tbl_TipoUsuario : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -535,6 +449,92 @@ namespace CapaDatos
 		{
 			this.SendPropertyChanging();
 			entity.Tbl_TipoUsuario = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.cie10")]
+	public partial class cie10 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _id10;
+		
+		private string _dec10;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid10Changing(string value);
+    partial void Onid10Changed();
+    partial void Ondec10Changing(string value);
+    partial void Ondec10Changed();
+    #endregion
+		
+		public cie10()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id10", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string id10
+		{
+			get
+			{
+				return this._id10;
+			}
+			set
+			{
+				if ((this._id10 != value))
+				{
+					this.Onid10Changing(value);
+					this.SendPropertyChanging();
+					this._id10 = value;
+					this.SendPropertyChanged("id10");
+					this.Onid10Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dec10", DbType="VarChar(400)")]
+		public string dec10
+		{
+			get
+			{
+				return this._dec10;
+			}
+			set
+			{
+				if ((this._dec10 != value))
+				{
+					this.Ondec10Changing(value);
+					this.SendPropertyChanging();
+					this._dec10 = value;
+					this.SendPropertyChanged("dec10");
+					this.Ondec10Changed();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	

@@ -627,8 +627,6 @@
         </ContentTemplate>
         <Triggers>
             <asp:PostBackTrigger ControlID="btn_imprimir" />
-            <asp:PostBackTrigger ControlID="btn_guardar" />
-            <%--<asp:PostBackTrigger ControlID="timerFechaHora"/>--%>
         </Triggers>
     </asp:UpdatePanel>
 </asp:Content>

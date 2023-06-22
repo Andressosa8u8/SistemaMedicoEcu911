@@ -536,8 +536,14 @@ namespace SistemaECU911.Template.Views
 
             if (camposCompletos)
             {
-                // Todos los campos están completos, continuar con el procesamiento
+                // Mostrar el elemento de carga
+                ScriptManager.RegisterStartupScript(this, GetType(), "ShowLoading", "ShowLoadingElement();", true);
+
+                // Ejecutar el procesamiento en el servidor
                 Guardar_modificar_datos(Convert.ToInt32(Request["cod"]));
+
+                // Ocultar el elemento de carga
+                ScriptManager.RegisterStartupScript(this, GetType(), "HideLoading", "HideLoadingElement();", true);
             }
             else
             {

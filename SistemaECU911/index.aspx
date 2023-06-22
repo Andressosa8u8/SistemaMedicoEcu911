@@ -7,13 +7,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>ECU 911</title>
-    <link rel="stylesheet" href="../Template/Template Principal/vendors/iconfonts/font-awesome/css/all.min.css" />
-    <link rel="stylesheet" href="../Template/Template Principal/vendors/iconfonts/font-awesome-6.1.1/css/all.min.css" />
-    <link rel="stylesheet" href="../Template/Template Principal/vendors/css/vendor.bundle.base.css" />
-    <link rel="stylesheet" href="../Template/Template Principal/vendors/css/vendor.bundle.addons.css" />
-    <link rel="stylesheet" href="../Template/Template Principal/css/style.css" />
-    <link rel="stylesheet" href="../Template/Template Principal/css/Style_Prueba.css" />
-    <link rel="stylesheet" href="../Template/Template Principal/css/style-andres.css" />
+    <link rel="stylesheet" href="Template/Template Principal/vendors/iconfonts/font-awesome/css/all.min.css" />
+    <link rel="stylesheet" href="Template/Template Principal/vendors/iconfonts/font-awesome-6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="Template/Template Principal/vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" href="Template/Template Principal/vendors/css/vendor.bundle.addons.css" />
+    <link rel="stylesheet" href="Template/Template Principal/css/style.css" />
+    <link rel="stylesheet" href="Template/Template Principal/css/Style_Prueba.css" />
+    <link rel="stylesheet" href="Template/Template Principal/css/style-andres.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="shortcut icon" href="http://www.urbanui.com/" />
 </head>
@@ -25,7 +25,7 @@
                     <div class="col-lg-6 d-flex align-items-center justify-content-center">
                         <div class="auth-form-transparent text-left p-3">
                             <div class="brand-logo">
-                                <img src="Template/Template Principal/images/imgtitulo.png" alt="logo"/>
+                                <img src="resources/images/LogoECU.png" style="width:100%; height:100px"/>
                             </div>
                             <h3>Bienvenido al Sistema!</h3>
                             <h6 class="font-weight-light">Un gusto verte de nuevo!</h6>
@@ -57,7 +57,7 @@
                                             </div>
                                         </div>
                                         <div class="my-2 d-flex justify-content-between align-items-center">
-                                            <a href="/Autentificacion/Recuperar.aspx" class="auth-link text-black">Olvidaste tu contraseña?</a>
+                                            <a href="autentificacion/recuperarContraseña.aspx" class="auth-link text-black">Olvidaste tu contraseña?</a>
                                         </div>
                                         <div class="my-3">
                                             <asp:Button ID="btn_ingresar" style="background-color: lightskyblue" class="btn btn-block btn-lg font-weight-medium auth-form-btn" type="submit" runat="server" Text="INGRESAR" OnClick="btn_ingresar_Click" />
@@ -67,8 +67,8 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-lg-6 login-half-bg d-flex flex-row">
-                        <p class="text-black font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2021  Todos los derechos reservados.</p>
+                    <div class="col-lg-6 login-half-bg d-flex flex-row" style="background-image:url('resources/images/Login.jpg')">
+                        <p class="text-black font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2023  Todos los derechos reservados.</p>
                     </div>
                 </div>
             </div>

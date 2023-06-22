@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SistemaECU911" Class="DataClassesECU911DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=SistemaECU911;Integrated Security=True" SettingsObjectName="CapaDatos.Properties.Settings" SettingsPropertyName="SistemaECU911ConnectionString4" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.cie10" Member="cie10">
-    <Type Name="cie10">
-      <Column Name="id10" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="dec10" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Tbl_TipoUsuario" Member="Tbl_TipoUsuario">
     <Type Name="Tbl_TipoUsuario">
       <Column Name="tusu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="tusu_nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="tusu_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_TipoUsuario_Tbl_Person" Member="Tbl_Person" ThisKey="tusu_id" OtherKey="tusu_id" Type="Tbl_Person" />
+    </Type>
+  </Table>
+  <Table Name="dbo.cie10" Member="cie10">
+    <Type Name="cie10">
+      <Column Name="id10" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="dec10" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Tbl_Centro" Member="Tbl_Centro">

@@ -29,6 +29,11 @@ namespace SistemaECU911.Template.Views_Pacientes
             }
         }
 
+        protected void lbn_configuracion_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Configuracion.aspx");
+        }
+
         protected void Lnb_CerrarSesion_Click(object sender, EventArgs e)
         {
             Session.RemoveAll();

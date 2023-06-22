@@ -1,0 +1,22 @@
+﻿body {
+}
+
+.REI-COLUMN {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+}
+
+.in-column {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    font-size: 12px;
+}
+
+.REI-BOX {
+    width: 40px;
+}
+
+.REI-CONTENT {
+    width: 100px;
+    text-align: start;
+}
