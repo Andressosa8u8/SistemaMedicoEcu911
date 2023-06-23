@@ -9,26 +9,27 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Content" runat="server">
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
-            <div class="main-panel" style="width: auto">
-                <div class="content-wrapper">
-                    <div class="row">
-                        <div class="col-12 grid-margin">
-                            <div class="card">
-                                <div class="card-body">
-                                    <canvas id="myChart"></canvas>
-                                </div>
-                            </div>
+
+    <div class="main-panel" style="width: auto">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-12 grid-margin">
+                    <div class="card">
+                        <div class="card-body">
+                            <canvas id="myChart"></canvas>
                         </div>
-                        <div class="col-12 grid-margin">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <%--<i class="fas fa-envelope"></i>--%>
-                                        <i class="fa-solid fa-hospital-user"></i>
-                                        PACIENTES
-                                    </h4>
+                    </div>
+                </div>
+                <div class="col-12 grid-margin">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <%--<i class="fas fa-envelope"></i>--%>
+                                <i class="fa-solid fa-hospital-user"></i>
+                                PACIENTES
+                            </h4>
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                <ContentTemplate>
                                     <div class="card" style="width: auto;">
                                         <div class="list-group list-group-flush" style="padding: 10px; text-align: center">
                                             <div class="container">
@@ -81,21 +82,23 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </div>
                     </div>
                 </div>
             </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+        </div>
+    </div>
+
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.css">
-    
-   
+
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
@@ -181,9 +184,6 @@
         });
     </script>
     <style>
-
-
-
         .btn-secondary .fas.fa-file-excel {
             color: green;
         }
@@ -198,8 +198,10 @@
 
         .btn-secondary .fas.fa-print {
             color: black;
-        }
-    </style>
+              
+        }
+        /* END EXTERNA
+    </style>
 
 
     <%--Antony--%>
@@ -231,7 +233,7 @@
         });
     </script>--%>
 
-    <script>
+    <script>        
         var objetoLista;
         var arraydepartamento = [];
         var arraynumeroPersonas = [];
