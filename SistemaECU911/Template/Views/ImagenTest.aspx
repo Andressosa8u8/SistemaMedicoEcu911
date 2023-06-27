@@ -16,6 +16,7 @@
                     <asp:TextBox CssClass="required form-control" ID="txt_cedula" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" ControlToValidate="txt_cedula" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
                 </div>
+                //cambbio
                 <div class="col-md-4">
                     <label class="form-label">ESTADO</label>
                     <asp:DropDownList ID="ddl_estado" CssClass="form-control" Style="width: 100%; text-transform: uppercase; background-color: transparent; font-size: 14px" runat="server">
