@@ -3734,6 +3734,7 @@ namespace SistemaECU911.Template.Views
                         }
                     }
                 }
+                txt_numHClinica.MaxLength = 10;
                 Timer1.Enabled = false;
                 cargarProfesional();
                 defaultValidaciones();

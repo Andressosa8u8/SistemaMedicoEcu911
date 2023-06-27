@@ -87,13 +87,13 @@ namespace SistemaECU911.Template.Views
         protected global::System.Web.UI.WebControls.TextBox txt_numHClinica;
 
         /// <summary>
-        /// Control rfv_numHClinica.
+        /// Control lbl_numHClinica.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_numHClinica;
+        protected global::System.Web.UI.WebControls.Label lbl_numHClinica;
 
         /// <summary>
         /// Control AutoCompleteExtender2.
@@ -1113,13 +1113,13 @@ namespace SistemaECU911.Template.Views
         protected global::System.Web.UI.WebControls.DropDownList ddl_profesional;
 
         /// <summary>
-        /// Control rfv_profesional.
+        /// Control lbl_profesional.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_profesional;
+        protected global::System.Web.UI.WebControls.Label lbl_profesional;
 
         /// <summary>
         /// Control txt_codigoDatProf.

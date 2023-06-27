@@ -130,6 +130,9 @@
                         extend: 'excel',
                         text: '',
                         className: 'btn btn-secondary',
+                        filename: function () {
+                            return prompt('Ingrese el nombre del archivo Excel', '');
+                        },
                         init: function (api, node, config) {
                             $(node).append('<i class="fas fa-file-excel fa-lg"></i>');
                         }
@@ -138,6 +141,9 @@
                         extend: 'pdf',
                         text: '',
                         className: 'btn btn-secondary',
+                        filename: function () {
+                            return prompt('Ingrese el nombre del archivo PDF', '');
+                        },
                         init: function (api, node, config) {
                             $(node).append('<i class="fas fa-file-pdf fa-lg"></i>');
                         }
@@ -183,6 +189,11 @@
             });
         });
     </script>
+
+
+
+
+
     <style>
         .btn-secondary .fas.fa-file-excel {
             color: green;
@@ -197,10 +208,10 @@
         }
 
         .btn-secondary .fas.fa-print {
-            color: black;
-              
+            color: black
         }
-        /* END EXTERNA
+
+      
     </style>
 
 

@@ -543,6 +543,7 @@ namespace SistemaECU911.Template.Views
 
                     }
                 }
+                txt_numHClinica.MaxLength = 10;
                 Timer1.Enabled = false;
                 txt_fechahora.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
 
@@ -587,6 +588,7 @@ namespace SistemaECU911.Template.Views
 
         protected void txt_numHClinica_TextChanged(object sender, EventArgs e)
         {
+            lbl_numHClinica.Text = "";
             ObtenerCedula();
         }
 
@@ -1170,7 +1172,39 @@ namespace SistemaECU911.Template.Views
 
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
-            guardar_modificar_datos(Convert.ToInt32(Request["cod"]));
+            bool camposCompletos = true;
+
+            if (string.IsNullOrEmpty(txt_numHClinica.Text))
+            {
+                lbl_numHClinica.Text = "CAMPO OBLIGATORIO";
+                camposCompletos = false;
+            }
+            else
+            {
+                lbl_numHClinica.Text = "";
+            }
+       
+            if (camposCompletos)
+            {
+                // Mostrar el elemento de carga
+                ScriptManager.RegisterStartupScript(this, GetType(), "ShowLoading", "ShowLoadingElement();", true);
+
+                // Ejecutar el procesamiento en el servidor
+                guardar_modificar_datos(Convert.ToInt32(Request["cod"]));
+
+                // Ocultar el elemento de carga
+                ScriptManager.RegisterStartupScript(this, GetType(), "HideLoading", "HideLoadingElement();", true);
+            }
+            else
+            {
+                // Al menos uno de los campos está incompleto, enfocar el primer campo vacío
+                if (string.IsNullOrEmpty(txt_numHClinica.Text))
+                {
+                    txt_numHClinica.Focus();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ScrollToField", "window.scrollTo(0, document.getElementById('" + txt_numHClinica.ClientID + "').offsetTop);", true);
+                }
+               
+            }
         }
 
         protected void btn_cancelar_Click(object sender, EventArgs e)

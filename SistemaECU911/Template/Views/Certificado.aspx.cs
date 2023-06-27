@@ -232,6 +232,7 @@ namespace SistemaECU911.Template.Views
                         }
                     }
                 }
+                txt_numHClinica.MaxLength = 10;
                 Timer1.Enabled = false;
                 cargarProfesional();
                 txt_fechahora.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");                
@@ -276,6 +277,7 @@ namespace SistemaECU911.Template.Views
 
         protected void txt_numHistoCli_TextChanged(object sender, EventArgs e)
         {
+            lbl_numHClinica.Text = "";
             ObtenerCedula();
         }
 
@@ -646,7 +648,53 @@ namespace SistemaECU911.Template.Views
 
         protected void btn_guardacertificado_Click(object sender, EventArgs e)
         {
-            Guardar_modificar_datos(Convert.ToInt32(Request["cod"]));
+            bool camposCompletos = true;
+
+            if (string.IsNullOrEmpty(txt_numHClinica.Text))
+            {
+                lbl_numHClinica.Text = "CAMPO OBLIGATORIO";
+                camposCompletos = false;
+            }
+            else
+            {
+                lbl_numHClinica.Text = "";
+            }
+
+            if (string.IsNullOrEmpty(ddl_profesional.SelectedValue) || ddl_profesional.SelectedValue == "0")
+            {
+                lbl_profesional.Text = "CAMPO OBLIGATORIO";
+                camposCompletos = false;
+            }
+            else
+            {
+                lbl_profesional.Text = "";
+            }
+
+            if (camposCompletos)
+            {
+                // Mostrar el elemento de carga
+                ScriptManager.RegisterStartupScript(this, GetType(), "ShowLoading", "ShowLoadingElement();", true);
+
+                // Ejecutar el procesamiento en el servidor
+                Guardar_modificar_datos(Convert.ToInt32(Request["cod"]));
+
+                // Ocultar el elemento de carga
+                ScriptManager.RegisterStartupScript(this, GetType(), "HideLoading", "HideLoadingElement();", true);
+            }
+            else
+            {
+                // Al menos uno de los campos está incompleto, enfocar el primer campo vacío
+                if (string.IsNullOrEmpty(txt_numHClinica.Text))
+                {
+                    txt_numHClinica.Focus();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ScrollToField", "window.scrollTo(0, document.getElementById('" + txt_numHClinica.ClientID + "').offsetTop);", true);
+                }
+                else if (string.IsNullOrEmpty(ddl_profesional.SelectedValue) || ddl_profesional.SelectedValue == "0")
+                {
+                    ddl_profesional.Focus();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "ScrollToField", "window.scrollTo(0, document.getElementById('" + ddl_profesional.ClientID + "').offsetTop);", true);
+                }
+            }
         }
 
         protected void btn_cancelacertificado_Click(object sender, EventArgs e)

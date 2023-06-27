@@ -119,8 +119,9 @@
                                     <asp:TextBox ID="txt_estableSalud" runat="server" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform: uppercase" ReadOnly="true"></asp:TextBox>
                                 </asp:TableCell>
                                 <asp:TableCell Style="background-color: white; font-size: 14px">
-                                    <asp:TextBox runat="server" ID="txt_numHClinica" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center" OnTextChanged="txt_numHClinica_TextChanged" AutoPostBack="true"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfv_numHClinica" runat="server" ForeColor="Red" ControlToValidate="txt_numHClinica" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
+                                    <asp:TextBox runat="server" ID="txt_numHClinica" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center" OnTextChanged="txt_numHClinica_TextChanged" AutoPostBack="true" onkeypress="return SoloNumeros(event)" oninput="borrarMensaje()"></asp:TextBox>
+                                    <asp:Label ID="lbl_numHClinica" ForeColor="Red" runat="server"></asp:Label>
+<%--                                    <asp:RequiredFieldValidator ID="rfv_numHClinica" runat="server" ForeColor="Red" ControlToValidate="txt_numHClinica" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>--%>
                                     <ajaxToolkit:AutoCompleteExtender ID="AutoCompleteExtender2" runat="server" CompletionInterval="10" DelimiterCharacters="" Enabled="True"
                                         MinimumPrefixLength="1" ServiceMethod="ObtenerNumHClinica"
                                         TargetControlID="txt_numHClinica" CompletionListCssClass="CompletionList"
@@ -960,4 +961,31 @@
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script type="text/javascript">
+        function SoloNumeros(e) {
+            // Verificar el código de la tecla presionada
+            var key = e.which || e.keyCode;
+            if (key < 48 || key > 57) {
+                // Si el código de la tecla no está en el rango de dígitos (0-9), se cancela el evento
+                e.preventDefault();
+                return false;
+            }
+        }
+    </script>
+
+    <script>
+        function borrarMensaje() {
+            var lblNumHClinica = document.getElementById("<%= lbl_numHClinica.ClientID %>");
+
+            if (lblNumHClinica) {
+                lblNumHClinica.innerHTML = "";
+            }
+        }
+    </script>
+
+
 </asp:Content>

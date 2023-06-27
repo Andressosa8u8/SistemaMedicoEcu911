@@ -555,11 +555,11 @@ namespace CapaDatos
 		
 		private string _cent_nombre;
 		
+		private string _cent_ruc;
+		
 		private string _cent_dirrecionInstitucional;
 		
 		private string _cent_estado;
-		
-		private string _cent_ruc;
 		
 		private EntitySet<Tbl_Person> _Tbl_Person;
 		
@@ -571,12 +571,12 @@ namespace CapaDatos
     partial void Oncent_idChanged();
     partial void Oncent_nombreChanging(string value);
     partial void Oncent_nombreChanged();
+    partial void Oncent_rucChanging(string value);
+    partial void Oncent_rucChanged();
     partial void Oncent_dirrecionInstitucionalChanging(string value);
     partial void Oncent_dirrecionInstitucionalChanged();
     partial void Oncent_estadoChanging(string value);
     partial void Oncent_estadoChanged();
-    partial void Oncent_rucChanging(string value);
-    partial void Oncent_rucChanged();
     #endregion
 		
 		public Tbl_Centro()
@@ -625,6 +625,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cent_ruc", DbType="VarChar(13)")]
+		public string cent_ruc
+		{
+			get
+			{
+				return this._cent_ruc;
+			}
+			set
+			{
+				if ((this._cent_ruc != value))
+				{
+					this.Oncent_rucChanging(value);
+					this.SendPropertyChanging();
+					this._cent_ruc = value;
+					this.SendPropertyChanged("cent_ruc");
+					this.Oncent_rucChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cent_dirrecionInstitucional", DbType="VarChar(MAX)")]
 		public string cent_dirrecionInstitucional
 		{
@@ -661,26 +681,6 @@ namespace CapaDatos
 					this._cent_estado = value;
 					this.SendPropertyChanged("cent_estado");
 					this.Oncent_estadoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cent_ruc", DbType="VarChar(13)")]
-		public string cent_ruc
-		{
-			get
-			{
-				return this._cent_ruc;
-			}
-			set
-			{
-				if ((this._cent_ruc != value))
-				{
-					this.Oncent_rucChanging(value);
-					this.SendPropertyChanging();
-					this._cent_ruc = value;
-					this.SendPropertyChanged("cent_ruc");
-					this.Oncent_rucChanged();
 				}
 			}
 		}
@@ -1622,9 +1622,7 @@ namespace CapaDatos
 		
 		private string _Emp_nombre;
 		
-		private string _Emp_RUC;
-		
-		private string _Emp_dirrecionInstitucional;
+		private string _Emp_descripcion;
 		
 		private string _Emp_estado;
 		
@@ -1642,6 +1640,8 @@ namespace CapaDatos
 		
 		private EntitySet<Tbl_Periodica> _Tbl_Periodica;
 		
+		private EntitySet<Tbl_Person> _Tbl_Person;
+		
 		private EntitySet<Tbl_Reintegro> _Tbl_Reintegro;
 		
 		private EntitySet<Tbl_Retiro> _Tbl_Retiro;
@@ -1656,10 +1656,8 @@ namespace CapaDatos
     partial void OnEmp_idChanged();
     partial void OnEmp_nombreChanging(string value);
     partial void OnEmp_nombreChanged();
-    partial void OnEmp_RUCChanging(string value);
-    partial void OnEmp_RUCChanged();
-    partial void OnEmp_dirrecionInstitucionalChanging(string value);
-    partial void OnEmp_dirrecionInstitucionalChanged();
+    partial void OnEmp_descripcionChanging(string value);
+    partial void OnEmp_descripcionChanged();
     partial void OnEmp_estadoChanging(string value);
     partial void OnEmp_estadoChanged();
     #endregion
@@ -1673,6 +1671,7 @@ namespace CapaDatos
 			this._Tbl_Inmunizaciones = new EntitySet<Tbl_Inmunizaciones>(new Action<Tbl_Inmunizaciones>(this.attach_Tbl_Inmunizaciones), new Action<Tbl_Inmunizaciones>(this.detach_Tbl_Inmunizaciones));
 			this._Tbl_PedidoExamenes = new EntitySet<Tbl_PedidoExamenes>(new Action<Tbl_PedidoExamenes>(this.attach_Tbl_PedidoExamenes), new Action<Tbl_PedidoExamenes>(this.detach_Tbl_PedidoExamenes));
 			this._Tbl_Periodica = new EntitySet<Tbl_Periodica>(new Action<Tbl_Periodica>(this.attach_Tbl_Periodica), new Action<Tbl_Periodica>(this.detach_Tbl_Periodica));
+			this._Tbl_Person = new EntitySet<Tbl_Person>(new Action<Tbl_Person>(this.attach_Tbl_Person), new Action<Tbl_Person>(this.detach_Tbl_Person));
 			this._Tbl_Reintegro = new EntitySet<Tbl_Reintegro>(new Action<Tbl_Reintegro>(this.attach_Tbl_Reintegro), new Action<Tbl_Reintegro>(this.detach_Tbl_Reintegro));
 			this._Tbl_Retiro = new EntitySet<Tbl_Retiro>(new Action<Tbl_Retiro>(this.attach_Tbl_Retiro), new Action<Tbl_Retiro>(this.detach_Tbl_Retiro));
 			this._Tbl_SocioEconomico = new EntitySet<Tbl_SocioEconomico>(new Action<Tbl_SocioEconomico>(this.attach_Tbl_SocioEconomico), new Action<Tbl_SocioEconomico>(this.detach_Tbl_SocioEconomico));
@@ -1719,42 +1718,22 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Emp_RUC", DbType="VarChar(13)")]
-		public string Emp_RUC
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Emp_descripcion", DbType="VarChar(MAX)")]
+		public string Emp_descripcion
 		{
 			get
 			{
-				return this._Emp_RUC;
+				return this._Emp_descripcion;
 			}
 			set
 			{
-				if ((this._Emp_RUC != value))
+				if ((this._Emp_descripcion != value))
 				{
-					this.OnEmp_RUCChanging(value);
+					this.OnEmp_descripcionChanging(value);
 					this.SendPropertyChanging();
-					this._Emp_RUC = value;
-					this.SendPropertyChanged("Emp_RUC");
-					this.OnEmp_RUCChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Emp_dirrecionInstitucional", DbType="VarChar(MAX)")]
-		public string Emp_dirrecionInstitucional
-		{
-			get
-			{
-				return this._Emp_dirrecionInstitucional;
-			}
-			set
-			{
-				if ((this._Emp_dirrecionInstitucional != value))
-				{
-					this.OnEmp_dirrecionInstitucionalChanging(value);
-					this.SendPropertyChanging();
-					this._Emp_dirrecionInstitucional = value;
-					this.SendPropertyChanged("Emp_dirrecionInstitucional");
-					this.OnEmp_dirrecionInstitucionalChanged();
+					this._Emp_descripcion = value;
+					this.SendPropertyChanged("Emp_descripcion");
+					this.OnEmp_descripcionChanged();
 				}
 			}
 		}
@@ -1867,6 +1846,19 @@ namespace CapaDatos
 			set
 			{
 				this._Tbl_Periodica.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Empresa_Tbl_Person", Storage="_Tbl_Person", ThisKey="Emp_id", OtherKey="Emp_id")]
+		public EntitySet<Tbl_Person> Tbl_Person
+		{
+			get
+			{
+				return this._Tbl_Person;
+			}
+			set
+			{
+				this._Tbl_Person.Assign(value);
 			}
 		}
 		
@@ -2008,6 +2000,18 @@ namespace CapaDatos
 		}
 		
 		private void detach_Tbl_Periodica(Tbl_Periodica entity)
+		{
+			this.SendPropertyChanging();
+			entity.Tbl_Empresa = null;
+		}
+		
+		private void attach_Tbl_Person(Tbl_Person entity)
+		{
+			this.SendPropertyChanging();
+			entity.Tbl_Empresa = this;
+		}
+		
+		private void detach_Tbl_Person(Tbl_Person entity)
 		{
 			this.SendPropertyChanging();
 			entity.Tbl_Empresa = null;
@@ -36781,11 +36785,11 @@ namespace CapaDatos
 		
 		private System.Nullable<int> _Emp_id;
 		
+		private System.Nullable<int> _cent_id;
+		
 		private System.Nullable<int> _tusu_id;
 		
 		private string _Per_estado;
-		
-		private System.Nullable<int> _cent_id;
 		
 		private EntitySet<Tbl_Certificado> _Tbl_Certificado;
 		
@@ -36808,6 +36812,8 @@ namespace CapaDatos
 		private EntitySet<Tbl_SocioEconomico> _Tbl_SocioEconomico;
 		
 		private EntityRef<Tbl_Centro> _Tbl_Centro;
+		
+		private EntityRef<Tbl_Empresa> _Tbl_Empresa;
 		
 		private EntityRef<Tbl_TipoUsuario> _Tbl_TipoUsuario;
 		
@@ -36851,12 +36857,12 @@ namespace CapaDatos
     partial void OnPer_correoChanged();
     partial void OnEmp_idChanging(System.Nullable<int> value);
     partial void OnEmp_idChanged();
+    partial void Oncent_idChanging(System.Nullable<int> value);
+    partial void Oncent_idChanged();
     partial void Ontusu_idChanging(System.Nullable<int> value);
     partial void Ontusu_idChanged();
     partial void OnPer_estadoChanging(string value);
     partial void OnPer_estadoChanged();
-    partial void Oncent_idChanging(System.Nullable<int> value);
-    partial void Oncent_idChanged();
     #endregion
 		
 		public Tbl_Person()
@@ -36872,6 +36878,7 @@ namespace CapaDatos
 			this._Tbl_Retiro = new EntitySet<Tbl_Retiro>(new Action<Tbl_Retiro>(this.attach_Tbl_Retiro), new Action<Tbl_Retiro>(this.detach_Tbl_Retiro));
 			this._Tbl_SocioEconomico = new EntitySet<Tbl_SocioEconomico>(new Action<Tbl_SocioEconomico>(this.attach_Tbl_SocioEconomico), new Action<Tbl_SocioEconomico>(this.detach_Tbl_SocioEconomico));
 			this._Tbl_Centro = default(EntityRef<Tbl_Centro>);
+			this._Tbl_Empresa = default(EntityRef<Tbl_Empresa>);
 			this._Tbl_TipoUsuario = default(EntityRef<Tbl_TipoUsuario>);
 			OnCreated();
 		}
@@ -37227,11 +37234,39 @@ namespace CapaDatos
 			{
 				if ((this._Emp_id != value))
 				{
+					if (this._Tbl_Empresa.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnEmp_idChanging(value);
 					this.SendPropertyChanging();
 					this._Emp_id = value;
 					this.SendPropertyChanged("Emp_id");
 					this.OnEmp_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cent_id", DbType="Int")]
+		public System.Nullable<int> cent_id
+		{
+			get
+			{
+				return this._cent_id;
+			}
+			set
+			{
+				if ((this._cent_id != value))
+				{
+					if (this._Tbl_Centro.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Oncent_idChanging(value);
+					this.SendPropertyChanging();
+					this._cent_id = value;
+					this.SendPropertyChanged("cent_id");
+					this.Oncent_idChanged();
 				}
 			}
 		}
@@ -37276,30 +37311,6 @@ namespace CapaDatos
 					this._Per_estado = value;
 					this.SendPropertyChanged("Per_estado");
 					this.OnPer_estadoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cent_id", DbType="Int")]
-		public System.Nullable<int> cent_id
-		{
-			get
-			{
-				return this._cent_id;
-			}
-			set
-			{
-				if ((this._cent_id != value))
-				{
-					if (this._Tbl_Centro.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Oncent_idChanging(value);
-					this.SendPropertyChanging();
-					this._cent_id = value;
-					this.SendPropertyChanged("cent_id");
-					this.Oncent_idChanged();
 				}
 			}
 		}
@@ -37464,6 +37475,40 @@ namespace CapaDatos
 						this._cent_id = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Tbl_Centro");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Empresa_Tbl_Person", Storage="_Tbl_Empresa", ThisKey="Emp_id", OtherKey="Emp_id", IsForeignKey=true)]
+		public Tbl_Empresa Tbl_Empresa
+		{
+			get
+			{
+				return this._Tbl_Empresa.Entity;
+			}
+			set
+			{
+				Tbl_Empresa previousValue = this._Tbl_Empresa.Entity;
+				if (((previousValue != value) 
+							|| (this._Tbl_Empresa.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Tbl_Empresa.Entity = null;
+						previousValue.Tbl_Person.Remove(this);
+					}
+					this._Tbl_Empresa.Entity = value;
+					if ((value != null))
+					{
+						value.Tbl_Person.Add(this);
+						this._Emp_id = value.Emp_id;
+					}
+					else
+					{
+						this._Emp_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Tbl_Empresa");
 				}
 			}
 		}
