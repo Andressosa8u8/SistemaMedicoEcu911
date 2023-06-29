@@ -78,6 +78,10 @@ namespace SistemaECU911
                                 Session["priapellido"] = person.Per_priApellido.ToString();
                                 Session["segapellido"] = person.Per_segApellido.ToString();
                                 Session["rol"] = tusu.tusu_nombre.ToString();
+                                //Otros datos
+                                Session["correo"] = person.Per_correo.ToString();
+                                Session["telefono"] = person.Per_telefono.ToString();
+                                Session["direccion"] = person.Per_direccion.ToString();
                                 Response.Redirect("~/Template/Views_Pacientes/Inicio.aspx");
                                 limpiar();
                             }

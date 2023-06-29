@@ -5679,6 +5679,8 @@
     <Content Include="Template\Views\ImagenTest.aspx" />
     <Content Include="Template\Views\PacientesPedidoExamenes.aspx" />
     <Content Include="Template\Views\Personas.aspx" />
+    <Content Include="Template\Views_Pacientes\CambioContraseña.aspx" />
+    <Content Include="Template\Views_Pacientes\Configuracion.aspx" />
     <Content Include="Template\Views_Pacientes\FichaMedica.aspx" />
     <Content Include="Template\Views_Pacientes\Inicio.aspx" />
     <Content Include="Template\Views_Pacientes\PacientesFichaMedica.aspx" />
@@ -5782,6 +5784,20 @@
     </Compile>
     <Compile Include="Template\Views\Personas.aspx.designer.cs">
       <DependentUpon>Personas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Views_Pacientes\CambioContraseña.aspx.cs">
+      <DependentUpon>CambioContraseña.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Template\Views_Pacientes\CambioContraseña.aspx.designer.cs">
+      <DependentUpon>CambioContraseña.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Views_Pacientes\Configuracion.aspx.cs">
+      <DependentUpon>Configuracion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Template\Views_Pacientes\Configuracion.aspx.designer.cs">
+      <DependentUpon>Configuracion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Template\Views_Pacientes\FichaMedica.aspx.cs">
       <DependentUpon>FichaMedica.aspx</DependentUpon>

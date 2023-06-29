@@ -39,5 +39,15 @@ namespace SistemaECU911.Template.Views_Pacientes
             Session.RemoveAll();
             Response.Redirect("../../index.aspx");
         }
+
+        protected void Lnb_CambiarContraseña_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CambioContraseña.aspx");
+        }
+
+        protected void Lnb_Configuracion_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Configuracion.aspx");
+        }
     }
 }

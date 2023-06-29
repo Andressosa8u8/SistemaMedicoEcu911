@@ -53,15 +53,39 @@ namespace CapaNegocio
         {
             var nlogin = dc.Tbl_Person.Single(per => per.Per_nomlogin.Equals(person) && per.Per_pass.Equals(pass) && (per.Per_estado == "AM" || per.Per_estado == "AS" || per.Per_estado == "AP"));
             return nlogin;
-        }        
+        }
         //metodo para obtener los usuarios por su id
         public static Tbl_Person obtenerUsuariosxId(int id)
+        {
+            var perid = dc.Tbl_Person.FirstOrDefault(per => per.Per_id.Equals(id) && per.Per_estado == "AM");
+            return perid;
+        }
+        //Metodo para obtener contraseña anterior para medicos
+        public static bool autentificarxUsuario(int per, string pass)
+        {
+            var perso = dc.Tbl_Person.Any(usup => usup.Per_estado == "AP" && usup.Per_id.Equals(per) && usup.Per_pass.Equals(pass));
+            return perso;
+        }
+        //metodo para obtener los usuarios por su id para social
+        public static Tbl_Person obtenerUsuariosxIdSocial(int id)
+        {
+            var perid = dc.Tbl_Person.FirstOrDefault(per => per.Per_id.Equals(id) && per.Per_estado == "AS");
+            return perid;
+        }
+        //Metodo para obtener contraseña anterior para social
+        public static bool autentificarxUsuarioSocial(int per, string pass)
+        {
+            var perso = dc.Tbl_Person.Any(usup => usup.Per_estado == "AS" && usup.Per_id.Equals(per) && usup.Per_pass.Equals(pass));
+            return perso;
+        }
+        //metodo para obtener los usuarios por su id para paciente
+        public static Tbl_Person obtenerUsuariosxIdPaciente(int id)
         {
             var perid = dc.Tbl_Person.FirstOrDefault(per => per.Per_id.Equals(id) && per.Per_estado == "AP");
             return perid;
         }
-        //Metodo para obtener contraseña anterior
-        public static bool autentificarxUsuario(int per, string pass)
+        //Metodo para obtener contraseña anterior para paciente
+        public static bool autentificarxUsuarioPaciente(int per, string pass)
         {
             var perso = dc.Tbl_Person.Any(usup => usup.Per_estado == "AP" && usup.Per_id.Equals(per) && usup.Per_pass.Equals(pass));
             return perso;

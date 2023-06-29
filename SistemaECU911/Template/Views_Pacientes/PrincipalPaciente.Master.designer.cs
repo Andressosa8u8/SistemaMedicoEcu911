@@ -42,6 +42,24 @@ namespace SistemaECU911.Template.Views_Pacientes
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Control Lnb_Configuracion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton Lnb_Configuracion;
+
+        /// <summary>
+        /// Control Lnb_CambiarContraseña.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton Lnb_CambiarContraseña;
+
+        /// <summary>
         /// Control Lnb_CerrarSesion.
         /// </summary>
         /// <remarks>
