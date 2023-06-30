@@ -99,24 +99,6 @@
                                 <span class="menu-title">Ficha SSO</span>
                             </a>
                         </li>
-                        <%--<li class="nav-item">
-                            <a class="nav-link" href="SSO.aspx">
-                                <i class="fa fa-clipboard-list menu-icon"></i>
-                                <span class="menu-title">SSO</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="FichaMedica.aspx">
-                                <i class="fa fa-clipboard-list menu-icon"></i>
-                                <span class="menu-title">Ficha Médica</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="PacientesFichaMedica.aspx">
-                                <i class="fab fa-wpforms menu-icon"></i>
-                                <span class="menu-title">Listado de FM</span>
-                            </a>
-                        </li>--%>
                     </ul>
                 </nav>
                 <div class="main-panel">

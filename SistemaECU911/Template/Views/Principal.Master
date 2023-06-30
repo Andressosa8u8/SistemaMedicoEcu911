@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Principal.master.cs" Inherits="SistemaECU911.Template.Views.Principal" %>
+﻿    <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Principal.master.cs" Inherits="SistemaECU911.Template.Views.Principal" %>
 
 <!DOCTYPE html>
 
@@ -85,7 +85,7 @@
                         <li class="nav-item nav-profile">
                             <div class="nav-link">
                                 <div class="profile-image">
-                                    <asp:Image ID="imgPerfil2" Height="45" Width="45" ImageUrl="~/Template/Template Principal/images/Foto_Perfil.png" runat="server" />
+                                    <asp:Image ID="imgPerfil2" Height="45" Width="45" ImageUrl="~/Template/Template Principal/images/User.png" runat="server" />
                                 </div>
                                 <div class="profile-name">
                                     <p class="name">
@@ -121,19 +121,6 @@
                                 <ul class="nav flex-column sub-menu">
                                     <li class="nav-item"><a class="nav-link" href="Certificado_Medico.aspx">Certificado Médico</a></li>
                                     <li class="nav-item"><a class="nav-link" href="Certificado_Covid.aspx">Certificado Médico Covid</a></li>
-
-                                    <%--<li class="nav-item">
-                                        <a class="nav-link" data-toggle="collapse" href="#form3" aria-expanded="false" aria-controls="form-elements">
-                                            <span class="menu-title">Certificados</span>
-                                            <i class="menu-arrow"></i>
-                                        </a>
-                                        <div class="collapse" id="form3">
-                                            <ul class="nav flex-column sub-menu">
-                                                <li class="nav-item"><a class="nav-link" href="WebForm2.aspx">Certificado Médico</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="Certificado_Covid.aspx">Certificado Médico Covid</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>--%>
                                 </ul>
                             </div>
                         </li>

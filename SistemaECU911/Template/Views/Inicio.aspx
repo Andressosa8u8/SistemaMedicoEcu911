@@ -36,7 +36,7 @@
                                                 <div class="row justify-content-center">
                                                     <div class="col-auto">
 
-                                                        <asp:GridView ID="grvPacientes" OnRowCommand="grvPacientes_RowCommand" AutoGenerateColumns="false" Width="100%" CssClass="table table-hover text-center table-responsive" GridLines="None" runat="server" Style="margin-right: 0px">
+                                                        <asp:GridView ID="grvPacientes" OnRowCommand="grvPacientes_RowCommand" AutoGenerateColumns="false" Width="100%" CssClass="table table-hover text-center table-responsive" GridLines="None" runat="server" Style="margin-right: 0px" ShowHeader="false">
                                                             <Columns>
                                                                 <asp:TemplateField HeaderText="CEDULA">
                                                                     <ItemTemplate>
@@ -114,14 +114,15 @@
     <%--Julian--%>
     <script>
         $(document).ready(function () {
-            $('#<%= grvPacientes.ClientID %>').DataTable({
+            var dataTable = $('#<%= grvPacientes.ClientID %>').DataTable({
                 "columns": [
-                    { "data": "Per_cedula", "title": "CEDULA" },
+                    { "data": "Per_cedula", "title": "CÉDULA" },
                     { "data": "Per_priNombre", "title": "PRIMER NOMBRE" },
                     { "data": "Per_segNombre", "title": "SEGUNDO NOMBRE" },
                     { "data": "Per_priApellido", "title": "PRIMER APELLIDO" },
                     { "data": "Per_segApellido", "title": "SEGUNDO APELLIDO" },
                     { "data": "Per_genero", "title": "GÉNERO" },
+
                     null // Columna de EDICIÓN sin datos específicos
                 ],
                 dom: '<"top"lfB>rtip',
@@ -130,25 +131,36 @@
                         extend: 'excel',
                         text: '',
                         className: 'btn btn-secondary',
-                        filename: function () {
-                            return prompt('Ingrese el nombre del archivo Excel', '');
-                        },
                         init: function (api, node, config) {
                             $(node).append('<i class="fas fa-file-excel fa-lg"></i>');
+                        },
+                        title: 'LISTADO DE PACIENTES', // Título del contenido del EXCEL
+                        action: function (e, dt, node, config) {
+                            var filename = prompt('Ingrese el nombre del archivo Excel', '');
+                            if (filename !== null && filename !== '') {
+                                config.filename = filename;
+                                $.fn.dataTable.ext.buttons.excelHtml5.action.call(this, e, dt, node, config);
+                            }
                         }
                     },
                     {
                         extend: 'pdf',
                         text: '',
                         className: 'btn btn-secondary',
-                        filename: function () {
-                            return prompt('Ingrese el nombre del archivo PDF', '');
-                        },
                         init: function (api, node, config) {
                             $(node).append('<i class="fas fa-file-pdf fa-lg"></i>');
+                        },
+                        title: 'LISTADO DE PACIENTES', // Título del contenido del PDF
+                        action: function (e, dt, node, config) {
+                            var filename = prompt('Ingrese el nombre del archivo PDF', '');
+                            if (filename !== null && filename !== '') {
+                                config.filename = filename;
+                                $.fn.dataTable.ext.buttons.pdfHtml5.action.call(this, e, dt, node, config);
+                            }
                         }
                     },
                     {
+                        title: 'LISTADO DE PACIENTES', // Título del contenido en IMPRIMIR
                         extend: 'print',
                         text: '',
                         className: 'btn btn-secondary',
@@ -188,8 +200,7 @@
                 }
             });
         });
-    </script>
-
+   </script>
 
 
 
@@ -210,8 +221,6 @@
         .btn-secondary .fas.fa-print {
             color: black
         }
-
-      
     </style>
 
 

@@ -107,7 +107,7 @@
     <Content Include="resources\images\carousel\banner_7.jpg" />
     <Content Include="resources\images\carousel\banner_8.jpg" />
     <Content Include="resources\images\carousel\banner_9.jpg" />
-    <Content Include="resources\images\cambioContraseña.png" />
+    <Content Include="resources\images\ChangePassword.png" />
     <Content Include="resources\images\ECU911.png" />
     <Content Include="resources\images\faces\face1.jpg" />
     <Content Include="resources\images\faces\face10.jpg" />
@@ -127,6 +127,7 @@
     <Content Include="resources\images\faces\face7.jpg" />
     <Content Include="resources\images\faces\face8.jpg" />
     <Content Include="resources\images\faces\face9.jpg" />
+    <Content Include="resources\images\favicon.png" />
     <Content Include="resources\images\Foto_Perfil.png" />
     <Content Include="resources\images\ic1.png" />
     <Content Include="resources\images\ic2.jpg" />
@@ -137,7 +138,6 @@
     <Content Include="resources\images\lightbox\thumb-v-v-2.jpg" />
     <Content Include="resources\images\lightbox\thumb-v-y-1.jpg" />
     <Content Include="resources\images\lightbox\thumb-v-y-2.jpg" />
-    <Content Include="resources\images\Login.jpg" />
     <Content Include="resources\images\LogoECU.png" />
     <Content Include="resources\images\LogoMedico.PNG" />
     <Content Include="resources\images\logo\logo-mini.png" />
@@ -146,7 +146,6 @@
     <Content Include="resources\images\logo\logo.png" />
     <Content Include="resources\images\logo\logo.svg" />
     <Content Include="resources\images\logo\logo1.png" />
-    <Content Include="resources\images\padlock-3998764_1920.png" />
     <Content Include="resources\images\samples\1280x768\1.jpg" />
     <Content Include="resources\images\samples\1280x768\10.jpg" />
     <Content Include="resources\images\samples\1280x768\11.jpg" />
@@ -5710,6 +5709,7 @@
     <Content Include="Template\Views\Retiro.aspx" />
     <Content Include="Template\Views\Secundario.aspx" />
     <Content Include="Template\Views\Certificado_Medico.aspx" />
+    <Content Include="views\Administrador\Inicio.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
@@ -6022,6 +6022,20 @@
     </Compile>
     <Compile Include="Template\Views\Certificado_Medico.aspx.designer.cs">
       <DependentUpon>Certificado_Medico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="views\Administrador\Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\Administrador\Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="views\Administrador\PrincipalAdministrador.Master.cs">
+      <DependentUpon>PrincipalAdministrador.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\Administrador\PrincipalAdministrador.Master.designer.cs">
+      <DependentUpon>PrincipalAdministrador.Master</DependentUpon>
     </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
@@ -6501,6 +6515,7 @@
     <Content Include="Template\Template Principal\vendors\font-awesome-pro-v6-6\webfonts\pro-fa-thin-100-ec38a0.woff2" />
     <Content Include="Template\Template Principal\vendors\font-awesome-pro-v6-6\webfonts\pro-fa-v4compatibility.ttf" />
     <Content Include="Template\Template Principal\vendors\font-awesome-pro-v6-6\webfonts\pro-fa-v4compatibility.woff2" />
+    <Content Include="views\Administrador\PrincipalAdministrador.Master" />
     <Content Include="resources\vendors\font-awesome-pro-v6-6\.github\pull_request_template.md" />
     <Content Include="resources\vendors\font-awesome-pro-v6-6\CODE_OF_CONDUCT.md" />
     <Content Include="resources\vendors\font-awesome-pro-v6-6\README.md" />
@@ -6967,9 +6982,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Template\Views_Administrador\" />
     <Folder Include="views\Doctores\" />
     <Folder Include="views\Pacientes\" />
-    <Folder Include="views\Trabajo Social\" />
+    <Folder Include="views\Trabajo_Social\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
