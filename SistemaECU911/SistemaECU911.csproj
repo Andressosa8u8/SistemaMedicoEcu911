@@ -5685,6 +5685,8 @@
     <Content Include="Template\Views_Pacientes\PacientesFichaMedica.aspx" />
     <Content Include="Template\Views_Pacientes\SocioEconomico.aspx" />
     <Content Include="Template\Views_Pacientes\SSO.aspx" />
+    <Content Include="Template\Views_Socio_Economico\Configuracion.aspx" />
+    <Content Include="Template\Views_Socio_Economico\Contraseña.aspx" />
     <Content Include="Template\Views_Socio_Economico\Inicio.aspx" />
     <Content Include="Template\Views_Socio_Economico\PacientesSocioEconomico.aspx" />
     <Content Include="Template\Views_Socio_Economico\Personas.aspx" />
@@ -5840,6 +5842,20 @@
     </Compile>
     <Compile Include="Template\Views_Pacientes\SSO.aspx.designer.cs">
       <DependentUpon>SSO.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Views_Socio_Economico\Configuracion.aspx.cs">
+      <DependentUpon>Configuracion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Template\Views_Socio_Economico\Configuracion.aspx.designer.cs">
+      <DependentUpon>Configuracion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Template\Views_Socio_Economico\Contraseña.aspx.cs">
+      <DependentUpon>Contraseña.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Template\Views_Socio_Economico\Contraseña.aspx.designer.cs">
+      <DependentUpon>Contraseña.aspx</DependentUpon>
     </Compile>
     <Compile Include="Template\Views_Socio_Economico\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>

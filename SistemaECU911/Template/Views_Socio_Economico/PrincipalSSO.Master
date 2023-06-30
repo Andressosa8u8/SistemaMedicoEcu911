@@ -25,9 +25,8 @@
                 <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                     <a class="navbar-brand brand-logo" href="Inicio.aspx">
                         <img src="../Template Principal/images/ic1.png" alt="logo" /></a>
-                    <a class="navbar-brand brand-logo-mini" href="Inicio.aspx"> 
-                        <img src="../Template Principal/images/ic2.jpg" alt="logo" />
-                    </a>
+                    <a class="navbar-brand brand-logo-mini" href="Inicio.aspx">
+                        <img src="../Template Principal/images/ic2.jpg" alt="logo" /></a>
                 </div>
                 <div class="navbar-menu-wrapper d-flex align-items-stretch">
                     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -44,6 +43,20 @@
                                 <img src="../Template Principal/images/faces/face5.jpg" alt="profile" />
                             </a>
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                                <asp:LinkButton ID="Lnb_Configuracion" OnClick="Lnb_Configuracion_Click" CssClass="dropdown-item" runat="server">    
+                                     <%--<a class="dropdown-item">
+                                    <i class="fas fa-cog text-primary"></i>
+                                    Configuración
+                                </a>--%>
+                                <i class="fas fa-regular fa-user-gear text-primary"></i>
+                                Configuración
+                                </asp:LinkButton>
+                                <div class="dropdown-divider"></div>
+                                <asp:LinkButton ID="Lnb_CambiarContraseña" OnClick="Lnb_CambiarContraseña_Click" class="dropdown-item" runat="server">
+                                <%--<i class="fas fa-power-off text-primary"></i>--%>
+                                <i class="fas fa-regular fa-key text-primary"></i>
+                                Cambiar Contraseña
+                                </asp:LinkButton>
                                 <div class="dropdown-divider"></div>
                                 <asp:LinkButton ID="Lnb_CerrarSesion" OnClick="Lnb_CerrarSesion_Click" class="dropdown-item" runat="server">
                                 <i class="fas fa-power-off text-primary"></i>

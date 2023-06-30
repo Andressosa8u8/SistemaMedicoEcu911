@@ -34,5 +34,17 @@ namespace SistemaECU911.Template.Views_Socio_Economico
             Session.RemoveAll();
             Response.Redirect("../../index.aspx");
         }
+
+        protected void Lnb_Configuracion_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Configuracion.aspx");
+
+        }
+
+        protected void Lnb_CambiarContraseña_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Contraseña.aspx");
+
+        }
     }
 }
