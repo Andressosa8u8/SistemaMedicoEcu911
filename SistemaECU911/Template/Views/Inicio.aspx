@@ -14,6 +14,44 @@
         <div class="content-wrapper">
             <div class="row">
                 <div class="col-12 grid-margin">
+                    <div class="card card-statistics">
+                        <div class="card-body">
+                            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+                                <div class="statistics-item">
+                                    <p>
+                                        <i class="fas fa-clipboard-list mr-2"></i>
+                                        PACIENTES INACTIVOS
+                                    </p>
+                                    <asp:Label ID="totalInactivos" CssClass="h2" runat="server" Text=""></asp:Label>
+                                    <br />
+                                </div>
+                                <div class="statistics-item">
+                                    <p>
+                                        <i class="fas fa-user-injured mr-2"></i>
+                                        PACIENTES ACTIVOS
+                                    </p>
+                                    <asp:Label ID="totalPacientes" CssClass="h2" runat="server" Text=""></asp:Label>
+                                    <br />
+                                </div>
+                                <div class="statistics-item">
+                                    <p>
+                                        <i class="fas fa-user-friends mr-2"></i>
+                                        PACIENTES ECU
+                                    </p>
+                                    <asp:Label ID="totalEcu" CssClass="h2" runat="server" Text=""></asp:Label>
+                                </div>
+                                <div class="statistics-item">
+                                    <p>
+                                        <i class="fas fa-user-nurse mr-2"></i>
+                                        PACIENTES ARTICULADOS
+                                    </p>
+                                    <asp:Label ID="totalArticulados" CssClass="h2" runat="server" Text=""></asp:Label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 grid-margin">
                     <div class="card">
                         <div class="card-body">
                             <canvas id="myChart"></canvas>
@@ -200,7 +238,7 @@
                 }
             });
         });
-   </script>
+    </script>
 
 
 

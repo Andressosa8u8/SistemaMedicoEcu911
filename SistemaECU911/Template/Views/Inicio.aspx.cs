@@ -8,6 +8,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CapaNegocio;
+using iTextSharp.text;
 
 namespace SistemaECU911.Template.Views
 {
@@ -21,6 +22,7 @@ namespace SistemaECU911.Template.Views
             if (!IsPostBack)
             {
                 cargarPaciente();
+                cantidadPacientes();
                 //grvPacientes.VirtualItemCount = Count();
             }
         }
@@ -60,7 +62,7 @@ namespace SistemaECU911.Template.Views
             //object olista;
             List<Sp_Npersona_puestoTrabajoResult> olista = new List<Sp_Npersona_puestoTrabajoResult>();
             olista = CN_Reporte_NPersona.Reporte_NPersona().ToList();
-            
+
             var objetoLista = new object[olista.Count + 1];
             objetoLista[0] = new object[]{
                 "",
@@ -74,6 +76,18 @@ namespace SistemaECU911.Template.Views
             }
             return objetoLista;
 
+        }
+        public void cantidadPacientes()
+        {
+            //cargar informacion cards
+            var querySocio = dc.Tbl_Person.Count(p => p.Per_estado == "IN");
+            totalInactivos.Text = querySocio.ToString();
+            var queryPaciente = dc.Tbl_Person.Count(pa => pa.Per_estado == "AP");
+            totalPacientes.Text = queryPaciente.ToString();
+            var queryEcu = dc.Tbl_Person.Count(ec => ec.Emp_id == 1);
+            totalEcu.Text = queryEcu.ToString();
+            var queryArticulados = dc.Tbl_Person.Count(ar => ar.Emp_id != 1);
+            totalArticulados.Text = queryArticulados.ToString();
         }
     }
 }
