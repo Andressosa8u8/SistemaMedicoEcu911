@@ -7,13 +7,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>ECU 911</title>
-    <link rel="stylesheet" href="Template/Template Principal/vendors/iconfonts/font-awesome/css/all.min.css" />
-    <link rel="stylesheet" href="Template/Template Principal/vendors/iconfonts/font-awesome-6.1.1/css/all.min.css" />
-    <link rel="stylesheet" href="Template/Template Principal/vendors/css/vendor.bundle.base.css" />
-    <link rel="stylesheet" href="Template/Template Principal/vendors/css/vendor.bundle.addons.css" />
-    <link rel="stylesheet" href="Template/Template Principal/css/style.css" />
-    <link rel="stylesheet" href="Template/Template Principal/css/Style_Prueba.css" />
-    <link rel="stylesheet" href="Template/Template Principal/css/style-andres.css" />
+    <link rel="stylesheet" href="resources/vendors/iconfonts/font-awesome/css/all.min.css" />
+    <link rel="stylesheet" href="resources/vendors/iconfonts/font-awesome-6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="resources/vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" href="resources/vendors/css/vendor.bundle.addons.css" />
+    <link rel="stylesheet" href="resources/css/style.css" />
+    <link rel="stylesheet" href="resources/css/Style_Prueba.css" />
+    <link rel="stylesheet" href="resources/css/style-andres.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="shortcut icon" href="http://www.urbanui.com/" />
 </head>
@@ -67,19 +67,19 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-lg-6 login-half-bg d-flex flex-row" style="background-image:url('Template/Template Principal/images/auth/img2.jpg'); background-size: cover">
+                    <div class="col-lg-6 login-half-bg d-flex flex-row" style="background-image:url('resources/images/auth/img2.jpg'); background-size: cover">
                         <p class="text-black font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2023  Todos los derechos reservados.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="Template/Template Principal/vendors/js/vendor.bundle.base.js"></script>
-    <script src="Template/Template Principal/vendors/js/vendor.bundle.addons.js"></script>
-    <script src="Template/Template Principal/js/off-canvas.js"></script>
-    <script src="Template/Template Principal/js/hoverable-collapse.js"></script>
-    <script src="Template/Template Principal/js/misc.js"></script>
-    <script src="Template/Template Principal/js/settings.js"></script>
-    <script src="Template/Template Principal/js/todolist.js"></script>
+    <script src="resources/vendors/js/vendor.bundle.base.js"></script>
+    <script src="resources/vendors/js/vendor.bundle.addons.js"></script>
+    <script src="resources/js/off-canvas.js"></script>
+    <script src="resources/js/hoverable-collapse.js"></script>
+    <script src="resources/js/misc.js"></script>
+    <script src="resources/js/settings.js"></script>
+    <script src="resources/js/todolist.js"></script>
 </body>
 </html>

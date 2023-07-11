@@ -1,0 +1,139 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Socio_Economico.master.cs" Inherits="SistemaECU911.views.Socio_Economico.Socio_Economico" %>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+        <asp:ContentPlaceHolder ID="Title" runat="server">
+        </asp:ContentPlaceHolder>
+    </title>
+    <link rel="stylesheet" href="../../resources/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../resources/vendors/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="../../resources/css/style.css">
+    <link rel="shortcut icon" href="../../resources/images/ic2.jpg" />
+    <link rel="stylesheet" href="../../resources/vendors/iconfonts/font-awesome/css/all.min.css" />
+
+    <%--Enlaces Extras--%>
+    <link rel="stylesheet" href="../../resources/vendors/font-awesome-pro-v6-6/css/all.min.css" />
+    <link rel="stylesheet" href="../../resources/vendors/bootstrap-5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../resources/css/Style_Prueba.css" />
+    <link rel="stylesheet" href="../../resources/css/style-andres.css" />
+    <link rel="shortcut icon" href="http://www.urbanui.com/" />
+    <asp:ContentPlaceHolder ID="Head" runat="server">
+    </asp:ContentPlaceHolder>
+    <%--Fin Enlaces Extras--%>
+</head>
+<body class="sidebar-toggle-display sidebar-hidden">
+    <form id="fmr" runat="server">
+        <div class="container-scroller">
+            <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
+                <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                    <a class="navbar-brand brand-logo" href="Inicio.aspx">
+                        <img src="../../resources/images/LogoECU.png" alt="logo" style="width: 21.875rem; height: 4.375rem" /></a>
+                    <a class="navbar-brand brand-logo-mini" href="Inicio.aspx">
+                        <img src="../../resources/images/ic2.jpg" alt="logo" />
+                    </a>
+                </div>
+                <div class="navbar-menu-wrapper d-flex align-items-stretch">                    
+                    <a href="#" class="navbar-toggler navbar-toggler align-self-center" data-toggle="minimize">
+                        <i class="fa-regular fa-bars-progress fa-lg"></i>
+                    </a>
+                    <ul class="navbar-nav navbar-nav-right">
+                        <li>
+                            <a href="#!" onclick="javascript:toggleFullScreen()">
+                                <i class="fa-sharp fa-regular fa-expand fa-2xl text-dark"></i>
+                            </a>
+                        </li>                        
+                        <li class="nav-item nav-profile dropdown" style="border: none">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                                <asp:Image Height="45" Width="45" ImageUrl="~/resources/images/User.jpg" BackColor="White" runat="server" />
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                                <a class="dropdown-item" href="Perfil.aspx"><i class="fa-regular fa-id-card-clip"></i>Perfil</a>
+                                <a class="dropdown-item" href="Cambiar_Contraseña.aspx"><i class="fa-regular fa-shield-keyhole"></i>Cambiar Contraseña</a>
+                                <div class="dropdown-divider"></div>
+                                <asp:LinkButton CssClass="dropdown-item" ID="Lnb_CerrarSesion" OnClick="Lnb_CerrarSesion_Click" runat="server">
+                                    <i class="fa-sharp fa-regular fa-right-from-bracket"></i>Salir
+                                </asp:LinkButton>
+                            </div>
+                        </li>
+                    </ul>
+                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                        <span class="fas fa-bars"></span>
+                    </button>
+                </div>
+            </nav>
+            <div class="container-fluid page-body-wrapper">
+                <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                    <ul class="nav">
+                        <li class="nav-item nav-profile">
+                            <div class="nav-link">
+                                <div class="profile-image">
+                                    <asp:Image ID="imgPerfil2" Height="45" Width="45" ImageUrl="~/resources/images/User.jpg" runat="server" />
+                                </div>
+                                <div class="profile-name">
+                                    <p class="name">
+                                        <asp:Label ID="lbl_nombre" runat="server" Style="font-size: 14px"></asp:Label><br />
+                                        <asp:Label ID="lbl_apellido" runat="server" Style="font-size: 14px"></asp:Label>         
+                                    </p>
+                                    <p class="designation">
+                                        <asp:Label ID="lbl_rol" runat="server" Style="font-size: 16px"></asp:Label>      
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Inicio.aspx">
+                                <i class="fa-solid fa-house menu-icon"></i>
+                                <span class="menu-title">Inicio</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Ficha_SocioEconomico.aspx">
+                                <i class="fa-regular fa-wave-pulse menu-icon"></i>
+                                <span class="menu-title">Ficha SSO</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Agregar_Persona.aspx">
+                                <i class="fa-regular fa-wave-pulse menu-icon"></i>
+                                <span class="menu-title">Agregar Persona</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="main-panel">
+                    <div class="content-wrapper" style="background-color: white">
+                        <asp:ContentPlaceHolder ID="Message" runat="server"></asp:ContentPlaceHolder>
+                        <asp:ContentPlaceHolder ID="Content" runat="server"></asp:ContentPlaceHolder>
+                    </div>
+                    <footer class="footer" style="background-color: white">
+                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023. Todos los derechos reservados.</span>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="../../resources/vendors/bootstrap-5.3.0/js/bootstrap.min.js"></script>
+    <script src="../../resources/vendors/bootstrap-5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="../../resources/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../resources/vendors/js/vendor.bundle.addons.js"></script>
+    <script src="../../resources/js/off-canvas.js"></script>
+    <script src="../../resources/js/hoverable-collapse.js"></script>
+    <script src="../../resources/js/misc.js"></script>
+    <script src="../../resources/js/settings.js"></script>
+    <script src="../../resources/js/todolist.js"></script>
+    <script src="../../resources/js/dashboard.js"></script>
+    <script src="../../resources/js/Form.js"></script>
+    <script src="../../resources/js/wizard.js"></script>
+    <script src="../../resources/js/screen.js"></script>
+    <asp:ContentPlaceHolder ID="Footer" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+
+</html>

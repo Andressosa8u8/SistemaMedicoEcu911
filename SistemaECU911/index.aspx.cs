@@ -62,14 +62,32 @@ namespace SistemaECU911
 
                                 //--------------------Datos Cambiar Usuario--------------------
 
+                                //Session["correo"] = person.Per_correo.ToString();
+                                //Session["telefono"] = person.Per_telefono.ToString();
+                                //Session["direccion"] = person.Per_direccion.ToString();
+
+                                Response.Redirect("~/views/Administrador/Inicio.aspx");
+                                limpiar();
+                            }
+                            else if (tusuario == 2)
+                            {
+                                Session["Medico"] = person.Per_id.ToString();
+                                Session["prinombre"] = person.Per_priNombre.ToString();
+                                Session["segnombre"] = person.Per_segNombre.ToString();
+                                Session["priapellido"] = person.Per_priApellido.ToString();
+                                Session["segapellido"] = person.Per_segApellido.ToString();
+                                Session["rol"] = tusu.tusu_nombre.ToString();
+
+                                //--------------------Datos Cambiar Usuario--------------------
+
                                 Session["correo"] = person.Per_correo.ToString();
                                 Session["telefono"] = person.Per_telefono.ToString();
                                 Session["direccion"] = person.Per_direccion.ToString();
 
-                                Response.Redirect("~/Template/Views/Inicio.aspx");
+                                Response.Redirect("~/views/Administrador_Medico/Inicio.aspx");
                                 limpiar();
                             }
-                            else if (tusuario == 2)
+                            else if (tusuario == 3)
                             {
                                 Session["Paciente"] = person.Per_id.ToString();
                                 Session["Cedula"] = person.Per_cedula.ToString();
@@ -82,12 +100,12 @@ namespace SistemaECU911
                                 Session["correo"] = person.Per_correo.ToString();
                                 Session["telefono"] = person.Per_telefono.ToString();
                                 Session["direccion"] = person.Per_direccion.ToString();
-                                Response.Redirect("~/Template/Views_Pacientes/Inicio.aspx");
+                                Response.Redirect("~/views/Pacientes/Inicio.aspx");
                                 limpiar();
                             }
-                            else
+                            else if (tusuario == 4)
                             {
-                                Session["TrabajoSocial"] = person.Per_id.ToString();
+                                Session["Trabajo Social"] = person.Per_id.ToString();
                                 Session["prinombre"] = person.Per_priNombre.ToString();
                                 Session["segnombre"] = person.Per_segNombre.ToString();
                                 Session["priapellido"] = person.Per_priApellido.ToString();
@@ -97,7 +115,7 @@ namespace SistemaECU911
                                 Session["correo"] = person.Per_correo.ToString();
                                 Session["telefono"] = person.Per_telefono.ToString();
                                 Session["direccion"] = person.Per_direccion.ToString();
-                                Response.Redirect("~/Template/Views_Socio_Economico/Inicio.aspx");
+                                Response.Redirect("~/views/Socio_Economico/Inicio.aspx");
                                 limpiar();
                             }
                         }
