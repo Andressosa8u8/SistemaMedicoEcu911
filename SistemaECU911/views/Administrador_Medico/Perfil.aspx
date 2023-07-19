@@ -18,7 +18,7 @@
                 <br />
                 <div class="row">
                     <div align="center">
-                        <img src="../Template Principal/images/User.png" alt="logo" style="width: 150px; height: 150px" />
+                        <img src="../../resources/images/User.jpg" alt="logo" style="width: 150px; height: 150px" />
                     </div>
                 </div>
                 <br />

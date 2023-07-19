@@ -71,7 +71,7 @@
                 </div>
                 <br />
                 <div align="center">
-                    <img src="../Template Principal/images/Foto_Perfil.png" alt="logo" style="width: 100px; height: 100px" />
+                    <img src="../../resources/images/User.jpg" alt="logo" style="width: 100px; height: 100px" />
                 </div>
                 <br />
                 <div class="card" style="width: auto;">

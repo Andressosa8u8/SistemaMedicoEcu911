@@ -85,7 +85,7 @@ namespace SistemaECU911.Template.Views
         protected void btn_cambiar_Click(object sender, EventArgs e)
         {
             Tbl_Person usu = new Tbl_Person();
-            int usulogeado = Convert.ToInt32(Session["Médico"].ToString());
+            int usulogeado = Convert.ToInt32(Session["Medico"].ToString());
             usu = CN_Usuarios.obtenerUsuariosxId(usulogeado);
             if (usu != null)
             {

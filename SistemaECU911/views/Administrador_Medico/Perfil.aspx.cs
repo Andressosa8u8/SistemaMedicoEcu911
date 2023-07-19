@@ -74,7 +74,7 @@ namespace SistemaECU911.Template.Views
         protected void btn_actualizar_Click(object sender, EventArgs e)
         {
             Tbl_Person usu = new Tbl_Person();
-            int usulogueado = Convert.ToInt32(Session["Médico"].ToString());
+            int usulogueado = Convert.ToInt32(Session["Medico"].ToString());
             usu = CN_Usuarios.obtenerUsuariosxId(usulogueado);
 
             if (usu != null)

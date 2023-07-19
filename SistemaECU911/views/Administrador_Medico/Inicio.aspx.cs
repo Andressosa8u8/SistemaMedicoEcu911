@@ -21,62 +21,34 @@ namespace SistemaECU911.Template.Views
         {
             if (!IsPostBack)
             {
-                cargarPaciente();
                 cantidadPacientes();
                 //grvPacientes.VirtualItemCount = Count();
             }
         }
 
-        private void cargarPaciente()
-        {
-            var query = from p in dc.Tbl_Person
-                        where p.Per_estado == "AP"
-                        select new
-                        {
-                            p.Per_id,
-                            p.Per_cedula,
-                            p.Per_priNombre,
-                            p.Per_segNombre,
-                            p.Per_priApellido,
-                            p.Per_segApellido,
-                            p.Per_genero,
-                        };
+        //[WebMethod]
+        //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        //public static object[] ListaNPersonas()
+        //{
+        //    //object olista;
+        //    List<Sp_Npersona_puestoTrabajoResult> olista = new List<Sp_Npersona_puestoTrabajoResult>();
+        //    olista = CN_Reporte_NPersona.Reporte_NPersona().ToList();
 
-            grvPacientes.DataSource = query.ToList();
-            grvPacientes.DataBind();
-        }
+        //    var objetoLista = new object[olista.Count + 1];
+        //    objetoLista[0] = new object[]{
+        //        "",
+        //        ""
+        //    };
+        //    int j = 0;
+        //    foreach (var i in olista)
+        //    {
+        //        j++;
+        //        objetoLista[j] = new object[] { i.Per_puestoTrabajo, i.numero_personas };
+        //    }
+        //    return objetoLista;
 
-        protected void grvPacientes_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            int codigo = Convert.ToInt32(e.CommandArgument);
-            if (e.CommandName == "Editar")
-            {
-                Response.Redirect("~/views/Administrador_Medico/Agregar_Pacientes.aspx?cod=" + codigo, true);
-            }
-        }
+        //}
 
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static object[] ListaNPersonas()
-        {
-            //object olista;
-            List<Sp_Npersona_puestoTrabajoResult> olista = new List<Sp_Npersona_puestoTrabajoResult>();
-            olista = CN_Reporte_NPersona.Reporte_NPersona().ToList();
-
-            var objetoLista = new object[olista.Count + 1];
-            objetoLista[0] = new object[]{
-                "",
-                ""
-            };
-            int j = 0;
-            foreach (var i in olista)
-            {
-                j++;
-                objetoLista[j] = new object[] { i.Per_puestoTrabajo, i.numero_personas };
-            }
-            return objetoLista;
-
-        }
         public void cantidadPacientes()
         {
             //cargar informacion cards

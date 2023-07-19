@@ -11,7 +11,28 @@ namespace SistemaECU911.views.Administrador
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Administrador"] != null)
+            {
+                string usulogeado = Session["Administrador"].ToString();
+                string priNom = Session["prinombre"].ToString();
+                string segNom = Session["segnombre"].ToString();
+                string priApe = Session["priapellido"].ToString();
+                string segApe = Session["segapellido"].ToString();
+                string resRol = Session["rol"].ToString();
+                lbl_nombre.Text = priNom + " " + segNom;
+                lbl_apellido.Text = priApe + " " + segApe;
+                lbl_rol.Text = resRol;
+            }
+            else
+            {
+                Response.Redirect("../../index.aspx");
+            }
+        }
 
+        protected void Lnb_CerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("../../index.aspx");
         }
     }
 }

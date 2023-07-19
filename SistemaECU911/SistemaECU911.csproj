@@ -189,6 +189,7 @@
     <Content Include="resources\js\data-table.js" />
     <Content Include="resources\js\db.js" />
     <Content Include="resources\js\desktop-notification.js" />
+    <Content Include="resources\js\Diseños_Propios.js" />
     <Content Include="resources\js\dragula.js" />
     <Content Include="resources\js\dropify.js" />
     <Content Include="resources\js\dropzone.js" />

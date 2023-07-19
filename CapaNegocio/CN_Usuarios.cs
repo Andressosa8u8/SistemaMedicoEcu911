@@ -15,7 +15,7 @@ namespace CapaNegocio
         //metodo para verificar credenciales
         public static bool autentificarUsuarioPassword(string usuario, string pass)
         {
-            var auto = dc.Tbl_Person.Any(per => per.Per_nomlogin.Equals(usuario) && per.Per_pass.Equals(pass) && (per.Per_estado == "AM" || per.Per_estado == "AS" || per.Per_estado == "AP"));
+            var auto = dc.Tbl_Person.Any(per => per.Per_nomlogin.Equals(usuario) && per.Per_pass.Equals(pass) && (per.Per_estado == "AA" || per.Per_estado == "AM" || per.Per_estado == "AS" || per.Per_estado == "AP"));
             return auto;
         }        
         //metodo para verificar si existe el usuario
@@ -45,13 +45,13 @@ namespace CapaNegocio
         //metodo para verificar si existe el nombre medico
         public static bool autentificarxUsuario(string usuario)
         {
-            var auto = dc.Tbl_Person.Any(per => per.Per_nomlogin.Equals(usuario) && (per.Per_estado == "AM" || per.Per_estado == "AS" || per.Per_estado == "AP"));
+            var auto = dc.Tbl_Person.Any(per => per.Per_nomlogin.Equals(usuario) && (per.Per_estado == "AA" || per.Per_estado == "AM" || per.Per_estado == "AS" || per.Per_estado == "AP"));
             return auto;
         }        
-        //metodo para traer los objetos de Usuario 
+        //metodo para traer los objetos de Usuario
         public static Tbl_Person autentificarxUnicoUsuPass(string person, string pass)
         {
-            var nlogin = dc.Tbl_Person.Single(per => per.Per_nomlogin.Equals(person) && per.Per_pass.Equals(pass) && (per.Per_estado == "AM" || per.Per_estado == "AS" || per.Per_estado == "AP"));
+            var nlogin = dc.Tbl_Person.Single(per => per.Per_nomlogin.Equals(person) && per.Per_pass.Equals(pass) && (per.Per_estado == "AA" || per.Per_estado == "AM" || per.Per_estado == "AS" || per.Per_estado == "AP"));
             return nlogin;
         }
         //metodo para obtener los usuarios por su id
