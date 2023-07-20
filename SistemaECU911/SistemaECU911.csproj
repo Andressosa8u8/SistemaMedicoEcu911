@@ -862,6 +862,9 @@
     <Content Include="views\Administrador\Inicio.aspx" />
     <Content Include="views\Administrador_Medico\Agregar_Doctores.aspx" />
     <Content Include="views\Administrador_Medico\Certificado_Covid.aspx" />
+    <Content Include="views\Administrador_Medico\Lista_Antecedentes_Familiares.aspx" />
+    <Content Include="views\Administrador_Medico\Lista_Antecedentes_Personales.aspx" />
+    <Content Include="views\Administrador_Medico\Lista_Diagnostico_Codigo.aspx" />
     <Content Include="views\Administrador_Medico\Lista_Doctores.aspx" />
     <Content Include="views\Administrador_Medico\Lista_Pacientes.aspx" />
     <Content Include="views\Administrador_Medico\Perfil.aspx" />
@@ -960,6 +963,27 @@
     </Compile>
     <Compile Include="views\Administrador_Medico\Certificado_Covid.aspx.designer.cs">
       <DependentUpon>Certificado_Covid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="views\Administrador_Medico\Lista_Antecedentes_Familiares.aspx.cs">
+      <DependentUpon>Lista_Antecedentes_Familiares.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\Administrador_Medico\Lista_Antecedentes_Familiares.aspx.designer.cs">
+      <DependentUpon>Lista_Antecedentes_Familiares.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="views\Administrador_Medico\Lista_Antecedentes_Personales.aspx.cs">
+      <DependentUpon>Lista_Antecedentes_Personales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\Administrador_Medico\Lista_Antecedentes_Personales.aspx.designer.cs">
+      <DependentUpon>Lista_Antecedentes_Personales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="views\Administrador_Medico\Lista_Diagnostico_Codigo.aspx.cs">
+      <DependentUpon>Lista_Diagnostico_Codigo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\Administrador_Medico\Lista_Diagnostico_Codigo.aspx.designer.cs">
+      <DependentUpon>Lista_Diagnostico_Codigo.aspx</DependentUpon>
     </Compile>
     <Compile Include="views\Administrador_Medico\Lista_Doctores.aspx.cs">
       <DependentUpon>Lista_Doctores.aspx</DependentUpon>

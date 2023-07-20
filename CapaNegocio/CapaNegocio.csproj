@@ -68,6 +68,7 @@
     <Compile Include="CN_PedidoExamenes.cs" />
     <Compile Include="CN_Periodica.cs" />
     <Compile Include="CN_Personas.cs" />
+    <Compile Include="CN_Profesionales.cs" />
     <Compile Include="CN_Reintegro.cs" />
     <Compile Include="CN_Reporte_NPersona.cs" />
     <Compile Include="CN_Retiro.cs" />

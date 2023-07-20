@@ -37,7 +37,7 @@
                         <img src="../../resources/images/ic2.jpg" alt="logo" />
                     </a>
                 </div>
-                <div class="navbar-menu-wrapper d-flex align-items-stretch">                    
+                <div class="navbar-menu-wrapper d-flex align-items-stretch">
                     <a href="#" class="navbar-toggler navbar-toggler align-self-center" data-toggle="minimize">
                         <i class="fa-regular fa-bars-progress fa-lg"></i>
                     </a>
@@ -46,10 +46,10 @@
                             <a href="#!" onclick="javascript:toggleFullScreen()">
                                 <i class="fa-sharp fa-regular fa-expand fa-2xl text-dark"></i>
                             </a>
-                        </li>                        
+                        </li>
                         <li class="nav-item nav-profile dropdown" style="border: none">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                                <asp:Image Height="45" Width="45" ImageUrl="~/resources/images/User.jpg" style="background-color:white" runat="server" />
+                                <asp:Image Height="45" Width="45" ImageUrl="~/resources/images/User.jpg" Style="background-color: white" runat="server" />
                             </a>
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                                 <a class="dropdown-item" href="Perfil.aspx"><i class="fa-regular fa-id-card-clip"></i>Perfil</a>
@@ -77,10 +77,10 @@
                                 <div class="profile-name">
                                     <p class="name">
                                         <asp:Label ID="lbl_nombre" runat="server" Style="font-size: 14px"></asp:Label><br />
-                                        <asp:Label ID="lbl_apellido" runat="server" Style="font-size: 14px"></asp:Label>         
+                                        <asp:Label ID="lbl_apellido" runat="server" Style="font-size: 14px"></asp:Label>
                                     </p>
                                     <p class="designation">
-                                        <asp:Label ID="lbl_rol" runat="server" Style="font-size: 16px"></asp:Label>      
+                                        <asp:Label ID="lbl_rol" runat="server" Style="font-size: 16px"></asp:Label>
                                     </p>
                                 </div>
                             </div>
@@ -144,7 +144,7 @@
                             <div class="collapse" id="pacientes">
                                 <ul class="nav flex-column sub-menu">
                                     <li class="nav-item"><a class="nav-link" href="Lista_Pacientes.aspx">Lista de Pacientes</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="Agregar_Pacientes.aspx">Agregar Paciente</a></li>                                   
+                                    <li class="nav-item"><a class="nav-link" href="Agregar_Pacientes.aspx">Agregar Paciente</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -157,7 +157,7 @@
                             <div class="collapse" id="doctores">
                                 <ul class="nav flex-column sub-menu">
                                     <li class="nav-item"><a class="nav-link" href="Lista_Doctores.aspx">Lista de Doctores</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="Agregar_Doctores.aspx">Agregar Doctor</a></li>                                    
+                                    <li class="nav-item"><a class="nav-link" href="Agregar_Doctores.aspx">Agregar Doctor</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -170,7 +170,7 @@
                             <div class="collapse" id="certificados">
                                 <ul class="nav flex-column sub-menu">
                                     <li class="nav-item"><a class="nav-link" href="Certificado_Covid.aspx">Certificado Covid 19</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="Certificado_Medico.aspx">Certificado Medico</a></li>                                   
+                                    <li class="nav-item"><a class="nav-link" href="Certificado_Medico.aspx">Certificado Medico</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -182,8 +182,9 @@
                             </a>
                             <div class="collapse" id="reporteria">
                                 <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"><a class="nav-link" href="#">Antecedentes</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Antecedentes Familiares</a></li>                                    
+                                    <li class="nav-item"><a class="nav-link" href="Lista_Antecedentes_Personales.aspx">Antecedentes Personales</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="Lista_Antecedentes_Familiares.aspx">Antecedentes Familiares</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="Lista_Diagnostico_Codigo.aspx">Reposte Codigo-Diagnostico</a></li>
                                 </ul>
                             </div>
                         </li>
