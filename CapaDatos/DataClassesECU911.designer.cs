@@ -271,18 +271,18 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.AutentificarxUsuario")]
-		public ISingleResult<AutentificarxUsuarioResult> AutentificarxUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Usuario", DbType="VarChar(25)")] string usuario)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuario);
-			return ((ISingleResult<AutentificarxUsuarioResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Npersona_puestoTrabajo")]
 		public ISingleResult<Sp_Npersona_puestoTrabajoResult> Sp_Npersona_puestoTrabajo()
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<Sp_Npersona_puestoTrabajoResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.AutentificarxUsuario")]
+		public ISingleResult<AutentificarxUsuarioResult> AutentificarxUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Usuario", DbType="VarChar(25)")] string usuario)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuario);
+			return ((ISingleResult<AutentificarxUsuarioResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CargarImagen")]
@@ -318,6 +318,13 @@ namespace CapaDatos
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, imagen);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Grafico_OrganosYSistemas")]
+		public ISingleResult<Sp_Grafico_OrganosYSistemasResult> Sp_Grafico_OrganosYSistemas()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Sp_Grafico_OrganosYSistemasResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -563,6 +570,8 @@ namespace CapaDatos
 		
 		private EntitySet<Tbl_Person> _Tbl_Person;
 		
+		private EntitySet<Tbl_Profesional> _Tbl_Profesional;
+		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -582,6 +591,7 @@ namespace CapaDatos
 		public Tbl_Centro()
 		{
 			this._Tbl_Person = new EntitySet<Tbl_Person>(new Action<Tbl_Person>(this.attach_Tbl_Person), new Action<Tbl_Person>(this.detach_Tbl_Person));
+			this._Tbl_Profesional = new EntitySet<Tbl_Profesional>(new Action<Tbl_Profesional>(this.attach_Tbl_Profesional), new Action<Tbl_Profesional>(this.detach_Tbl_Profesional));
 			OnCreated();
 		}
 		
@@ -698,6 +708,19 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Centro_Tbl_Profesional", Storage="_Tbl_Profesional", ThisKey="cent_id", OtherKey="cent_id")]
+		public EntitySet<Tbl_Profesional> Tbl_Profesional
+		{
+			get
+			{
+				return this._Tbl_Profesional;
+			}
+			set
+			{
+				this._Tbl_Profesional.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -725,6 +748,18 @@ namespace CapaDatos
 		}
 		
 		private void detach_Tbl_Person(Tbl_Person entity)
+		{
+			this.SendPropertyChanging();
+			entity.Tbl_Centro = null;
+		}
+		
+		private void attach_Tbl_Profesional(Tbl_Profesional entity)
+		{
+			this.SendPropertyChanging();
+			entity.Tbl_Centro = this;
+		}
+		
+		private void detach_Tbl_Profesional(Tbl_Profesional entity)
 		{
 			this.SendPropertyChanging();
 			entity.Tbl_Centro = null;
@@ -2070,6 +2105,8 @@ namespace CapaDatos
 		
 		private EntitySet<Tbl_Periodica> _Tbl_Periodica;
 		
+		private EntitySet<Tbl_Profesional> _Tbl_Profesional;
+		
 		private EntitySet<Tbl_Reintegro> _Tbl_Reintegro;
 		
 		private EntitySet<Tbl_Retiro> _Tbl_Retiro;
@@ -2090,6 +2127,7 @@ namespace CapaDatos
 		{
 			this._Tbl_FichasMedicas = new EntitySet<Tbl_FichasMedicas>(new Action<Tbl_FichasMedicas>(this.attach_Tbl_FichasMedicas), new Action<Tbl_FichasMedicas>(this.detach_Tbl_FichasMedicas));
 			this._Tbl_Periodica = new EntitySet<Tbl_Periodica>(new Action<Tbl_Periodica>(this.attach_Tbl_Periodica), new Action<Tbl_Periodica>(this.detach_Tbl_Periodica));
+			this._Tbl_Profesional = new EntitySet<Tbl_Profesional>(new Action<Tbl_Profesional>(this.attach_Tbl_Profesional), new Action<Tbl_Profesional>(this.detach_Tbl_Profesional));
 			this._Tbl_Reintegro = new EntitySet<Tbl_Reintegro>(new Action<Tbl_Reintegro>(this.attach_Tbl_Reintegro), new Action<Tbl_Reintegro>(this.detach_Tbl_Reintegro));
 			this._Tbl_Retiro = new EntitySet<Tbl_Retiro>(new Action<Tbl_Retiro>(this.attach_Tbl_Retiro), new Action<Tbl_Retiro>(this.detach_Tbl_Retiro));
 			OnCreated();
@@ -2181,6 +2219,19 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Especialidad_Tbl_Profesional", Storage="_Tbl_Profesional", ThisKey="espec_id", OtherKey="espec_id")]
+		public EntitySet<Tbl_Profesional> Tbl_Profesional
+		{
+			get
+			{
+				return this._Tbl_Profesional;
+			}
+			set
+			{
+				this._Tbl_Profesional.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Especialidad_Tbl_Reintegro", Storage="_Tbl_Reintegro", ThisKey="espec_id", OtherKey="espec_id")]
 		public EntitySet<Tbl_Reintegro> Tbl_Reintegro
 		{
@@ -2246,6 +2297,18 @@ namespace CapaDatos
 		}
 		
 		private void detach_Tbl_Periodica(Tbl_Periodica entity)
+		{
+			this.SendPropertyChanging();
+			entity.Tbl_Especialidad = null;
+		}
+		
+		private void attach_Tbl_Profesional(Tbl_Profesional entity)
+		{
+			this.SendPropertyChanging();
+			entity.Tbl_Especialidad = this;
+		}
+		
+		private void detach_Tbl_Profesional(Tbl_Profesional entity)
 		{
 			this.SendPropertyChanging();
 			entity.Tbl_Especialidad = null;
@@ -37696,9 +37759,13 @@ namespace CapaDatos
 		
 		private int _prof_id;
 		
+		private string _prof_cedula;
+		
 		private string _prof_NomApe;
 		
-		private string _prof_cedula;
+		private System.Nullable<int> _espec_id;
+		
+		private System.Nullable<int> _cent_id;
 		
 		private string _prof_estado;
 		
@@ -37714,16 +37781,24 @@ namespace CapaDatos
 		
 		private EntitySet<Tbl_Retiro> _Tbl_Retiro;
 		
+		private EntityRef<Tbl_Centro> _Tbl_Centro;
+		
+		private EntityRef<Tbl_Especialidad> _Tbl_Especialidad;
+		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
     partial void Onprof_idChanging(int value);
     partial void Onprof_idChanged();
-    partial void Onprof_NomApeChanging(string value);
-    partial void Onprof_NomApeChanged();
     partial void Onprof_cedulaChanging(string value);
     partial void Onprof_cedulaChanged();
+    partial void Onprof_NomApeChanging(string value);
+    partial void Onprof_NomApeChanged();
+    partial void Onespec_idChanging(System.Nullable<int> value);
+    partial void Onespec_idChanged();
+    partial void Oncent_idChanging(System.Nullable<int> value);
+    partial void Oncent_idChanged();
     partial void Onprof_estadoChanging(string value);
     partial void Onprof_estadoChanged();
     #endregion
@@ -37736,6 +37811,8 @@ namespace CapaDatos
 			this._Tbl_Periodica = new EntitySet<Tbl_Periodica>(new Action<Tbl_Periodica>(this.attach_Tbl_Periodica), new Action<Tbl_Periodica>(this.detach_Tbl_Periodica));
 			this._Tbl_Reintegro = new EntitySet<Tbl_Reintegro>(new Action<Tbl_Reintegro>(this.attach_Tbl_Reintegro), new Action<Tbl_Reintegro>(this.detach_Tbl_Reintegro));
 			this._Tbl_Retiro = new EntitySet<Tbl_Retiro>(new Action<Tbl_Retiro>(this.attach_Tbl_Retiro), new Action<Tbl_Retiro>(this.detach_Tbl_Retiro));
+			this._Tbl_Centro = default(EntityRef<Tbl_Centro>);
+			this._Tbl_Especialidad = default(EntityRef<Tbl_Especialidad>);
 			OnCreated();
 		}
 		
@@ -37755,6 +37832,26 @@ namespace CapaDatos
 					this._prof_id = value;
 					this.SendPropertyChanged("prof_id");
 					this.Onprof_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prof_cedula", DbType="VarChar(10)")]
+		public string prof_cedula
+		{
+			get
+			{
+				return this._prof_cedula;
+			}
+			set
+			{
+				if ((this._prof_cedula != value))
+				{
+					this.Onprof_cedulaChanging(value);
+					this.SendPropertyChanging();
+					this._prof_cedula = value;
+					this.SendPropertyChanged("prof_cedula");
+					this.Onprof_cedulaChanged();
 				}
 			}
 		}
@@ -37779,22 +37876,50 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prof_cedula", DbType="VarChar(10)")]
-		public string prof_cedula
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_espec_id", DbType="Int")]
+		public System.Nullable<int> espec_id
 		{
 			get
 			{
-				return this._prof_cedula;
+				return this._espec_id;
 			}
 			set
 			{
-				if ((this._prof_cedula != value))
+				if ((this._espec_id != value))
 				{
-					this.Onprof_cedulaChanging(value);
+					if (this._Tbl_Especialidad.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onespec_idChanging(value);
 					this.SendPropertyChanging();
-					this._prof_cedula = value;
-					this.SendPropertyChanged("prof_cedula");
-					this.Onprof_cedulaChanged();
+					this._espec_id = value;
+					this.SendPropertyChanged("espec_id");
+					this.Onespec_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cent_id", DbType="Int")]
+		public System.Nullable<int> cent_id
+		{
+			get
+			{
+				return this._cent_id;
+			}
+			set
+			{
+				if ((this._cent_id != value))
+				{
+					if (this._Tbl_Centro.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Oncent_idChanging(value);
+					this.SendPropertyChanging();
+					this._cent_id = value;
+					this.SendPropertyChanged("cent_id");
+					this.Oncent_idChanged();
 				}
 			}
 		}
@@ -37894,6 +38019,74 @@ namespace CapaDatos
 			set
 			{
 				this._Tbl_Retiro.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Centro_Tbl_Profesional", Storage="_Tbl_Centro", ThisKey="cent_id", OtherKey="cent_id", IsForeignKey=true)]
+		public Tbl_Centro Tbl_Centro
+		{
+			get
+			{
+				return this._Tbl_Centro.Entity;
+			}
+			set
+			{
+				Tbl_Centro previousValue = this._Tbl_Centro.Entity;
+				if (((previousValue != value) 
+							|| (this._Tbl_Centro.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Tbl_Centro.Entity = null;
+						previousValue.Tbl_Profesional.Remove(this);
+					}
+					this._Tbl_Centro.Entity = value;
+					if ((value != null))
+					{
+						value.Tbl_Profesional.Add(this);
+						this._cent_id = value.cent_id;
+					}
+					else
+					{
+						this._cent_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Tbl_Centro");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Especialidad_Tbl_Profesional", Storage="_Tbl_Especialidad", ThisKey="espec_id", OtherKey="espec_id", IsForeignKey=true)]
+		public Tbl_Especialidad Tbl_Especialidad
+		{
+			get
+			{
+				return this._Tbl_Especialidad.Entity;
+			}
+			set
+			{
+				Tbl_Especialidad previousValue = this._Tbl_Especialidad.Entity;
+				if (((previousValue != value) 
+							|| (this._Tbl_Especialidad.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Tbl_Especialidad.Entity = null;
+						previousValue.Tbl_Profesional.Remove(this);
+					}
+					this._Tbl_Especialidad.Entity = value;
+					if ((value != null))
+					{
+						value.Tbl_Profesional.Add(this);
+						this._espec_id = value.espec_id;
+					}
+					else
+					{
+						this._espec_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Tbl_Especialidad");
+				}
 			}
 		}
 		
@@ -50312,32 +50505,6 @@ namespace CapaDatos
 		}
 	}
 	
-	public partial class AutentificarxUsuarioResult
-	{
-		
-		private string _Per_nomlogin;
-		
-		public AutentificarxUsuarioResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_nomlogin", DbType="VarChar(25)")]
-		public string Per_nomlogin
-		{
-			get
-			{
-				return this._Per_nomlogin;
-			}
-			set
-			{
-				if ((this._Per_nomlogin != value))
-				{
-					this._Per_nomlogin = value;
-				}
-			}
-		}
-	}
-	
 	public partial class Sp_Npersona_puestoTrabajoResult
 	{
 		
@@ -50377,6 +50544,32 @@ namespace CapaDatos
 				if ((this._numero_personas != value))
 				{
 					this._numero_personas = value;
+				}
+			}
+		}
+	}
+	
+	public partial class AutentificarxUsuarioResult
+	{
+		
+		private string _Per_nomlogin;
+		
+		public AutentificarxUsuarioResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_nomlogin", DbType="VarChar(25)")]
+		public string Per_nomlogin
+		{
+			get
+			{
+				return this._Per_nomlogin;
+			}
+			set
+			{
+				if ((this._Per_nomlogin != value))
+				{
+					this._Per_nomlogin = value;
 				}
 			}
 		}
@@ -50483,6 +50676,446 @@ namespace CapaDatos
 				if ((this._fechaHoraGuardado != value))
 				{
 					this._fechaHoraGuardado = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Sp_Grafico_OrganosYSistemasResult
+	{
+		
+		private System.Nullable<int> _CantPersonaOrgSentConPatologia;
+		
+		private System.Nullable<int> _CantPersonaOrgSentSinPatologia;
+		
+		private System.Nullable<int> _CantPersonaRespiConPatologia;
+		
+		private System.Nullable<int> _CantPersonaRespiSinPatologia;
+		
+		private System.Nullable<int> _CantPersonaCardioVascConPatologia;
+		
+		private System.Nullable<int> _CantPersonaCardioVascSinPatologia;
+		
+		private System.Nullable<int> _CantPersonaDigestivoConPatologia;
+		
+		private System.Nullable<int> _CantPersonaDigestivoSinPatologia;
+		
+		private System.Nullable<int> _CantPersonaGenitalConPatologia;
+		
+		private System.Nullable<int> _CantPersonaGenitalSinPatologia;
+		
+		private System.Nullable<int> _CantPersonaUrinarioConPatologia;
+		
+		private System.Nullable<int> _CantPersonaUrinarioSinPatologia;
+		
+		private System.Nullable<int> _CantPersonaMuscularConPatologia;
+		
+		private System.Nullable<int> _CantPersonaMuscularSinPatologia;
+		
+		private System.Nullable<int> _CantPersonaEsqueleticoConPatologia;
+		
+		private System.Nullable<int> _CantPersonaEsqueleticoSinPatologia;
+		
+		private System.Nullable<int> _CantPersonaNerviosoConPatologia;
+		
+		private System.Nullable<int> _CantPersonaNerviosoSinPatologia;
+		
+		private System.Nullable<int> _CantPersonaEndocrinoConPatologia;
+		
+		private System.Nullable<int> _CantPersonaEndocrinoSinPatologia;
+		
+		private System.Nullable<int> _CantPersonaHemoLinfaticoConPatologia;
+		
+		private System.Nullable<int> _CantPersonaHemoLinfaticoSinPatologia;
+		
+		private System.Nullable<int> _CantPersonaTegumentarioConPatologia;
+		
+		private System.Nullable<int> _CantPersonaTegumentarioSinPatologia;
+		
+		public Sp_Grafico_OrganosYSistemasResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaOrgSentConPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaOrgSentConPatologia
+		{
+			get
+			{
+				return this._CantPersonaOrgSentConPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaOrgSentConPatologia != value))
+				{
+					this._CantPersonaOrgSentConPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaOrgSentSinPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaOrgSentSinPatologia
+		{
+			get
+			{
+				return this._CantPersonaOrgSentSinPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaOrgSentSinPatologia != value))
+				{
+					this._CantPersonaOrgSentSinPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaRespiConPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaRespiConPatologia
+		{
+			get
+			{
+				return this._CantPersonaRespiConPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaRespiConPatologia != value))
+				{
+					this._CantPersonaRespiConPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaRespiSinPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaRespiSinPatologia
+		{
+			get
+			{
+				return this._CantPersonaRespiSinPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaRespiSinPatologia != value))
+				{
+					this._CantPersonaRespiSinPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaCardioVascConPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaCardioVascConPatologia
+		{
+			get
+			{
+				return this._CantPersonaCardioVascConPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaCardioVascConPatologia != value))
+				{
+					this._CantPersonaCardioVascConPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaCardioVascSinPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaCardioVascSinPatologia
+		{
+			get
+			{
+				return this._CantPersonaCardioVascSinPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaCardioVascSinPatologia != value))
+				{
+					this._CantPersonaCardioVascSinPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaDigestivoConPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaDigestivoConPatologia
+		{
+			get
+			{
+				return this._CantPersonaDigestivoConPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaDigestivoConPatologia != value))
+				{
+					this._CantPersonaDigestivoConPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaDigestivoSinPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaDigestivoSinPatologia
+		{
+			get
+			{
+				return this._CantPersonaDigestivoSinPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaDigestivoSinPatologia != value))
+				{
+					this._CantPersonaDigestivoSinPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaGenitalConPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaGenitalConPatologia
+		{
+			get
+			{
+				return this._CantPersonaGenitalConPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaGenitalConPatologia != value))
+				{
+					this._CantPersonaGenitalConPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaGenitalSinPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaGenitalSinPatologia
+		{
+			get
+			{
+				return this._CantPersonaGenitalSinPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaGenitalSinPatologia != value))
+				{
+					this._CantPersonaGenitalSinPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaUrinarioConPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaUrinarioConPatologia
+		{
+			get
+			{
+				return this._CantPersonaUrinarioConPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaUrinarioConPatologia != value))
+				{
+					this._CantPersonaUrinarioConPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaUrinarioSinPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaUrinarioSinPatologia
+		{
+			get
+			{
+				return this._CantPersonaUrinarioSinPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaUrinarioSinPatologia != value))
+				{
+					this._CantPersonaUrinarioSinPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaMuscularConPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaMuscularConPatologia
+		{
+			get
+			{
+				return this._CantPersonaMuscularConPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaMuscularConPatologia != value))
+				{
+					this._CantPersonaMuscularConPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaMuscularSinPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaMuscularSinPatologia
+		{
+			get
+			{
+				return this._CantPersonaMuscularSinPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaMuscularSinPatologia != value))
+				{
+					this._CantPersonaMuscularSinPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaEsqueleticoConPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaEsqueleticoConPatologia
+		{
+			get
+			{
+				return this._CantPersonaEsqueleticoConPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaEsqueleticoConPatologia != value))
+				{
+					this._CantPersonaEsqueleticoConPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaEsqueleticoSinPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaEsqueleticoSinPatologia
+		{
+			get
+			{
+				return this._CantPersonaEsqueleticoSinPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaEsqueleticoSinPatologia != value))
+				{
+					this._CantPersonaEsqueleticoSinPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaNerviosoConPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaNerviosoConPatologia
+		{
+			get
+			{
+				return this._CantPersonaNerviosoConPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaNerviosoConPatologia != value))
+				{
+					this._CantPersonaNerviosoConPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaNerviosoSinPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaNerviosoSinPatologia
+		{
+			get
+			{
+				return this._CantPersonaNerviosoSinPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaNerviosoSinPatologia != value))
+				{
+					this._CantPersonaNerviosoSinPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaEndocrinoConPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaEndocrinoConPatologia
+		{
+			get
+			{
+				return this._CantPersonaEndocrinoConPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaEndocrinoConPatologia != value))
+				{
+					this._CantPersonaEndocrinoConPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaEndocrinoSinPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaEndocrinoSinPatologia
+		{
+			get
+			{
+				return this._CantPersonaEndocrinoSinPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaEndocrinoSinPatologia != value))
+				{
+					this._CantPersonaEndocrinoSinPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaHemoLinfaticoConPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaHemoLinfaticoConPatologia
+		{
+			get
+			{
+				return this._CantPersonaHemoLinfaticoConPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaHemoLinfaticoConPatologia != value))
+				{
+					this._CantPersonaHemoLinfaticoConPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaHemoLinfaticoSinPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaHemoLinfaticoSinPatologia
+		{
+			get
+			{
+				return this._CantPersonaHemoLinfaticoSinPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaHemoLinfaticoSinPatologia != value))
+				{
+					this._CantPersonaHemoLinfaticoSinPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaTegumentarioConPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaTegumentarioConPatologia
+		{
+			get
+			{
+				return this._CantPersonaTegumentarioConPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaTegumentarioConPatologia != value))
+				{
+					this._CantPersonaTegumentarioConPatologia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaTegumentarioSinPatologia", DbType="Int")]
+		public System.Nullable<int> CantPersonaTegumentarioSinPatologia
+		{
+			get
+			{
+				return this._CantPersonaTegumentarioSinPatologia;
+			}
+			set
+			{
+				if ((this._CantPersonaTegumentarioSinPatologia != value))
+				{
+					this._CantPersonaTegumentarioSinPatologia = value;
 				}
 			}
 		}

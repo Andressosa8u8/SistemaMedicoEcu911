@@ -57,13 +57,13 @@ namespace CapaNegocio
         //metodo para obtener los usuarios por su id
         public static Tbl_Person obtenerUsuariosxId(int id)
         {
-            var perid = dc.Tbl_Person.FirstOrDefault(per => per.Per_id.Equals(id) && per.Per_estado == "AM");
+            var perid = dc.Tbl_Person.FirstOrDefault(per => per.Per_id.Equals(id) && (per.Per_estado == "AA" || per.Per_estado == "AM" || per.Per_estado == "AS" || per.Per_estado == "AP"));
             return perid;
         }
         //Metodo para obtener contraseña anterior para medicos
         public static bool autentificarxUsuario(int per, string pass)
         {
-            var perso = dc.Tbl_Person.Any(usup => usup.Per_estado == "AP" && usup.Per_id.Equals(per) && usup.Per_pass.Equals(pass));
+            var perso = dc.Tbl_Person.Any(usup => (usup.Per_estado == "AA" || usup.Per_estado == "AM" || usup.Per_estado == "AS" || usup.Per_estado == "AP") && usup.Per_id.Equals(per) && usup.Per_pass.Equals(pass));
             return perso;
         }
         //metodo para obtener los usuarios por su id para social

@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Head" runat="server">
 
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Message" runat="server">
@@ -13,7 +13,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Content" runat="server">
     <div class="main-panel" style="width: auto">
-        <div class="content-wrapper" style="background-color:white">
+        <div class="content-wrapper" style="background-color: white">
             <div class="row">
                 <div class="col-12 grid-margin">
                     <div class="card card-statistics">
@@ -53,16 +53,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-12 grid-margin">
-        <div class="card">
-            <div class="card-body">
-                <h4 align="center">GRÁFICA REVISIÓN DE ÓRGANOS Y SISTEMAS</h4>
-                <canvas id="myChart" width="400" height="200"></canvas>
+                <div class="col-12 grid-margin">
+                    <div class="card" style="border:none">
+                        <div class="card-body">
+                            <h4 align="center">REVISIÓN DE ÓRGANOS Y SISTEMAS</h4>
+                            <canvas id="myChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -84,153 +82,153 @@
 
 
     <script>
-    var objetoLista;
-    var arraynumeroPerOrgConPatolo = [];
-    var arraynumeroPerOrgSinPatologia = [];
-    var arraynumeroPerRespiConPatolo = [];
-    var arraynumeroPerRespiSinPatologia = [];
-    var arraynumeroPerCardioVascuConPatolo = [];
-    var arraynumeroPerCardioVascuSinPatologia = [];
-    var arraynumeroPerDigesConPatolo = [];
-    var arraynumeroPerDigesSinPatologia = [];
-    var arraynumeroPerGenitConPatolo = [];
-    var arraynumeroPerGenitSinPatologia = [];
-    var arraynumeroPerUrinConPatolo = [];
-    var arraynumeroPerUrinSinPatologia = [];
-    var arraynumeroPerMuscuConPatolo = [];
-    var arraynumeroPerMuscuSinPatologia = [];
-    var arraynumeroPerEsqueConPatolo = [];
-    var arraynumeroPerEsqueSinPatologia = [];
-    var arraynumeroPerNerviConPatolo = [];
-    var arraynumeroPerNerviSinPatologia = [];
-    var arraynumeroPerEndocConPatolo = [];
-    var arraynumeroPerEndocSinPatologia = [];
-    var arraynumeroPerHemoLinfaticoConPatolo = [];
-    var arraynumeroPerHemoLinfaticoSinPatologia = [];
-    var arraynumeroPerTegumenConPatolo = [];
-    var arraynumeroPerTegumenSinPatologia = [];
+        var objetoLista;
+        var arraynumeroPerOrgConPatolo = [];
+        var arraynumeroPerOrgSinPatologia = [];
+        var arraynumeroPerRespiConPatolo = [];
+        var arraynumeroPerRespiSinPatologia = [];
+        var arraynumeroPerCardioVascuConPatolo = [];
+        var arraynumeroPerCardioVascuSinPatologia = [];
+        var arraynumeroPerDigesConPatolo = [];
+        var arraynumeroPerDigesSinPatologia = [];
+        var arraynumeroPerGenitConPatolo = [];
+        var arraynumeroPerGenitSinPatologia = [];
+        var arraynumeroPerUrinConPatolo = [];
+        var arraynumeroPerUrinSinPatologia = [];
+        var arraynumeroPerMuscuConPatolo = [];
+        var arraynumeroPerMuscuSinPatologia = [];
+        var arraynumeroPerEsqueConPatolo = [];
+        var arraynumeroPerEsqueSinPatologia = [];
+        var arraynumeroPerNerviConPatolo = [];
+        var arraynumeroPerNerviSinPatologia = [];
+        var arraynumeroPerEndocConPatolo = [];
+        var arraynumeroPerEndocSinPatologia = [];
+        var arraynumeroPerHemoLinfaticoConPatolo = [];
+        var arraynumeroPerHemoLinfaticoSinPatologia = [];
+        var arraynumeroPerTegumenConPatolo = [];
+        var arraynumeroPerTegumenSinPatologia = [];
 
-    jQuery.ajax({
-        url: 'Inicio.aspx/ListaNPersonas',
-        type: "POST",
-        dataType: "JSON",
-        contentType: "application/json; charset=utf-8",
-        success: function (data) {
-            objetoLista = data.d;
+        jQuery.ajax({
+            url: 'Inicio.aspx/ListaNPersonas',
+            type: "POST",
+            dataType: "JSON",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                objetoLista = data.d;
 
-            console.log(objetoLista);
+                console.log(objetoLista);
 
-            for (var i = 0; i < objetoLista.length; i++) {
-                arraynumeroPerOrgConPatolo.push(objetoLista[i][0]);
-                arraynumeroPerOrgSinPatologia.push(objetoLista[i][1]);
-                arraynumeroPerRespiConPatolo.push(objetoLista[i][2]);
-                arraynumeroPerRespiSinPatologia.push(objetoLista[i][3]);
-                arraynumeroPerCardioVascuConPatolo.push(objetoLista[i][4]);
-                arraynumeroPerCardioVascuSinPatologia.push(objetoLista[i][5]);
-                arraynumeroPerDigesConPatolo.push(objetoLista[i][6]);
-                arraynumeroPerDigesSinPatologia.push(objetoLista[i][7]);
-                arraynumeroPerGenitConPatolo.push(objetoLista[i][8]);
-                arraynumeroPerGenitSinPatologia.push(objetoLista[i][9]);
-                arraynumeroPerUrinConPatolo.push(objetoLista[i][10]);
-                arraynumeroPerUrinSinPatologia.push(objetoLista[i][11]);
-                arraynumeroPerMuscuConPatolo.push(objetoLista[i][12]);
-                arraynumeroPerMuscuSinPatologia.push(objetoLista[i][13]);
-                arraynumeroPerEsqueConPatolo.push(objetoLista[i][14]);
-                arraynumeroPerEsqueSinPatologia.push(objetoLista[i][15]);
-                arraynumeroPerNerviConPatolo.push(objetoLista[i][16]);
-                arraynumeroPerNerviSinPatologia.push(objetoLista[i][17]);
-                arraynumeroPerEndocConPatolo.push(objetoLista[i][18]);
-                arraynumeroPerEndocSinPatologia.push(objetoLista[i][19]);
-                arraynumeroPerHemoLinfaticoConPatolo.push(objetoLista[i][20]);
-                arraynumeroPerHemoLinfaticoSinPatologia.push(objetoLista[i][21]);
-                arraynumeroPerTegumenConPatolo.push(objetoLista[i][22]);
-                arraynumeroPerTegumenSinPatologia.push(objetoLista[i][23]);
-            }
+                for (var i = 0; i < objetoLista.length; i++) {
+                    arraynumeroPerOrgConPatolo.push(objetoLista[i][0]);
+                    arraynumeroPerOrgSinPatologia.push(objetoLista[i][1]);
+                    arraynumeroPerRespiConPatolo.push(objetoLista[i][2]);
+                    arraynumeroPerRespiSinPatologia.push(objetoLista[i][3]);
+                    arraynumeroPerCardioVascuConPatolo.push(objetoLista[i][4]);
+                    arraynumeroPerCardioVascuSinPatologia.push(objetoLista[i][5]);
+                    arraynumeroPerDigesConPatolo.push(objetoLista[i][6]);
+                    arraynumeroPerDigesSinPatologia.push(objetoLista[i][7]);
+                    arraynumeroPerGenitConPatolo.push(objetoLista[i][8]);
+                    arraynumeroPerGenitSinPatologia.push(objetoLista[i][9]);
+                    arraynumeroPerUrinConPatolo.push(objetoLista[i][10]);
+                    arraynumeroPerUrinSinPatologia.push(objetoLista[i][11]);
+                    arraynumeroPerMuscuConPatolo.push(objetoLista[i][12]);
+                    arraynumeroPerMuscuSinPatologia.push(objetoLista[i][13]);
+                    arraynumeroPerEsqueConPatolo.push(objetoLista[i][14]);
+                    arraynumeroPerEsqueSinPatologia.push(objetoLista[i][15]);
+                    arraynumeroPerNerviConPatolo.push(objetoLista[i][16]);
+                    arraynumeroPerNerviSinPatologia.push(objetoLista[i][17]);
+                    arraynumeroPerEndocConPatolo.push(objetoLista[i][18]);
+                    arraynumeroPerEndocSinPatologia.push(objetoLista[i][19]);
+                    arraynumeroPerHemoLinfaticoConPatolo.push(objetoLista[i][20]);
+                    arraynumeroPerHemoLinfaticoSinPatologia.push(objetoLista[i][21]);
+                    arraynumeroPerTegumenConPatolo.push(objetoLista[i][22]);
+                    arraynumeroPerTegumenSinPatologia.push(objetoLista[i][23]);
+                }
 
-            const $grafica = document.querySelector("#myChart");
-            const etiquetas = ["ÓRGANOS / SENTIDOS", "RESPIRATORIO", "CARDIO VASCULAR", "DIGESTIVO", "GENITAL", "URINARIO", "MUSCULAR", "ESQUELÉTICO", "NERVIOSO", "ENDOCRINO", "HEMO LINFÁTICO", "TEGUMENTARIO"];
+                const $grafica = document.querySelector("#myChart");
+                const etiquetas = ["ÓRGANOS / SENTIDOS", "RESPIRATORIO", "CARDIO VASCULAR", "DIGESTIVO", "GENITAL", "URINARIO", "MUSCULAR", "ESQUELÉTICO", "NERVIOSO", "ENDOCRINO", "HEMO LINFÁTICO", "TEGUMENTARIO"];
 
-            const datosConPatologia = {
-                label: "CON PATOLOGÍA",
-                data: [
-                    arraynumeroPerOrgConPatolo[0],
-                    arraynumeroPerRespiConPatolo[0],
-                    arraynumeroPerCardioVascuConPatolo[0],
-                    arraynumeroPerDigesConPatolo[0],
-                    arraynumeroPerGenitConPatolo[0],
-                    arraynumeroPerUrinConPatolo[0],
-                    arraynumeroPerMuscuConPatolo[0],
-                    arraynumeroPerEsqueConPatolo[0],
-                    arraynumeroPerNerviConPatolo[0],
-                    arraynumeroPerEndocConPatolo[0],
-                    arraynumeroPerHemoLinfaticoConPatolo[0],
-                    arraynumeroPerTegumenConPatolo[0]
-                ],
-                backgroundColor: 'rgba(255, 0, 0, 0.5)', // Rojo con transparencia
-                borderColor: 'rgba(255, 0, 0, 1)', // Rojo sin transparencia
-                borderWidth: 1
-            };
+                const datosConPatologia = {
+                    label: "CON PATOLOGÍA",
+                    data: [
+                        arraynumeroPerOrgConPatolo[0],
+                        arraynumeroPerRespiConPatolo[0],
+                        arraynumeroPerCardioVascuConPatolo[0],
+                        arraynumeroPerDigesConPatolo[0],
+                        arraynumeroPerGenitConPatolo[0],
+                        arraynumeroPerUrinConPatolo[0],
+                        arraynumeroPerMuscuConPatolo[0],
+                        arraynumeroPerEsqueConPatolo[0],
+                        arraynumeroPerNerviConPatolo[0],
+                        arraynumeroPerEndocConPatolo[0],
+                        arraynumeroPerHemoLinfaticoConPatolo[0],
+                        arraynumeroPerTegumenConPatolo[0]
+                    ],
+                    backgroundColor: 'rgba(255, 0, 0, 0.5)', // Rojo con transparencia
+                    borderColor: 'rgba(255, 0, 0, 1)', // Rojo sin transparencia
+                    borderWidth: 1
+                };
 
-            const datosSinPatologia = {
-                label: "SIN PATOLOGÍA",
-                data: [
-                    arraynumeroPerOrgSinPatologia[0],
-                    arraynumeroPerRespiSinPatologia[0],
-                    arraynumeroPerCardioVascuSinPatologia[0],
-                    arraynumeroPerDigesSinPatologia[0],
-                    arraynumeroPerGenitSinPatologia[0],
-                    arraynumeroPerUrinSinPatologia[0],
-                    arraynumeroPerMuscuSinPatologia[0],
-                    arraynumeroPerEsqueSinPatologia[0],
-                    arraynumeroPerNerviSinPatologia[0],
-                    arraynumeroPerEndocSinPatologia[0],
-                    arraynumeroPerHemoLinfaticoSinPatologia[0],
-                    arraynumeroPerTegumenSinPatologia[0]
-                ],
-                backgroundColor: 'rgba(0, 123, 255, 0.5)',
-                borderColor: 'rgba(0, 123, 255, 1)',
-                borderWidth: 1
-            };
+                const datosSinPatologia = {
+                    label: "SIN PATOLOGÍA",
+                    data: [
+                        arraynumeroPerOrgSinPatologia[0],
+                        arraynumeroPerRespiSinPatologia[0],
+                        arraynumeroPerCardioVascuSinPatologia[0],
+                        arraynumeroPerDigesSinPatologia[0],
+                        arraynumeroPerGenitSinPatologia[0],
+                        arraynumeroPerUrinSinPatologia[0],
+                        arraynumeroPerMuscuSinPatologia[0],
+                        arraynumeroPerEsqueSinPatologia[0],
+                        arraynumeroPerNerviSinPatologia[0],
+                        arraynumeroPerEndocSinPatologia[0],
+                        arraynumeroPerHemoLinfaticoSinPatologia[0],
+                        arraynumeroPerTegumenSinPatologia[0]
+                    ],
+                    backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    borderWidth: 1
+                };
 
-            new Chart($grafica, {
-                type: 'bar',
-                data: {
-                    labels: etiquetas,
-                    datasets: [
-                        datosConPatologia,
-                        datosSinPatologia
-                    ]
-                },
-                options: {
-                    title: {
-                        display: true,
-                        text: 'ÓRGANOS Y SISTEMAS'
+                new Chart($grafica, {
+                    type: 'bar',
+                    data: {
+                        labels: etiquetas,
+                        datasets: [
+                            datosConPatologia,
+                            datosSinPatologia
+                        ]
                     },
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]  
-                    },
-                    plugins: {
-                        tooltip: {
-                            enabled: true,
-                            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                            callbacks: {
-                                label: function (context) {
-                                    return 'VALOR: ' + context.parsed.y;
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'ÓRGANOS Y SISTEMAS'
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        },
+                        plugins: {
+                            tooltip: {
+                                enabled: true,
+                                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                                callbacks: {
+                                    label: function (context) {
+                                        return 'VALOR: ' + context.parsed.y;
+                                    }
                                 }
                             }
                         }
                     }
-                }
-            });
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    });
+                });
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
     </script>
 
 

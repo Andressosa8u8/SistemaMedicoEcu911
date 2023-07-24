@@ -124,6 +124,7 @@
                             </a>
                             <div class="collapse" id="registradas">
                                 <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item"><a class="nav-link" href="Registros_Ficha_Medica.aspx">Fichas Médica</a></li>
                                     <li class="nav-item"><a class="nav-link" href="Registros_HC_Inicial.aspx">Fichas Inicial</a></li>
                                     <li class="nav-item"><a class="nav-link" href="Registros_HC_Periodica.aspx">Fichas Periódica</a></li>
                                     <li class="nav-item"><a class="nav-link" href="Registros_HC_Reintegro.aspx">Fichas Reintegro</a></li>

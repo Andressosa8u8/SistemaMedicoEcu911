@@ -10,22 +10,22 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Content" runat="server">
     <div class="main-panel" style="width: auto">
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="background-color:white">
             <div class="row">
                 <div class="col-12 grid-margin">
-                    <div class="card">
+                    <div class="card" style="border:none">
                         <div class="card-body">
                             <h4 class="card-title">
                                 <%--<i class="fas fa-envelope"></i>--%>
                                 <i class="fa-solid fa-hospital-user"></i>
-                                ANTECEDENTES PERSONALES
+                                DIAGNOSTICOS DE PACIENTES
                             </h4>
                         </div>
                     </div>
 
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
-                            <div class="card" style="width: auto;">
+                            <div class="card" style="width: auto; border: none">
                                 <div class="list-group list-group-flush" style="padding: 10px; text-align: center">
                                     <div class="container">
                                         <div class="row justify-content-center">

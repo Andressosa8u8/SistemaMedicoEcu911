@@ -10,10 +10,10 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Content" runat="server">
     <div class="main-panel" style="width: auto">
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="background-color:white">
             <div class="row">
                 <div class="col-12 grid-margin">
-                    <div class="card">
+                    <div class="card" style="border:none">
                         <div class="card-body">
                             <h4 class="card-title">
                                 <%--<i class="fas fa-envelope"></i>--%>
@@ -25,7 +25,7 @@
 
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
-                            <div class="card" style="width: auto;">
+                            <div class="card" style="width: auto; border: none">
                                 <div class="list-group list-group-flush" style="padding: 10px; text-align: center">
                                     <div class="container">
                                         <div class="row justify-content-center">
@@ -47,9 +47,9 @@
                                                                 <asp:Label ID="APELLIDO" runat="server" Text='<%#Eval("Per_priApellido")%>'></asp:Label>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
-                                                        <asp:TemplateField HeaderText="ANTECEDENTES PERSONALES">
+                                                        <asp:TemplateField HeaderText="ANTECEDENTE PERSONAL">
                                                             <ItemTemplate>
-                                                                <asp:Label ID="ANTECEDENTESPERSONALES" runat="server" Text='<%#Eval("Antecedentes")%>'></asp:Label>
+                                                                <asp:Label ID="ANTECEDENTEPERSONAL" runat="server" Text='<%#Eval("Antecedentes")%>'></asp:Label>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
                                                         <asp:TemplateField HeaderText="DESCRIPCION">
@@ -106,9 +106,9 @@
                     { "data": "Per_cedula", "title": "CÉDULA" },
                     { "data": "Per_priNombre", "title": "NOMBRE" },
                     { "data": "Per_priApellido", "title": "APELLIDO" },
-                    { "data": "Antecedentes", "title": "ANTECEDENTES PERSONALES" },
+                    { "data": "Antecedentes", "title": "ANTECEDENTE PERSONAL" },
                     { "data": "Descripcion", "title": "DESCRIPCION" },
-                    { "data": "Fecha", "title": "RECHA DE REGISTRO" },
+                    { "data": "Fecha", "title": "FECHA DE REGISTRO" },
 
                     null // Columna de EDICIÓN sin datos específicos
                 ],

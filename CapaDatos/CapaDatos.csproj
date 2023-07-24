@@ -80,6 +80,7 @@
     <None Include="app.config" />
     <None Include="DataClassesECU911.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClassesECU911.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="DataClassesECU911.dbml.layout">

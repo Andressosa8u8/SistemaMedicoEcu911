@@ -9,63 +9,18 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Content" runat="server">
     <div class="main-panel" style="width: auto">
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="background-color: white">
             <div class="row">
                 <div class="col-12 grid-margin">
-                    <div class="card card-statistics">
-                        <div class="card-body">
-                            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
-                                <div class="statistics-item">
-                                    <p>
-                                        <i class="fas fa-clipboard-list mr-2"></i>
-                                        PACIENTES INACTIVOS
-                                    </p>
-                                    <asp:Label ID="totalInactivos" CssClass="h2" runat="server" Text=""></asp:Label>
-                                    <br />
-                                </div>
-                                <div class="statistics-item">
-                                    <p>
-                                        <i class="fas fa-user-injured mr-2"></i>
-                                        PACIENTES ACTIVOS
-                                    </p>
-                                    <asp:Label ID="totalPacientes" CssClass="h2" runat="server" Text=""></asp:Label>
-                                    <br />
-                                </div>
-                                <div class="statistics-item">
-                                    <p>
-                                        <i class="fas fa-user-friends mr-2"></i>
-                                        PACIENTES ECU
-                                    </p>
-                                    <asp:Label ID="totalEcu" CssClass="h2" runat="server" Text=""></asp:Label>
-                                </div>
-                                <div class="statistics-item">
-                                    <p>
-                                        <i class="fas fa-user-nurse mr-2"></i>
-                                        PACIENTES ARTICULADOS
-                                    </p>
-                                    <asp:Label ID="totalArticulados" CssClass="h2" runat="server" Text=""></asp:Label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 grid-margin">
-                    <div class="card">
-                        <div class="card-body">
-                            <canvas id="myChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 grid-margin">
-                    <div class="card">
+                    <div class="card" style="border:none">
                         <div class="card-body">
                             <h4 class="card-title">                                
                                 <i class="fa-solid fa-hospital-user"></i>
-                                PACIENTES
+                                MEDICOS
                             </h4>
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
-                                    <div class="card" style="width: auto;">
+                                    <div class="card" style="width: auto;border:none">
                                         <div class="list-group list-group-flush" style="padding: 10px; width:100%" text-align: center">
                                             <div class="container">
                                                 <div class="row justify-content-center">
@@ -101,7 +56,7 @@
                             </asp:UpdatePanel>
                         </div>
                     </div>
-                </div>
+                </div>                
             </div>
         </div>
     </div>

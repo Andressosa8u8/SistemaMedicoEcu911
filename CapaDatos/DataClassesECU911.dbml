@@ -22,6 +22,7 @@
       <Column Name="cent_dirrecionInstitucional" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="cent_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Centro_Tbl_Person" Member="Tbl_Person" ThisKey="cent_id" OtherKey="cent_id" Type="Tbl_Person" />
+      <Association Name="Tbl_Centro_Tbl_Profesional" Member="Tbl_Profesional" ThisKey="cent_id" OtherKey="cent_id" Type="Tbl_Profesional" />
     </Type>
   </Table>
   <Table Name="dbo.Tbl_Certificado" Member="Tbl_Certificado">
@@ -87,6 +88,7 @@
       <Column Name="espec_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Especialidad_Tbl_FichasMedicas" Member="Tbl_FichasMedicas" ThisKey="espec_id" OtherKey="espec_id" Type="Tbl_FichasMedicas" />
       <Association Name="Tbl_Especialidad_Tbl_Periodica" Member="Tbl_Periodica" ThisKey="espec_id" OtherKey="espec_id" Type="Tbl_Periodica" />
+      <Association Name="Tbl_Especialidad_Tbl_Profesional" Member="Tbl_Profesional" ThisKey="espec_id" OtherKey="espec_id" Type="Tbl_Profesional" />
       <Association Name="Tbl_Especialidad_Tbl_Reintegro" Member="Tbl_Reintegro" ThisKey="espec_id" OtherKey="espec_id" Type="Tbl_Reintegro" />
       <Association Name="Tbl_Especialidad_Tbl_Retiro" Member="Tbl_Retiro" ThisKey="espec_id" OtherKey="espec_id" Type="Tbl_Retiro" />
     </Type>
@@ -1573,8 +1575,10 @@
   <Table Name="dbo.Tbl_Profesional" Member="Tbl_Profesional">
     <Type Name="Tbl_Profesional">
       <Column Name="prof_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="prof_NomApe" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="prof_cedula" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="prof_NomApe" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="espec_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cent_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="prof_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Profesional_Tbl_Certificado" Member="Tbl_Certificado" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_Certificado" />
       <Association Name="Tbl_Profesional_Tbl_FichasMedicas" Member="Tbl_FichasMedicas" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_FichasMedicas" />
@@ -1582,6 +1586,8 @@
       <Association Name="Tbl_Profesional_Tbl_Periodica" Member="Tbl_Periodica" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_Periodica" />
       <Association Name="Tbl_Profesional_Tbl_Reintegro" Member="Tbl_Reintegro" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_Reintegro" />
       <Association Name="Tbl_Profesional_Tbl_Retiro" Member="Tbl_Retiro" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_Retiro" />
+      <Association Name="Tbl_Centro_Tbl_Profesional" Member="Tbl_Centro" ThisKey="cent_id" OtherKey="cent_id" Type="Tbl_Centro" IsForeignKey="true" />
+      <Association Name="Tbl_Especialidad_Tbl_Profesional" Member="Tbl_Especialidad" ThisKey="espec_id" OtherKey="espec_id" Type="Tbl_Especialidad" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Tbl_Reintegro" Member="Tbl_Reintegro">
@@ -2100,16 +2106,16 @@
       <Column Name="TiEnf_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Function Name="dbo.AutentificarxUsuario" Method="AutentificarxUsuario">
-    <Parameter Name="Usuario" Parameter="usuario" Type="System.String" DbType="VarChar(25)" />
-    <ElementType Name="AutentificarxUsuarioResult">
-      <Column Name="Per_nomlogin" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.Sp_Npersona_puestoTrabajo" Method="Sp_Npersona_puestoTrabajo">
     <ElementType Name="Sp_Npersona_puestoTrabajoResult">
       <Column Name="Per_puestoTrabajo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="numero_personas" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.AutentificarxUsuario" Method="AutentificarxUsuario">
+    <Parameter Name="Usuario" Parameter="usuario" Type="System.String" DbType="VarChar(25)" />
+    <ElementType Name="AutentificarxUsuarioResult">
+      <Column Name="Per_nomlogin" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.CargarImagen" Method="CargarImagen">
@@ -2143,5 +2149,33 @@
     <Parameter Name="cedula" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="imagen" Type="System.Data.Linq.Binary" DbType="Image" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Sp_Grafico_OrganosYSistemas" Method="Sp_Grafico_OrganosYSistemas">
+    <ElementType Name="Sp_Grafico_OrganosYSistemasResult">
+      <Column Name="CantPersonaOrgSentConPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaOrgSentSinPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaRespiConPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaRespiSinPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaCardioVascConPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaCardioVascSinPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaDigestivoConPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaDigestivoSinPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaGenitalConPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaGenitalSinPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaUrinarioConPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaUrinarioSinPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaMuscularConPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaMuscularSinPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaEsqueleticoConPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaEsqueleticoSinPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaNerviosoConPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaNerviosoSinPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaEndocrinoConPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaEndocrinoSinPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaHemoLinfaticoConPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaHemoLinfaticoSinPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaTegumentarioConPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaTegumentarioSinPatologia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
   </Function>
 </Database>

@@ -28,7 +28,7 @@ namespace SistemaECU911.views.Administrador_Medico
                             p.Per_cedula,
                             p.Per_priNombre,
                             p.Per_priApellido,
-                            Antecedentes = fm.idTipAntecedentePer == 0 ? "SIN ANTECENDENTES" :
+                            Antecedentes = fm.idTipAntecedentePer == 0 ? "SIN ANTECENDENTE" :
                                            fm.idTipAntecedentePer == 1 ? "ENFERMEDAD CARDIO VASCULAR" :
                                            fm.idTipAntecedentePer == 2 ? "ENFERMEDAD METABÓLICA" :
                                            fm.idTipAntecedentePer == 3 ? "ENFERMEDAD NEUROLÓGICA" :
