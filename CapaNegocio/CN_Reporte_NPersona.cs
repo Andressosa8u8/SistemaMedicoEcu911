@@ -15,5 +15,11 @@ namespace CapaNegocio
             var olista = dc.Sp_Npersona_puestoTrabajo();
             return olista.ToList();
         }
+
+        public static List<Sp_Grafico_OrganosYSistemasResult> Reporte_Sp_Grafico_OrganosYSistemas()
+        {
+            var olista = dc.Sp_Grafico_OrganosYSistemas().ToList();
+            return olista.ToList();
+        }
     }
 }
