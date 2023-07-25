@@ -65,6 +65,7 @@ namespace SistemaECU911.Template.Views
                 Timer1.Enabled = false;
                 //CargarZonales();
                 Validaciones();
+                ddl_estado.Text = "A";
             }
         }
 

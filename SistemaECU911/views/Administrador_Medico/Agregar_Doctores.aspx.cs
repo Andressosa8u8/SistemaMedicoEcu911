@@ -42,7 +42,7 @@ namespace SistemaECU911.views.Administrador_Medico
                 }
                 Timer1.Enabled = false;
                 Validaciones();
-                ddl_estado.Text = "ACTIVO";
+                ddl_estado.Text = "A";
                 cargarEspecialidad();
             }
         }

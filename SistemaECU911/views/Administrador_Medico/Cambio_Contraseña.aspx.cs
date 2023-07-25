@@ -46,6 +46,7 @@ namespace SistemaECU911.Template.Views
                             per.Per_pass = GetMD5(txt_passNueva.Text);
                             CN_Usuarios.ModificarUsuarios(per);
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Su clave a sido modificada con exito.', 'success')", true);
+                            Timer1.Enabled = true;
                             Limpiar();
                         }
                         else
@@ -56,8 +57,7 @@ namespace SistemaECU911.Template.Views
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'La contraseña anterior ingresada es incorrecta.', 'error')", true);
-                    Timer1.Enabled = true;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'La contraseña anterior ingresada es incorrecta.', 'error')", true);                    
                 }
             }
             catch (Exception ex)
