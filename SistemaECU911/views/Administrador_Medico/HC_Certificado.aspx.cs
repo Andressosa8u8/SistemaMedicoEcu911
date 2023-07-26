@@ -46,7 +46,8 @@ namespace SistemaECU911.Template.Views
                     {
 
                         txt_numHClinica.ReadOnly = true;
-
+                        cargarProfesional();
+                        ddl_profesional.Enabled = false;
                         //Datos Generales
                         if (certi.certi_ingreso == null)
                         {
@@ -192,8 +193,8 @@ namespace SistemaECU911.Template.Views
                             ckb_noAplicaCondiSalud.Checked = true;
                         }
 
-                        txt_nomEmpresa.Text = emp.Emp_nombre.ToString(); 
-                        txt_rucEmp.Text = cen.cent_ruc.ToString();
+                        txt_nomEmpresa.Text = emp.Emp_nombre.ToString();
+                        //txt_rucEmp.Text = cen.cent_ruc.ToString();
                         txt_priNombre.Text = per.Per_priNombre.ToString();
                         txt_segNombre.Text = per.Per_segNombre.ToString();
                         txt_priApellido.Text = per.Per_priApellido.ToString();
@@ -235,7 +236,7 @@ namespace SistemaECU911.Template.Views
                 txt_numHClinica.MaxLength = 10;
                 Timer1.Enabled = false;
                 cargarProfesional();
-                txt_fechahora.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");                
+                txt_fechahora.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
             }
         }
 
@@ -351,75 +352,75 @@ namespace SistemaECU911.Template.Views
                 //Datos Generales
                 if (ckb_ingreso.Checked == true)
                 {
-                    certi.certi_ingreso = "SI";                    
+                    certi.certi_ingreso = "SI";
                 }
                 if (ckb_periodico.Checked == true)
                 {
-                    certi.certi_periodico = "SI";                    
+                    certi.certi_periodico = "SI";
                 }
                 if (ckb_reintegro.Checked == true)
                 {
-                    certi.certi_reintegro = "SI";                    
+                    certi.certi_reintegro = "SI";
                 }
                 if (ckb_retiro.Checked == true)
                 {
-                    certi.certi_retiro = "SI";                    
+                    certi.certi_retiro = "SI";
                 }
 
                 //Aptitud Medica para el trabajo
                 if (ckb_apto.Checked == true)
                 {
-                    certi.certi_apto = "SI";                    
+                    certi.certi_apto = "SI";
                 }
 
                 if (ckb_aptoObservacion.Checked == true)
                 {
-                    certi.certi_aptoObserva = "SI";                    
+                    certi.certi_aptoObserva = "SI";
                 }
 
                 if (ckb_aptoLimitaciones.Checked == true)
                 {
-                    certi.certi_aptoLimi = "SI";                    
+                    certi.certi_aptoLimi = "SI";
                 }
 
                 if (ckb_noApto.Checked == true)
                 {
-                    certi.certi_NoApto = "SI";                    
+                    certi.certi_NoApto = "SI";
                 }
 
 
                 // Evaluación Médica de retiro
                 if (ckb_siEvaMedRetiro.Checked == true)
                 {
-                    certi.certi_siUsuEvaMed = "SI";                    
+                    certi.certi_siUsuEvaMed = "SI";
                 }
                 if (ckb_noEvaMedRetiro.Checked == true)
                 {
-                    certi.certi_noUsuEvaMed = "SI";                    
+                    certi.certi_noUsuEvaMed = "SI";
                 }
                 if (ckb_presuntivaCondiDiag.Checked == true)
                 {
-                    certi.certi_presunCondiDiag = "SI";                    
+                    certi.certi_presunCondiDiag = "SI";
                 }
                 if (ckb_definitivaCondiDiag.Checked == true)
                 {
-                    certi.certi_defiCondiDiag = "SI";                    
+                    certi.certi_defiCondiDiag = "SI";
                 }
                 if (ckb_noAplicaCondiDiag.Checked == true)
                 {
-                    certi.certi_noAplicaCondiDiag = "SI";                    
+                    certi.certi_noAplicaCondiDiag = "SI";
                 }
                 if (ckb_siCondiSalud.Checked == true)
                 {
-                    certi.certi_siCondiSalud = "SI";                    
+                    certi.certi_siCondiSalud = "SI";
                 }
                 if (ckb_noCondiSalud.Checked == true)
                 {
-                    certi.certi_noCondiSalud = "SI";                    ;
+                    certi.certi_noCondiSalud = "SI"; ;
                 }
                 if (ckb_noAplicaCondiSalud.Checked == true)
                 {
-                    certi.certi_noAplicaCondiSalud = "SI";                    
+                    certi.certi_noAplicaCondiSalud = "SI";
                 }
 
                 //A
@@ -448,7 +449,7 @@ namespace SistemaECU911.Template.Views
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Exito!', 'Datos Guardados Exitosamente', 'success')", true);
                 Timer1.Enabled = true;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Datos No Guardados', 'error')", true);
             }
@@ -644,7 +645,7 @@ namespace SistemaECU911.Template.Views
             }
         }
 
-        
+
 
         protected void btn_guardacertificado_Click(object sender, EventArgs e)
         {
@@ -1087,5 +1088,5 @@ namespace SistemaECU911.Template.Views
         }
 
     }
-   
+
 }

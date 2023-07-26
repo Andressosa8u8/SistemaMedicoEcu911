@@ -46,6 +46,9 @@ namespace SistemaECU911.Template.Views
                     {
 
                         txt_numHClinica.ReadOnly = true;
+                        cargarProfesional();
+                        ddl_profesional.Enabled = false;
+
 
                         //ANTECEDENTES PERSONALES
                         //----------- ACCIDENTES DE TRABAJO ( DESCRIPCIÓN) -----------
@@ -521,7 +524,7 @@ namespace SistemaECU911.Template.Views
 
                         //A
                         txt_nomEmpresa.Text = emp.Emp_nombre.ToString();
-                        txt_rucEmp.Text = cen.cent_ruc.ToString();
+                        //txt_rucEmp.Text = cen.cent_ruc.ToString();
                         txt_priNombre.Text = per.Per_priNombre.ToString();
                         txt_segNombre.Text = per.Per_segNombre.ToString();
                         txt_priApellido.Text = per.Per_priApellido.ToString();
@@ -550,7 +553,7 @@ namespace SistemaECU911.Template.Views
                             else
                             {
                                 txt_fechaSalida.Text = Convert.ToDateTime(reti.ret_fechSalida).ToString("yyyy-MM-dd");
-                            }                            
+                            }
                             txt_tiempo.Text = reti.ret_tiempo.ToString();
                             txt_actividades1.Text = reti.ret_actividades.ToString();
                             txt_facRiesgo1.Text = reti.ret_facRiesgo.ToString();
@@ -570,7 +573,7 @@ namespace SistemaECU911.Template.Views
                             else
                             {
                                 txt_fechaCalificadoIESSAcciTrabajo.Text = Convert.ToDateTime(reti.ret_fechaCalificadoIESSAcciTrabajo).ToString("yyyy-MM-dd");
-                            }                            
+                            }
                             txt_observacionesAcciTrabajo.Text = reti.ret_observacionesAcciTrabajo.ToString();
                             txt_detalleAcciTrabajo.Text = reti.ret_detalleAcciTrabajo.ToString();
 
@@ -582,7 +585,7 @@ namespace SistemaECU911.Template.Views
                             else
                             {
                                 txt_fechaCalificadoIESSEnferProfesionales.Text = Convert.ToDateTime(reti.ret_fechaCalificadoIESSEnferProfesionales).ToString("yyyy-MM-dd");
-                            }                            
+                            }
                             txt_observacionesEnferProfesionales.Text = reti.ret_observacionesEnferProfesionales.ToString();
                             txt_detalleEnferProfesionales.Text = reti.ret_detalleEnferProfesionales.ToString();
 
@@ -609,7 +612,7 @@ namespace SistemaECU911.Template.Views
                             else
                             {
                                 txt_fechaexamen.Text = Convert.ToDateTime(reti.ret_fecha).ToString("yyyy-MM-dd");
-                            }                            
+                            }
                             txt_resultadoexamen.Text = reti.ret_resultados.ToString();
                             txt_examen2.Text = reti.ret_examen2.ToString();
                             if (reti.ret_fecha2 == "")
@@ -854,7 +857,7 @@ namespace SistemaECU911.Template.Views
 
                 //ANTECEDENTES PERSONALES
                 //----------- ACCIDENTES DE TRABAJO ( DESCRIPCIÓN) -----------
-                if (ckb_siCalificadoIESSAcciTrabajo.Checked ==  true)
+                if (ckb_siCalificadoIESSAcciTrabajo.Checked == true)
                 {
                     reti.ret_siCalificadoIESSAcciTrabajo = "SI";
                 }
@@ -1064,7 +1067,7 @@ namespace SistemaECU911.Template.Views
                 //EVALUACIÓN MÉDICA DE RETIRO
                 if (ckb_sievamed.Checked == true)
                 {
-                    reti.ret_si = "SI";                    
+                    reti.ret_si = "SI";
                 }
                 if (ckb_noevamed.Checked == true)
                 {
@@ -1843,7 +1846,7 @@ namespace SistemaECU911.Template.Views
             }
         }
 
-        
+
 
         protected void ckb_pre_CheckedChanged(object sender, EventArgs e)
         {

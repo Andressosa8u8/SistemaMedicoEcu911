@@ -17,19 +17,19 @@ using iTextSharp.text.pdf;
 
 namespace SistemaECU911.Template.Views
 {
-	public partial class Inicial : System.Web.UI.Page
-	{
+    public partial class Inicial : System.Web.UI.Page
+    {
 
-		private readonly DataClassesECU911DataContext dc = new DataClassesECU911DataContext();
+        private readonly DataClassesECU911DataContext dc = new DataClassesECU911DataContext();
 
         private Tbl_Person per = new Tbl_Person();
         private Tbl_Empresa emp = new Tbl_Empresa();
         private Tbl_Centro cen = new Tbl_Centro();
         private Tbl_Inicial inicial = new Tbl_Inicial();
-       
+
 
         protected void Page_Load(object sender, EventArgs e)
-		{
+        {
             if (!IsPostBack)
             {
                 if (Request["cod"] != null)
@@ -46,12 +46,14 @@ namespace SistemaECU911.Template.Views
                     if (per != null || emp != null)
                     {
                         txt_numHClinica.ReadOnly = true;
+                        cargarProfesional();
+                        ddl_profesional.Enabled = false;
 
                         //Religion
                         if (inicial.inicial_catolicaRel == null)
                         {
                             ckb_catolica.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -60,7 +62,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_evangelicaRel == null)
                         {
                             ckb_evangelica.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -69,7 +71,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_testJehovaRel == null)
                         {
                             ckb_testigo.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -78,7 +80,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_mormonaRel == null)
                         {
                             ckb_mormona.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -87,7 +89,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_otrasRel == null)
                         {
                             ckb_otrareligion.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -98,7 +100,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_gayOriSex == null)
                         {
                             cbk_gay.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -115,7 +117,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_bisexualOriSex == null)
                         {
                             cbk_bisexual.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -124,7 +126,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_heterosexualOriSex == null)
                         {
                             cbk_heterosexual.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -133,7 +135,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_norespondeOriSex == null)
                         {
                             cbk_noRespondeOriSex.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -144,7 +146,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_femeninoIdenGen == null)
                         {
                             cbk_femenino.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -153,7 +155,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_masculinoIdenGen == null)
                         {
                             cbk_masculino.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -162,7 +164,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_transFemeninoIdenGen == null)
                         {
                             cbk_transfemenino.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -171,7 +173,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_transMasculinoIdenGen == null)
                         {
                             cbk_transmasculino.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -180,7 +182,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_norespondeIdenGen == null)
                         {
                             cbk_noRespondeIdeGen.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -191,7 +193,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_siDis == null)
                         {
                             cbk_sidiscapacidad.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -200,7 +202,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_noDis == null)
                         {
                             cbk_nodiscapacidad.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -211,7 +213,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_siVidaSexActiva == null)
                         {
                             ckb_siVidSexAntGinObste.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -220,7 +222,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_noVidaSexActiva == null)
                         {
                             ckb_noVidSexAntGinObste.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -231,7 +233,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_siMetPlanifiFamiliar == null)
                         {
                             ckb_siMetPlaniAntGinObste.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -240,7 +242,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_noMetPlanifiFamiliar == null)
                         {
                             ckb_noMetPlaniAntGinObste.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -251,7 +253,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_siExaRealiPapanicolaou == null)
                         {
                             ckb_siPapaniAntGinObste.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -260,7 +262,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_noExaRealiPapanicolaou == null)
                         {
                             ckb_noPapaniAntGinObste.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -271,7 +273,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_siExaRealiEcoMamario == null)
                         {
                             ckb_siEcoMamaAntGinObste.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -280,7 +282,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_noExaRealiEcoMamario == null)
                         {
                             ckb_noEcoMamaAntGinObste.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -291,7 +293,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_siExaRealiColposcopia == null)
                         {
                             ckb_siColposAntGinObste.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -300,7 +302,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_noExaRealiColposcopia == null)
                         {
                             ckb_siMamograAntGinObste.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -319,7 +321,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_noExaRealiMamografia == null)
                         {
                             ckb_noMamograAntGinObste.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -330,7 +332,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_siExaRealiAntiProstatico == null)
                         {
                             ckb_siExaRealiAntProstaAntReproMascu.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -339,7 +341,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_noExaRealiAntiProstatico == null)
                         {
                             ckb_noExaRealiAntProstaAntReproMascu.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -350,7 +352,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_siMetPlanifiFamiAntReproMascu == null)
                         {
                             ckb_siMetPlaniAntReproMascu.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -359,7 +361,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_noMetPlanifiFamiAntReproMascu == null)
                         {
                             ckb_noMetPlaniAntReproMascu.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -370,7 +372,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_siExaRealiEcoProstatico == null)
                         {
                             ckb_siExaRealiEcoProstaAntReproMascu.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -379,7 +381,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_noExaRealiEcoProstatico == null)
                         {
                             ckb_noExaRealiEcoProstaAntReproMascu.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -390,7 +392,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_siConsuNocivosTabaco == null)
                         {
                             ckb_siConsuNociTabaHabToxi.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -399,7 +401,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_noConsuNocivosTabaco == null)
                         {
                             ckb_noConsuNociTabaHabToxi.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -410,7 +412,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_siConsuNocivosAlcohol == null)
                         {
                             ckb_siConsuNociAlcoHabToxi.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -419,7 +421,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_noConsuNocivosAlcohol == null)
                         {
                             ckb_noConsuNociAlcoHabToxi.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -430,7 +432,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_siConsuNocivosOtrasDrogas == null)
                         {
                             ckb_siConsuNociOtrasDroHabToxi.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -439,7 +441,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_noConsuNocivosOtrasDrogas == null)
                         {
                             ckb_noConsuNociOtrasDroHabToxi.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -450,7 +452,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_siEstiVidaActFisica == null)
                         {
                             ckb_siEstVidaActFisiEstVida.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -459,7 +461,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_noEstiVidaActFisica == null)
                         {
                             ckb_noEstVidaActFisiEstVida.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -470,7 +472,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_siEstiVidaMediHabitual == null)
                         {
                             ckb_siEstVidaMedHabiEstVida.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -479,7 +481,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_noEstiVidaMediHabitual == null)
                         {
                             ckb_noEstVidaMedHabiEstVida.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -490,7 +492,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_fisicoRies == null)
                         {
                             ckb_fisico.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -499,7 +501,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_mecanicoRies == null)
                         {
                             ckb_mecanico.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -508,7 +510,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_quimicoRies == null)
                         {
                             ckb_quimico.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -517,7 +519,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_biologicoRies == null)
                         {
                             ckb_biologico.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -526,7 +528,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_ergonomicoRies == null)
                         {
                             ckb_ergonomico.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -535,7 +537,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_psicosocial == null)
                         {
                             ckb_psicosocial.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -544,7 +546,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_fisicoRies2 == null)
                         {
                             ckb_fisico2.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -553,7 +555,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_mecanicoRies2 == null)
                         {
                             ckb_mecanico2.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -562,7 +564,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_quimicoRies2 == null)
                         {
                             ckb_quimico2.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -571,7 +573,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_biologicoRies2 == null)
                         {
                             ckb_biologico2.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -580,7 +582,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_ergonomicoRies2 == null)
                         {
                             ckb_ergonomico2.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -589,7 +591,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_psicosocial2 == null)
                         {
                             ckb_psicosocial2.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -598,7 +600,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_fisicoRies3 == null)
                         {
                             ckb_fisico3.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -607,7 +609,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_mecanicoRies3 == null)
                         {
                             ckb_mecanico3.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -616,7 +618,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_quimicoRies3 == null)
                         {
                             ckb_quimico3.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -625,7 +627,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_biologicoRies3 == null)
                         {
                             ckb_biologico3.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -634,7 +636,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_ergonomicoRies3 == null)
                         {
                             ckb_ergonomico3.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -643,7 +645,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_psicosocial3 == null)
                         {
                             ckb_psicosocial3.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -652,7 +654,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_fisicoRies4 == null)
                         {
                             ckb_fisico4.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -661,7 +663,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_mecanicoRies4 == null)
                         {
                             ckb_mecanico4.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -670,7 +672,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_quimicoRies4 == null)
                         {
                             ckb_quimico4.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -679,7 +681,7 @@ namespace SistemaECU911.Template.Views
                         if (inicial.inicial_biologicoRies4 == null)
                         {
                             ckb_biologico4.Checked = false;
-                            
+
                         }
                         else
                         {
@@ -687,7 +689,7 @@ namespace SistemaECU911.Template.Views
                         }
                         if (inicial.inicial_ergonomicoRies4 == null)
                         {
-                            
+
                             ckb_ergonomico4.Checked = false;
                         }
                         else
@@ -696,7 +698,7 @@ namespace SistemaECU911.Template.Views
                         }
                         if (inicial.inicial_psicosocial4 == null)
                         {
-                            
+
                             ckb_psicosocial4.Checked = false;
                         }
                         else
@@ -1161,7 +1163,8 @@ namespace SistemaECU911.Template.Views
                         {
                             ckb_otrosFisico3.Checked = true;
 
-                        }if (inicial.inicial_otrosFis4 == null)
+                        }
+                        if (inicial.inicial_otrosFis4 == null)
                         {
                             ckb_otrosFisico4.Checked = false;
                         }
@@ -1486,7 +1489,7 @@ namespace SistemaECU911.Template.Views
                             ckb_proyparticulas3.Checked = true;
 
                         }
-                        if (inicial.inicial_proPartiFragMec4== null)
+                        if (inicial.inicial_proPartiFragMec4 == null)
                         {
                             ckb_proyparticulas4.Checked = false;
                         }
@@ -1883,7 +1886,7 @@ namespace SistemaECU911.Template.Views
                             ckb_vapores3.Checked = true;
 
                         }
-                        if (inicial.inicial_vaporesQui4== null)
+                        if (inicial.inicial_vaporesQui4 == null)
                         {
                             ckb_vapores4.Checked = false;
                         }
@@ -2333,7 +2336,7 @@ namespace SistemaECU911.Template.Views
                         else
                         {
                             ckb_movrepetitivo.Checked = true;
-                        }                        
+                        }
                         if (inicial.inicial_movRepeErg2 == null)
                         {
                             ckb_movrepetitivo2.Checked = false;
@@ -3484,7 +3487,7 @@ namespace SistemaECU911.Template.Views
                         }
 
                         txt_nomEmpresa.Text = emp.Emp_nombre.ToString();
-                        txt_rucEmp.Text = cen.cent_ruc.ToString();
+                        //txt_rucEmp.Text = cen.cent_ruc.ToString();+++++++
                         txt_numHClinica.Text = per.Per_cedula.ToString();
                         txt_priNombre.Text = per.Per_priNombre.ToString();
                         txt_segNombre.Text = per.Per_segNombre.ToString();
@@ -3494,7 +3497,7 @@ namespace SistemaECU911.Template.Views
                         DateTime edad = Convert.ToDateTime(per.Per_fechaNacimiento);
                         DateTime naci = Convert.ToDateTime(edad);
                         DateTime actual = DateTime.Now;
-                        Calculo(naci, actual);                        
+                        Calculo(naci, actual);
                         txt_fechaingresotrabajo.Text = Convert.ToDateTime(per.Per_fechInicioTrabajo).ToString("yyyy-MM-dd");
                         txt_puestodetrabajociuo.Text = per.Per_puestoTrabajo.ToString();
                         txt_areadetrabajo.Text = per.Per_areaTrabajo.ToString();
@@ -3526,7 +3529,7 @@ namespace SistemaECU911.Template.Views
                             {
                                 txt_fechUltiMensAntGinObste.Text = Convert.ToDateTime(inicial.inicial_fechUltiMenstrua).ToString("yyyy-MM-dd");
                             }
-                                                       
+
                             txt_gestasAntGinObste.Text = inicial.inicial_gestas.ToString();
                             txt_partosAntGinObste.Text = inicial.inicial_partos.ToString();
                             txt_cesareasAntGinObste.Text = inicial.inicial_cesareas.ToString();
@@ -3634,9 +3637,9 @@ namespace SistemaECU911.Template.Views
                             txt_act2.Text = inicial.inicial_actividades2.ToString();
                             txt_puestodetrabajo3.Text = inicial.inicial_area3.ToString();
                             txt_act3.Text = inicial.inicial_actividades3.ToString();
-                            txt_puestodetrabajo4.Text = inicial.inicial_area4.ToString();   
+                            txt_puestodetrabajo4.Text = inicial.inicial_area4.ToString();
                             txt_act4.Text = inicial.inicial_actividades4.ToString();
-                            
+
                             txt_medpreventivas.Text = inicial.inicial_medPreventivas.ToString();
                             txt_medpreventivas2.Text = inicial.inicial_medPreventivas.ToString();
                             txt_medpreventivas3.Text = inicial.inicial_medPreventivas.ToString();
@@ -3741,7 +3744,7 @@ namespace SistemaECU911.Template.Views
 
                 txt_fechahora.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
             }
-		}
+        }
 
         //protected void timerFechaHora_Tick(object sender, EventArgs e)
         //{
@@ -3930,7 +3933,7 @@ namespace SistemaECU911.Template.Views
             string descripcion = txt_descripdiagnostico.Text;
 
             var lista = from c in dc.cie10
-                        where c.dec10 == descripcion                    
+                        where c.dec10 == descripcion
                         select c;
 
             foreach (var item in lista)
@@ -4020,7 +4023,7 @@ namespace SistemaECU911.Template.Views
                 if (cbk_noRespondeOriSex.Checked == true)
                 {
                     inicial.inicial_norespondeOriSex = "SI";
-                }   
+                }
                 if (cbk_femenino.Checked == true)
                 {
                     inicial.inicial_femeninoIdenGen = "SI";
@@ -5494,9 +5497,9 @@ namespace SistemaECU911.Template.Views
 
                 //A
                 inicial.inicial_ciiu = txt_ciiu.Text.ToUpper();
-                inicial.inicial_numArchivo = txt_numArchivo.Text.ToUpper();  
+                inicial.inicial_numArchivo = txt_numArchivo.Text.ToUpper();
                 inicial.inicial_groSanguineo = txt_gruposanguineo.Text.ToUpper();
-                inicial.inicial_lateralidad = txt_lateralidad.Text.ToUpper();              
+                inicial.inicial_lateralidad = txt_lateralidad.Text.ToUpper();
                 inicial.inicial_tipoDis = txt_tipodiscapacidad.Text.ToUpper();
                 inicial.inicial_porcentDis = txt_porcentajediscapacidad.Text.ToUpper();
                 inicial.inicial_actRelePuesTrabajo = txt_actividadesrelevantes.Text.ToUpper();
@@ -5515,11 +5518,11 @@ namespace SistemaECU911.Template.Views
                 inicial.inicial_cesareas = txt_cesareasAntGinObste.Text.ToUpper();
                 inicial.inicial_abortos = txt_abortosAntGinObste.Text.ToUpper();
                 inicial.inicial_vivosHij = txt_vivosAntGinObste.Text.ToUpper();
-                inicial.inicial_muertosHij = txt_muertosAntGinObste.Text.ToUpper();               
+                inicial.inicial_muertosHij = txt_muertosAntGinObste.Text.ToUpper();
                 inicial.inicial_tipoMetPlanifiFamiliar = txt_tipoMetPlaniAntGinObste.Text.ToUpper();
 
                 inicial.inicial_tiempoExaRealiPapanicolaou = txt_tiempoPapaniAntGinObste.Text.ToUpper();
-                inicial.inicial_resultadoExaRealiPapanicolaou = txt_resultadoPapaniAntGinObste.Text.ToUpper(); 
+                inicial.inicial_resultadoExaRealiPapanicolaou = txt_resultadoPapaniAntGinObste.Text.ToUpper();
                 inicial.inicial_tiempoExaRealiEcoMamario = txt_tiempoEcoMamaAntGinObste.Text.ToUpper();
                 inicial.inicial_resultadoExaRealiEcoMamario = txt_resultadoEcoMamaAntGinObste.Text.ToUpper();
                 inicial.inicial_tiempoExaRealiColposcopia = txt_tiempoColposAntGinObste.Text.ToUpper();
@@ -5543,7 +5546,7 @@ namespace SistemaECU911.Template.Views
                 inicial.inicial_tiempoConsuConsuNocivosAlcohol = txt_tiemConConsuNociAlcoHabToxi.Text.ToUpper();
                 inicial.inicial_cantidadConsuNocivosAlcohol = txt_cantiConsuNociAlcoHabToxi.Text.ToUpper();
                 inicial.inicial_exConsumiConsuNocivosAlcohol = txt_exConsumiConsuNociAlcoHabToxi.Text.ToUpper();
-                inicial.inicial_tiempoAbstiConsuNocivosAlcohol = txt_tiemAbstiConsuNociAlcoHabToxi.Text.ToUpper();            
+                inicial.inicial_tiempoAbstiConsuNocivosAlcohol = txt_tiemAbstiConsuNociAlcoHabToxi.Text.ToUpper();
                 inicial.inicial_tiempoConsu1ConsuNocivosOtrasDrogas = txt_tiemCon1ConsuNociOtrasDroHabToxi.Text.ToUpper();
                 inicial.inicial_cantidad1ConsuNocivosOtrasDrogas = txt_canti1ConsuNociOtrasDroHabToxi.Text.ToUpper();
                 inicial.inicial_exConsumi1ConsuNocivosOtrasDrogas = txt_exConsumi1ConsuNociOtrasDroHabToxi.Text.ToUpper();
@@ -5552,9 +5555,9 @@ namespace SistemaECU911.Template.Views
                 inicial.inicial_tiempoConsu2ConsuNocivosOtrasDrogas = txt_tiemCon2ConsuNociOtrasDroHabToxi.Text.ToUpper();
                 inicial.inicial_cantidad2ConsuNocivosOtrasDrogas = txt_canti2ConsuNociOtrasDroHabToxi.Text.ToUpper();
                 inicial.inicial_exConsumi2ConsuNocivosOtrasDrogas = txt_exConsumi2ConsuNociOtrasDroHabToxi.Text.ToUpper();
-                inicial.inicial_tiempoAbsti2ConsuNocivosOtrasDrogas = txt_tiemAbsti2ConsuNociOtrasDroHabToxi.Text.ToUpper();                
+                inicial.inicial_tiempoAbsti2ConsuNocivosOtrasDrogas = txt_tiemAbsti2ConsuNociOtrasDroHabToxi.Text.ToUpper();
                 inicial.inicial_cualEstiVidaActFisica = txt_cualEstVidaActFisiEstVida.Text.ToUpper();
-                inicial.inicial_tiem_cantEstiVidaActFisica = txt_tiemCanEstVidaActFisiEstVida.Text.ToUpper();               
+                inicial.inicial_tiem_cantEstiVidaActFisica = txt_tiemCanEstVidaActFisiEstVida.Text.ToUpper();
                 inicial.inicial_cual2EstiVidaMediHabitual = txt_cual1EstVidaMedHabiEstVida.Text.ToUpper();
                 inicial.inicial_tiem_cant2EstiVidaMediHabitual = txt_tiemCan1EstVidaMedHabiEstVida.Text.ToUpper();
                 inicial.inicial_cual3EstiVidaMediHabitual = txt_cual2EstVidaMedHabiEstVida.Text.ToUpper();
@@ -5566,29 +5569,29 @@ namespace SistemaECU911.Template.Views
                 inicial.inicial_nomEmpresa = txt_empresa.Text.ToUpper();
                 inicial.inicial_puestoTrabajo = txt_puestotrabajo.Text.ToUpper();
                 inicial.inicial_actDesemp = txt_actdesempeña.Text.ToUpper();
-                inicial.inicial_tiemTrabajo = txt_tiempotrabajo.Text.ToUpper();             
+                inicial.inicial_tiemTrabajo = txt_tiempotrabajo.Text.ToUpper();
                 inicial.inicial_observacionesAnteEmpleAnteriores = txt_obseantempleanteriores.Text.ToUpper();
                 inicial.inicial_nomEmpresa2 = txt_empresa2.Text.ToUpper();
                 inicial.inicial_puestoTrabajo2 = txt_puestotrabajo2.Text.ToUpper();
                 inicial.inicial_actDesemp2 = txt_actdesempeña2.Text.ToUpper();
-                inicial.inicial_tiemTrabajo2 = txt_tiempotrabajo2.Text.ToUpper();               
+                inicial.inicial_tiemTrabajo2 = txt_tiempotrabajo2.Text.ToUpper();
                 inicial.inicial_observacionesAnteEmpleAnteriores2 = txt_obseantempleanteriores2.Text.ToUpper();
                 inicial.inicial_nomEmpresa3 = txt_empresa3.Text.ToUpper();
                 inicial.inicial_puestoTrabajo3 = txt_puestotrabajo3.Text.ToUpper();
                 inicial.inicial_actDesemp3 = txt_actdesempeña3.Text.ToUpper();
-                inicial.inicial_tiemTrabajo3 = txt_tiempotrabajo3.Text.ToUpper();             
+                inicial.inicial_tiemTrabajo3 = txt_tiempotrabajo3.Text.ToUpper();
                 inicial.inicial_observacionesAnteEmpleAnteriores3 = txt_obseantempleanteriores3.Text.ToUpper();
                 inicial.inicial_nomEmpresa4 = txt_empresa4.Text.ToUpper();
                 inicial.inicial_puestoTrabajo4 = txt_puestotrabajo4.Text.ToUpper();
                 inicial.inicial_actDesemp4 = txt_actdesempeña4.Text.ToUpper();
-                inicial.inicial_tiemTrabajo4 = txt_tiempotrabajo4.Text.ToUpper();               
+                inicial.inicial_tiemTrabajo4 = txt_tiempotrabajo4.Text.ToUpper();
                 inicial.inicial_observacionesAnteEmpleAnteriores4 = txt_obseantempleanteriores4.Text.ToUpper();
 
-                inicial.inicial_especificarCalificadoIESSAcciTrabajo = txt_especificar.Text.ToUpper();              
+                inicial.inicial_especificarCalificadoIESSAcciTrabajo = txt_especificar.Text.ToUpper();
                 inicial.inicial_fechaCalificadoIESSAcciTrabajo = txt_fecha.Text.ToUpper();
                 inicial.inicial_obserAcciTrabajo = txt_observaciones2.Text.ToUpper();
-                
-                inicial.inicial_especificarCalificadoIESSEnfProfesionales = txt_espeprofesional.Text.ToUpper();               
+
+                inicial.inicial_especificarCalificadoIESSEnfProfesionales = txt_espeprofesional.Text.ToUpper();
                 inicial.inicial_fechaCalificadoIESSEnfProfesionales = txt_fechaprofesional.Text.ToUpper();
                 inicial.inicial_obserEnfProfesionales = txt_observaciones3.Text.ToUpper();
 
@@ -5597,16 +5600,16 @@ namespace SistemaECU911.Template.Views
 
                 //F
                 inicial.inicial_area = txt_puestodetrabajo.Text.ToUpper();
-                inicial.inicial_actividades = txt_act.Text.ToUpper();              
+                inicial.inicial_actividades = txt_act.Text.ToUpper();
                 inicial.inicial_area2 = txt_puestodetrabajo2.Text.ToUpper();
-                inicial.inicial_actividades2 = txt_act2.Text.ToUpper();                
+                inicial.inicial_actividades2 = txt_act2.Text.ToUpper();
                 inicial.inicial_area3 = txt_puestodetrabajo3.Text.ToUpper();
-                inicial.inicial_actividades3 = txt_act3.Text.ToUpper();             
+                inicial.inicial_actividades3 = txt_act3.Text.ToUpper();
                 inicial.inicial_area4 = txt_puestodetrabajo4.Text.ToUpper();
-                inicial.inicial_actividades4 = txt_act4.Text.ToUpper(); 
-                inicial.inicial_medPreventivas = txt_medpreventivas.Text.ToUpper();                
-                inicial.inicial_medPreventivas2 = txt_medpreventivas2.Text.ToUpper();                
-                inicial.inicial_medPreventivas3 = txt_medpreventivas3.Text.ToUpper();            
+                inicial.inicial_actividades4 = txt_act4.Text.ToUpper();
+                inicial.inicial_medPreventivas = txt_medpreventivas.Text.ToUpper();
+                inicial.inicial_medPreventivas2 = txt_medpreventivas2.Text.ToUpper();
+                inicial.inicial_medPreventivas3 = txt_medpreventivas3.Text.ToUpper();
                 inicial.inicial_medPreventivas4 = txt_medpreventivas4.Text.ToUpper();
 
                 //G
@@ -5614,7 +5617,7 @@ namespace SistemaECU911.Template.Views
 
                 //H
                 inicial.inicial_descripEnfActual = txt_enfermedadactualinicial.Text.ToUpper();
-                
+
                 //I
                 inicial.inicial_descripRevActOrgSis = txt_descrorganosysistemas.Text.ToUpper();
 
@@ -5649,12 +5652,12 @@ namespace SistemaECU911.Template.Views
 
                 //M
                 inicial.inicial_descripciondiagnostico = txt_descripdiagnostico.Text.ToUpper();
-                inicial.inicial_cie = txt_cie.Text.ToUpper();               
+                inicial.inicial_cie = txt_cie.Text.ToUpper();
                 inicial.inicial_descripcioninicialnostico2 = txt_descripdiagnostico2.Text.ToUpper();
-                inicial.inicial_cie2 = txt_cie2.Text.ToUpper();               
+                inicial.inicial_cie2 = txt_cie2.Text.ToUpper();
                 inicial.inicial_descripcioninicialnostico3 = txt_descripdiagnostico3.Text.ToUpper();
                 inicial.inicial_cie3 = txt_cie3.Text.ToUpper();
-                
+
                 //N
                 inicial.inicial_ObservAptMed = txt_observacionaptitud.Text.ToUpper();
                 inicial.inicial_LimitAptMed = txt_limitacionaptitud.Text.ToUpper();
@@ -5725,7 +5728,7 @@ namespace SistemaECU911.Template.Views
                 else
                 {
                     inicial.inicial_otrasRel = null;
-                }                
+                }
                 if (cbk_gay.Checked == true)
                 {
                     inicial.inicial_gayOriSex = "SI";
@@ -8881,7 +8884,7 @@ namespace SistemaECU911.Template.Views
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Datos No Modificados', 'error')", true);
             }
-            
+
         }
 
         private void Guardar_modificar_datos(int ini)
@@ -9185,7 +9188,7 @@ namespace SistemaECU911.Template.Views
             if (cbk_transfemenino.Checked == true)
             {
                 cbk_femenino.Checked = false;
-                cbk_masculino.Checked = false;                
+                cbk_masculino.Checked = false;
                 cbk_transmasculino.Checked = false;
                 cbk_noRespondeIdeGen.Checked = false;
             }
@@ -9196,7 +9199,7 @@ namespace SistemaECU911.Template.Views
             if (cbk_transmasculino.Checked == true)
             {
                 cbk_femenino.Checked = false;
-                cbk_masculino.Checked = false;                
+                cbk_masculino.Checked = false;
                 cbk_transfemenino.Checked = false;
                 cbk_noRespondeIdeGen.Checked = false;
             }
@@ -9207,7 +9210,7 @@ namespace SistemaECU911.Template.Views
             if (cbk_noRespondeIdeGen.Checked == true)
             {
                 cbk_femenino.Checked = false;
-                cbk_masculino.Checked = false;                
+                cbk_masculino.Checked = false;
                 cbk_transfemenino.Checked = false;
                 cbk_transmasculino.Checked = false;
             }
@@ -9581,7 +9584,7 @@ namespace SistemaECU911.Template.Views
                 ckb_siEstVidaMedHabiEstVida.Checked = false;
             }
         }
-        
+
         protected void ckb_siAccTrabDescrip_CheckedChanged(object sender, EventArgs e)
         {
             if (ckb_siAccTrabDescrip.Checked == true)
@@ -13492,7 +13495,7 @@ namespace SistemaECU911.Template.Views
 
         protected void txt_puestodetrabajo21_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

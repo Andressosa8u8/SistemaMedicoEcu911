@@ -20,7 +20,7 @@ namespace SistemaECU911.Template.Views
     public partial class Periodica : System.Web.UI.Page
     {
 
-        DataClassesECU911DataContext dc = new DataClassesECU911DataContext();
+        private readonly DataClassesECU911DataContext dc = new DataClassesECU911DataContext();
 
         private Tbl_Person per = new Tbl_Person();
         private Tbl_Empresa emp = new Tbl_Empresa();
@@ -45,6 +45,8 @@ namespace SistemaECU911.Template.Views
                     if (per != null || emp != null)
                     {
                         txt_numHClinica.ReadOnly = true;
+                        cargarProfesional();
+                        ddl_profesional.Enabled = false;
 
                         //Habitos Toxicos
                         if (perio.perio_siConsuNocivosTabaco == null)
@@ -1382,7 +1384,7 @@ namespace SistemaECU911.Template.Views
                         else
                         {
                             ckb_movrepetitivo.Checked = true;
-                        }                        
+                        }
                         if (perio.perio_movRepeErg2 == null)
                         {
                             ckb_movrepetitivo2.Checked = false;
@@ -2380,7 +2382,7 @@ namespace SistemaECU911.Template.Views
 
                         //A
                         txt_nomEmpresa.Text = emp.Emp_nombre.ToString();
-                        txt_rucEmp.Text = cen.cent_ruc.ToString();
+                        //txt_rucEmp.Text = cen.cent_ruc.ToString();
                         txt_priNombre.Text = per.Per_priNombre.ToString();
                         txt_segNombre.Text = per.Per_segNombre.ToString();
                         txt_priApellido.Text = per.Per_priApellido.ToString();
@@ -2451,7 +2453,7 @@ namespace SistemaECU911.Template.Views
                             else
                             {
                                 txt_fechacalificadoprofesional.Text = Convert.ToDateTime(perio.perio_fechaCalificadoIESSEnferProfesionales).ToString("yyyy-MM-dd");
-                            }                            
+                            }
                             txt_obsercalificadoprofesional.Text = perio.perio_observacionesEnferProfesionales.ToString();
 
                             //D
@@ -2744,6 +2746,8 @@ namespace SistemaECU911.Template.Views
                 int empre = Convert.ToInt32(per.Emp_id.ToString());
 
                 perio = new Tbl_Periodica();
+
+
 
                 //Habitos Toxicos
                 if (ckb_siConsuNociTabaHabToxi.Checked == true)
@@ -3364,7 +3368,7 @@ namespace SistemaECU911.Template.Views
                 if (ckb_movrepetitivo3.Checked == true)
                 {
                     perio.perio_movRepeErg3 = "SI";
-                }                
+                }
                 if (ckb_postforzadas.Checked == true)
                 {
                     perio.perio_posForzaErg = "SI";
@@ -5165,7 +5169,7 @@ namespace SistemaECU911.Template.Views
                 else
                 {
                     perio.perio_movRepeErg3 = null;
-                }                
+                }
                 if (ckb_postforzadas.Checked == true)
                 {
                     perio.perio_posForzaErg = "SI";
@@ -6148,6 +6152,7 @@ namespace SistemaECU911.Template.Views
                 perio.perio_ObservAptMedTrabajo = txt_observacionaptitud.Text.ToUpper();
                 perio.perio_LimitAptMedTrabajo = txt_limitacionaptitud.Text.ToUpper();
 
+
                 //M.
                 perio.perio_descripcionRecoTratamiento = txt_descripciontratamientoperiodica.Text.ToUpper();
 
@@ -6198,7 +6203,7 @@ namespace SistemaECU911.Template.Views
                 lbl_numHClinica.Text = "";
             }
 
-           if (string.IsNullOrEmpty(ddl_profesional.SelectedValue) || ddl_profesional.SelectedValue == "0")
+            if (string.IsNullOrEmpty(ddl_profesional.SelectedValue) || ddl_profesional.SelectedValue == "0")
             {
                 lbl_profesional.Text = "CAMPO OBLIGATORIO";
                 camposCompletos = false;

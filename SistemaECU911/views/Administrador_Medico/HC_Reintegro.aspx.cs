@@ -45,6 +45,8 @@ namespace SistemaECU911.Template.Views
                     {
 
                         txt_numHClinica.ReadOnly = true;
+                        cargarProfesional();
+                        ddl_profesional.Enabled = false;
 
                         //Regiones
                         if (reinte.rein_cicatricesPiel == null)
@@ -504,7 +506,7 @@ namespace SistemaECU911.Template.Views
 
                         //A
                         txt_nomEmpresa.Text = emp.Emp_nombre.ToString();
-                        txt_rucEmp.Text = cen.cent_ruc.ToString();
+                        //txt_rucEmp.Text = cen.cent_ruc.ToString();
                         txt_priNombre.Text = per.Per_priNombre.ToString();
                         txt_segNombre.Text = per.Per_segNombre.ToString();
                         txt_priApellido.Text = per.Per_priApellido.ToString();
@@ -537,7 +539,7 @@ namespace SistemaECU911.Template.Views
                             else
                             {
                                 txt_fechaReingreso.Text = Convert.ToDateTime(reinte.rein_fechReingreso).ToString("yyyy-MM-dd");
-                            }                            
+                            }
                             txt_total.Text = reinte.rein_total.ToString();
                             txt_causaSalida.Text = reinte.rein_causaSalida.ToString();
 
@@ -570,7 +572,7 @@ namespace SistemaECU911.Template.Views
                             else
                             {
                                 txt_fechaexamen.Text = Convert.ToDateTime(reinte.rein_fecha).ToString("yyyy-MM-dd");
-                            }                            
+                            }
                             txt_resultadoexamen.Text = reinte.rein_resultados.ToString();
                             txt_examen2.Text = reinte.rein_examen2.ToString();
                             if (reinte.rein_fecha2 == "")
@@ -580,7 +582,7 @@ namespace SistemaECU911.Template.Views
                             else
                             {
                                 txt_fechaexamen2.Text = Convert.ToDateTime(reinte.rein_fecha2).ToString("yyyy-MM-dd");
-                            }                            
+                            }
                             txt_resultadoexamen2.Text = reinte.rein_resultados2.ToString();
                             txt_examen3.Text = reinte.rein_examen3.ToString();
                             if (reinte.rein_fecha3 == "")
@@ -590,7 +592,7 @@ namespace SistemaECU911.Template.Views
                             else
                             {
                                 txt_fechaexamen3.Text = Convert.ToDateTime(reinte.rein_fecha3).ToString("yyyy-MM-dd");
-                            }                            
+                            }
                             txt_resultadoexamen3.Text = reinte.rein_resultados3.ToString();
                             txt_observacionexamen.Text = reinte.rein_observacionesResExaGenEspRiesTrabajo.ToString();
 
@@ -601,7 +603,7 @@ namespace SistemaECU911.Template.Views
                             txt_cie2.Text = reinte.rein_cie2.ToString();
                             txt_descripdiagnostico3.Text = reinte.rein_descripcionDiagnostico3.ToString();
                             txt_cie3.Text = reinte.rein_cie3.ToString();
-                            
+
                             //H
                             txt_observacionaptitud.Text = reinte.rein_ObservAptMedica.ToString();
                             txt_limitacionaptitud.Text = reinte.rein_LimitAptMedica.ToString();
@@ -614,7 +616,7 @@ namespace SistemaECU911.Template.Views
                             ddl_profesional.SelectedValue = reinte.prof_id.ToString();
                             txt_codigoDatProf.Text = reinte.rein_cod.ToString();
                         }
-                    }                    
+                    }
                 }
                 txt_numHClinica.MaxLength = 10;
                 Timer1.Enabled = false;
@@ -1608,7 +1610,7 @@ namespace SistemaECU911.Template.Views
                 reinte.rein_descripcionRecoTratamiento = txt_descripciontratamientoreintegro.Text.ToUpper();
 
                 //J.
-                reinte.rein_fecha_horaModificacion =  Convert.ToDateTime(txt_fechahora.Text.ToUpper());
+                reinte.rein_fecha_horaModificacion = Convert.ToDateTime(txt_fechahora.Text.ToUpper());
                 reinte.prof_id = Convert.ToInt32(ddl_profesional.SelectedValue);
                 reinte.rein_cod = txt_codigoDatProf.Text.ToUpper();
 

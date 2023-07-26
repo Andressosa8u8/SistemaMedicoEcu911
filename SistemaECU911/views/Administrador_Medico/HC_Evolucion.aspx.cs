@@ -213,7 +213,7 @@ namespace SistemaECU911.Template.Views
                                 txt_fecha15.Text = Convert.ToDateTime(evo.evo_fecha15).ToString("yyyy-MM-dd");
                             }
                             txt_hora15.Text = evo.evo_hora15.ToString();
-                            txt_notas15.Text = evo.evo_notasEvolucion15.ToString();                            
+                            txt_notas15.Text = evo.evo_notasEvolucion15.ToString();
 
                             //C
                             txt_farmacoterapia1.Text = evo.evo_farmacoIndicaciones1.ToString();
@@ -565,7 +565,7 @@ namespace SistemaECU911.Template.Views
 
         private void guardar_modificar_datos(int evolucion)
         {
-            if (evolucion == 0 )
+            if (evolucion == 0)
             {
                 GuardarEvolucion();
             }
@@ -614,7 +614,7 @@ namespace SistemaECU911.Template.Views
                     txt_numHClinica.Focus();
                     ScriptManager.RegisterStartupScript(this, GetType(), "ScrollToField", "window.scrollTo(0, document.getElementById('" + txt_numHClinica.ClientID + "').offsetTop);", true);
                 }
-               
+
             }
         }
 
@@ -696,7 +696,7 @@ namespace SistemaECU911.Template.Views
             tblDatos.AddCell(new PdfPCell(new Paragraph(txt_puestoTrabajo.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             pdfDoc.Add(tblDatos);
             pdfDoc.Add(new Paragraph(" "));
-            var tblevpr = new PdfPTable(new float[] { 80f,50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblevpr = new PdfPTable(new float[] { 80f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblevpr.AddCell(new PdfPCell(new Paragraph("B. EVOLUCIÓN", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(204, 205, 254), HorizontalAlignment = Element.ALIGN_LEFT });
             tblevpr.AddCell(new PdfPCell(new Paragraph("C. PRESCRIPCIONES", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(204, 205, 254), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblevpr);
