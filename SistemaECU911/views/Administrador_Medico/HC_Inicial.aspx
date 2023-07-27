@@ -300,7 +300,7 @@
                                     <asp:TextBox runat="server" ID="txt_tipodiscapacidad" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-"></asp:TextBox>
                                 </asp:TableCell>
                                 <asp:TableCell Style="background-color: white; font-size: 14px">
-                                    <asp:TextBox runat="server" ID="txt_porcentajediscapacidad" TextMode="Number" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="txt_porcentajediscapacidad" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                                 </asp:TableCell>
                                 <asp:TableCell Style="background-color: white; font-size: 14px">
                                     <asp:TextBox runat="server" ID="txt_fechaingresotrabajo" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" TextMode="Date"></asp:TextBox>
@@ -400,10 +400,10 @@
                                 <asp:TextBox runat="server" ID="txt_abortosAntGinObste" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px"> 
-                                <asp:TextBox runat="server" ID="txt_vivosAntGinObste" BorderStyle="None" TextMode="Number" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_vivosAntGinObste" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_muertosAntGinObste" BorderStyle="None" TextMode="Number" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_muertosAntGinObste" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:CheckBox ID="ckb_siVidSexAntGinObste" Checked="false" OnCheckedChanged="ckb_siVidSexAntGinObste_CheckedChanged" AutoPostBack="true" runat="server" />
@@ -450,7 +450,7 @@
                                 <%--<asp:TextBox runat="server" ID="txt_noPapaniAntGinObste" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>--%>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiempoPapaniAntGinObste" TextMode="Number" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiempoPapaniAntGinObste" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:TextBox runat="server" ID="txt_resultadoPapaniAntGinObste" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
@@ -465,7 +465,7 @@
                                 <%--<asp:TextBox runat="server" ID="txt_noEcoMamaAntGinObste" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>--%>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiempoEcoMamaAntGinObste" TextMode="Number" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiempoEcoMamaAntGinObste" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:TextBox runat="server" ID="txt_resultadoEcoMamaAntGinObste" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
@@ -482,7 +482,7 @@
                                 <%--<asp:TextBox runat="server" ID="txt_noColposAntGinObste" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>--%>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiempoColposAntGinObste" TextMode="Number" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiempoColposAntGinObste" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:TextBox runat="server" ID="txt_resultadoColposAntGinObste" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
@@ -497,7 +497,7 @@
                                 <%--<asp:TextBox runat="server" ID="txt_noMamograAntGinObste" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>--%>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiempoMamograAntGinObste" TextMode="Number" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiempoMamograAntGinObste" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:TextBox runat="server" ID="txt_resultadoMamograAntGinObste" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
@@ -537,7 +537,7 @@
                                 <%--<asp:TextBox runat="server" ID="txt_noExaRealiAntProstaAntReproMascu" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>--%>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiempoExaRealiAntProstaAntReproMascu" TextMode="Number" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiempoExaRealiAntProstaAntReproMascu" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:TextBox runat="server" ID="txt_resultadoExaRealiAntProstaAntReproMascu" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
@@ -554,10 +554,10 @@
                                 <asp:TextBox runat="server" ID="txt_tipo1MetPlaniAntReproMascu" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell RowSpan="2" Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_vivosHijosAntReproMascu" TextMode="Number" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_vivosHijosAntReproMascu" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell RowSpan="2" Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_muertosHijosAntReproMascu" TextMode="Number" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_muertosHijosAntReproMascu" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
@@ -571,7 +571,7 @@
                                 <%--<asp:TextBox runat="server" ID="txt_noExaRealiEcoProstaAntReproMascu" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>--%>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiempoExaRealiEcoProstaAntReproMascu" TextMode="Number" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiempoExaRealiEcoProstaAntReproMascu" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:TextBox runat="server" ID="txt_resultadoExaRealiEcoProstaAntReproMascu" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
@@ -607,7 +607,7 @@
                                 <%--<asp:TextBox runat="server" ID="txt_noConsuNociTabaHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>--%>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiemConConsuNociTabaHabToxi" TextMode="Number" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiemConConsuNociTabaHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:TextBox runat="server" ID="txt_cantiConsuNociTabaHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
@@ -616,7 +616,7 @@
                                 <asp:TextBox runat="server" ID="txt_exConsumiConsuNociTabaHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiemAbstiConsuNociTabaHabToxi" TextMode="Number" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiemAbstiConsuNociTabaHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
@@ -630,7 +630,7 @@
                                 <%--<asp:TextBox runat="server" ID="txt_noConsuNociAlcoHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>--%>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiemConConsuNociAlcoHabToxi" TextMode="Number" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiemConConsuNociAlcoHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:TextBox runat="server" ID="txt_cantiConsuNociAlcoHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
@@ -639,7 +639,7 @@
                                 <asp:TextBox runat="server" ID="txt_exConsumiConsuNociAlcoHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiemAbstiConsuNociAlcoHabToxi" TextMode="Number" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiemAbstiConsuNociAlcoHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
@@ -653,7 +653,7 @@
                                 <%--<asp:TextBox runat="server" ID="txt_noConsuNociOtrasDroHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>--%>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiemCon1ConsuNociOtrasDroHabToxi" TextMode="Number" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiemCon1ConsuNociOtrasDroHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:TextBox runat="server" ID="txt_canti1ConsuNociOtrasDroHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
@@ -662,7 +662,7 @@
                                 <asp:TextBox runat="server" ID="txt_exConsumi1ConsuNociOtrasDroHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiemAbsti1ConsuNociOtrasDroHabToxi" TextMode="Number" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiemAbsti1ConsuNociOtrasDroHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
@@ -670,7 +670,7 @@
                                 <asp:TextBox runat="server" ID="txt_otrasConsuNociOtrasDroHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="_________________________"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiemCon2ConsuNociOtrasDroHabToxi" TextMode="Number" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiemCon2ConsuNociOtrasDroHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:TextBox runat="server" ID="txt_canti2ConsuNociOtrasDroHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
@@ -679,7 +679,7 @@
                                 <asp:TextBox runat="server" ID="txt_exConsumi2ConsuNociOtrasDroHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiemAbsti2ConsuNociOtrasDroHabToxi" TextMode="Number" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiemAbsti2ConsuNociOtrasDroHabToxi" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                         </asp:TableRow>
                     </asp:Table>
@@ -796,7 +796,7 @@
                                 <asp:TextBox runat="server" ID="txt_actdesempeña" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-" TextMode="MultiLine" Rows="3"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiempotrabajo" BorderStyle="None" TextMode="Number" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiempotrabajo" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:CheckBox ID="ckb_fisico" Checked="false" runat="server" />
@@ -837,7 +837,7 @@
                                 <asp:TextBox runat="server" ID="txt_actdesempeña2" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-" TextMode="MultiLine" Rows="3"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiempotrabajo2" BorderStyle="None" TextMode="Number" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiempotrabajo2" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:CheckBox ID="ckb_fisico2" Checked="false" runat="server" />
@@ -878,7 +878,7 @@
                                 <asp:TextBox runat="server" ID="txt_actdesempeña3" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-" TextMode="MultiLine" Rows="3"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiempotrabajo3" BorderStyle="None" TextMode="Number" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiempotrabajo3" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:CheckBox ID="ckb_fisico3" Checked="false" runat="server" />
@@ -919,7 +919,7 @@
                                 <asp:TextBox runat="server" ID="txt_actdesempeña4" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-" TextMode="MultiLine" Rows="3"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_tiempotrabajo4" BorderStyle="None" TextMode="Number" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_tiempotrabajo4" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform:uppercase" placeholder="-" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:CheckBox ID="ckb_fisico4" Checked="false" runat="server" />
@@ -3043,7 +3043,7 @@
                 return false;
             }
         }
-    </script>
+    </script>
 
     <script>
         function borrarMensaje() {

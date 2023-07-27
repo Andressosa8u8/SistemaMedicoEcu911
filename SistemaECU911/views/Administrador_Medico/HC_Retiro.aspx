@@ -157,7 +157,7 @@
                                     <asp:TextBox runat="server" ID="txt_fechaSalida" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase" TextMode="Date"></asp:TextBox>
                                 </asp:TableCell>
                                 <asp:TableCell Style="background-color: white; font-size: 14px">
-                                    <asp:TextBox runat="server" ID="txt_tiempo" BorderStyle="None" TextMode="Number" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="txt_tiempo" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                                 </asp:TableCell>
                                 <asp:TableCell Style="background-color: white; font-size: 14px">
                                     <asp:TextBox runat="server" ID="txt_puestoTrabajo" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase" TextMode="MultiLine" Rows="4" ReadOnly="true"></asp:TextBox>
@@ -853,7 +853,7 @@
                 return false;
             }
         }
-    </script>
+    </script>
 
     <script>
         function borrarMensaje() {

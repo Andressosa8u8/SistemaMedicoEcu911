@@ -425,7 +425,7 @@
                                     <asp:CheckBox ID="ckb_curvaTolerancia" Text="&nbsp; &nbsp; Curva de Tolerancia" TextAlign="Right" Style="text-transform: uppercase" Checked="false" OnCheckedChanged="ckb_curvaTolerancia_CheckedChanged" AutoPostBack="true" runat="server" />
                                     <div class="form-check" style="display: flex">
                                         <asp:Label class="form-check-label" for="glu" runat="server" Text="Glucosa:" Style="margin-left: 0.03rem; font-size: 14px"></asp:Label>
-                                        <asp:TextBox ID="txt_glucosa" CssClass="border-bottom border-dark" BorderStyle="None" Style="background-color: transparent; width: 50px; text-transform: uppercase" TextMode="Number" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txt_glucosa" CssClass="border-bottom border-dark" BorderStyle="None" Style="background-color: transparent; width: 50px; text-transform: uppercase" runat="server" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                                         <asp:Label class="form-check-label" for="horas" runat="server" Text="Horas" Style="margin-left: -0.03rem; font-size: 14px"></asp:Label>
                                     </div>
                                 </div>
@@ -676,7 +676,7 @@
                 return false;
             }
         }
-    </script>
+    </script>
 
     <script>
         function borrarMensaje() {

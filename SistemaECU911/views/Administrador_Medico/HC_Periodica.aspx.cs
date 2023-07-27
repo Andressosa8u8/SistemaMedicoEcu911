@@ -2538,6 +2538,21 @@ namespace SistemaECU911.Template.Views
                     }
                 }
                 txt_numHClinica.MaxLength = 10;
+                txt_tiemConConsuNociTabaHabToxi.MaxLength = 2;
+                txt_tiemAbstiConsuNociTabaHabToxi.MaxLength = 2;
+                txt_tiemConConsuNociAlcoHabToxi.MaxLength = 2;
+                txt_tiemAbstiConsuNociAlcoHabToxi.MaxLength = 2;
+                txt_tiemCon1ConsuNociOtrasDroHabToxi.MaxLength = 2;
+                txt_tiemAbsti1ConsuNociOtrasDroHabToxi.MaxLength = 2;
+                txt_tiemCon2ConsuNociOtrasDroHabToxi.MaxLength = 2;
+                txt_tiemAbsti2ConsuNociOtrasDroHabToxi.MaxLength = 2;
+                txt_tiempotrabajo.MaxLength = 2;
+                txt_tiempotrabajo2.MaxLength = 2;
+                txt_tiempotrabajo3.MaxLength = 2;
+                txt_tiempotrabajo21.MaxLength = 2;
+                txt_tiempotrabajo22.MaxLength = 2;
+                txt_tiempotrabajo23.MaxLength = 2;
+
                 Timer1.Enabled = false;
                 cargarProfesional();
                 defaultValidaciones();

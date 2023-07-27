@@ -171,7 +171,7 @@
                                     <asp:TextBox runat="server" ID="txt_fechaReingreso" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase" TextMode="Date"></asp:TextBox>
                                 </asp:TableCell>
                                 <asp:TableCell Style="background-color: white; font-size: 14px">
-                                    <asp:TextBox runat="server" ID="txt_total" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase" TextMode="Number"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="txt_total" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
                                 </asp:TableCell>
                                 <asp:TableCell Style="background-color: white; font-size: 14px">
                                     <asp:TextBox runat="server" ID="txt_causaSalida" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
@@ -801,7 +801,7 @@
                 return false;
             }
         }
-    </script>
+    </script>
 
     <script>
         function borrarMensaje() {
@@ -811,7 +811,7 @@
             if (lblNumHClinica) {
                 lblNumHClinica.innerHTML = "";
             }
-          
+
             if (lblProfesional) {
                 lblProfesional.innerHTML = "";
             }

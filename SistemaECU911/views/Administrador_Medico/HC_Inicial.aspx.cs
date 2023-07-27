@@ -3738,6 +3738,31 @@ namespace SistemaECU911.Template.Views
                     }
                 }
                 txt_numHClinica.MaxLength = 10;
+                txt_numHClinica.MaxLength = 10;
+                txt_porcentajediscapacidad.MaxLength = 3;
+                txt_vivosAntGinObste.MaxLength = 2;
+                txt_muertosAntGinObste.MaxLength = 2;
+                txt_tiempoPapaniAntGinObste.MaxLength = 2;
+                txt_tiempoEcoMamaAntGinObste.MaxLength = 2;
+                txt_tiempoColposAntGinObste.MaxLength = 2;
+                txt_tiempoMamograAntGinObste.MaxLength = 2;
+                txt_tiempoExaRealiAntProstaAntReproMascu.MaxLength = 2;
+                txt_vivosHijosAntReproMascu.MaxLength = 2;
+                txt_muertosHijosAntReproMascu.MaxLength = 2;
+                txt_tiempoExaRealiEcoProstaAntReproMascu.MaxLength = 2;
+                txt_tiemConConsuNociTabaHabToxi.MaxLength = 2;
+                txt_tiemAbstiConsuNociTabaHabToxi.MaxLength = 2;
+                txt_tiemConConsuNociAlcoHabToxi.MaxLength = 2;
+                txt_tiemAbstiConsuNociAlcoHabToxi.MaxLength = 2;
+                txt_tiemCon1ConsuNociOtrasDroHabToxi.MaxLength = 2;
+                txt_tiemAbsti1ConsuNociOtrasDroHabToxi.MaxLength = 2;
+                txt_tiemCon2ConsuNociOtrasDroHabToxi.MaxLength = 2;
+                txt_tiemAbsti2ConsuNociOtrasDroHabToxi.MaxLength = 2;
+                txt_tiempotrabajo.MaxLength = 2;
+                txt_tiempotrabajo2.MaxLength = 2;
+                txt_tiempotrabajo3.MaxLength = 2;
+                txt_tiempotrabajo4.MaxLength = 2;
+
                 Timer1.Enabled = false;
                 cargarProfesional();
                 defaultValidaciones();

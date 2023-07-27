@@ -1262,6 +1262,8 @@ namespace SistemaECU911.Template.Views
                     }
                 }
                 txt_numHClinica.MaxLength = 10;
+                txt_glucosa.MaxLength = 3;
+
                 Timer1.Enabled = false;
                 //defaultValidaciones();
             }
