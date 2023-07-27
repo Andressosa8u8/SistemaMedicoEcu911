@@ -1335,51 +1335,58 @@ namespace SistemaECU911.Template.Views
         {
             string cedula = txt_numHClinica.Text;
 
-            var lista = from c in dc.Tbl_Person
-                        join e in dc.Tbl_Empresa on c.Emp_id equals e.Emp_id
-                        join ce in dc.Tbl_Centro on c.cent_id equals ce.cent_id
-                        where c.Per_cedula == cedula
-                        select new
-                        {
-                            e.Emp_nombre,
-                            ce.cent_ruc,
-                            c.Per_priNombre,
-                            c.Per_segNombre,
-                            c.Per_priApellido,
-                            c.Per_segApellido,
-                            c.Per_genero,
-                            c.Per_fechaNacimiento,
-                            c.Per_fechInicioTrabajo,
-                            c.Per_puestoTrabajo,
-                            c.Per_areaTrabajo
-                        };
-
-            foreach (var item in lista)
+            if (cedula != "")
             {
-                string nomEmpresa = item.Emp_nombre;
-                txt_nombreEmp.Text = nomEmpresa;
+                var lista = from c in dc.Tbl_Person
+                            join e in dc.Tbl_Empresa on c.Emp_id equals e.Emp_id
+                            join ce in dc.Tbl_Centro on c.cent_id equals ce.cent_id
+                            where c.Per_cedula == cedula
+                            select new
+                            {
+                                e.Emp_nombre,
+                                ce.cent_ruc,
+                                c.Per_priNombre,
+                                c.Per_segNombre,
+                                c.Per_priApellido,
+                                c.Per_segApellido,
+                                c.Per_genero,
+                                c.Per_fechaNacimiento,
+                                c.Per_fechInicioTrabajo,
+                                c.Per_puestoTrabajo,
+                                c.Per_areaTrabajo
+                            };
 
-                string rucEmpresa = item.cent_ruc;
-                txt_rucEmp.Text = rucEmpresa;
+                foreach (var item in lista)
+                {
+                    string nomEmpresa = item.Emp_nombre;
+                    txt_nombreEmp.Text = nomEmpresa;
 
-                string priNombre = item.Per_priNombre;
-                txt_priNombre.Text = priNombre;
+                    string rucEmpresa = item.cent_ruc;
+                    txt_rucEmp.Text = rucEmpresa;
 
-                string segNombre = item.Per_segNombre;
-                txt_segNombre.Text = segNombre;
+                    string priNombre = item.Per_priNombre;
+                    txt_priNombre.Text = priNombre;
 
-                string priApellido = item.Per_priApellido;
-                txt_priApellido.Text = priApellido;
+                    string segNombre = item.Per_segNombre;
+                    txt_segNombre.Text = segNombre;
 
-                string segApellido = item.Per_segApellido;
-                txt_segApellido.Text = segApellido;
+                    string priApellido = item.Per_priApellido;
+                    txt_priApellido.Text = priApellido;
 
-                DateTime edad = Convert.ToDateTime(item.Per_fechaNacimiento);
-                DateTime naci = Convert.ToDateTime(edad);
+                    string segApellido = item.Per_segApellido;
+                    txt_segApellido.Text = segApellido;
 
-                DateTime actual = DateTime.Now;
-                Calculo(naci, actual);
+                    DateTime edad = Convert.ToDateTime(item.Per_fechaNacimiento);
+                    DateTime naci = Convert.ToDateTime(edad);
 
+                    DateTime actual = DateTime.Now;
+                    Calculo(naci, actual);
+
+                }
+            }
+            else
+            {
+                txt_nombreEmp.Text = txt_rucEmp.Text = txt_priNombre.Text = txt_segNombre.Text = txt_priApellido.Text = txt_segApellido.Text = txt_edad.Text = string.Empty;
             }
         }
 

@@ -44,6 +44,11 @@ namespace SistemaECU911.views.Administrador_Medico
                 Validaciones();
                 ddl_estado.Text = "A";
                 cargarEspecialidad();
+                txt_cedula.MaxLength = 10;
+                lbl_cedula.Enabled = false;
+                txt_Nombre.Enabled = false;
+                ddl_especialidad.Enabled = false;
+                ddl_estado.Enabled = false;
             }
         }
 
@@ -149,5 +154,33 @@ namespace SistemaECU911.views.Administrador_Medico
         {
             Response.Redirect("~/views/Administrador_Medico/Inicio.aspx");
         }
+        protected void txt_Nombre_TextChanged(object sender, EventArgs e)
+        {
+            ExisteCedula();
+        }
+        private void ExisteCedula()
+        {
+            string cedula = txt_cedula.Text;
+
+            var query = from c in dc.Tbl_Profesional
+                        where c.prof_cedula == cedula
+                        select c;
+            if (query.Any())
+            {
+                lbl_cedula.Enabled = true;
+                lbl_cedula.Text = "El Doctor ya existe !!";
+                txt_Nombre.Enabled = false;
+                ddl_especialidad.Enabled = false;
+                ddl_estado.Enabled = false;
+            }
+            else
+            {
+                lbl_cedula.Text = "";
+                lbl_cedula.Enabled = false;
+                txt_Nombre.Enabled = true;
+                ddl_especialidad.Enabled = true;
+                ddl_estado.Enabled = true;
+            }
+        }        
     }
 }

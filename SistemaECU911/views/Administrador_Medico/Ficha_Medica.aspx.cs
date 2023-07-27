@@ -214,46 +214,60 @@ namespace SistemaECU911.Template.Views
         {
             string cedula = txt_numHClinica.Text;
 
-            var lista = from c in dc.Tbl_Person
-                        join e in dc.Tbl_Empresa on c.Emp_id equals e.Emp_id
-                        where c.Per_cedula == cedula
-                        select new
-                        {
-                            e.Emp_nombre,
-                            c.Per_priNombre,
-                            c.Per_segNombre,
-                            c.Per_priApellido,
-                            c.Per_segApellido,
-                            c.Per_genero,
-                            c.Per_fechaNacimiento
-                        };
-
-            foreach (var item in lista)
+            if (cedula != "")
             {
-                string nomEmpresa = item.Emp_nombre;
-                txt_nomEmpresa.Text = nomEmpresa;
+                var lista = from c in dc.Tbl_Person
+                            join e in dc.Tbl_Empresa on c.Emp_id equals e.Emp_id
+                            where c.Per_cedula == cedula
+                            select new
+                            {
+                                e.Emp_nombre,
+                                c.Per_priNombre,
+                                c.Per_segNombre,
+                                c.Per_priApellido,
+                                c.Per_segApellido,
+                                c.Per_genero,
+                                c.Per_fechaNacimiento
+                            };
 
-                string priNombre = item.Per_priNombre;
-                txt_priNombre.Text = priNombre;
+                foreach (var item in lista)
+                {
+                    string nomEmpresa = item.Emp_nombre;
+                    txt_nomEmpresa.Text = nomEmpresa;
 
-                string segNombre = item.Per_segNombre;
-                txt_segNombre.Text = segNombre;
+                    string priNombre = item.Per_priNombre;
+                    txt_priNombre.Text = priNombre;
 
-                string priApellido = item.Per_priApellido;
-                txt_priApellido.Text = priApellido;
+                    string segNombre = item.Per_segNombre;
+                    txt_segNombre.Text = segNombre;
 
-                string segApellido = item.Per_segApellido;
-                txt_segApellido.Text = segApellido;
+                    string priApellido = item.Per_priApellido;
+                    txt_priApellido.Text = priApellido;
 
-                string sexo = item.Per_genero;
-                txt_sexo.Text = sexo;
+                    string segApellido = item.Per_segApellido;
+                    txt_segApellido.Text = segApellido;
 
-                DateTime edad = Convert.ToDateTime(item.Per_fechaNacimiento);
-                DateTime naci = Convert.ToDateTime(edad);
+                    string sexo = item.Per_genero;
+                    txt_sexo.Text = sexo;
 
-                DateTime actual = DateTime.Now;
-                Calculo(naci, actual);
+                    DateTime edad = Convert.ToDateTime(item.Per_fechaNacimiento);
+                    DateTime naci = Convert.ToDateTime(edad);
 
+                    DateTime actual = DateTime.Now;
+                    Calculo(naci, actual);
+
+                }
+            }
+            else
+            {
+                txt_nomEmpresa.Text = string.Empty;
+                txt_priNombre.Text = string.Empty;
+                txt_segNombre.Text = string.Empty;
+                txt_segNombre.Text = string.Empty;
+                txt_priApellido.Text = string.Empty;
+                txt_segApellido.Text = string.Empty;
+                txt_sexo.Text = string.Empty;
+                txt_edad.Text = string.Empty;
             }
         }
 

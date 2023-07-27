@@ -16,12 +16,13 @@
                 <div class="row">
                     <div class="col-md-3">
                         <label class="form-label">CEDULA</label>
-                        <asp:TextBox class="form-control" runat="server" ID="txt_cedula" Style="width: 100%; background-color: transparent; text-transform: uppercase"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" ControlToValidate="txt_cedula" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
+                        <asp:TextBox class="form-control" runat="server" ID="txt_cedula" Style="width: 100%; background-color: transparent; text-transform: uppercase" OnTextChanged="txt_Nombre_TextChanged" AutoPostBack="true" onkeypress="return SoloNumeros(event)" oninput="borrarMensaje()"></asp:TextBox>
+                        <asp:Label ID="lbl_cedula" ForeColor="Red" runat="server"></asp:Label>
+                        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" ControlToValidate="txt_cedula" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>--%>
                     </div>
                     <div class="col-md-9">
                         <label class="form-label">NOMBRE COMPLETO</label>
-                        <asp:TextBox class="form-control" runat="server" ID="txt_Nombre" Style="width: 100%; background-color: transparent; text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox class="form-control" runat="server" ID="txt_Nombre" Style="width: 100%; background-color: transparent; text-transform: uppercase" OnTextChanged="txt_Nombre_TextChanged" AutoPostBack="true"  onkeypress="return SoloNumeros(event)" oninput="borrarMensaje()"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ForeColor="Red" ControlToValidate="txt_Nombre" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
                     </div>
                     <div class="col-md-5">
@@ -50,4 +51,24 @@
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
+    <script type="text/javascript">
+        function SoloNumeros(e) {
+            // Verificar el código de la tecla presionada
+            var key = e.which || e.keyCode;
+            if (key < 48 || key > 57) {
+                // Si el código de la tecla no está en el rango de dígitos (0-9), se cancela el evento
+                e.preventDefault();
+                return false;
+            }
+        }
+    </script>
+    <script>
+        function borrarMensaje() {
+            var lbl_cedula = document.getElementById("<%= lbl_cedula.ClientID %>");
+
+            if (lbl_cedula) {
+                lbl_cedula.innerHTML = "";
+            }
+        }
+    </script>
 </asp:Content>
