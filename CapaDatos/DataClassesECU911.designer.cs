@@ -84,9 +84,6 @@ namespace CapaDatos
     partial void InsertTbl_SocioEconomico(Tbl_SocioEconomico instance);
     partial void UpdateTbl_SocioEconomico(Tbl_SocioEconomico instance);
     partial void DeleteTbl_SocioEconomico(Tbl_SocioEconomico instance);
-    partial void InsertTbl_Tipos_de_Enfermedades(Tbl_Tipos_de_Enfermedades instance);
-    partial void UpdateTbl_Tipos_de_Enfermedades(Tbl_Tipos_de_Enfermedades instance);
-    partial void DeleteTbl_Tipos_de_Enfermedades(Tbl_Tipos_de_Enfermedades instance);
     #endregion
 		
 		public DataClassesECU911DataContext() : 
@@ -263,12 +260,11 @@ namespace CapaDatos
 			}
 		}
 		
-		public System.Data.Linq.Table<Tbl_Tipos_de_Enfermedades> Tbl_Tipos_de_Enfermedades
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.AutentificarxUsuario")]
+		public ISingleResult<AutentificarxUsuarioResult> AutentificarxUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Usuario", DbType="VarChar(25)")] string usuario)
 		{
-			get
-			{
-				return this.GetTable<Tbl_Tipos_de_Enfermedades>();
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuario);
+			return ((ISingleResult<AutentificarxUsuarioResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Npersona_puestoTrabajo")]
@@ -276,13 +272,6 @@ namespace CapaDatos
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<Sp_Npersona_puestoTrabajoResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.AutentificarxUsuario")]
-		public ISingleResult<AutentificarxUsuarioResult> AutentificarxUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Usuario", DbType="VarChar(25)")] string usuario)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuario);
-			return ((ISingleResult<AutentificarxUsuarioResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CargarImagen")]
@@ -4467,13 +4456,13 @@ namespace CapaDatos
 		
 		private string _descripcionPer;
 		
-		private System.Nullable<int> _idTipAntecedentePer;
+		private string _tipAntecedentePer;
 		
 		private string _antecedenteFam;
 		
 		private string _descripcionFam;
 		
-		private System.Nullable<int> _idTipAntecedenteFam;
+		private string _tipAntecedenteFam;
 		
 		private string _descripcionEA;
 		
@@ -4611,14 +4600,14 @@ namespace CapaDatos
     partial void OnantecedentePerChanged();
     partial void OndescripcionPerChanging(string value);
     partial void OndescripcionPerChanged();
-    partial void OnidTipAntecedentePerChanging(System.Nullable<int> value);
-    partial void OnidTipAntecedentePerChanged();
+    partial void OntipAntecedentePerChanging(string value);
+    partial void OntipAntecedentePerChanged();
     partial void OnantecedenteFamChanging(string value);
     partial void OnantecedenteFamChanged();
     partial void OndescripcionFamChanging(string value);
     partial void OndescripcionFamChanged();
-    partial void OnidTipAntecedenteFamChanging(System.Nullable<int> value);
-    partial void OnidTipAntecedenteFamChanged();
+    partial void OntipAntecedenteFamChanging(string value);
+    partial void OntipAntecedenteFamChanged();
     partial void OndescripcionEAChanging(string value);
     partial void OndescripcionEAChanged();
     partial void OnorgSentidoChanging(System.Nullable<int> value);
@@ -4844,22 +4833,22 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTipAntecedentePer", DbType="Int")]
-		public System.Nullable<int> idTipAntecedentePer
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipAntecedentePer", DbType="VarChar(MAX)")]
+		public string tipAntecedentePer
 		{
 			get
 			{
-				return this._idTipAntecedentePer;
+				return this._tipAntecedentePer;
 			}
 			set
 			{
-				if ((this._idTipAntecedentePer != value))
+				if ((this._tipAntecedentePer != value))
 				{
-					this.OnidTipAntecedentePerChanging(value);
+					this.OntipAntecedentePerChanging(value);
 					this.SendPropertyChanging();
-					this._idTipAntecedentePer = value;
-					this.SendPropertyChanged("idTipAntecedentePer");
-					this.OnidTipAntecedentePerChanged();
+					this._tipAntecedentePer = value;
+					this.SendPropertyChanged("tipAntecedentePer");
+					this.OntipAntecedentePerChanged();
 				}
 			}
 		}
@@ -4904,22 +4893,22 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTipAntecedenteFam", DbType="Int")]
-		public System.Nullable<int> idTipAntecedenteFam
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipAntecedenteFam", DbType="VarChar(MAX)")]
+		public string tipAntecedenteFam
 		{
 			get
 			{
-				return this._idTipAntecedenteFam;
+				return this._tipAntecedenteFam;
 			}
 			set
 			{
-				if ((this._idTipAntecedenteFam != value))
+				if ((this._tipAntecedenteFam != value))
 				{
-					this.OnidTipAntecedenteFamChanging(value);
+					this.OntipAntecedenteFamChanging(value);
 					this.SendPropertyChanging();
-					this._idTipAntecedenteFam = value;
-					this.SendPropertyChanged("idTipAntecedenteFam");
-					this.OnidTipAntecedenteFamChanged();
+					this._tipAntecedenteFam = value;
+					this.SendPropertyChanged("tipAntecedenteFam");
+					this.OntipAntecedenteFamChanged();
 				}
 			}
 		}
@@ -50395,112 +50384,28 @@ namespace CapaDatos
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tbl_Tipos_de_Enfermedades")]
-	public partial class Tbl_Tipos_de_Enfermedades : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class AutentificarxUsuarioResult
 	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		private string _Per_nomlogin;
 		
-		private int _TiEnf_id;
-		
-		private string _TiEnf_nombre;
-		
-		private string _TiEnf_estado;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnTiEnf_idChanging(int value);
-    partial void OnTiEnf_idChanged();
-    partial void OnTiEnf_nombreChanging(string value);
-    partial void OnTiEnf_nombreChanged();
-    partial void OnTiEnf_estadoChanging(string value);
-    partial void OnTiEnf_estadoChanged();
-    #endregion
-		
-		public Tbl_Tipos_de_Enfermedades()
+		public AutentificarxUsuarioResult()
 		{
-			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TiEnf_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int TiEnf_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_nomlogin", DbType="VarChar(25)")]
+		public string Per_nomlogin
 		{
 			get
 			{
-				return this._TiEnf_id;
+				return this._Per_nomlogin;
 			}
 			set
 			{
-				if ((this._TiEnf_id != value))
+				if ((this._Per_nomlogin != value))
 				{
-					this.OnTiEnf_idChanging(value);
-					this.SendPropertyChanging();
-					this._TiEnf_id = value;
-					this.SendPropertyChanged("TiEnf_id");
-					this.OnTiEnf_idChanged();
+					this._Per_nomlogin = value;
 				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TiEnf_nombre", DbType="VarChar(50)")]
-		public string TiEnf_nombre
-		{
-			get
-			{
-				return this._TiEnf_nombre;
-			}
-			set
-			{
-				if ((this._TiEnf_nombre != value))
-				{
-					this.OnTiEnf_nombreChanging(value);
-					this.SendPropertyChanging();
-					this._TiEnf_nombre = value;
-					this.SendPropertyChanged("TiEnf_nombre");
-					this.OnTiEnf_nombreChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TiEnf_estado", DbType="VarChar(1) NOT NULL", CanBeNull=false)]
-		public string TiEnf_estado
-		{
-			get
-			{
-				return this._TiEnf_estado;
-			}
-			set
-			{
-				if ((this._TiEnf_estado != value))
-				{
-					this.OnTiEnf_estadoChanging(value);
-					this.SendPropertyChanging();
-					this._TiEnf_estado = value;
-					this.SendPropertyChanged("TiEnf_estado");
-					this.OnTiEnf_estadoChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -50544,32 +50449,6 @@ namespace CapaDatos
 				if ((this._numero_personas != value))
 				{
 					this._numero_personas = value;
-				}
-			}
-		}
-	}
-	
-	public partial class AutentificarxUsuarioResult
-	{
-		
-		private string _Per_nomlogin;
-		
-		public AutentificarxUsuarioResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_nomlogin", DbType="VarChar(25)")]
-		public string Per_nomlogin
-		{
-			get
-			{
-				return this._Per_nomlogin;
-			}
-			set
-			{
-				if ((this._Per_nomlogin != value))
-				{
-					this._Per_nomlogin = value;
 				}
 			}
 		}

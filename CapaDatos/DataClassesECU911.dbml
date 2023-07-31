@@ -189,10 +189,10 @@
       <Column Name="seAcompañanteMc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="antecedentePer" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="descripcionPer" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="idTipAntecedentePer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tipAntecedentePer" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="antecedenteFam" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="descripcionFam" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="idTipAntecedenteFam" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tipAntecedenteFam" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="descripcionEA" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="orgSentido" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="descripcionOS" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
@@ -2099,23 +2099,16 @@
       <Association Name="Tbl_Person_Tbl_SocioEconomico" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Tbl_Tipos_de_Enfermedades" Member="Tbl_Tipos_de_Enfermedades">
-    <Type Name="Tbl_Tipos_de_Enfermedades">
-      <Column Name="TiEnf_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TiEnf_nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="TiEnf_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Function Name="dbo.Sp_Npersona_puestoTrabajo" Method="Sp_Npersona_puestoTrabajo">
-    <ElementType Name="Sp_Npersona_puestoTrabajoResult">
-      <Column Name="Per_puestoTrabajo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="numero_personas" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.AutentificarxUsuario" Method="AutentificarxUsuario">
     <Parameter Name="Usuario" Parameter="usuario" Type="System.String" DbType="VarChar(25)" />
     <ElementType Name="AutentificarxUsuarioResult">
       <Column Name="Per_nomlogin" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Sp_Npersona_puestoTrabajo" Method="Sp_Npersona_puestoTrabajo">
+    <ElementType Name="Sp_Npersona_puestoTrabajoResult">
+      <Column Name="Per_puestoTrabajo" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="numero_personas" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.CargarImagen" Method="CargarImagen">

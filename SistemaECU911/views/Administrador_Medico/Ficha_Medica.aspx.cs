@@ -71,10 +71,10 @@ namespace SistemaECU911.Template.Views
                         {
                             txt_moConsulta.Text = fichasmedicas.moConsulta.ToString();
                             txt_segAcompa.Text = fichasmedicas.seAcompañanteMc.ToString();
-                            ddl_tipoAntPer.SelectedValue = fichasmedicas.idTipAntecedentePer.ToString();
+                            ddl_tipoAntPer.SelectedItem.Text = fichasmedicas.tipAntecedentePer.ToString();
                             txt_antePersonales.Text = fichasmedicas.antecedentePer.ToString();
                             txt_antePerDescripcion.Text = fichasmedicas.descripcionPer.ToString();
-                            ddl_tipoAntFam.SelectedValue = fichasmedicas.idTipAntecedenteFam.ToString();
+                            ddl_tipoAntFam.SelectedItem.Text = fichasmedicas.tipAntecedenteFam.ToString();
                             txt_anteFamiliares.Text = fichasmedicas.antecedenteFam.ToString();
                             txt_anteFamDescripcion.Text = fichasmedicas.descripcionFam.ToString();
                             txt_enfeActual.Text = fichasmedicas.descripcionEA.ToString();
@@ -338,11 +338,11 @@ namespace SistemaECU911.Template.Views
                 fichasmedicas.moConsulta = txt_moConsulta.Text.ToUpper();
                 fichasmedicas.seAcompañanteMc = txt_segAcompa.Text.ToUpper();
                 //2
-                fichasmedicas.idTipAntecedentePer = Convert.ToInt32(ddl_tipoAntPer.SelectedValue);
+                fichasmedicas.tipAntecedentePer = ddl_tipoAntPer.SelectedItem.Text.ToUpper();
                 fichasmedicas.antecedentePer = txt_antePersonales.Text.ToUpper();
                 fichasmedicas.descripcionPer = txt_antePerDescripcion.Text.ToUpper();
                 //3
-                fichasmedicas.idTipAntecedenteFam = Convert.ToInt32(ddl_tipoAntFam.SelectedValue);
+                fichasmedicas.tipAntecedenteFam = ddl_tipoAntFam.SelectedItem.Text.ToUpper();
                 fichasmedicas.antecedenteFam = txt_anteFamiliares.Text.ToUpper();
                 fichasmedicas.descripcionFam = txt_anteFamDescripcion.Text.ToUpper();
                 //4
@@ -430,10 +430,10 @@ namespace SistemaECU911.Template.Views
             {
                 fichasmedicas.moConsulta = txt_moConsulta.Text.ToUpper();
                 fichasmedicas.seAcompañanteMc = txt_segAcompa.Text.ToUpper();
-                fichasmedicas.idTipAntecedentePer = Convert.ToInt32(ddl_tipoAntPer.SelectedValue);
+                fichasmedicas.tipAntecedentePer = ddl_tipoAntPer.SelectedItem.Text.ToUpper();
                 fichasmedicas.antecedentePer = txt_antePersonales.Text.ToUpper();
                 fichasmedicas.descripcionPer = txt_antePerDescripcion.Text.ToUpper();
-                fichasmedicas.idTipAntecedenteFam = Convert.ToInt32(ddl_tipoAntFam.SelectedValue);
+                fichasmedicas.tipAntecedenteFam = ddl_tipoAntFam.SelectedItem.Text.ToUpper();
                 fichasmedicas.antecedenteFam = txt_anteFamiliares.Text.ToUpper();
                 fichasmedicas.descripcionFam = txt_anteFamDescripcion.Text.ToUpper();
                 fichasmedicas.descripcionEA = txt_enfeActual.Text.ToUpper();

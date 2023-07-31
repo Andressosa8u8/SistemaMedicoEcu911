@@ -61,10 +61,10 @@ namespace SistemaECU911.Template.Views_Pacientes
                         {
                             txt_moConsulta.Text = fichasmedicas.moConsulta.ToString();
                             txt_segAcompa.Text = fichasmedicas.seAcompañanteMc.ToString();
-                            ddl_tipoAntPer.SelectedValue = fichasmedicas.idTipAntecedentePer.ToString();
+                            ddl_tipoAntPer.SelectedValue = fichasmedicas.tipAntecedentePer.ToString();
                             txt_antePersonales.Text = fichasmedicas.antecedentePer.ToString();
                             txt_antePerDescripcion.Text = fichasmedicas.descripcionPer.ToString();
-                            ddl_tipoAntFam.SelectedValue = fichasmedicas.idTipAntecedenteFam.ToString();
+                            ddl_tipoAntFam.SelectedValue = fichasmedicas.tipAntecedenteFam.ToString();
                             txt_anteFamiliares.Text = fichasmedicas.antecedenteFam.ToString();
                             txt_anteFamDescripcion.Text = fichasmedicas.descripcionFam.ToString();
                             txt_enfeActual.Text = fichasmedicas.descripcionEA.ToString();
