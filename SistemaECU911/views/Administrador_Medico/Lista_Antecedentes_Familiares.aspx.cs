@@ -37,15 +37,15 @@ namespace SistemaECU911.views.Administrador_Medico
                             //               fm.idTipAntecedentePer == 6 ? "ENFERMEDAD HEREDITARIA/CONGÓNICA" :
                             //               fm.idTipAntecedentePer == 7 ? "DISCAPACIDADES" :
                             //               "OTROS",
-                            AntecedentesFamiliares = fm.tipAntecedenteFam == 0 ? "SIN ANTECENDENTES" :
-                                           fm.tipAntecedenteFam == 1 ? "ENFERMEDAD CARDIO VASCULAR" :
-                                           fm.tipAntecedenteFam == 2 ? "ENFERMEDAD METABÓLICA" :
-                                           fm.tipAntecedenteFam == 3 ? "ENFERMEDAD NEUROLÓGICA" :
-                                           fm.tipAntecedenteFam == 4 ? "ENFERMEDAD ONCÓLOGICA" :
-                                           fm.tipAntecedenteFam == 5 ? "ENFERMEDAD INFECCIOSA" :
-                                           fm.tipAntecedenteFam == 6 ? "ENFERMEDAD HEREDITARIA/CONGÓNICA" :
-                                           fm.tipAntecedenteFam == 7 ? "DISCAPACIDADES" :
-                                           "OTROS",
+                            AntecedentesFamiliares = fm.antecedenteFam.ToString(),
+                                           //fm.tipAntecedenteFam == 1 ? "ENFERMEDAD CARDIO VASCULAR" :
+                                           //fm.tipAntecedenteFam == 2 ? "ENFERMEDAD METABÓLICA" :
+                                           //fm.tipAntecedenteFam == 3 ? "ENFERMEDAD NEUROLÓGICA" :
+                                           //fm.tipAntecedenteFam == 4 ? "ENFERMEDAD ONCÓLOGICA" :
+                                           //fm.tipAntecedenteFam == 5 ? "ENFERMEDAD INFECCIOSA" :
+                                           //fm.tipAntecedenteFam == 6 ? "ENFERMEDAD HEREDITARIA/CONGÓNICA" :
+                                           //fm.tipAntecedenteFam == 7 ? "DISCAPACIDADES" :
+                                           //"OTROS",
                             Descripcion = fm.antecedentePer == "" ? "SIN DESCRIPCIÓN" : fm.antecedentePer.ToString(),
                             Fecha = fm.fechaHoraGuardado.ToString()
                             //Diagnostico = fm.diagnostico == "" ? "SIN DIAGNÓSTICO" : fm.diagnostico.ToString(),

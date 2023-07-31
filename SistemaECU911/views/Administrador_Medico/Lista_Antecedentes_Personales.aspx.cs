@@ -28,15 +28,15 @@ namespace SistemaECU911.views.Administrador_Medico
                             p.Per_cedula,
                             p.Per_priNombre,
                             p.Per_priApellido,
-                            Antecedentes = fm.idTipAntecedentePer == 0 ? "SIN ANTECENDENTE" :
-                                           fm.idTipAntecedentePer == 1 ? "ENFERMEDAD CARDIO VASCULAR" :
-                                           fm.idTipAntecedentePer == 2 ? "ENFERMEDAD METABÓLICA" :
-                                           fm.idTipAntecedentePer == 3 ? "ENFERMEDAD NEUROLÓGICA" :
-                                           fm.idTipAntecedentePer == 4 ? "ENFERMEDAD ONCÓLOGICA" :
-                                           fm.idTipAntecedentePer == 5 ? "ENFERMEDAD INFECCIOSA" :
-                                           fm.idTipAntecedentePer == 6 ? "ENFERMEDAD HEREDITARIA/CONGÓNICA" :
-                                           fm.idTipAntecedentePer == 7 ? "DISCAPACIDADES" :
-                                           "OTROS",
+                            Antecedentes = fm.descripcionFam.ToString(),
+                                           //fm.idTipAntecedentePer == 1 ? "ENFERMEDAD CARDIO VASCULAR" :
+                                           //fm.idTipAntecedentePer == 2 ? "ENFERMEDAD METABÓLICA" :
+                                           //fm.idTipAntecedentePer == 3 ? "ENFERMEDAD NEUROLÓGICA" :
+                                           //fm.idTipAntecedentePer == 4 ? "ENFERMEDAD ONCÓLOGICA" :
+                                           //fm.idTipAntecedentePer == 5 ? "ENFERMEDAD INFECCIOSA" :
+                                           //fm.idTipAntecedentePer == 6 ? "ENFERMEDAD HEREDITARIA/CONGÓNICA" :
+                                           //fm.idTipAntecedentePer == 7 ? "DISCAPACIDADES" :
+                                           //"OTROS",
                             Descripcion = fm.antecedentePer == "" ? "SIN DESCRIPCIÓN" : fm.antecedentePer.ToString(),
                             Fecha = fm.fechaHoraGuardado.ToString()
                         };
