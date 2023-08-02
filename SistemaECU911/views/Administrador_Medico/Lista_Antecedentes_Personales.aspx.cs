@@ -28,7 +28,15 @@ namespace SistemaECU911.views.Administrador_Medico
                             p.Per_cedula,
                             p.Per_priNombre,
                             p.Per_priApellido,
-                            Antecedentes = fm.descripcionFam.ToString(),
+                            Antecedentes = fm.tipAntecedentePer == "1" ? "ENFERMEDAD CARDIO VASCULAR":
+                                           fm.tipAntecedentePer == "2" ? "ENFERMEDAD METABÓLICA" :
+                                           fm.tipAntecedentePer == "3" ? "ENFERMEDAD NEUROLÓGICA" :
+                                           fm.tipAntecedentePer == "4" ? "ENFERMEDAD ONCÓLOGICA" :
+                                           fm.tipAntecedentePer == "5" ? "ENFERMEDAD INFECCIOSA" :
+                                           fm.tipAntecedentePer == "6" ? "ENFERMEDAD HEREDITARIA/CONGÓNICA" :
+                                           fm.tipAntecedentePer == "7" ? "DISCAPACIDADES" :
+                                           fm.tipAntecedentePer == "8" ? "OTROS":
+                                           "SIN ANTECEDENTE",
                                            //fm.idTipAntecedentePer == 1 ? "ENFERMEDAD CARDIO VASCULAR" :
                                            //fm.idTipAntecedentePer == 2 ? "ENFERMEDAD METABÓLICA" :
                                            //fm.idTipAntecedentePer == 3 ? "ENFERMEDAD NEUROLÓGICA" :
