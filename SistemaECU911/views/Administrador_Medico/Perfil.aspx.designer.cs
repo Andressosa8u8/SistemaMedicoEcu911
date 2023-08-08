@@ -33,22 +33,22 @@ namespace SistemaECU911.Template.Views
         protected global::System.Web.UI.Timer Timer1;
 
         /// <summary>
-        /// Control UpdatePanel1.
+        /// Control imgPreview.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.WebControls.Image imgPreview;
 
         /// <summary>
-        /// Control FileUpload1.
+        /// Control FileUploadProfilePic.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadProfilePic;
 
         /// <summary>
         /// Control txt_priNombre.

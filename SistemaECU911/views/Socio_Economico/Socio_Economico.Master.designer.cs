@@ -42,6 +42,15 @@ namespace SistemaECU911.views.Socio_Economico
         protected global::System.Web.UI.HtmlControls.HtmlForm fmr;
 
         /// <summary>
+        /// Control imgPerfil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgPerfil;
+
+        /// <summary>
         /// Control Lnb_CerrarSesion.
         /// </summary>
         /// <remarks>

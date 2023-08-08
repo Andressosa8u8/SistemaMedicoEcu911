@@ -17,8 +17,8 @@
   <Table Name="dbo.Tbl_Centro" Member="Tbl_Centro">
     <Type Name="Tbl_Centro">
       <Column Name="cent_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="cent_nombre" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
-      <Column Name="cent_ruc" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="cent_nombre" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="cent_ruc" Type="System.String" DbType="VarChar(13) NOT NULL" CanBeNull="false" />
       <Column Name="cent_dirrecionInstitucional" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="cent_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Centro_Tbl_Person" Member="Tbl_Person" ThisKey="cent_id" OtherKey="cent_id" Type="Tbl_Person" />
@@ -87,10 +87,7 @@
       <Column Name="espec_nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="espec_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Especialidad_Tbl_FichasMedicas" Member="Tbl_FichasMedicas" ThisKey="espec_id" OtherKey="espec_id" Type="Tbl_FichasMedicas" />
-      <Association Name="Tbl_Especialidad_Tbl_Periodica" Member="Tbl_Periodica" ThisKey="espec_id" OtherKey="espec_id" Type="Tbl_Periodica" />
       <Association Name="Tbl_Especialidad_Tbl_Profesional" Member="Tbl_Profesional" ThisKey="espec_id" OtherKey="espec_id" Type="Tbl_Profesional" />
-      <Association Name="Tbl_Especialidad_Tbl_Reintegro" Member="Tbl_Reintegro" ThisKey="espec_id" OtherKey="espec_id" Type="Tbl_Reintegro" />
-      <Association Name="Tbl_Especialidad_Tbl_Retiro" Member="Tbl_Retiro" ThisKey="espec_id" OtherKey="espec_id" Type="Tbl_Retiro" />
     </Type>
   </Table>
   <Table Name="dbo.Tbl_Evolucion" Member="Tbl_Evolucion">
@@ -189,10 +186,10 @@
       <Column Name="seAcompañanteMc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="antecedentePer" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="descripcionPer" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="tipAntecedentePer" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="tipAntecedentePer" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
       <Column Name="antecedenteFam" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="descripcionFam" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="tipAntecedenteFam" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="tipAntecedenteFam" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
       <Column Name="descripcionEA" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="orgSentido" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="descripcionOS" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
@@ -259,8 +256,8 @@
   <Table Name="dbo.Tbl_Image" Member="Tbl_Image">
     <Type Name="Tbl_Image">
       <Column Name="img_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="img_cedula" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="img_foto" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="img_nombre" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="img_imagenByte" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="img_estado" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
     </Type>
   </Table>
@@ -1522,13 +1519,11 @@
       <Column Name="perio_descripcionRecoTratamiento" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="perio_fecha_horaModificacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="prof_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="espec_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="perio_cod" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
       <Column Name="Per_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Emp_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="perio_fechaHoraGuardado" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="perio_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
-      <Association Name="Tbl_Especialidad_Tbl_Periodica" Member="Tbl_Especialidad" ThisKey="espec_id" OtherKey="espec_id" Type="Tbl_Especialidad" IsForeignKey="true" />
       <Association Name="Tbl_Empresa_Tbl_Periodica" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
       <Association Name="Tbl_Person_Tbl_Periodica" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />
       <Association Name="Tbl_Profesional_Tbl_Periodica" Member="Tbl_Profesional" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_Profesional" IsForeignKey="true" />
@@ -1537,6 +1532,8 @@
   <Table Name="dbo.Tbl_Person" Member="Tbl_Person">
     <Type Name="Tbl_Person">
       <Column Name="Per_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Per_imgNombre" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Per_imgByte" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="Per_cedula" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="Per_priApellido" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
       <Column Name="Per_segApellido" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
@@ -1683,13 +1680,11 @@
       <Column Name="rein_descripcionRecoTratamiento" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="rein_fecha_horaModificacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="prof_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="espec_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="rein_cod" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
       <Column Name="Per_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Emp_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="rein_fechaHoraGuardado" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="rein_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
-      <Association Name="Tbl_Especialidad_Tbl_Reintegro" Member="Tbl_Especialidad" ThisKey="espec_id" OtherKey="espec_id" Type="Tbl_Especialidad" IsForeignKey="true" />
       <Association Name="Tbl_Profesional_Tbl_Reintegro" Member="Tbl_Profesional" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_Profesional" IsForeignKey="true" />
       <Association Name="Tbl_Empresa_Tbl_Reintegro" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
       <Association Name="Tbl_Person_Tbl_Reintegro" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />
@@ -1797,13 +1792,11 @@
       <Column Name="ret_descripcionRecoTratamiento" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="ret_fecha_horaModificacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="prof_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="espec_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ret_cod" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
       <Column Name="Per_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Emp_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ret_fechaHoraGuardado" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="ret_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
-      <Association Name="Tbl_Especialidad_Tbl_Retiro" Member="Tbl_Especialidad" ThisKey="espec_id" OtherKey="espec_id" Type="Tbl_Especialidad" IsForeignKey="true" />
       <Association Name="Tbl_Profesional_Tbl_Retiro" Member="Tbl_Profesional" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_Profesional" IsForeignKey="true" />
       <Association Name="Tbl_Empresa_Tbl_Retiro" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
       <Association Name="Tbl_Person_Tbl_Retiro" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />

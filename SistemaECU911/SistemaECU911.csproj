@@ -859,7 +859,9 @@
     <Content Include="resources\vendors\tinymce\tinymce.min.js" />
     <Content Include="index.aspx" />
     <Content Include="views\Administrador\Control_Usuarios.aspx" />
+    <Content Include="views\Administrador\Imagen.aspx" />
     <Content Include="views\Administrador\Inicio.aspx" />
+    <Content Include="views\Administrador\Perfil.aspx" />
     <Content Include="views\Administrador_Medico\Agregar_Doctores.aspx" />
     <Content Include="views\Administrador_Medico\Certificado_Covid.aspx" />
     <Content Include="views\Administrador_Medico\Lista_Antecedentes_Familiares.aspx" />
@@ -943,12 +945,26 @@
     <Compile Include="views\Administrador\Control_Usuarios.aspx.designer.cs">
       <DependentUpon>Control_Usuarios.aspx</DependentUpon>
     </Compile>
+    <Compile Include="views\Administrador\Imagen.aspx.cs">
+      <DependentUpon>Imagen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\Administrador\Imagen.aspx.designer.cs">
+      <DependentUpon>Imagen.aspx</DependentUpon>
+    </Compile>
     <Compile Include="views\Administrador\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="views\Administrador\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="views\Administrador\Perfil.aspx.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\Administrador\Perfil.aspx.designer.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="views\Administrador_Medico\Agregar_Doctores.aspx.cs">
       <DependentUpon>Agregar_Doctores.aspx</DependentUpon>

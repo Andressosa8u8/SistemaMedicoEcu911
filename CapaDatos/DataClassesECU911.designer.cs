@@ -604,7 +604,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cent_nombre", DbType="VarChar(75)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cent_nombre", DbType="VarChar(75) NOT NULL", CanBeNull=false)]
 		public string cent_nombre
 		{
 			get
@@ -624,7 +624,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cent_ruc", DbType="VarChar(13)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cent_ruc", DbType="VarChar(13) NOT NULL", CanBeNull=false)]
 		public string cent_ruc
 		{
 			get
@@ -2092,13 +2092,7 @@ namespace CapaDatos
 		
 		private EntitySet<Tbl_FichasMedicas> _Tbl_FichasMedicas;
 		
-		private EntitySet<Tbl_Periodica> _Tbl_Periodica;
-		
 		private EntitySet<Tbl_Profesional> _Tbl_Profesional;
-		
-		private EntitySet<Tbl_Reintegro> _Tbl_Reintegro;
-		
-		private EntitySet<Tbl_Retiro> _Tbl_Retiro;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -2115,10 +2109,7 @@ namespace CapaDatos
 		public Tbl_Especialidad()
 		{
 			this._Tbl_FichasMedicas = new EntitySet<Tbl_FichasMedicas>(new Action<Tbl_FichasMedicas>(this.attach_Tbl_FichasMedicas), new Action<Tbl_FichasMedicas>(this.detach_Tbl_FichasMedicas));
-			this._Tbl_Periodica = new EntitySet<Tbl_Periodica>(new Action<Tbl_Periodica>(this.attach_Tbl_Periodica), new Action<Tbl_Periodica>(this.detach_Tbl_Periodica));
 			this._Tbl_Profesional = new EntitySet<Tbl_Profesional>(new Action<Tbl_Profesional>(this.attach_Tbl_Profesional), new Action<Tbl_Profesional>(this.detach_Tbl_Profesional));
-			this._Tbl_Reintegro = new EntitySet<Tbl_Reintegro>(new Action<Tbl_Reintegro>(this.attach_Tbl_Reintegro), new Action<Tbl_Reintegro>(this.detach_Tbl_Reintegro));
-			this._Tbl_Retiro = new EntitySet<Tbl_Retiro>(new Action<Tbl_Retiro>(this.attach_Tbl_Retiro), new Action<Tbl_Retiro>(this.detach_Tbl_Retiro));
 			OnCreated();
 		}
 		
@@ -2195,19 +2186,6 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Especialidad_Tbl_Periodica", Storage="_Tbl_Periodica", ThisKey="espec_id", OtherKey="espec_id")]
-		public EntitySet<Tbl_Periodica> Tbl_Periodica
-		{
-			get
-			{
-				return this._Tbl_Periodica;
-			}
-			set
-			{
-				this._Tbl_Periodica.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Especialidad_Tbl_Profesional", Storage="_Tbl_Profesional", ThisKey="espec_id", OtherKey="espec_id")]
 		public EntitySet<Tbl_Profesional> Tbl_Profesional
 		{
@@ -2218,32 +2196,6 @@ namespace CapaDatos
 			set
 			{
 				this._Tbl_Profesional.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Especialidad_Tbl_Reintegro", Storage="_Tbl_Reintegro", ThisKey="espec_id", OtherKey="espec_id")]
-		public EntitySet<Tbl_Reintegro> Tbl_Reintegro
-		{
-			get
-			{
-				return this._Tbl_Reintegro;
-			}
-			set
-			{
-				this._Tbl_Reintegro.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Especialidad_Tbl_Retiro", Storage="_Tbl_Retiro", ThisKey="espec_id", OtherKey="espec_id")]
-		public EntitySet<Tbl_Retiro> Tbl_Retiro
-		{
-			get
-			{
-				return this._Tbl_Retiro;
-			}
-			set
-			{
-				this._Tbl_Retiro.Assign(value);
 			}
 		}
 		
@@ -2279,18 +2231,6 @@ namespace CapaDatos
 			entity.Tbl_Especialidad = null;
 		}
 		
-		private void attach_Tbl_Periodica(Tbl_Periodica entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Especialidad = this;
-		}
-		
-		private void detach_Tbl_Periodica(Tbl_Periodica entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Especialidad = null;
-		}
-		
 		private void attach_Tbl_Profesional(Tbl_Profesional entity)
 		{
 			this.SendPropertyChanging();
@@ -2298,30 +2238,6 @@ namespace CapaDatos
 		}
 		
 		private void detach_Tbl_Profesional(Tbl_Profesional entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Especialidad = null;
-		}
-		
-		private void attach_Tbl_Reintegro(Tbl_Reintegro entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Especialidad = this;
-		}
-		
-		private void detach_Tbl_Reintegro(Tbl_Reintegro entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Especialidad = null;
-		}
-		
-		private void attach_Tbl_Retiro(Tbl_Retiro entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Especialidad = this;
-		}
-		
-		private void detach_Tbl_Retiro(Tbl_Retiro entity)
 		{
 			this.SendPropertyChanging();
 			entity.Tbl_Especialidad = null;
@@ -4833,7 +4749,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipAntecedentePer", DbType="VarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipAntecedentePer", DbType="VarChar(1)")]
 		public string tipAntecedentePer
 		{
 			get
@@ -4893,7 +4809,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipAntecedenteFam", DbType="VarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipAntecedenteFam", DbType="VarChar(1)")]
 		public string tipAntecedenteFam
 		{
 			get
@@ -6234,9 +6150,9 @@ namespace CapaDatos
 		
 		private int _img_id;
 		
-		private string _img_cedula;
+		private string _img_nombre;
 		
-		private System.Data.Linq.Binary _img_foto;
+		private System.Data.Linq.Binary _img_imagenByte;
 		
 		private string _img_estado;
 		
@@ -6246,10 +6162,10 @@ namespace CapaDatos
     partial void OnCreated();
     partial void Onimg_idChanging(int value);
     partial void Onimg_idChanged();
-    partial void Onimg_cedulaChanging(string value);
-    partial void Onimg_cedulaChanged();
-    partial void Onimg_fotoChanging(System.Data.Linq.Binary value);
-    partial void Onimg_fotoChanged();
+    partial void Onimg_nombreChanging(string value);
+    partial void Onimg_nombreChanged();
+    partial void Onimg_imagenByteChanging(System.Data.Linq.Binary value);
+    partial void Onimg_imagenByteChanged();
     partial void Onimg_estadoChanging(string value);
     partial void Onimg_estadoChanged();
     #endregion
@@ -6279,42 +6195,42 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img_cedula", DbType="VarChar(10)")]
-		public string img_cedula
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img_nombre", DbType="VarChar(MAX)")]
+		public string img_nombre
 		{
 			get
 			{
-				return this._img_cedula;
+				return this._img_nombre;
 			}
 			set
 			{
-				if ((this._img_cedula != value))
+				if ((this._img_nombre != value))
 				{
-					this.Onimg_cedulaChanging(value);
+					this.Onimg_nombreChanging(value);
 					this.SendPropertyChanging();
-					this._img_cedula = value;
-					this.SendPropertyChanged("img_cedula");
-					this.Onimg_cedulaChanged();
+					this._img_nombre = value;
+					this.SendPropertyChanged("img_nombre");
+					this.Onimg_nombreChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img_foto", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary img_foto
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img_imagenByte", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary img_imagenByte
 		{
 			get
 			{
-				return this._img_foto;
+				return this._img_imagenByte;
 			}
 			set
 			{
-				if ((this._img_foto != value))
+				if ((this._img_imagenByte != value))
 				{
-					this.Onimg_fotoChanging(value);
+					this.Onimg_imagenByteChanging(value);
 					this.SendPropertyChanging();
-					this._img_foto = value;
-					this.SendPropertyChanged("img_foto");
-					this.Onimg_fotoChanged();
+					this._img_imagenByte = value;
+					this.SendPropertyChanged("img_imagenByte");
+					this.Onimg_imagenByteChanged();
 				}
 			}
 		}
@@ -28997,8 +28913,6 @@ namespace CapaDatos
 		
 		private int _prof_id;
 		
-		private int _espec_id;
-		
 		private string _perio_cod;
 		
 		private int _Per_id;
@@ -29008,8 +28922,6 @@ namespace CapaDatos
 		private System.DateTime _perio_fechaHoraGuardado;
 		
 		private string _perio_estado;
-		
-		private EntityRef<Tbl_Especialidad> _Tbl_Especialidad;
 		
 		private EntityRef<Tbl_Empresa> _Tbl_Empresa;
 		
@@ -29699,8 +29611,6 @@ namespace CapaDatos
     partial void Onperio_fecha_horaModificacionChanged();
     partial void Onprof_idChanging(int value);
     partial void Onprof_idChanged();
-    partial void Onespec_idChanging(int value);
-    partial void Onespec_idChanged();
     partial void Onperio_codChanging(string value);
     partial void Onperio_codChanged();
     partial void OnPer_idChanging(int value);
@@ -29715,7 +29625,6 @@ namespace CapaDatos
 		
 		public Tbl_Periodica()
 		{
-			this._Tbl_Especialidad = default(EntityRef<Tbl_Especialidad>);
 			this._Tbl_Empresa = default(EntityRef<Tbl_Empresa>);
 			this._Tbl_Person = default(EntityRef<Tbl_Person>);
 			this._Tbl_Profesional = default(EntityRef<Tbl_Profesional>);
@@ -36506,30 +36415,6 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_espec_id", DbType="Int NOT NULL")]
-		public int espec_id
-		{
-			get
-			{
-				return this._espec_id;
-			}
-			set
-			{
-				if ((this._espec_id != value))
-				{
-					if (this._Tbl_Especialidad.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onespec_idChanging(value);
-					this.SendPropertyChanging();
-					this._espec_id = value;
-					this.SendPropertyChanged("espec_id");
-					this.Onespec_idChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_cod", DbType="VarChar(25)")]
 		public string perio_cod
 		{
@@ -36634,40 +36519,6 @@ namespace CapaDatos
 					this._perio_estado = value;
 					this.SendPropertyChanged("perio_estado");
 					this.Onperio_estadoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Especialidad_Tbl_Periodica", Storage="_Tbl_Especialidad", ThisKey="espec_id", OtherKey="espec_id", IsForeignKey=true)]
-		public Tbl_Especialidad Tbl_Especialidad
-		{
-			get
-			{
-				return this._Tbl_Especialidad.Entity;
-			}
-			set
-			{
-				Tbl_Especialidad previousValue = this._Tbl_Especialidad.Entity;
-				if (((previousValue != value) 
-							|| (this._Tbl_Especialidad.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tbl_Especialidad.Entity = null;
-						previousValue.Tbl_Periodica.Remove(this);
-					}
-					this._Tbl_Especialidad.Entity = value;
-					if ((value != null))
-					{
-						value.Tbl_Periodica.Add(this);
-						this._espec_id = value.espec_id;
-					}
-					else
-					{
-						this._espec_id = default(int);
-					}
-					this.SendPropertyChanged("Tbl_Especialidad");
 				}
 			}
 		}
@@ -36803,6 +36654,10 @@ namespace CapaDatos
 		
 		private int _Per_id;
 		
+		private string _Per_imgNombre;
+		
+		private System.Data.Linq.Binary _Per_imgByte;
+		
 		private string _Per_cedula;
 		
 		private string _Per_priApellido;
@@ -36875,6 +36730,10 @@ namespace CapaDatos
     partial void OnCreated();
     partial void OnPer_idChanging(int value);
     partial void OnPer_idChanged();
+    partial void OnPer_imgNombreChanging(string value);
+    partial void OnPer_imgNombreChanged();
+    partial void OnPer_imgByteChanging(System.Data.Linq.Binary value);
+    partial void OnPer_imgByteChanged();
     partial void OnPer_cedulaChanging(string value);
     partial void OnPer_cedulaChanged();
     partial void OnPer_priApellidoChanging(string value);
@@ -36951,6 +36810,46 @@ namespace CapaDatos
 					this._Per_id = value;
 					this.SendPropertyChanged("Per_id");
 					this.OnPer_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_imgNombre", DbType="VarChar(MAX)")]
+		public string Per_imgNombre
+		{
+			get
+			{
+				return this._Per_imgNombre;
+			}
+			set
+			{
+				if ((this._Per_imgNombre != value))
+				{
+					this.OnPer_imgNombreChanging(value);
+					this.SendPropertyChanging();
+					this._Per_imgNombre = value;
+					this.SendPropertyChanged("Per_imgNombre");
+					this.OnPer_imgNombreChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_imgByte", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Per_imgByte
+		{
+			get
+			{
+				return this._Per_imgByte;
+			}
+			set
+			{
+				if ((this._Per_imgByte != value))
+				{
+					this.OnPer_imgByteChanging(value);
+					this.SendPropertyChanging();
+					this._Per_imgByte = value;
+					this.SendPropertyChanged("Per_imgByte");
+					this.OnPer_imgByteChanged();
 				}
 			}
 		}
@@ -38360,8 +38259,6 @@ namespace CapaDatos
 		
 		private int _prof_id;
 		
-		private int _espec_id;
-		
 		private string _rein_cod;
 		
 		private int _Per_id;
@@ -38371,8 +38268,6 @@ namespace CapaDatos
 		private System.DateTime _rein_fechaHoraGuardado;
 		
 		private string _rein_estado;
-		
-		private EntityRef<Tbl_Especialidad> _Tbl_Especialidad;
 		
 		private EntityRef<Tbl_Profesional> _Tbl_Profesional;
 		
@@ -38566,8 +38461,6 @@ namespace CapaDatos
     partial void Onrein_fecha_horaModificacionChanged();
     partial void Onprof_idChanging(int value);
     partial void Onprof_idChanged();
-    partial void Onespec_idChanging(int value);
-    partial void Onespec_idChanged();
     partial void Onrein_codChanging(string value);
     partial void Onrein_codChanged();
     partial void OnPer_idChanging(int value);
@@ -38582,7 +38475,6 @@ namespace CapaDatos
 		
 		public Tbl_Reintegro()
 		{
-			this._Tbl_Especialidad = default(EntityRef<Tbl_Especialidad>);
 			this._Tbl_Profesional = default(EntityRef<Tbl_Profesional>);
 			this._Tbl_Empresa = default(EntityRef<Tbl_Empresa>);
 			this._Tbl_Person = default(EntityRef<Tbl_Person>);
@@ -40413,30 +40305,6 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_espec_id", DbType="Int NOT NULL")]
-		public int espec_id
-		{
-			get
-			{
-				return this._espec_id;
-			}
-			set
-			{
-				if ((this._espec_id != value))
-				{
-					if (this._Tbl_Especialidad.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onespec_idChanging(value);
-					this.SendPropertyChanging();
-					this._espec_id = value;
-					this.SendPropertyChanged("espec_id");
-					this.Onespec_idChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_rein_cod", DbType="VarChar(25)")]
 		public string rein_cod
 		{
@@ -40541,40 +40409,6 @@ namespace CapaDatos
 					this._rein_estado = value;
 					this.SendPropertyChanged("rein_estado");
 					this.Onrein_estadoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Especialidad_Tbl_Reintegro", Storage="_Tbl_Especialidad", ThisKey="espec_id", OtherKey="espec_id", IsForeignKey=true)]
-		public Tbl_Especialidad Tbl_Especialidad
-		{
-			get
-			{
-				return this._Tbl_Especialidad.Entity;
-			}
-			set
-			{
-				Tbl_Especialidad previousValue = this._Tbl_Especialidad.Entity;
-				if (((previousValue != value) 
-							|| (this._Tbl_Especialidad.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tbl_Especialidad.Entity = null;
-						previousValue.Tbl_Reintegro.Remove(this);
-					}
-					this._Tbl_Especialidad.Entity = value;
-					if ((value != null))
-					{
-						value.Tbl_Reintegro.Add(this);
-						this._espec_id = value.espec_id;
-					}
-					else
-					{
-						this._espec_id = default(int);
-					}
-					this.SendPropertyChanged("Tbl_Especialidad");
 				}
 			}
 		}
@@ -40908,8 +40742,6 @@ namespace CapaDatos
 		
 		private int _prof_id;
 		
-		private int _espec_id;
-		
 		private string _ret_cod;
 		
 		private int _Per_id;
@@ -40919,8 +40751,6 @@ namespace CapaDatos
 		private System.DateTime _ret_fechaHoraGuardado;
 		
 		private string _ret_estado;
-		
-		private EntityRef<Tbl_Especialidad> _Tbl_Especialidad;
 		
 		private EntityRef<Tbl_Profesional> _Tbl_Profesional;
 		
@@ -41132,8 +40962,6 @@ namespace CapaDatos
     partial void Onret_fecha_horaModificacionChanged();
     partial void Onprof_idChanging(int value);
     partial void Onprof_idChanged();
-    partial void Onespec_idChanging(int value);
-    partial void Onespec_idChanged();
     partial void Onret_codChanging(string value);
     partial void Onret_codChanged();
     partial void OnPer_idChanging(int value);
@@ -41148,7 +40976,6 @@ namespace CapaDatos
 		
 		public Tbl_Retiro()
 		{
-			this._Tbl_Especialidad = default(EntityRef<Tbl_Especialidad>);
 			this._Tbl_Profesional = default(EntityRef<Tbl_Profesional>);
 			this._Tbl_Empresa = default(EntityRef<Tbl_Empresa>);
 			this._Tbl_Person = default(EntityRef<Tbl_Person>);
@@ -43159,30 +42986,6 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_espec_id", DbType="Int NOT NULL")]
-		public int espec_id
-		{
-			get
-			{
-				return this._espec_id;
-			}
-			set
-			{
-				if ((this._espec_id != value))
-				{
-					if (this._Tbl_Especialidad.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onespec_idChanging(value);
-					this.SendPropertyChanging();
-					this._espec_id = value;
-					this.SendPropertyChanged("espec_id");
-					this.Onespec_idChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ret_cod", DbType="VarChar(25)")]
 		public string ret_cod
 		{
@@ -43287,40 +43090,6 @@ namespace CapaDatos
 					this._ret_estado = value;
 					this.SendPropertyChanged("ret_estado");
 					this.Onret_estadoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Especialidad_Tbl_Retiro", Storage="_Tbl_Especialidad", ThisKey="espec_id", OtherKey="espec_id", IsForeignKey=true)]
-		public Tbl_Especialidad Tbl_Especialidad
-		{
-			get
-			{
-				return this._Tbl_Especialidad.Entity;
-			}
-			set
-			{
-				Tbl_Especialidad previousValue = this._Tbl_Especialidad.Entity;
-				if (((previousValue != value) 
-							|| (this._Tbl_Especialidad.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tbl_Especialidad.Entity = null;
-						previousValue.Tbl_Retiro.Remove(this);
-					}
-					this._Tbl_Especialidad.Entity = value;
-					if ((value != null))
-					{
-						value.Tbl_Retiro.Add(this);
-						this._espec_id = value.espec_id;
-					}
-					else
-					{
-						this._espec_id = default(int);
-					}
-					this.SendPropertyChanged("Tbl_Especialidad");
 				}
 			}
 		}

@@ -62,9 +62,9 @@ namespace SistemaECU911
 
                                 //--------------------Datos Cambiar Usuario--------------------
 
-                                //Session["correo"] = person.Per_correo.ToString();
-                                //Session["telefono"] = person.Per_telefono.ToString();
-                                //Session["direccion"] = person.Per_direccion.ToString();
+                                Session["correo"] = person.Per_correo.ToString();
+                                Session["telefono"] = person.Per_telefono.ToString();
+                                Session["direccion"] = person.Per_direccion.ToString();
 
                                 Response.Redirect("~/views/Administrador/Inicio.aspx");
                                 limpiar();
@@ -96,10 +96,13 @@ namespace SistemaECU911
                                 Session["priapellido"] = person.Per_priApellido.ToString();
                                 Session["segapellido"] = person.Per_segApellido.ToString();
                                 Session["rol"] = tusu.tusu_nombre.ToString();
-                                //Otros datos
+
+                                //--------------------Datos Cambiar Usuario--------------------
+
                                 Session["correo"] = person.Per_correo.ToString();
                                 Session["telefono"] = person.Per_telefono.ToString();
                                 Session["direccion"] = person.Per_direccion.ToString();
+                                
                                 Response.Redirect("~/views/Pacientes/Inicio.aspx");
                                 limpiar();
                             }
@@ -111,10 +114,13 @@ namespace SistemaECU911
                                 Session["priapellido"] = person.Per_priApellido.ToString();
                                 Session["segapellido"] = person.Per_segApellido.ToString();
                                 Session["rol"] = tusu.tusu_nombre.ToString();
-                                //Otros datos
+
+                                //--------------------Datos Cambiar Usuario--------------------
+
                                 Session["correo"] = person.Per_correo.ToString();
                                 Session["telefono"] = person.Per_telefono.ToString();
                                 Session["direccion"] = person.Per_direccion.ToString();
+                                
                                 Response.Redirect("~/views/Socio_Economico/Inicio.aspx");
                                 limpiar();
                             }
