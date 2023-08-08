@@ -164,14 +164,14 @@
                                 <asp:TableCell Style="background-color: white">
                                     <asp:DropDownList ID="ddl_tipoAntPer" CssClass="form-check" Style="width: 100%; text-transform: uppercase; border: none; background-color: transparent; font-size: 14px" runat="server">
                                         <asp:ListItem Value="0">Seleccione...</asp:ListItem>
-                                        <asp:ListItem>ENFERMEDAD CARDIO-VASCULAR</asp:ListItem>
-                                        <asp:ListItem>ENFERMEDAD METABÓLICA</asp:ListItem>
-                                        <asp:ListItem>ENFERMEDAD NEUROLÓGICA</asp:ListItem>
-                                        <asp:ListItem>ENFERMEDAD ONCOLÓGICA</asp:ListItem>
-                                        <asp:ListItem>ENFERMEDAD INFECCIOSA</asp:ListItem>
-                                        <asp:ListItem>ENFERMEDAD HEREDITARIA/CONGÓNITA</asp:ListItem>
-                                        <asp:ListItem>DISCAPACIDADES</asp:ListItem>
-                                        <asp:ListItem>OTROS</asp:ListItem>
+                                        <asp:ListItem Value="1">ENFERMEDAD CARDIO-VASCULAR</asp:ListItem>
+                                        <asp:ListItem Value="2">ENFERMEDAD METABÓLICA</asp:ListItem>
+                                        <asp:ListItem Value="3">ENFERMEDAD NEUROLÓGICA</asp:ListItem>
+                                        <asp:ListItem Value="4">ENFERMEDAD ONCOLÓGICA</asp:ListItem>
+                                        <asp:ListItem Value="5">ENFERMEDAD INFECCIOSA</asp:ListItem>
+                                        <asp:ListItem Value="6">ENFERMEDAD HEREDITARIA/CONGÓNITA</asp:ListItem>
+                                        <asp:ListItem Value="7">DISCAPACIDADES</asp:ListItem>
+                                        <asp:ListItem Value="8">OTROS</asp:ListItem>
                                     </asp:DropDownList>
                                     <%--<asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="ddl_tipoAntPer" InitialValue="0" runat="server"/>--%>
                                 </asp:TableCell>
@@ -201,14 +201,14 @@
                                 <asp:TableCell Style="background-color: white">
                                     <asp:DropDownList ID="ddl_tipoAntFam" CssClass="form-check" Style="width: 100%; text-transform: uppercase; border: none; background-color: transparent; font-size: 14px" runat="server">
                                         <asp:ListItem Value="0">Seleccione...</asp:ListItem>
-                                        <asp:ListItem>ENFERMEDAD CARDIO-VASCULAR</asp:ListItem>
-                                        <asp:ListItem>ENFERMEDAD METABÓLICA</asp:ListItem>
-                                        <asp:ListItem>ENFERMEDAD NEUROLÓGICA</asp:ListItem>
-                                        <asp:ListItem>ENFERMEDAD ONCOLÓGICA</asp:ListItem>
-                                        <asp:ListItem>ENFERMEDAD INFECCIOSA</asp:ListItem>
-                                        <asp:ListItem>ENFERMEDAD HEREDITARIA/CONGÓNITA</asp:ListItem>
-                                        <asp:ListItem>DISCAPACIDADES</asp:ListItem>
-                                        <asp:ListItem>OTROS</asp:ListItem>
+                                        <asp:ListItem Value="1">ENFERMEDAD CARDIO-VASCULAR</asp:ListItem>
+                                        <asp:ListItem Value="2">ENFERMEDAD METABÓLICA</asp:ListItem>
+                                        <asp:ListItem Value="3">ENFERMEDAD NEUROLÓGICA</asp:ListItem>
+                                        <asp:ListItem Value="4">ENFERMEDAD ONCOLÓGICA</asp:ListItem>
+                                        <asp:ListItem Value="5">ENFERMEDAD INFECCIOSA</asp:ListItem>
+                                        <asp:ListItem Value="6">ENFERMEDAD HEREDITARIA/CONGÓNITA</asp:ListItem>
+                                        <asp:ListItem Value="7">DISCAPACIDADES</asp:ListItem>
+                                        <asp:ListItem Value="8">OTROS</asp:ListItem>
                                     </asp:DropDownList>
                                     <%--<asp:RequiredFieldValidator ErrorMessage="Required" ControlToValidate="ddl_tipoAntPer" InitialValue="0" runat="server" ForeColor="Red" />--%>
                                 </asp:TableCell>

@@ -71,24 +71,29 @@ namespace SistemaECU911.Template.Views
                         {
                             txt_moConsulta.Text = fichasmedicas.moConsulta.ToString();
                             txt_segAcompa.Text = fichasmedicas.seAcompañanteMc.ToString();
-                            if (fichasmedicas.tipAntecedentePer == null)
-                            {
-                                ddl_tipoAntPer.Text = "Seleccione...";
-                            }
-                            else
-                            {
-                                ddl_tipoAntPer.SelectedItem.Text = fichasmedicas.tipAntecedentePer.ToString();
-                            }
+                            //if (fichasmedicas.tipAntecedentePer == null)
+                            //{
+                            //    ddl_tipoAntPer.Text = "Seleccione...";
+                            //}
+                            //else
+                            //{
+                                
+                            //    ddl_tipoAntPer.SelectedItem.Text = fichasmedicas.tipAntecedentePer.ToString();
+                            //}
+                            ddl_tipoAntPer.SelectedValue = fichasmedicas.tipAntecedentePer.ToString();
                             txt_antePersonales.Text = fichasmedicas.antecedentePer.ToString();
                             txt_antePerDescripcion.Text = fichasmedicas.descripcionPer.ToString();
-                            if (fichasmedicas.tipAntecedenteFam == null)
-                            {
-                                ddl_tipoAntFam.Text = "Seleccione...";
-                            }
-                            else
-                            {
-                                ddl_tipoAntFam.SelectedItem.Text = fichasmedicas.tipAntecedenteFam.ToString();
-                            }
+                            //if (fichasmedicas.tipAntecedenteFam == null)
+                            //{
+                            //    //ddl_tipoAntFam.Items.Add("Seleccione...");
+                            //    ddl_tipoAntFam.SelectedItem.Text = "Seleccione...";
+                            //}
+                            //else
+                            //{
+                            //    //ddl_tipoAntFam.Items.Add("Seleccione...");
+                            //    ddl_tipoAntFam.SelectedItem.Text = fichasmedicas.tipAntecedenteFam.ToString();
+                            //}
+                            ddl_tipoAntFam.SelectedValue = fichasmedicas.tipAntecedenteFam.ToString();
                             txt_anteFamiliares.Text = fichasmedicas.antecedenteFam.ToString();
                             txt_anteFamDescripcion.Text = fichasmedicas.descripcionFam.ToString();
                             txt_enfeActual.Text = fichasmedicas.descripcionEA.ToString();
@@ -352,25 +357,27 @@ namespace SistemaECU911.Template.Views
                 fichasmedicas.moConsulta = txt_moConsulta.Text.ToUpper();
                 fichasmedicas.seAcompañanteMc = txt_segAcompa.Text.ToUpper();
                 //2
-                if (Convert.ToInt32(ddl_tipoAntPer.SelectedValue) == 0)
-                {
-                    fichasmedicas.tipAntecedentePer = null;
-                }
-                else
-                {
-                    fichasmedicas.tipAntecedentePer = ddl_tipoAntPer.SelectedItem.Text.ToUpper();
-                }
+                //if (Convert.ToInt32(ddl_tipoAntPer.SelectedValue) == 0)
+                //{
+                //    fichasmedicas.tipAntecedentePer = null;
+                //}
+                //else
+                //{
+                //    fichasmedicas.tipAntecedentePer = ddl_tipoAntPer.SelectedItem.Text.ToUpper();
+                //}
+                fichasmedicas.tipAntecedentePer = ddl_tipoAntPer.SelectedValue;
                 fichasmedicas.antecedentePer = txt_antePersonales.Text.ToUpper();
                 fichasmedicas.descripcionPer = txt_antePerDescripcion.Text.ToUpper();
                 //3
-                if (Convert.ToInt32(ddl_tipoAntPer.SelectedValue) == 0)
-                {
-                    fichasmedicas.tipAntecedenteFam = null;
-                }
-                else
-                {
-                    fichasmedicas.tipAntecedenteFam = ddl_tipoAntFam.SelectedItem.Text.ToUpper();
-                }
+                //if (Convert.ToInt32(ddl_tipoAntPer.SelectedValue) == 0)
+                //{
+                //    fichasmedicas.tipAntecedenteFam = null;
+                //}
+                //else
+                //{
+                //    fichasmedicas.tipAntecedenteFam = ddl_tipoAntFam.SelectedItem.Text.ToUpper();
+                //}
+                fichasmedicas.tipAntecedenteFam = ddl_tipoAntFam.SelectedValue;
                 fichasmedicas.antecedenteFam = txt_anteFamiliares.Text.ToUpper();
                 fichasmedicas.descripcionFam = txt_anteFamDescripcion.Text.ToUpper();
                 //4
@@ -458,10 +465,12 @@ namespace SistemaECU911.Template.Views
             {
                 fichasmedicas.moConsulta = txt_moConsulta.Text.ToUpper();
                 fichasmedicas.seAcompañanteMc = txt_segAcompa.Text.ToUpper();
-                fichasmedicas.tipAntecedentePer = ddl_tipoAntPer.SelectedItem.Text.ToUpper();
+                //fichasmedicas.tipAntecedentePer = ddl_tipoAntPer.SelectedItem.Text.ToUpper();
+                fichasmedicas.tipAntecedentePer = ddl_tipoAntPer.SelectedValue;
                 fichasmedicas.antecedentePer = txt_antePersonales.Text.ToUpper();
                 fichasmedicas.descripcionPer = txt_antePerDescripcion.Text.ToUpper();
-                fichasmedicas.tipAntecedenteFam = ddl_tipoAntFam.SelectedItem.Text.ToUpper();
+                //fichasmedicas.tipAntecedenteFam = ddl_tipoAntFam.SelectedItem.Text.ToUpper();
+                fichasmedicas.tipAntecedenteFam = ddl_tipoAntFam.SelectedValue;
                 fichasmedicas.antecedenteFam = txt_anteFamiliares.Text.ToUpper();
                 fichasmedicas.descripcionFam = txt_anteFamDescripcion.Text.ToUpper();
                 fichasmedicas.descripcionEA = txt_enfeActual.Text.ToUpper();
