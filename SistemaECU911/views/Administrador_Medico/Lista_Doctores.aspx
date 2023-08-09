@@ -38,9 +38,9 @@
                                                                         <asp:Label ID="prof_cedula" runat="server" Text='<%#Eval("prof_cedula")%>'></asp:Label>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>                                                                
-                                                                <asp:TemplateField ItemStyle-Width="17" HeaderStyle-Width="17" HeaderText="">
+                                                                <asp:TemplateField ItemStyle-Width="17" HeaderStyle-Width="17" ShowHeader="false">
                                                                     <ItemTemplate>
-                                                                        <asp:LinkButton ID="lnbEditar" Width="16" Height="16" CommandArgument='<%#Eval("prof_id")%>' CommandName="Editar" runat="server"><i class="fas fa-pen"></i></asp:LinkButton>
+                                                                        <asp:LinkButton ID="lnbEditar" Width="16" Height="16" CommandArgument='<%#Eval("prof_id")%>' Visible="false" CommandName="Editar" runat="server"><i class="fas fa-pen"></i></asp:LinkButton>
                                                                     </ItemTemplate>
                                                                     <HeaderStyle Width="17px" />
                                                                     <ItemStyle Width="17px" />
@@ -76,6 +76,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+    <script src=" https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
 
 
 
