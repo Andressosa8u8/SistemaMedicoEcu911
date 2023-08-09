@@ -9296,5 +9296,41 @@ namespace SistemaECU911.Template.Views
             Response.Write(pdfDoc);
             Response.End();
         }
+
+        protected void txt_puestotrabajo_TextChanged(object sender, EventArgs e)
+        {
+            var valor = txt_puestotrabajo.Text;
+            txt_puestotrabajo21.Text = valor;
+        }
+
+        protected void txt_puestotrabajo2_TextChanged(object sender, EventArgs e)
+        {
+            var valor = txt_puestotrabajo2.Text;
+            txt_puestotrabajo22.Text = valor;
+        }
+
+        protected void txt_puestotrabajo3_TextChanged(object sender, EventArgs e)
+        {
+            var valor = txt_puestotrabajo3.Text;
+            txt_puestotrabajo23.Text = valor;
+        }
+
+        protected void txt_act_TextChanged(object sender, EventArgs e)
+        {
+            var valor = txt_act.Text;
+            txt_act21.Text = valor;
+        }
+
+        protected void txt_act2_TextChanged(object sender, EventArgs e)
+        {
+            var valor = txt_act2.Text;
+            txt_act22.Text = valor;
+        }
+
+        protected void txt_act3_TextChanged(object sender, EventArgs e)
+        {
+            var valor = txt_act3.Text;
+            txt_act23.Text = valor;
+        }
     }
 }

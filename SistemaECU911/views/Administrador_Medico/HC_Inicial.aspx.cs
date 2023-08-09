@@ -13524,10 +13524,57 @@ namespace SistemaECU911.Template.Views
             Response.Write(pdfDoc);
             Response.End();
         }
-
-        protected void txt_puestodetrabajo21_TextChanged(object sender, EventArgs e)
+        protected void txt_puestodetrabajo_TextChanged(object sender, EventArgs e)
         {
-
+            var valor = txt_puestodetrabajo.Text;
+            txt_puestodetrabajo21.Text = valor;
         }
+
+        protected void txt_puestodetrabajo2_TextChanged(object sender, EventArgs e)
+        {
+            var valor = txt_puestodetrabajo2.Text;
+            txt_puestodetrabajo22.Text = valor;
+        }
+
+        protected void txt_puestodetrabajo3_TextChanged(object sender, EventArgs e)
+        {
+            var valor = txt_puestodetrabajo3.Text;
+            txt_puestodetrabajo23.Text = valor;
+        }
+
+        protected void txt_puestodetrabajo4_TextChanged(object sender, EventArgs e)
+        {
+            var valor = txt_puestodetrabajo4.Text;
+            txt_puestodetrabajo24.Text = valor;
+        }
+
+        protected void txt_act_TextChanged(object sender, EventArgs e)
+        {
+            var valor = txt_act.Text;
+            txt_act21.Text = valor;
+        }
+
+        protected void txt_act2_TextChanged(object sender, EventArgs e)
+        {
+            var valor = txt_act2.Text;
+            txt_act22.Text = valor;
+        }
+
+        protected void txt_act3_TextChanged(object sender, EventArgs e)
+        {
+            var valor = txt_act3.Text;
+            txt_act23.Text = valor;
+        }
+
+        protected void txt_act4_TextChanged(object sender, EventArgs e)
+        {
+            var valor = txt_act4.Text;
+            txt_act24.Text = valor;
+        }
+
+        //protected void txt_act23_TextChanged(object sender, EventArgs e)
+        //{
+
+        //}
     }
 }

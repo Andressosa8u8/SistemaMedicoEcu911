@@ -866,6 +866,8 @@
     <Content Include="views\Administrador_Medico\Certificado_Covid.aspx" />
     <Content Include="views\Administrador_Medico\Lista_Antecedentes_Familiares.aspx" />
     <Content Include="views\Administrador_Medico\Lista_Antecedentes_Personales.aspx" />
+    <Content Include="views\Administrador_Medico\Lista_Cantidad_Enfermedad.aspx" />
+    <Content Include="views\Administrador_Medico\Lista_Cantidad_Puesto_Trabajo.aspx" />
     <Content Include="views\Administrador_Medico\Lista_Diagnostico_Codigo.aspx" />
     <Content Include="views\Administrador_Medico\Lista_Doctores.aspx" />
     <Content Include="views\Administrador_Medico\Lista_Pacientes.aspx" />
@@ -993,6 +995,20 @@
     </Compile>
     <Compile Include="views\Administrador_Medico\Lista_Antecedentes_Personales.aspx.designer.cs">
       <DependentUpon>Lista_Antecedentes_Personales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="views\Administrador_Medico\Lista_Cantidad_Enfermedad.aspx.cs">
+      <DependentUpon>Lista_Cantidad_Enfermedad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\Administrador_Medico\Lista_Cantidad_Enfermedad.aspx.designer.cs">
+      <DependentUpon>Lista_Cantidad_Enfermedad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="views\Administrador_Medico\Lista_Cantidad_Puesto_Trabajo.aspx.cs">
+      <DependentUpon>Lista_Cantidad_Puesto_Trabajo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\Administrador_Medico\Lista_Cantidad_Puesto_Trabajo.aspx.designer.cs">
+      <DependentUpon>Lista_Cantidad_Puesto_Trabajo.aspx</DependentUpon>
     </Compile>
     <Compile Include="views\Administrador_Medico\Lista_Diagnostico_Codigo.aspx.cs">
       <DependentUpon>Lista_Diagnostico_Codigo.aspx</DependentUpon>

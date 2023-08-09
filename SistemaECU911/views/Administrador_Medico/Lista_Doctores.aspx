@@ -92,13 +92,24 @@
                 dom: '<"top"lfB>rtip',
                 buttons: [
                     {
+                        extend: 'colvis', // Agrega el botón de visibilidad
+                        text: '',
+                        className: 'btn btn-secondary',
+                        init: function (api, node, config) {
+                            $(node).html('<i class="fas fa-eye fa-lg" style="color:#212f97;"></i>');
+                        }
+                    },
+                    {
                         extend: 'excel',
                         text: '',
                         className: 'btn btn-secondary',
                         init: function (api, node, config) {
                             $(node).append('<i class="fas fa-file-excel fa-lg"></i>');
                         },
-                        title: 'LISTADO DE PACIENTES', // Título del contenido del EXCEL
+                        title: 'LISTADO DE MEDICOS', // Título del contenido del EXCEL
+                        exportOptions: {
+                            columns: ':visible' // Exporta solo las columnas visibles
+                        },
                         action: function (e, dt, node, config) {
                             var filename = prompt('Ingrese el nombre del archivo Excel', '');
                             if (filename !== null && filename !== '') {
@@ -114,7 +125,10 @@
                         init: function (api, node, config) {
                             $(node).append('<i class="fas fa-file-pdf fa-lg"></i>');
                         },
-                        title: 'LISTADO DE PACIENTES', // Título del contenido del PDF
+                        title: 'LISTADO DE MEDICOS', // Título del contenido del PDF
+                        exportOptions: {
+                            columns: ':visible' // Exporta solo las columnas visibles
+                        },
                         action: function (e, dt, node, config) {
                             var filename = prompt('Ingrese el nombre del archivo PDF', '');
                             if (filename !== null && filename !== '') {
@@ -124,7 +138,10 @@
                         }
                     },
                     {
-                        title: 'LISTADO DE PACIENTES', // Título del contenido en IMPRIMIR
+                        title: 'LISTADO DE MEDICOS', // Título del contenido en IMPRIMIR
+                        exportOptions: {
+                            columns: ':visible' // Exporta solo las columnas visibles
+                        },
                         extend: 'print',
                         text: '',
                         className: 'btn btn-secondary',

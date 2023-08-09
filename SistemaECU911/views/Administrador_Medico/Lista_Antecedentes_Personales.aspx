@@ -95,6 +95,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+    <script src=" https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
 
 
     <!--asdasdads-->
@@ -115,13 +116,24 @@
                 dom: '<"top"lfB>rtip',
                 buttons: [
                     {
+                        extend: 'colvis', // Agrega el botón de visibilidad
+                        text: '',
+                        className: 'btn btn-secondary',
+                        init: function (api, node, config) {
+                            $(node).html('<i class="fas fa-eye fa-lg" style="color:#212f97;"></i>');
+                        }
+                    },
+                    {
                         extend: 'excel',
                         text: '',
                         className: 'btn btn-secondary',
                         init: function (api, node, config) {
                             $(node).append('<i class="fas fa-file-excel fa-lg"></i>');
                         },
-                        title: 'LISTADO DE PACIENTES', // Título del contenido del EXCEL
+                        title: 'LISTADO DE ANTECEDENTES PERSONALES', // Título del contenido del EXCEL
+                        exportOptions: {
+                            columns: ':visible' // Exporta solo las columnas visibles
+                        },
                         action: function (e, dt, node, config) {
                             var filename = prompt('Ingrese el nombre del archivo Excel', '');
                             if (filename !== null && filename !== '') {
@@ -137,7 +149,10 @@
                         init: function (api, node, config) {
                             $(node).append('<i class="fas fa-file-pdf fa-lg"></i>');
                         },
-                        title: 'LISTADO DE PACIENTES', // Título del contenido del PDF
+                        title: 'LISTADO DE ANTECEDENTES PERSONALES', // Título del contenido del PDF
+                        exportOptions: {
+                            columns: ':visible' // Exporta solo las columnas visibles
+                        },
                         action: function (e, dt, node, config) {
                             var filename = prompt('Ingrese el nombre del archivo PDF', '');
                             if (filename !== null && filename !== '') {
@@ -147,7 +162,10 @@
                         }
                     },
                     {
-                        title: 'LISTADO DE PACIENTES', // Título del contenido en IMPRIMIR
+                        title: 'LISTADO DE ANTECEDENTES PERSONALES', // Título del contenido en IMPRIMIR
+                        exportOptions: {
+                            columns: ':visible' // Exporta solo las columnas visibles
+                        },
                         extend: 'print',
                         text: '',
                         className: 'btn btn-secondary',

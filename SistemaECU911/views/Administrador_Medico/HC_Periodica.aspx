@@ -504,10 +504,10 @@
                         <asp:TableRow>
                             <asp:TableCell Style="width: 50px; background-color: white; font-size: 15px; text-transform:uppercase">1. </asp:TableCell>
                             <asp:TableCell Style="width: 400px; background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_puestotrabajo" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_puestotrabajo" AutoPostBack="true" OnTextChanged="txt_puestotrabajo_TextChanged" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_act" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_act" AutoPostBack="true" OnTextChanged="txt_act_TextChanged" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:TextBox runat="server" ID="txt_tiempotrabajo" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
@@ -546,10 +546,10 @@
                         <asp:TableRow>
                             <asp:TableCell Style="width: 50px; background-color: white; font-size: 15px; text-transform:uppercase">2. </asp:TableCell>
                             <asp:TableCell Style="width: 400px; background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_puestotrabajo2" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_puestotrabajo2" AutoPostBack="true" OnTextChanged="txt_puestotrabajo2_TextChanged" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_act2" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_act2" AutoPostBack="true" OnTextChanged="txt_act2_TextChanged" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:TextBox runat="server" ID="txt_tiempotrabajo2" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
@@ -588,10 +588,10 @@
                         <asp:TableRow>
                             <asp:TableCell Style="width: 50px; background-color: white; font-size: 15px; text-transform:uppercase">3. </asp:TableCell>
                             <asp:TableCell Style="width: 400px; background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_puestotrabajo3" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_puestotrabajo3" AutoPostBack="true" OnTextChanged="txt_puestotrabajo3_TextChanged" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_act3" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_act3" AutoPostBack="true" OnTextChanged="txt_act3_TextChanged" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:TextBox runat="server" ID="txt_tiempotrabajo3" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
@@ -1127,10 +1127,10 @@
                         <asp:TableRow>
                             <asp:TableCell Style="width: 50px; background-color: white; font-size: 15px; text-transform:uppercase">1. </asp:TableCell>
                             <asp:TableCell Style="width: 400px; background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_puestotrabajo21" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_puestotrabajo21" AutoPostBack="true" Enabled="false" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_act21" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_act21" AutoPostBack="true" Enabled="false" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:TextBox runat="server" ID="txt_tiempotrabajo21" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
@@ -1178,10 +1178,10 @@
                         <asp:TableRow>
                             <asp:TableCell Style="width: 50px; background-color: white; font-size: 15px; text-transform:uppercase">2. </asp:TableCell>
                             <asp:TableCell Style="width: 400px; background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_puestotrabajo22" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_puestotrabajo22" AutoPostBack="true" Enabled="false" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_act22" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_act22" AutoPostBack="true" Enabled="false" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:TextBox runat="server" ID="txt_tiempotrabajo22" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
@@ -1229,10 +1229,10 @@
                         <asp:TableRow>
                             <asp:TableCell Style="width: 50px; background-color: white; font-size: 15px; text-transform:uppercase">3. </asp:TableCell>
                             <asp:TableCell Style="width: 400px; background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_puestotrabajo23" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_puestotrabajo23" AutoPostBack="true" Enabled="false" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
-                                <asp:TextBox runat="server" ID="txt_act23" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txt_act23" AutoPostBack="true" Enabled="false" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: white; font-size: 14px">
                                 <asp:TextBox runat="server" ID="txt_tiempotrabajo23" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align:center; text-transform:uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>

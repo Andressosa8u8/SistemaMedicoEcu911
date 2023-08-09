@@ -186,6 +186,8 @@
                                     <li class="nav-item"><a class="nav-link" href="Lista_Antecedentes_Personales.aspx">Antecedentes Personales</a></li>
                                     <li class="nav-item"><a class="nav-link" href="Lista_Antecedentes_Familiares.aspx">Antecedentes Familiares</a></li>
                                     <li class="nav-item"><a class="nav-link" href="Lista_Diagnostico_Codigo.aspx">Reposte Codigo-Diagnostico</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="Lista_Cantidad_Enfermedad.aspx">Cantidad Por Enfermedad</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="Lista_Cantidad_Puesto_Trabajo.aspx">Cantidad Por Puesto De Trabajo</a></li>
                                 </ul>
                             </div>
                         </li>
