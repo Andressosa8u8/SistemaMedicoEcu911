@@ -54,9 +54,6 @@ namespace CapaDatos
     partial void InsertTbl_FichasMedicas(Tbl_FichasMedicas instance);
     partial void UpdateTbl_FichasMedicas(Tbl_FichasMedicas instance);
     partial void DeleteTbl_FichasMedicas(Tbl_FichasMedicas instance);
-    partial void InsertTbl_Image(Tbl_Image instance);
-    partial void UpdateTbl_Image(Tbl_Image instance);
-    partial void DeleteTbl_Image(Tbl_Image instance);
     partial void InsertTbl_Inicial(Tbl_Inicial instance);
     partial void UpdateTbl_Inicial(Tbl_Inicial instance);
     partial void DeleteTbl_Inicial(Tbl_Inicial instance);
@@ -180,14 +177,6 @@ namespace CapaDatos
 			}
 		}
 		
-		public System.Data.Linq.Table<Tbl_Image> Tbl_Image
-		{
-			get
-			{
-				return this.GetTable<Tbl_Image>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Tbl_Inicial> Tbl_Inicial
 		{
 			get
@@ -275,24 +264,21 @@ namespace CapaDatos
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CargarImagen")]
-		public ISingleResult<CargarImagenResult> CargarImagen([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> img_id)
+		public void CargarImagen([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> img_id)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), img_id);
-			return ((ISingleResult<CargarImagenResult>)(result.ReturnValue));
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), img_id);
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertarPersona")]
-		public int InsertarPersona([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Imagen", DbType="Image")] System.Data.Linq.Binary imagen, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Estado", DbType="VarChar(1)")] string estado)
+		public void InsertarPersona([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Imagen", DbType="Image")] System.Data.Linq.Binary imagen, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Estado", DbType="VarChar(1)")] string estado)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, imagen, estado);
-			return ((int)(result.ReturnValue));
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, imagen, estado);
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ModificarPersona")]
-		public int ModificarPersona([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Imagen", DbType="Image")] System.Data.Linq.Binary imagen, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Estado", DbType="VarChar(1)")] string estado)
+		public void ModificarPersona([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Imagen", DbType="Image")] System.Data.Linq.Binary imagen, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Estado", DbType="VarChar(1)")] string estado)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, imagen, estado);
-			return ((int)(result.ReturnValue));
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, imagen, estado);
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ObtenerPaciente")]
@@ -303,10 +289,16 @@ namespace CapaDatos
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.RegistrarImagen")]
-		public int RegistrarImagen([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Image")] System.Data.Linq.Binary imagen)
+		public void RegistrarImagen([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Image")] System.Data.Linq.Binary imagen)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, imagen);
-			return ((int)(result.ReturnValue));
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, imagen);
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Grafico_AntecedentePer")]
+		public ISingleResult<Sp_Grafico_AntecedentePerResult> Sp_Grafico_AntecedentePer()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Sp_Grafico_AntecedentePerResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Grafico_OrganosYSistemas")]
@@ -6117,140 +6109,6 @@ namespace CapaDatos
 						this._prof_id = default(int);
 					}
 					this.SendPropertyChanged("Tbl_Profesional");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tbl_Image")]
-	public partial class Tbl_Image : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _img_id;
-		
-		private string _img_nombre;
-		
-		private System.Data.Linq.Binary _img_imagenByte;
-		
-		private string _img_estado;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onimg_idChanging(int value);
-    partial void Onimg_idChanged();
-    partial void Onimg_nombreChanging(string value);
-    partial void Onimg_nombreChanged();
-    partial void Onimg_imagenByteChanging(System.Data.Linq.Binary value);
-    partial void Onimg_imagenByteChanged();
-    partial void Onimg_estadoChanging(string value);
-    partial void Onimg_estadoChanged();
-    #endregion
-		
-		public Tbl_Image()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int img_id
-		{
-			get
-			{
-				return this._img_id;
-			}
-			set
-			{
-				if ((this._img_id != value))
-				{
-					this.Onimg_idChanging(value);
-					this.SendPropertyChanging();
-					this._img_id = value;
-					this.SendPropertyChanged("img_id");
-					this.Onimg_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img_nombre", DbType="VarChar(MAX)")]
-		public string img_nombre
-		{
-			get
-			{
-				return this._img_nombre;
-			}
-			set
-			{
-				if ((this._img_nombre != value))
-				{
-					this.Onimg_nombreChanging(value);
-					this.SendPropertyChanging();
-					this._img_nombre = value;
-					this.SendPropertyChanged("img_nombre");
-					this.Onimg_nombreChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img_imagenByte", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary img_imagenByte
-		{
-			get
-			{
-				return this._img_imagenByte;
-			}
-			set
-			{
-				if ((this._img_imagenByte != value))
-				{
-					this.Onimg_imagenByteChanging(value);
-					this.SendPropertyChanging();
-					this._img_imagenByte = value;
-					this.SendPropertyChanged("img_imagenByte");
-					this.Onimg_imagenByteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img_estado", DbType="VarChar(1)")]
-		public string img_estado
-		{
-			get
-			{
-				return this._img_estado;
-			}
-			set
-			{
-				if ((this._img_estado != value))
-				{
-					this.Onimg_estadoChanging(value);
-					this.SendPropertyChanging();
-					this._img_estado = value;
-					this.SendPropertyChanged("img_estado");
-					this.Onimg_estadoChanged();
 				}
 			}
 		}
@@ -50223,32 +50081,6 @@ namespace CapaDatos
 		}
 	}
 	
-	public partial class CargarImagenResult
-	{
-		
-		private System.Data.Linq.Binary _img_foto;
-		
-		public CargarImagenResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img_foto", DbType="Image")]
-		public System.Data.Linq.Binary img_foto
-		{
-			get
-			{
-				return this._img_foto;
-			}
-			set
-			{
-				if ((this._img_foto != value))
-				{
-					this._img_foto = value;
-				}
-			}
-		}
-	}
-	
 	public partial class ObtenerPacienteResult
 	{
 		
@@ -50324,6 +50156,176 @@ namespace CapaDatos
 				if ((this._fechaHoraGuardado != value))
 				{
 					this._fechaHoraGuardado = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Sp_Grafico_AntecedentePerResult
+	{
+		
+		private System.Nullable<int> _CantPersonaSinAntecedenteAntecePerson;
+		
+		private System.Nullable<int> _CantPersonaEnferCardiVascuAntecePerson;
+		
+		private System.Nullable<int> _CantPersonaEnferMetabAntecePerson;
+		
+		private System.Nullable<int> _CantPersonaEnferNeuroAntecePerson;
+		
+		private System.Nullable<int> _CantPersonaEnferOncolAntecePerson;
+		
+		private System.Nullable<int> _CantPersonaEnferInfecAntecePerson;
+		
+		private System.Nullable<int> _CantPersonaEnferHered_CongóAntecePerson;
+		
+		private System.Nullable<int> _CantPersonaDiscaAntecePerson;
+		
+		private System.Nullable<int> _CantPersonaOtrosAntecePerson;
+		
+		public Sp_Grafico_AntecedentePerResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaSinAntecedenteAntecePerson", DbType="Int")]
+		public System.Nullable<int> CantPersonaSinAntecedenteAntecePerson
+		{
+			get
+			{
+				return this._CantPersonaSinAntecedenteAntecePerson;
+			}
+			set
+			{
+				if ((this._CantPersonaSinAntecedenteAntecePerson != value))
+				{
+					this._CantPersonaSinAntecedenteAntecePerson = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaEnferCardiVascuAntecePerson", DbType="Int")]
+		public System.Nullable<int> CantPersonaEnferCardiVascuAntecePerson
+		{
+			get
+			{
+				return this._CantPersonaEnferCardiVascuAntecePerson;
+			}
+			set
+			{
+				if ((this._CantPersonaEnferCardiVascuAntecePerson != value))
+				{
+					this._CantPersonaEnferCardiVascuAntecePerson = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaEnferMetabAntecePerson", DbType="Int")]
+		public System.Nullable<int> CantPersonaEnferMetabAntecePerson
+		{
+			get
+			{
+				return this._CantPersonaEnferMetabAntecePerson;
+			}
+			set
+			{
+				if ((this._CantPersonaEnferMetabAntecePerson != value))
+				{
+					this._CantPersonaEnferMetabAntecePerson = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaEnferNeuroAntecePerson", DbType="Int")]
+		public System.Nullable<int> CantPersonaEnferNeuroAntecePerson
+		{
+			get
+			{
+				return this._CantPersonaEnferNeuroAntecePerson;
+			}
+			set
+			{
+				if ((this._CantPersonaEnferNeuroAntecePerson != value))
+				{
+					this._CantPersonaEnferNeuroAntecePerson = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaEnferOncolAntecePerson", DbType="Int")]
+		public System.Nullable<int> CantPersonaEnferOncolAntecePerson
+		{
+			get
+			{
+				return this._CantPersonaEnferOncolAntecePerson;
+			}
+			set
+			{
+				if ((this._CantPersonaEnferOncolAntecePerson != value))
+				{
+					this._CantPersonaEnferOncolAntecePerson = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaEnferInfecAntecePerson", DbType="Int")]
+		public System.Nullable<int> CantPersonaEnferInfecAntecePerson
+		{
+			get
+			{
+				return this._CantPersonaEnferInfecAntecePerson;
+			}
+			set
+			{
+				if ((this._CantPersonaEnferInfecAntecePerson != value))
+				{
+					this._CantPersonaEnferInfecAntecePerson = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaEnferHered_CongóAntecePerson", DbType="Int")]
+		public System.Nullable<int> CantPersonaEnferHered_CongóAntecePerson
+		{
+			get
+			{
+				return this._CantPersonaEnferHered_CongóAntecePerson;
+			}
+			set
+			{
+				if ((this._CantPersonaEnferHered_CongóAntecePerson != value))
+				{
+					this._CantPersonaEnferHered_CongóAntecePerson = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaDiscaAntecePerson", DbType="Int")]
+		public System.Nullable<int> CantPersonaDiscaAntecePerson
+		{
+			get
+			{
+				return this._CantPersonaDiscaAntecePerson;
+			}
+			set
+			{
+				if ((this._CantPersonaDiscaAntecePerson != value))
+				{
+					this._CantPersonaDiscaAntecePerson = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantPersonaOtrosAntecePerson", DbType="Int")]
+		public System.Nullable<int> CantPersonaOtrosAntecePerson
+		{
+			get
+			{
+				return this._CantPersonaOtrosAntecePerson;
+			}
+			set
+			{
+				if ((this._CantPersonaOtrosAntecePerson != value))
+				{
+					this._CantPersonaOtrosAntecePerson = value;
 				}
 			}
 		}

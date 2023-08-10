@@ -22,16 +22,30 @@ namespace SistemaECU911.Template.Views
             if (!IsPostBack)
             {
                 cantidadPacientes();
-                //grvPacientes.VirtualItemCount = Count();
+                totalFichasMedicas2();
             }
+        }
+
+        public void cantidadPacientes()
+        {
+            //cargar informacion cards
+            var querySocio = dc.Tbl_Person.Count(p => p.Per_estado == "IN");
+            totalInactivos.Text = querySocio.ToString();
+            var queryPaciente = dc.Tbl_Person.Count(pa => pa.Per_estado == "AP");
+            totalPacientes.Text = queryPaciente.ToString();
+            var queryEcu = dc.Tbl_Person.Count(ec => ec.Emp_id == 1);
+            totalEcu.Text = queryEcu.ToString();
+            var queryArticulados = dc.Tbl_Person.Count(ar => ar.Emp_id != 1);
+            totalArticulados.Text = queryArticulados.ToString();
         }
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static object[] ListaNPersonas()
+        public static object[] RevOrganosSistemas()
         {
             var olista = CN_Reporte_NPersona.Reporte_Sp_Grafico_OrganosYSistemas();
             var objetoLista = new List<object>();
+
 
             int maxLength = olista.Count;
 
@@ -125,17 +139,113 @@ namespace SistemaECU911.Template.Views
             return objetoLista.ToArray();
         }
 
-        public void cantidadPacientes()
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static object[] AntPersonales()
         {
-            //cargar informacion cards
-            var querySocio = dc.Tbl_Person.Count(p => p.Per_estado == "IN");
-            totalInactivos.Text = querySocio.ToString();
-            var queryPaciente = dc.Tbl_Person.Count(pa => pa.Per_estado == "AP");
-            totalPacientes.Text = queryPaciente.ToString();
-            var queryEcu = dc.Tbl_Person.Count(ec => ec.Emp_id == 1);
-            totalEcu.Text = queryEcu.ToString();
-            var queryArticulados = dc.Tbl_Person.Count(ar => ar.Emp_id != 1);
-            totalArticulados.Text = queryArticulados.ToString();
+
+            var olista = CN_Reporte_NPersona.Reporte_Sp_Grafico_AntecedentePer();
+            var objetoLista1 = new List<object>();
+
+            int maxLength = olista.Count;
+
+            for (int j = 0; j < maxLength; j++)
+            {
+                // Aquí debes usar las propiedades correspondientes de tu objeto "olista" para obtener los valores
+                string cantPersonaSeleccioneAntecePerson = "";
+                int cantPersonaEnferCardiVascuAntecePerson = 0;
+                int cantPersonaEnferMetabAntecePerson = 0;
+                int cantPersonaEnferNeuroAntecePerson = 0;
+                int cantPersonaEnferOncolAntecePerson = 0;
+                int cantPersonaEnferInfecAntecePerson = 0;
+                int cantPersonaEnferHered_CongóAntecePerson = 0;
+                int cantPersonaDiscaAntecePerson = 0;
+                int cantPersonaOtrosAntecePerson = 0;
+                // Agrega las demás variables aquí
+
+
+                if (j < olista.Count)
+                {
+                    cantPersonaSeleccioneAntecePerson = olista[j].CantPersonaSinAntecedenteAntecePerson.ToString();
+                    cantPersonaEnferCardiVascuAntecePerson = olista[j].CantPersonaEnferCardiVascuAntecePerson ?? 0;
+                    cantPersonaEnferMetabAntecePerson = olista[j].CantPersonaEnferMetabAntecePerson ?? 0;
+                    cantPersonaEnferNeuroAntecePerson = olista[j].CantPersonaEnferNeuroAntecePerson ?? 0;
+                    // Asigna los valores de las demás variables aquí
+                    cantPersonaEnferOncolAntecePerson = olista[j].CantPersonaEnferOncolAntecePerson ?? 0;
+                    cantPersonaEnferInfecAntecePerson = olista[j].CantPersonaEnferInfecAntecePerson ?? 0;
+                    cantPersonaEnferHered_CongóAntecePerson = olista[j].CantPersonaEnferHered_CongóAntecePerson ?? 0;
+                    cantPersonaDiscaAntecePerson = olista[j].CantPersonaDiscaAntecePerson ?? 0;
+
+                    cantPersonaOtrosAntecePerson = olista[j].CantPersonaOtrosAntecePerson ?? 0;
+
+                }
+
+                objetoLista1.Add(new object[] {
+            cantPersonaSeleccioneAntecePerson,
+            cantPersonaEnferCardiVascuAntecePerson,
+            cantPersonaEnferMetabAntecePerson,
+            cantPersonaEnferNeuroAntecePerson,
+            cantPersonaEnferOncolAntecePerson,
+            cantPersonaEnferInfecAntecePerson,
+            cantPersonaEnferHered_CongóAntecePerson,
+            cantPersonaDiscaAntecePerson,
+            cantPersonaOtrosAntecePerson
+            // Agrega las demás variables aquí
+        });
+            }
+
+            return objetoLista1.ToArray();
         }
+
+        public void totalFichasMedicas2()
+        {
+
+            //Sin Antecedente
+            var PersonasSinAntecedentes = CN_Reporte_NPersona.ObtenerEnfSinAntecedente();
+            //Cardiovascular
+            var PersonasCardiovascular = CN_Reporte_NPersona.ObtenerEnfCardioVascular();
+            //Metabolica
+            var PersonasMetabolica = CN_Reporte_NPersona.ObtenerEnfMetabolica();
+            //Neurologica
+            var PersonasNeurologicas = CN_Reporte_NPersona.ObtenerEnfNeurologica();
+            //Oncologica
+            var PersonasOncologicas = CN_Reporte_NPersona.ObtenerEnfOncologica();
+            //Infecciosa
+            var PersonasInfecciosas = CN_Reporte_NPersona.ObtenerEnfInfecciosa();
+            //Congonita
+            var PersonasCongonita = CN_Reporte_NPersona.ObtenerEnfHereditariaCongonita();
+            //Discapacidad
+            var PersonasDiscapacidad = CN_Reporte_NPersona.ObtenerEnfDiscapacidad();
+            //Otros
+            var PersonasOtros = CN_Reporte_NPersona.ObtenerEnfOtros();
+
+            //total Personas con Enfermedades
+            var totalPersonasRegistradas = CN_Reporte_NPersona.ObtenerPersonasTotal();
+
+            double totalPersonasSinAntecedentes = ((double)PersonasSinAntecedentes.Count / totalPersonasRegistradas.Count) * 100;
+            double totalPersonasCardiovascular = ((double)PersonasCardiovascular.Count / totalPersonasRegistradas.Count) * 100;
+            double totalPersonasMetabolica = ((double)PersonasMetabolica.Count / totalPersonasRegistradas.Count) * 100;
+            double totalPersonasNeurologicas = ((double)PersonasNeurologicas.Count / totalPersonasRegistradas.Count) * 100;
+            double totalPersonasOncologicas = ((double)PersonasOncologicas.Count / totalPersonasRegistradas.Count) * 100;
+            double totalPersonasInfecciosas = ((double)PersonasInfecciosas.Count / totalPersonasRegistradas.Count) * 100;
+            double totalPersonasCongonita = ((double)PersonasCongonita.Count / totalPersonasRegistradas.Count) * 100;
+            double totalPersonasDiscapacidad = ((double)PersonasDiscapacidad.Count / totalPersonasRegistradas.Count) * 100;
+            double totalPersonasOtros = ((double)PersonasOtros.Count / totalPersonasRegistradas.Count) * 100;
+
+            // Asigna el valor a un control, como un Label, para mostrarlo en la página
+            lbl_sinAntecedente.Text = $"Porcentaje de personas Sin Antecedentes: {totalPersonasSinAntecedentes:F2}%";
+            lbl_cardioVascular.Text = $"Porcentaje de personas CardioVascular: {totalPersonasCardiovascular:F2}%";
+            lbl_metabolica.Text = $"Porcentaje de personas Metabólica: {totalPersonasMetabolica:F2}%";
+            lbl_neurologia.Text = $"Porcentaje de personas Neurologicas: {totalPersonasNeurologicas:F2}%";
+            lbl_oncologica.Text = $"Porcentaje de personas Oncologicas: {totalPersonasOncologicas:F2}%";
+            lbl_infecciosa.Text = $"Porcentaje de personas Infecciosas: {totalPersonasInfecciosas:F2}%";
+            lbl_herediCongonita.Text = $"Porcentaje de personas Congonita: {totalPersonasCongonita:F2}%";
+            lbl_discapacidad.Text = $"Porcentaje de personas Discapacidad: {totalPersonasDiscapacidad:F2}%";
+            lbl_otros.Text = $"Porcentaje de personas Otros: {totalPersonasOtros:F2}%";
+
+        }
+
+
     }
+
 }

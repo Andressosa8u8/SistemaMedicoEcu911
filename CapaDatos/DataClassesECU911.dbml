@@ -253,14 +253,6 @@
       <Association Name="Tbl_Profesional_Tbl_FichasMedicas" Member="Tbl_Profesional" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_Profesional" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Tbl_Image" Member="Tbl_Image">
-    <Type Name="Tbl_Image">
-      <Column Name="img_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="img_nombre" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="img_imagenByte" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="img_estado" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Tbl_Inicial" Member="Tbl_Inicial">
     <Type Name="Tbl_Inicial">
       <Column Name="inicial_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -2106,21 +2098,16 @@
   </Function>
   <Function Name="dbo.CargarImagen" Method="CargarImagen">
     <Parameter Name="img_id" Type="System.Int32" DbType="Int" />
-    <ElementType Name="CargarImagenResult">
-      <Column Name="img_foto" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
-    </ElementType>
   </Function>
   <Function Name="dbo.InsertarPersona" Method="InsertarPersona">
     <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="Imagen" Parameter="imagen" Type="System.Data.Linq.Binary" DbType="Image" />
     <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="VarChar(1)" />
-    <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.ModificarPersona" Method="ModificarPersona">
     <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="Imagen" Parameter="imagen" Type="System.Data.Linq.Binary" DbType="Image" />
     <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="VarChar(1)" />
-    <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.ObtenerPaciente" Method="ObtenerPaciente">
     <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="VarChar(10)" />
@@ -2134,7 +2121,19 @@
   <Function Name="dbo.RegistrarImagen" Method="RegistrarImagen">
     <Parameter Name="cedula" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="imagen" Type="System.Data.Linq.Binary" DbType="Image" />
-    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Sp_Grafico_AntecedentePer" Method="Sp_Grafico_AntecedentePer">
+    <ElementType Name="Sp_Grafico_AntecedentePerResult">
+      <Column Name="CantPersonaSinAntecedenteAntecePerson" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaEnferCardiVascuAntecePerson" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaEnferMetabAntecePerson" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaEnferNeuroAntecePerson" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaEnferOncolAntecePerson" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaEnferInfecAntecePerson" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaEnferHered_CongóAntecePerson" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaDiscaAntecePerson" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CantPersonaOtrosAntecePerson" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
   </Function>
   <Function Name="dbo.Sp_Grafico_OrganosYSistemas" Method="Sp_Grafico_OrganosYSistemas">
     <ElementType Name="Sp_Grafico_OrganosYSistemasResult">

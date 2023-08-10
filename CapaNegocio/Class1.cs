@@ -15,33 +15,33 @@ namespace CapaNegocio
 
 
         // Metodo para guardar Imagen
-        public static void GuardarImagen(Tbl_Image imagen)
-        {
-            try
-            {
-                imagen.img_estado = "A";
-                dc.Tbl_Image.InsertOnSubmit(imagen);
-                dc.SubmitChanges();
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException("Verifique la imagen" + ex.Message);
-            }
-        }
+        //public static void GuardarImagen(Tbl_Image imagen)
+        //{
+        //    try
+        //    {
+        //        imagen.img_estado = "A";
+        //        dc.Tbl_Image.InsertOnSubmit(imagen);
+        //        dc.SubmitChanges();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new ArgumentException("Verifique la imagen" + ex.Message);
+        //    }
+        //}
 
-        public static Tbl_Image ObtenerUltimaImagen()
-        {
-            try
-            {
-                // Obtener la última imagen guardada (puedes ajustar el criterio según tu estructura de datos)
-                Tbl_Image lastImage = dc.Tbl_Image.OrderByDescending(i => i.img_id).FirstOrDefault();
-                return lastImage;
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException("Error al obtener la última imagen: " + ex.Message);
-            }
-        }
+        //public static Tbl_Image ObtenerUltimaImagen()
+        //{
+        //    try
+        //    {
+        //        // Obtener la última imagen guardada (puedes ajustar el criterio según tu estructura de datos)
+        //        Tbl_Image lastImage = dc.Tbl_Image.OrderByDescending(i => i.img_id).FirstOrDefault();
+        //        return lastImage;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new ArgumentException("Error al obtener la última imagen: " + ex.Message);
+        //    }
+        //}
 
     }
 }
