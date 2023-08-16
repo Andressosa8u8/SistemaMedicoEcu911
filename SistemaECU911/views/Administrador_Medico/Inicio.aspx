@@ -56,61 +56,59 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
 
-                <div class="row">
-                    <center>
-                        <div class="col-md-9">
+            <div class="row">
+                <center>
+                    <div class="col-md-9">
 
-                            <h4 align="center">REVISIÓN DE ÓRGANOS Y SISTEMAS</h4>
-                            <canvas id="crt_organosySistemas" width="400"></canvas>
-                        </div>
-                    </center>
+                        <h4 align="center">REVISIÓN DE ÓRGANOS Y SISTEMAS</h4>
+                        <canvas id="crt_organosySistemas" width="400"></canvas>
+                    </div>
+                </center>
+            </div>
+
+            <div class="row align-items-center" style="vertical-align: middle">
+                <div class="col-md-8">
+                    <h4 align="center">TIPOS DE ENFERMEDADES PERSONALES</h4>
+                    <canvas id="crt_tiposdeEnfermedades" width="400"></canvas>
                 </div>
 
-
-                <div>
-                    <div class="row align-items-center" style="vertical-align: middle">
-                        <div class="col-md-8">
-                            <h4 align="center">TIPOS DE ENFERMEDADES PERSONALES</h4>
-                            <canvas id="crt_tiposdeEnfermedades" width="400"></canvas>
-                        </div>
-
-                        <div class="col-md-4">
-                            <ul>
-                                <li>
-                                    <asp:Label ID="lbl_sinAntecedente" runat="server"></asp:Label>
-                                </li>
-                                <li>
-                                    <asp:Label ID="lbl_cardioVascular" runat="server"></asp:Label>
-                                </li>
-                                <li>
-                                    <asp:Label ID="lbl_metabolica" runat="server"></asp:Label>
-                                </li>
-                                <li>
-                                    <asp:Label ID="lbl_neurologia" runat="server"></asp:Label>
-                                </li>
-                                <li>
-                                    <asp:Label ID="lbl_oncologica" runat="server"></asp:Label>
-                                </li>
-                                <li>
-                                    <asp:Label ID="lbl_infecciosa" runat="server"></asp:Label>
-                                </li>
-                                <li>
-                                    <asp:Label ID="lbl_herediCongonita" runat="server"></asp:Label>
-                                </li>
-                                <li>
-                                    <asp:Label ID="lbl_discapacidad" runat="server"></asp:Label>
-                                </li>
-                                <li>
-                                    <asp:Label ID="lbl_otros" runat="server"></asp:Label>
-                                </li>
-                            </ul>                           
-                        </div>
+                <div class="col-md-4">
+                    <div class="list-group justify-content-end">
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <asp:Label ID="lbl_sinAntecedente" runat="server"></asp:Label>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-primary">
+                            <asp:Label ID="lbl_cardioVascular" runat="server"></asp:Label>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">
+                            <asp:Label ID="lbl_metabolica" runat="server"></asp:Label>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+                            <asp:Label ID="lbl_neurologia" runat="server"></asp:Label>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-danger">
+                            <asp:Label ID="lbl_oncologica" runat="server"></asp:Label>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-warning">
+                            <asp:Label ID="lbl_infecciosa" runat="server"></asp:Label>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-info">
+                            <asp:Label ID="lbl_herediCongonita" runat="server"></asp:Label>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                            <asp:Label ID="lbl_discapacidad" runat="server"></asp:Label>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action list-group-item-dark">
+                            <asp:Label ID="lbl_otros" runat="server"></asp:Label>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -266,94 +264,82 @@
 
     <%------------------------------Tipo de Enfermedad------------------------------%>
 
-  <script>
-      var objetoLista1;
-      var arraynumeroPerSeleccioneAntecePerson = [];
-      var arraynumeroPerEnferCardiVascuAntecePerson = [];
-      var arraynumeroPerEnferMetabAntecePerson = [];
-      var arraynumeroPerEnferNeuroAntecePerson = [];
-      var arraynumeroPerEnferOncolAntecePerson = [];
-      var arraynumeroPerEnferInfecAntecePerson = [];
-      var arraynumeroPerEnferHered_CongóAntecePerson = [];
-      var arraynumeroPerDiscaAntecePerson = [];
-      var arraynumeroPerOtrosAntecePerson = [];
+    <script>
+        var objetoLista1;
+        var arraynumeroPerSeleccioneAntecePerson = [];
+        var arraynumeroPerEnferCardiVascuAntecePerson = [];
+        var arraynumeroPerEnferMetabAntecePerson = [];
+        var arraynumeroPerEnferNeuroAntecePerson = [];
+        var arraynumeroPerEnferOncolAntecePerson = [];
+        var arraynumeroPerEnferInfecAntecePerson = [];
+        var arraynumeroPerEnferHered_CongóAntecePerson = [];
+        var arraynumeroPerDiscaAntecePerson = [];
+        var arraynumeroPerOtrosAntecePerson = [];
 
-      jQuery.ajax({
-          url: 'Inicio.aspx/AntPersonales',
-          type: "POST",
-          dataType: "JSON",
-          contentType: "application/json; charset=utf-8",
-          success: function (data) {
-              objetoLista = data.d;
+        jQuery.ajax({
+            url: 'Inicio.aspx/AntPersonales',
+            type: "POST",
+            dataType: "JSON",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                objetoLista = data.d;
 
-              console.log(objetoLista);
+                for (var i = 0; i < objetoLista.length; i++) {
+                    arraynumeroPerSeleccioneAntecePerson.push(objetoLista[i][0]);
+                    arraynumeroPerEnferCardiVascuAntecePerson.push(objetoLista[i][1]);
+                    arraynumeroPerEnferMetabAntecePerson.push(objetoLista[i][2]);
+                    arraynumeroPerEnferNeuroAntecePerson.push(objetoLista[i][3]);
+                    arraynumeroPerEnferOncolAntecePerson.push(objetoLista[i][4]);
+                    arraynumeroPerEnferInfecAntecePerson.push(objetoLista[i][5]);
+                    arraynumeroPerEnferHered_CongóAntecePerson.push(objetoLista[i][6]);
+                    arraynumeroPerDiscaAntecePerson.push(objetoLista[i][7]);
+                    arraynumeroPerOtrosAntecePerson.push(objetoLista[i][8]);
+                }
 
-              for (var i = 0; i < objetoLista.length; i++) {
-                  arraynumeroPerSeleccioneAntecePerson.push(objetoLista[i][0]);
-                  arraynumeroPerEnferCardiVascuAntecePerson.push(objetoLista[i][1]);
-                  arraynumeroPerEnferMetabAntecePerson.push(objetoLista[i][2]);
-                  arraynumeroPerEnferNeuroAntecePerson.push(objetoLista[i][3]);
-                  arraynumeroPerEnferOncolAntecePerson.push(objetoLista[i][4]);
-                  arraynumeroPerEnferInfecAntecePerson.push(objetoLista[i][5]);
-                  arraynumeroPerEnferHered_CongóAntecePerson.push(objetoLista[i][6]);
-                  arraynumeroPerDiscaAntecePerson.push(objetoLista[i][7]);
-                  arraynumeroPerOtrosAntecePerson.push(objetoLista[i][8]);
-              }
+                const $grafica = document.querySelector("#crt_tiposdeEnfermedades");
 
-              const $grafica = document.querySelector("#crt_tiposdeEnfermedades");
-              const etiquetas = ["SIN ANTECEDENTES", "ENF CARDIOVASCULAR", "ENF METABÓLICA", "ENF NEUROLÓGICA",
-                  "ENF ONCOLÓGICA", "ENF INFECCIOSA", "ENF HEREDITARIA CONGÓNITA", "DISCAPACIDAD", "OTROS"];
+                const datosSinAntecedentes = {
+                    label: "CANTIDAD DE PERSONAS",
+                    data: [
+                        arraynumeroPerSeleccioneAntecePerson[0],
+                        arraynumeroPerEnferCardiVascuAntecePerson[0],
+                        arraynumeroPerEnferMetabAntecePerson[0],
+                        arraynumeroPerEnferNeuroAntecePerson[0],
+                        arraynumeroPerEnferOncolAntecePerson[0],
+                        arraynumeroPerEnferInfecAntecePerson[0],
+                        arraynumeroPerEnferHered_CongóAntecePerson[0],
+                        arraynumeroPerDiscaAntecePerson[0],
+                        arraynumeroPerOtrosAntecePerson[0]
+                    ],
+                    backgroundColor: 'rgba(106, 0, 91, 0.7)', // Verde con transparencia
+                    borderColor: 'rgba(57, 44, 112, 0.5)', // Negro con transparencia
+                    borderWidth: 1
+                };
 
-              const datosAntecedentesPersonales = {
-                  labels: etiquetas,
-                  datasets: [{
-                      label: ["SIN ANTECEDENTES", "ENF CARDIOVASCULAR", "ENF METABÓLICA", "ENF NEUROLÓGICA",
-                          "ENF ONCOLÓGICA", "ENF INFECCIOSA", "ENF HEREDITARIA CONGÓNITA", "DISCAPACIDAD", "OTROS"],
-                      data: [
-                          arraynumeroPerSeleccioneAntecePerson[0],
-                          arraynumeroPerEnferCardiVascuAntecePerson[0],
-                          arraynumeroPerEnferMetabAntecePerson[0],
-                          arraynumeroPerEnferNeuroAntecePerson[0],
-                          arraynumeroPerEnferOncolAntecePerson[0],
-                          arraynumeroPerEnferInfecAntecePerson[0],
-                          arraynumeroPerEnferHered_CongóAntecePerson[0],
-                          arraynumeroPerDiscaAntecePerson[0],
-                          arraynumeroPerOtrosAntecePerson[0]
-                      ],
-                      backgroundColor: [
-                          "#FF6384",
-                          "#63FF84",
-                          "#84FF63",
-                          "#8463FF",
-                          "#6384FF",
-                          "#FF8F00",
-                          "#00FF8F",
-                          "#8FFF00",
-                          "#FF6384"
-                      ],
-                      borderWidth: 1
-                  }]
-              };
 
-              new Chart($grafica, {
-                  type: 'bar',
-                  data: datosAntecedentesPersonales,
-                  options: {
-                      title: {
-                          display: true,
-                          text: 'ANTECEDENTES PERSONALES'
-                      },
-                      tooltips: {
-                          enabled: true
-                      }
-                  }
-              });
-          },
-          error: function (error) {
-              console.log(error);
-          }
-      });
-  </script>
 
+                const resultData = {
+                    labels: ["SIN ANTECEDENTES", "ENF CARDIOVASCULAR", "ENF METABÓLICA", "ENF NEUROLÓGICA",
+                        "ENF ONCOLÓGICA", "ENF INFECCIOSA", "ENF HEREDITARIA CONGÓNITA", "DISCAPACIDAD", "OTROS"],
+                    datasets: [datosSinAntecedentes]
+                };
+
+                new Chart($grafica, {
+                    type: 'bar',
+                    data: resultData,
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'Tipos de Enfermedades Personales'
+                        }
+                    }
+                });
+
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    </script>           
     <%-- ------------------------------------------------------------------------------------------------------------------------------------ --%>
 </asp:Content>
