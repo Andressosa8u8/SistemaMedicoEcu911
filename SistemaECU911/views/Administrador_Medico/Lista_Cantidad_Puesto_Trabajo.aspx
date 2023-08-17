@@ -23,39 +23,76 @@
                         </div>
                     </div>
 
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>
-                            <div class="card" style="width: auto; border: none">
-                                <div class="list-group list-group-flush" style="padding: 10px; text-align: center">
-                                    <div class="container">
-                                        <div class="row justify-content-center">
-                                            <div class="col-auto">
-                                                <asp:GridView ID="grvDatos" AutoGenerateColumns="false" Width="100%" CssClass="table table-hover text-center table-responsive" GridLines="None" runat="server" Style="margin-right: 0px" ShowHeader="false">
-                                                    <Columns>
-                                                        <asp:TemplateField HeaderText="PUESTO TRABAJO">
-                                                            <ItemTemplate>
-                                                                <asp:Label ID="PUESTOTRABAJO" runat="server" Text='<%#Eval("puestoTrabajo")%>'></asp:Label>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:TemplateField HeaderText="CANTIDAD">
-                                                            <ItemTemplate>
-                                                                <asp:Label ID="CANTIDAD" runat="server" Text='<%#Eval("valor")%>'></asp:Label>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                        <asp:TemplateField HeaderText="ID" ShowHeader="false">
-                                                            <ItemTemplate>
-                                                                <asp:Label ID="ID" runat="server" Text='<%#Eval("idPersonas")%>' Visible="false"></asp:Label>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                    </Columns>
-                                                </asp:GridView>
+                    <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>--%>
+                    <div class="card" style="width: auto; border: none">
+                        <div class="list-group list-group-flush" style="padding: 10px; text-align: center">
+                            <div class="container">
+
+                                <div class="row justify-content-center">
+
+                                    <div class="col-auto">
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <label class="form-label">CENTRO</label>
+                                                <asp:DropDownList ID="ddl_centro" CssClass="form-control" Style="width: 100%; text-transform: uppercase; background-color: transparent; font-size: 14px" runat="server">
+                                                    <asp:ListItem Value="0" Text="Seleccione...."></asp:ListItem>
+                                                    <asp:ListItem Value="1" Text="ECU 911 QUITO"></asp:ListItem>
+                                                    <asp:ListItem Value="2" Text="ECU 911 CUENCA"></asp:ListItem>
+                                                    <asp:ListItem Value="3" Text="ECU 911 PORTOVIEJO"></asp:ListItem>
+                                                    <asp:ListItem Value="4" Text="ECU 911 MACHALA"></asp:ListItem>
+                                                    <asp:ListItem Value="6" Text="ECU 911 IBARRA"></asp:ListItem>
+                                                    <asp:ListItem Value="7" Text="ECU 911 AMBATO"></asp:ListItem>
+                                                    <asp:ListItem Value="8" Text="ECU 911 ESMERALDAS"></asp:ListItem>
+                                                    <asp:ListItem Value="9" Text="ECU 911 TULCAN"></asp:ListItem>
+                                                    <asp:ListItem Value="10" Text="ECU 911 NUEVA LOJA"></asp:ListItem>
+                                                    <asp:ListItem Value="11" Text="ECU 911 SANTO DOMINGO "></asp:ListItem>
+                                                    <asp:ListItem Value="12" Text="ECU 911 RIOBAMBA"></asp:ListItem>
+                                                    <asp:ListItem Value="13" Text="ECU 911 LOJA"></asp:ListItem>
+                                                    <asp:ListItem Value="14" Text="ECU 911 BABAHOYO"></asp:ListItem>
+                                                    <asp:ListItem Value="15" Text="ECU 911 MACAS"></asp:ListItem>
+                                                    <asp:ListItem Value="16" Text="ECU 911 SAN CRISTOBAL"></asp:ListItem>
+                                                    <asp:ListItem Value="5" Text="ECU 911 SAMBORONDON"></asp:ListItem>
+                                                </asp:DropDownList>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" InitialValue="0" ControlToValidate="ddl_centro" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">CALCULAR</label>
+                                                <asp:Button ID="btn_calcular" CssClass="btn btn-primary w-100" runat="server" Text="Calcular" OnClick="btn_calcular_Click" ValidationGroup="GroupValidation" />
                                             </div>
                                         </div>
+                                        <asp:GridView ID="grvDatos" AutoGenerateColumns="false" Width="100%" CssClass="table table-hover text-center table-responsive" GridLines="None" runat="server" Style="margin-right: 0px" ShowHeader="false">
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="PUESTO TRABAJO">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="PUESTOTRABAJO" runat="server" Text='<%#Eval("Per_puestoTrabajos")%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="CENTRO">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="CENTRO" runat="server" Text='<%#Eval("cent_ids")%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="CANTIDAD">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="CANTIDAD" runat="server" Text='<%#Eval("valor")%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="ID" ShowHeader="false">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="ID" runat="server" Text='<%#Eval("per_ids")%>' Visible="false"></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
                                     </div>
                                 </div>
                             </div>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
+                        </div>
+                    </div>
+                    <%-- </ContentTemplate>
+                    </asp:UpdatePanel>--%>
                 </div>
             </div>
         </div>
@@ -83,7 +120,8 @@
         $(document).ready(function () {
             var dataTable = $('#<%= grvDatos.ClientID %>').DataTable({
                 "columns": [
-                    { "data": "puestoTrabajo", "title": "PUESTO TRABAJO" },
+                    { "data": "Per_puestoTrabajos", "title": "PUESTO TRABAJO" },
+                    { "data": "cent_ids", "title": "CENTRO" },
                     { "data": "valor", "title": "CANTIDAD" },
                     null // Columna de EDICIÓN sin datos específicos
                 ],
@@ -105,7 +143,7 @@
                         init: function (api, node, config) {
                             $(node).append('<i class="fas fa-file-excel fa-lg"></i>');
                         },
-                        title: 'CANTIDAD POR ENFERMEDAD', // Título del contenido del EXCEL
+                        title: 'CANTIDAD DE PENSONAS POR PUESTO DE TRABAJO', // Título del contenido del EXCEL
                         exportOptions: {
                             columns: ':visible' // Exporta solo las columnas visibles
                         },
@@ -124,7 +162,7 @@
                         init: function (api, node, config) {
                             $(node).append('<i class="fas fa-file-pdf fa-lg"></i>');
                         },
-                        title: 'CANTIDAD POR ENFERMEDAD', // Título del contenido del PDF
+                        title: 'CANTIDAD DE PENSONAS POR PUESTO DE TRABAJO', // Título del contenido del PDF
                         exportOptions: {
                             columns: ':visible' // Exporta solo las columnas visibles
                         },
@@ -137,7 +175,7 @@
                         }
                     },
                     {
-                        title: 'CANTIDAD POR ENFERMEDAD', // Título del contenido en IMPRIMIR
+                        title: 'CANTIDAD DE PENSONAS POR PUESTO DE TRABAJO', // Título del contenido en IMPRIMIR
                         extend: 'print',
                         text: '',
                         exportOptions: {
