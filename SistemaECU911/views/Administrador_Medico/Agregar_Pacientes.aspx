@@ -43,13 +43,13 @@
                         <label class="form-label">CEDULA</label>
                         <asp:TextBox class="form-control" runat="server" ID="txt_cedula" Style="width: 100%; background-color: transparent; text-transform: uppercase"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" ControlToValidate="txt_cedula" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
-                    </div>                    
-                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-2">
                         <label class="form-label">FECHA DE NACIMIENTO</label>
                         <asp:TextBox class="form-control" runat="server" ID="txt_fechaNacimiento" Style="width: 100%; background-color: transparent; text-transform: uppercase" TextMode="Date"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ForeColor="Red" ControlToValidate="txt_fechaNacimiento" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-1">
                         <label class="form-label">GÉNERO</label>
                         <asp:DropDownList ID="ddl_genero" CssClass="form-control" Style="width: 100%; text-transform: uppercase; background-color: transparent; font-size: 14px" runat="server">
                             <asp:ListItem Value="0" Text="Seleccione...."></asp:ListItem>
@@ -59,9 +59,14 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ForeColor="Red" InitialValue="0" ControlToValidate="ddl_genero" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label">ZONAL</label>
+                        <label class="form-label">INSTITUCIÓN</label>
                         <asp:DropDownList ID="ddl_zonal" CssClass="form-control" Style="width: 100%; text-transform: uppercase; background-color: transparent; font-size: 14px" runat="server"></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ForeColor="Red" InitialValue="0" ControlToValidate="ddl_zonal" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">CENTRO</label>
+                        <asp:DropDownList ID="ddl_centro" CssClass="form-control" Style="width: 100%; text-transform: uppercase; background-color: transparent; font-size: 14px" runat="server"></asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ForeColor="Red" InitialValue="0" ControlToValidate="ddl_centro" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <div class="row">
@@ -289,7 +294,7 @@
                             <asp:ListItem Text="TRABAJADORA SOCIAL NACIONAL"></asp:ListItem>
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ForeColor="Red" InitialValue="0" ControlToValidate="ddl_cargo" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
-                    </div>    
+                    </div>
                     <div class="col-md-3">
                         <label class="form-label">AREA DE TRABAJO</label>
                         <asp:DropDownList ID="ddl_area" CssClass="form-control" Style="width: 100%; text-transform: uppercase; background-color: transparent; font-size: 14px" runat="server">
@@ -308,7 +313,7 @@
                             <asp:ListItem Text="TECNOLOGIA"></asp:ListItem>
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ForeColor="Red" InitialValue="0" ControlToValidate="ddl_area" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
-                    </div>                    
+                    </div>
                     <div class="col-md-2">
                         <label class="form-label">ESTADO</label>
                         <asp:DropDownList ID="ddl_estado" CssClass="form-control" Style="width: 100%; text-transform: uppercase; background-color: transparent; font-size: 14px" runat="server">
@@ -318,7 +323,8 @@
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ForeColor="Red" InitialValue="0" ControlToValidate="ddl_estado" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
                     </div>
-                </div>                <br />
+                </div>
+                <br />
                 <div class="col-12" style="text-align: center">
                     <asp:Button CssClass="btn btn-warning" ID="btn_guardar" runat="server" OnClick="btn_guardar_Click" Text="Guardar" UseSubmitBehavior="False" ValidationGroup="GroupValidation" />
                     <asp:Button CssClass="btn btn-danger" ID="btn_cancelar" runat="server" OnClick="btn_cancelar_Click" Text="Cancelar" UseSubmitBehavior="False" />

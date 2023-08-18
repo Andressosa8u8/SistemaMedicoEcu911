@@ -19,7 +19,7 @@ namespace SistemaECU911
 
         //Instanciamos la BD
         DataClassesECU911DataContext dc = new DataClassesECU911DataContext();
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -54,17 +54,73 @@ namespace SistemaECU911
                             if (tusuario == 1)
                             {
                                 Session["Administrador"] = person.Per_id.ToString();
-                                Session["prinombre"] = person.Per_priNombre.ToString();
-                                Session["segnombre"] = person.Per_segNombre.ToString();
-                                Session["priapellido"] = person.Per_priApellido.ToString();
-                                Session["segapellido"] = person.Per_segApellido.ToString();                                
+
+                                if (person.Per_priNombre == null)
+                                {
+                                    Session["prinombre"] = "";
+                                }
+                                else
+                                {
+                                    Session["prinombre"] = person.Per_priNombre.ToString();
+                                }
+
+                                if (person.Per_segNombre == null)
+                                {
+                                    Session["segnombre"] = "";
+                                }
+                                else
+                                {
+                                    Session["segnombre"] = person.Per_segNombre.ToString();
+                                }
+
+                                if (person.Per_priApellido == null)
+                                {
+                                    Session["priapellido"] = "";
+                                }
+                                else
+                                {
+                                    Session["priapellido"] = person.Per_priApellido.ToString();
+                                }
+
+                                if (person.Per_segApellido == null)
+                                {
+                                    Session["segapellido"] = "";
+                                }
+                                else
+                                {
+                                    Session["segapellido"] = person.Per_segApellido.ToString();
+                                }
+
                                 Session["rol"] = tusu.tusu_nombre.ToString();
 
                                 //--------------------Datos Cambiar Usuario--------------------
 
-                                Session["correo"] = person.Per_correo.ToString();
-                                Session["telefono"] = person.Per_telefono.ToString();
-                                Session["direccion"] = person.Per_direccion.ToString();
+                                if (person.Per_correo == null)
+                                {
+                                    Session["correo"] = "";
+                                }
+                                else
+                                {
+                                    Session["correo"] = person.Per_correo.ToString();
+                                }
+
+                                if (person.Per_telefono == null)
+                                {
+                                    Session["telefono"] = "";
+                                }
+                                else
+                                {
+                                    Session["telefono"] = person.Per_telefono.ToString();
+                                }
+
+                                if (person.Per_direccion == null)
+                                {
+                                    Session["direccion"] = "";
+                                }
+                                else
+                                {
+                                    Session["direccion"] = person.Per_direccion.ToString();
+                                }
 
                                 Response.Redirect("~/views/Administrador/Inicio.aspx");
                                 limpiar();
@@ -72,17 +128,73 @@ namespace SistemaECU911
                             else if (tusuario == 2)
                             {
                                 Session["Medico"] = person.Per_id.ToString();
-                                Session["prinombre"] = person.Per_priNombre.ToString();
-                                Session["segnombre"] = person.Per_segNombre.ToString();
-                                Session["priapellido"] = person.Per_priApellido.ToString();
-                                Session["segapellido"] = person.Per_segApellido.ToString();
+
+                                if (person.Per_priNombre == null)
+                                {
+                                    Session["prinombre"] = "";
+                                }
+                                else
+                                {
+                                    Session["prinombre"] = person.Per_priNombre.ToString();
+                                }
+
+                                if (person.Per_segNombre == null)
+                                {
+                                    Session["segnombre"] = "";
+                                }
+                                else
+                                {
+                                    Session["segnombre"] = person.Per_segNombre.ToString();
+                                }
+
+                                if (person.Per_priApellido == null)
+                                {
+                                    Session["priapellido"] = "";
+                                }
+                                else
+                                {
+                                    Session["priapellido"] = person.Per_priApellido.ToString();
+                                }
+
+                                if (person.Per_segApellido == null)
+                                {
+                                    Session["segapellido"] = "";
+                                }
+                                else
+                                {
+                                    Session["segapellido"] = person.Per_segApellido.ToString();
+                                }
+
                                 Session["rol"] = tusu.tusu_nombre.ToString();
 
                                 //--------------------Datos Cambiar Usuario--------------------
 
-                                Session["correo"] = person.Per_correo.ToString();
-                                Session["telefono"] = person.Per_telefono.ToString();
-                                Session["direccion"] = person.Per_direccion.ToString();
+                                if (person.Per_correo == null)
+                                {
+                                    Session["correo"] = "";
+                                }
+                                else
+                                {
+                                    Session["correo"] = person.Per_correo.ToString();
+                                }
+
+                                if (person.Per_telefono == null)
+                                {
+                                    Session["telefono"] = "";
+                                }
+                                else
+                                {
+                                    Session["telefono"] = person.Per_telefono.ToString();
+                                }
+
+                                if (person.Per_direccion == null)
+                                {
+                                    Session["direccion"] = "";
+                                }
+                                else
+                                {
+                                    Session["direccion"] = person.Per_direccion.ToString();
+                                }
 
                                 Response.Redirect("~/views/Administrador_Medico/Inicio.aspx");
                                 limpiar();
@@ -91,36 +203,148 @@ namespace SistemaECU911
                             {
                                 Session["Paciente"] = person.Per_id.ToString();
                                 Session["Cedula"] = person.Per_cedula.ToString();
-                                Session["prinombre"] = person.Per_priNombre.ToString();
-                                Session["segnombre"] = person.Per_segNombre.ToString();
-                                Session["priapellido"] = person.Per_priApellido.ToString();
-                                Session["segapellido"] = person.Per_segApellido.ToString();
+
+                                if (person.Per_priNombre == null)
+                                {
+                                    Session["prinombre"] = "";
+                                }
+                                else
+                                {
+                                    Session["prinombre"] = person.Per_priNombre.ToString();
+                                }
+
+                                if (person.Per_segNombre == null)
+                                {
+                                    Session["segnombre"] = "";
+                                }
+                                else
+                                {
+                                    Session["segnombre"] = person.Per_segNombre.ToString();
+                                }
+
+                                if (person.Per_priApellido == null)
+                                {
+                                    Session["priapellido"] = "";
+                                }
+                                else
+                                {
+                                    Session["priapellido"] = person.Per_priApellido.ToString();
+                                }
+
+                                if (person.Per_segApellido == null)
+                                {
+                                    Session["segapellido"] = "";
+                                }
+                                else
+                                {
+                                    Session["segapellido"] = person.Per_segApellido.ToString();
+                                }
+
                                 Session["rol"] = tusu.tusu_nombre.ToString();
 
                                 //--------------------Datos Cambiar Usuario--------------------
 
-                                Session["correo"] = person.Per_correo.ToString();
-                                Session["telefono"] = person.Per_telefono.ToString();
-                                Session["direccion"] = person.Per_direccion.ToString();
-                                
+                                if (person.Per_correo == null)
+                                {
+                                    Session["correo"] = "";
+                                }
+                                else
+                                {
+                                    Session["correo"] = person.Per_correo.ToString();
+                                }
+
+                                if (person.Per_telefono == null)
+                                {
+                                    Session["telefono"] = "";
+                                }
+                                else
+                                {
+                                    Session["telefono"] = person.Per_telefono.ToString();
+                                }
+
+                                if (person.Per_direccion == null)
+                                {
+                                    Session["direccion"] = "";
+                                }
+                                else
+                                {
+                                    Session["direccion"] = person.Per_direccion.ToString();
+                                }
+
                                 Response.Redirect("~/views/Pacientes/Inicio.aspx");
                                 limpiar();
                             }
                             else if (tusuario == 4)
                             {
                                 Session["Trabajo Social"] = person.Per_id.ToString();
-                                Session["prinombre"] = person.Per_priNombre.ToString();
-                                Session["segnombre"] = person.Per_segNombre.ToString();
-                                Session["priapellido"] = person.Per_priApellido.ToString();
-                                Session["segapellido"] = person.Per_segApellido.ToString();
+
+                                if (person.Per_priNombre == null)
+                                {
+                                    Session["prinombre"] = "";
+                                }
+                                else
+                                {
+                                    Session["prinombre"] = person.Per_priNombre.ToString();                                        
+                                }
+
+                                if (person.Per_segNombre == null)
+                                {
+                                    Session["segnombre"] = ""; 
+                                }
+                                else
+                                {
+                                    Session["segnombre"] = person.Per_segNombre.ToString();
+                                }
+
+                                if (person.Per_priApellido == null)
+                                {
+                                    Session["priapellido"] = ""; 
+                                }
+                                else
+                                {
+                                    Session["priapellido"] = person.Per_priApellido.ToString();
+                                }
+
+                                if (person.Per_segApellido == null)
+                                {
+                                    Session["segapellido"] = ""; 
+                                }
+                                else
+                                {
+                                    Session["segapellido"] = person.Per_segApellido.ToString();
+                                }
+
                                 Session["rol"] = tusu.tusu_nombre.ToString();
 
                                 //--------------------Datos Cambiar Usuario--------------------
 
-                                Session["correo"] = person.Per_correo.ToString();
-                                Session["telefono"] = person.Per_telefono.ToString();
-                                Session["direccion"] = person.Per_direccion.ToString();
-                                
+                                if (person.Per_correo == null)
+                                {
+                                    Session["correo"] = "";
+                                }
+                                else
+                                {
+                                    Session["correo"] = person.Per_correo.ToString();
+                                }
+
+                                if (person.Per_telefono == null)
+                                {
+                                    Session["telefono"] = ""; 
+                                }
+                                else
+                                {                                        
+                                    Session["telefono"] = person.Per_telefono.ToString();
+                                }
+
+                                if (person.Per_direccion == null)
+                                {
+                                    Session["direccion"] = ""; 
+                                }
+                                else
+                                {
+                                    Session["direccion"] = person.Per_direccion.ToString();
+                                }
+
                                 Response.Redirect("~/views/Socio_Economico/Inicio.aspx");
                                 limpiar();
                             }
@@ -146,7 +370,7 @@ namespace SistemaECU911
                         limpiar();
                     }
                 }
-                
+
             }
         }
 
@@ -183,6 +407,6 @@ namespace SistemaECU911
         {
             Response.Redirect("Autentificacion/Recuperar.aspx");
         }
-        
+
     }
 }

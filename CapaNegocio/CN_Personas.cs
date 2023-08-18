@@ -31,6 +31,11 @@ namespace CapaNegocio
             var lista = dc.Tbl_Empresa.Where(prof => prof.Emp_estado == "A");
             return lista.ToList();
         }
+        public static List<Tbl_Centro> ObtenerCentros()
+        {
+            var lista = dc.Tbl_Centro.Where(prof => prof.cent_estado == "A");
+            return lista.ToList();
+        }
 
         //metodo para verificar si existe la cedula
         public static bool autentificarxCedula(string cedula)

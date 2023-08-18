@@ -46,6 +46,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                             per.Per_pass = GetMD5(txt_passNueva.Text);
                             CN_Usuarios.ModificarUsuarios(per);
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Su clave a sido modificada con exito.', 'success')", true);
+                            Timer1.Enabled = true;
                             Limpiar();
                         }
                         else

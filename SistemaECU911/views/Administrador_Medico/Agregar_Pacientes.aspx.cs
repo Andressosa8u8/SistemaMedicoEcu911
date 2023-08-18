@@ -45,9 +45,10 @@ namespace SistemaECU911.Template.Views
                         else
                         {
                             txt_fechaNacimiento.Text = Convert.ToDateTime(per.Per_fechaNacimiento).ToString("yyyy-MM-dd");
-                        }                        
+                        }
                         ddl_genero.Text = per.Per_genero.ToString();
                         ddl_zonal.Text = per.Emp_id.ToString();
+                        ddl_centro.Text = per.cent_id.ToString();
                         if (per.Per_fechInicioTrabajo == "")
                         {
                             txt_fechaIngresoTrabajo.Text = per.Per_fechInicioTrabajo.ToString();
@@ -56,14 +57,15 @@ namespace SistemaECU911.Template.Views
                         {
                             txt_fechaIngresoTrabajo.Text = Convert.ToDateTime(per.Per_fechInicioTrabajo).ToString("yyyy-MM-dd");
                         }
-                        ddl_puestoTrabajo.Text = per.Per_puestoTrabajo.ToString();                        
+                        ddl_puestoTrabajo.Text = per.Per_puestoTrabajo.ToString();
                         ddl_cargo.Text = per.Per_cargoOcupacion.ToString();
                         ddl_area.Text = per.Per_areaTrabajo.ToString();
                         ddl_estado.Text = per.Per_estado.ToString();
                     }
                 }
                 Timer1.Enabled = false;
-                //CargarZonales();
+                CargarZonales();
+                CargarCentros();
                 Validaciones();
                 ddl_estado.Text = "A";
             }
@@ -77,7 +79,7 @@ namespace SistemaECU911.Template.Views
         private void GuardarPersona()
         {
             try
-            {   
+            {
                 bool existeCedula = CN_Personas.autentificarxCedula(txt_cedula.Text);
 
                 if (existeCedula)
@@ -97,6 +99,7 @@ namespace SistemaECU911.Template.Views
                     per.Per_fechaNacimiento = txt_fechaNacimiento.Text.ToUpper();
                     per.Per_genero = ddl_genero.Text.ToUpper();
                     per.Emp_id = Convert.ToInt32(ddl_zonal.Text.ToUpper());
+                    per.cent_id = Convert.ToInt32(ddl_centro.Text.ToUpper());
                     per.Per_fechInicioTrabajo = txt_fechaIngresoTrabajo.Text.ToUpper();
                     per.Per_puestoTrabajo = ddl_puestoTrabajo.Text.ToUpper();
                     per.Per_cargoOcupacion = ddl_cargo.Text.ToUpper();
@@ -141,6 +144,7 @@ namespace SistemaECU911.Template.Views
                 per.Per_fechaNacimiento = txt_fechaNacimiento.Text.ToUpper();
                 per.Per_genero = ddl_genero.Text.ToUpper();
                 per.Emp_id = Convert.ToInt32(ddl_zonal.SelectedValue);
+                per.cent_id = Convert.ToInt32(ddl_centro.SelectedValue);
                 per.Per_fechInicioTrabajo = txt_fechaIngresoTrabajo.Text.ToUpper();
                 per.Per_puestoTrabajo = ddl_puestoTrabajo.Text.ToUpper();
                 per.Per_cargoOcupacion = ddl_cargo.Text.ToUpper();
@@ -179,6 +183,31 @@ namespace SistemaECU911.Template.Views
             }
         }
 
+        private void CargarZonales()
+        {
+            List<Tbl_Empresa> listaEmp = new List<Tbl_Empresa>();
+            listaEmp = CN_Personas.ObtenerEmpresa();
+            listaEmp.Insert(0, new Tbl_Empresa() { Emp_nombre = "Seleccione...." });
+
+            ddl_zonal.DataSource = listaEmp;
+            ddl_zonal.DataTextField = "Emp_nombre";
+            ddl_zonal.DataValueField = "Emp_id";
+            ddl_zonal.DataBind();
+
+        }
+        private void CargarCentros()
+        {
+            List<Tbl_Centro> listacen = new List<Tbl_Centro>();
+            listacen = CN_Personas.ObtenerCentros();
+            listacen.Insert(0, new Tbl_Centro() { cent_nombre = "Seleccione...." });
+
+            ddl_centro.DataSource = listacen;
+            ddl_centro.DataTextField = "cent_nombre";
+            ddl_centro.DataValueField = "cent_id";
+            ddl_centro.DataBind();
+
+        }
+
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
             Guardar_modificar_datos(Convert.ToInt32(Request["cod"]));
@@ -186,25 +215,14 @@ namespace SistemaECU911.Template.Views
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Template/Views/Inicio.aspx");
+            Response.Redirect("~/Views/Administrador_Medico/Inicio.aspx");
         }
 
         protected void Timer1_Tick(object sender, EventArgs e)
         {
-            Response.Redirect("~/Template/Views/Inicio.aspx");
+            Response.Redirect("~/Views/Administrador_Medico/Inicio.aspx");
         }
 
-        //private void CargarZonales()
-        //{
-        //    List<Tbl_Empresa> listaEmp = new List<Tbl_Empresa>();
-        //    listaEmp = CN_Personas.ObtenerEmpresa();
-        //    listaEmp.Insert(0, new Tbl_Empresa() { Emp_zonal = "Seleccione...." });
-
-        //    ddl_zonal.DataSource = listaEmp;
-        //    ddl_zonal.DataTextField = "Emp_zonal";
-        //    ddl_zonal.DataValueField = "Emp_id";
-        //    ddl_zonal.DataBind();
-        //}
 
         public static string GetMD5(string str)
         {

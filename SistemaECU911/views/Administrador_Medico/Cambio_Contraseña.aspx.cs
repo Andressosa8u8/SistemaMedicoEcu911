@@ -57,7 +57,8 @@ namespace SistemaECU911.Template.Views
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'La contraseña anterior ingresada es incorrecta.', 'error')", true);                    
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'La contraseña anterior ingresada es incorrecta.', 'error')", true);
+                    Timer1.Enabled = true;
                 }
             }
             catch (Exception ex)

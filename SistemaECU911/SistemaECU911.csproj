@@ -858,8 +858,9 @@
     <Content Include="resources\vendors\tinymce\themes\modern\theme.js" />
     <Content Include="resources\vendors\tinymce\tinymce.min.js" />
     <Content Include="index.aspx" />
+    <Content Include="views\Administrador\Agregar_Pacientes.aspx" />
+    <Content Include="views\Administrador\Cambiar_Contraseña.aspx" />
     <Content Include="views\Administrador\Control_Usuarios.aspx" />
-    <Content Include="views\Administrador\Imagen.aspx" />
     <Content Include="views\Administrador\Inicio.aspx" />
     <Content Include="views\Administrador\Perfil.aspx" />
     <Content Include="views\Administrador_Medico\Agregar_Doctores.aspx" />
@@ -940,19 +941,26 @@
     <Compile Include="views\Administrador\Administrador.Master.designer.cs">
       <DependentUpon>Administrador.Master</DependentUpon>
     </Compile>
+    <Compile Include="views\Administrador\Agregar_Pacientes.aspx.cs">
+      <DependentUpon>Agregar_Pacientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\Administrador\Agregar_Pacientes.aspx.designer.cs">
+      <DependentUpon>Agregar_Pacientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="views\Administrador\Cambiar_Contraseña.aspx.cs">
+      <DependentUpon>Cambiar_Contraseña.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\Administrador\Cambiar_Contraseña.aspx.designer.cs">
+      <DependentUpon>Cambiar_Contraseña.aspx</DependentUpon>
+    </Compile>
     <Compile Include="views\Administrador\Control_Usuarios.aspx.cs">
       <DependentUpon>Control_Usuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="views\Administrador\Control_Usuarios.aspx.designer.cs">
       <DependentUpon>Control_Usuarios.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="views\Administrador\Imagen.aspx.cs">
-      <DependentUpon>Imagen.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="views\Administrador\Imagen.aspx.designer.cs">
-      <DependentUpon>Imagen.aspx</DependentUpon>
     </Compile>
     <Compile Include="views\Administrador\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
