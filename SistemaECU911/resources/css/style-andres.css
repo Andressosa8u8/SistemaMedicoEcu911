@@ -20,3 +20,9 @@
     width: 100px;
     text-align: start;
 }
+
+#TextBox1 {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    font-size: 12px; /* Ajusta el ancho según sea necesario */
+}

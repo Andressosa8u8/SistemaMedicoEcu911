@@ -113,7 +113,7 @@
                                     <asp:TextBox runat="server" ID="txt_rucEmp" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform: uppercase" ReadOnly="true"></asp:TextBox>
                                 </asp:TableCell>
                                 <asp:TableCell Style="background-color: white; font-size: 14px">
-                                    <asp:TextBox runat="server" ID="txt_ciiu" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform: uppercase"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="txt_ciiu" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform: uppercase" ReadOnly="true" Text="084110701"></asp:TextBox>
                                 </asp:TableCell>
                                 <asp:TableCell Style="background-color: white; font-size: 14px">
                                     <asp:TextBox runat="server" ID="txt_estableSalud" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform: uppercase" Text="Consultorio Médico" ReadOnly="true"></asp:TextBox>
@@ -341,13 +341,13 @@
                             <asp:TableRow>
                                 <asp:TableCell Style="width: 200px; background-color: #cdfecc; font-size: 15px">NOMBRES Y APELLIDOS</asp:TableCell>
                                 <asp:TableCell Style="width: 400px; background-color: white; font-size: 14px">
-                                    <asp:DropDownList ID="ddl_profesional" CssClass="form-check" Style="width: 100%; text-transform: uppercase; border: none; background-color: transparent; text-align: center" onchange="borrarMensaje();" runat="server"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddl_profesional" AutoPostBack="true" OnTextChanged="ddl_profesional_TextChanged" CssClass="form-check" Style="width: 100%; text-transform: uppercase; border: none; background-color: transparent; text-align: center" onchange="borrarMensaje();" runat="server"></asp:DropDownList>
                                     <asp:Label ID="lbl_profesional" ForeColor="Red" runat="server"></asp:Label>
 <%--                                    <asp:RequiredFieldValidator ID="rfv_profesional" runat="server" ForeColor="Red" InitialValue="0" ControlToValidate="ddl_profesional" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>--%>
                                 </asp:TableCell>
                                 <asp:TableCell Style="width: 150px; background-color: #cdfecc; font-size: 15px">CÓDIGO</asp:TableCell>
                                 <asp:TableCell Style="width: 200px; background-color: white; font-size: 14px">
-                                    <asp:TextBox runat="server" ID="txt_codigo" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform: uppercase"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="txt_codigo" AutoPostBack="true" Enabled="false" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform: uppercase"></asp:TextBox>
                                 </asp:TableCell>
                                 <asp:TableCell Style="width: 150px; background-color: #cdfecc; font-size: 15px">FIRMA Y SELLO</asp:TableCell>
                                 <asp:TableCell Style="width: 200px; background-color: white; font-size: 14px">

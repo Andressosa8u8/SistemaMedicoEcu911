@@ -113,7 +113,7 @@
                                         <asp:TextBox ID="txt_rucEmp" runat="server" BorderStyle="None" style="background-color:transparent; width:100%; text-align: center; text-transform:uppercase" ReadOnly="true"></asp:TextBox>
                                 </asp:TableCell>
                                 <asp:TableCell Style="background-color: white; font-size: 14px">
-                                        <asp:TextBox ID="txt_ciiu" runat="server" BorderStyle="None" style="background-color:transparent; width:100%; text-align: center; text-transform:uppercase"></asp:TextBox>
+                                        <asp:TextBox ID="txt_ciiu" runat="server" BorderStyle="None" style="background-color:transparent; width:100%; text-align: center; text-transform:uppercase" ReadOnly="true" Text="084110701"></asp:TextBox>
                                 </asp:TableCell>
                                 <asp:TableCell Style="background-color: white; font-size: 14px">
                                         <asp:TextBox ID="txt_estableSalud" runat="server" BorderStyle="None" style="background-color:transparent; width:100%; text-align: center; text-transform:uppercase" Text="Consultorio Médico" ReadOnly="true"></asp:TextBox>

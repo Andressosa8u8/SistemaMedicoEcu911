@@ -1094,6 +1094,22 @@ namespace SistemaECU911.Template.Views
             Response.End();
         }
 
+        protected void ddl_profesional_TextChanged(object sender, EventArgs e)
+        {
+            string nombre;
+            nombre = ddl_profesional.SelectedItem.Text;
+            var cedula = dc.Tbl_Profesional.Where(prof => prof.prof_NomApe == nombre)
+                                           .Select(prof => prof.prof_cedula)
+                                           .FirstOrDefault();
+            if (cedula == null)
+            {
+                txt_codigo.Text = "";
+            }
+            else
+            {
+                txt_codigo.Text = cedula;
+            }
+        }
     }
 
 }
