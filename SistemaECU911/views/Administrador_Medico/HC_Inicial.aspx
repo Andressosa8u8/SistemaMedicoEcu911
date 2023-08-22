@@ -1084,7 +1084,7 @@
                         <asp:TableRow>
                             <asp:TableCell RowSpan="2" ColumnSpan="2" Style="background-color: #cdfecc; font-size: 15px">PUESTO DE TRABAJO / ÁREA</asp:TableCell>
                             <asp:TableCell Style="width: 400px; background-color: #cdfecc; font-size: 15px" RowSpan="2">ACTIVIDADES</asp:TableCell>
-                            <asp:TableCell Style="width: 400px; background-color: #cdfecc; font-size: 15px" ColumnSpan="11">FÍSICO</asp:TableCell>
+                            <asp:TableCell Style="width: 400px; background-color: #cdfecc; font-size: 15px" ColumnSpan="10">FÍSICO</asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
                             <asp:TableCell Style="background-color: #cdfecc; font-size: 15px; text-transform: uppercase">
@@ -1115,10 +1115,8 @@
                                 <asp:Label CssClass="in-column" ID="Label29" runat="server" Text="Fluido eléctrico"></asp:Label>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: #cdfecc; font-size: 15px; text-transform: uppercase">
-                                <asp:Label CssClass="in-column" ID="Label94" runat="server" Text="Otros"></asp:Label>
-                            </asp:TableCell>
-                            <asp:TableCell Style="background-color: #cdfecc; font-size: 15px; text-transform: uppercase">
-                                <asp:TextBox CssClass="in-column" runat="server" ID="txt_otrosFisico" BorderStyle="None" Style="background-color: transparent; width: 100%; text-align: center; text-transform: uppercase" placeholder="-----------"></asp:TextBox>
+                                <asp:TextBox ID="txt_otrosFis" Style="background-color: transparent; font-size: 12px; text-transform: uppercase; border: none; height: 250px; text-align: center;"
+                                    TextMode="MultiLine" Rows="15" Columns="10" runat="server" Placeholder="Otros"></asp:TextBox>
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
@@ -1367,7 +1365,8 @@
                                 <asp:Label CssClass="in-column" ID="Label44" runat="server" Text="Choques /colisión vehicular"></asp:Label>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: #cdfecc; font-size: 15px; text-transform: uppercase">
-                                <asp:Label CssClass="in-column" ID="Label45" runat="server" Text="Otros __________"></asp:Label>
+                                <asp:TextBox ID="txt_otrosMec" Style="background-color: transparent; font-size: 12px; text-transform: uppercase; border: none; height: 250px; text-align: center;"
+                                    TextMode="MultiLine" Rows="15" Columns="10" runat="server" Placeholder="Otros"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: #cdfecc; font-size: 15px; text-transform: uppercase">
                                 <asp:Label CssClass="in-column" ID="Label46" runat="server" Text="Sólidos"></asp:Label>
@@ -1394,9 +1393,8 @@
                                 <asp:Label CssClass="in-column" ID="Label53" runat="server" Text="Gaseosos"></asp:Label>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: #cdfecc; font-size: 15px; text-transform: uppercase">
-                                <%--<asp:Label CssClass="in-column" ID="Label54" runat="server" Text="Otros __________"></asp:Label>--%>
-                            //revisar
-                                    <asp:TextBox ID="TextBox1" TextMode="MultiLine" CssClass="in-column" Rows="2" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txt_otrosQui" Style="background-color: transparent; font-size: 12px; text-transform: uppercase; border: none; height: 250px; text-align: center;"
+                                    TextMode="MultiLine" Rows="15" Columns="10" runat="server" Placeholder="Otros"></asp:TextBox>
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
@@ -1819,7 +1817,8 @@
                                 <asp:Label CssClass="in-column" ID="Label60" runat="server" Text="Exposición a animales selváticos "></asp:Label>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: #cdfecc; font-size: 15px; text-transform: uppercase">
-                                <asp:Label CssClass="in-column" ID="Label61" runat="server" Text="Otros __________"></asp:Label>
+                                <asp:TextBox ID="txt_otrosBio" Style="background-color: transparent; font-size: 12px; text-transform: uppercase; border: none; height: 250px; text-align: center;"
+                                    TextMode="MultiLine" Rows="15" Columns="10" runat="server" Placeholder="Otros"></asp:TextBox>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: #cdfecc; font-size: 15px; text-transform: uppercase">
                                 <asp:Label CssClass="in-column" ID="Label62" runat="server" Text="Manejo manual de cargas"></asp:Label>
@@ -1834,7 +1833,8 @@
                                 <asp:Label CssClass="in-column" ID="Label65" runat="server" Text="Trabajos con PVD"></asp:Label>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: #cdfecc; font-size: 15px; text-transform: uppercase">
-                                <asp:Label CssClass="in-column" ID="Label66" runat="server" Text="Otros __________"></asp:Label>
+                                <asp:TextBox ID="txt_otrosErg" Style="background-color: transparent; font-size: 12px; text-transform: uppercase; border: none; height: 250px; text-align: center;"
+                                    TextMode="MultiLine" Rows="15" Columns="10" runat="server" Placeholder="Otros"></asp:TextBox>
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
@@ -2109,7 +2109,8 @@
                                 <asp:Label CssClass="in-column" ID="Label78" runat="server" Text="Inestabilidad laboral"></asp:Label>
                             </asp:TableCell>
                             <asp:TableCell Style="background-color: #cdfecc; font-size: 15px; text-transform: uppercase">
-                                <asp:Label CssClass="in-column" ID="Label79" runat="server" Text="Otros __________"></asp:Label>
+                                <asp:TextBox ID="txt_otrosPsi" Style="background-color: transparent; font-size: 12px; text-transform: uppercase; border: none; height: 250px; text-align: center;"
+                                    TextMode="MultiLine" Rows="15" Columns="10" runat="server" Placeholder="Otros"></asp:TextBox>
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
@@ -3057,4 +3058,6 @@
             }
         }
     </script>
+
+
 </asp:Content>

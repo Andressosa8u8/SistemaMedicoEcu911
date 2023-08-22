@@ -1959,22 +1959,13 @@ namespace SistemaECU911.Template.Views
         protected global::System.Web.UI.WebControls.Label Label29;
 
         /// <summary>
-        /// Control Label94.
+        /// Control txt_otrosFis.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label94;
-
-        /// <summary>
-        /// Control txt_otrosFisico.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_otrosFisico;
+        protected global::System.Web.UI.WebControls.TextBox txt_otrosFis;
 
         /// <summary>
         /// Control txt_puestodetrabajo.
@@ -2535,13 +2526,13 @@ namespace SistemaECU911.Template.Views
         protected global::System.Web.UI.WebControls.Label Label44;
 
         /// <summary>
-        /// Control Label45.
+        /// Control txt_otrosMec.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label45;
+        protected global::System.Web.UI.WebControls.TextBox txt_otrosMec;
 
         /// <summary>
         /// Control Label46.
@@ -2616,13 +2607,13 @@ namespace SistemaECU911.Template.Views
         protected global::System.Web.UI.WebControls.Label Label53;
 
         /// <summary>
-        /// Control TextBox1.
+        /// Control txt_otrosQui.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txt_otrosQui;
 
         /// <summary>
         /// Control ckb_atrapmaquinas.
@@ -3543,13 +3534,13 @@ namespace SistemaECU911.Template.Views
         protected global::System.Web.UI.WebControls.Label Label60;
 
         /// <summary>
-        /// Control Label61.
+        /// Control txt_otrosBio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label61;
+        protected global::System.Web.UI.WebControls.TextBox txt_otrosBio;
 
         /// <summary>
         /// Control Label62.
@@ -3588,13 +3579,13 @@ namespace SistemaECU911.Template.Views
         protected global::System.Web.UI.WebControls.Label Label65;
 
         /// <summary>
-        /// Control Label66.
+        /// Control txt_otrosErg.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label66;
+        protected global::System.Web.UI.WebControls.TextBox txt_otrosErg;
 
         /// <summary>
         /// Control txt_puestodetrabajo21.
@@ -4209,13 +4200,13 @@ namespace SistemaECU911.Template.Views
         protected global::System.Web.UI.WebControls.Label Label78;
 
         /// <summary>
-        /// Control Label79.
+        /// Control txt_otrosPsi.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label79;
+        protected global::System.Web.UI.WebControls.TextBox txt_otrosPsi;
 
         /// <summary>
         /// Control ckb_montrabajo.

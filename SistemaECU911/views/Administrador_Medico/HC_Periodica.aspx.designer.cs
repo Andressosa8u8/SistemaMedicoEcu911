@@ -762,13 +762,13 @@ namespace SistemaECU911.Template.Views
         protected global::System.Web.UI.WebControls.Label Label31;
 
         /// <summary>
-        /// Control Label32.
+        /// Control txt_otrosFis.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label32;
+        protected global::System.Web.UI.WebControls.TextBox txt_otrosFis;
 
         /// <summary>
         /// Control txt_puestotrabajo.
@@ -1248,13 +1248,13 @@ namespace SistemaECU911.Template.Views
         protected global::System.Web.UI.WebControls.Label Label46;
 
         /// <summary>
-        /// Control Label47.
+        /// Control txt_otrosMec.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label47;
+        protected global::System.Web.UI.WebControls.TextBox txt_otrosMec;
 
         /// <summary>
         /// Control Label48.
@@ -1329,13 +1329,13 @@ namespace SistemaECU911.Template.Views
         protected global::System.Web.UI.WebControls.Label Label55;
 
         /// <summary>
-        /// Control Label56.
+        /// Control txt_otrosQui.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label56;
+        protected global::System.Web.UI.WebControls.TextBox txt_otrosQui;
 
         /// <summary>
         /// Control Label57.
@@ -1392,13 +1392,13 @@ namespace SistemaECU911.Template.Views
         protected global::System.Web.UI.WebControls.Label Label62;
 
         /// <summary>
-        /// Control Label63.
+        /// Control txt_otrosBio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label63;
+        protected global::System.Web.UI.WebControls.TextBox txt_otrosBio;
 
         /// <summary>
         /// Control Label64.
@@ -1437,13 +1437,13 @@ namespace SistemaECU911.Template.Views
         protected global::System.Web.UI.WebControls.Label Label67;
 
         /// <summary>
-        /// Control Label68.
+        /// Control txt_otrosErg.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label68;
+        protected global::System.Web.UI.WebControls.TextBox txt_otrosErg;
 
         /// <summary>
         /// Control ckb_atrapmaquinas.
@@ -2526,13 +2526,13 @@ namespace SistemaECU911.Template.Views
         protected global::System.Web.UI.WebControls.Label Label80;
 
         /// <summary>
-        /// Control Label81.
+        /// Control txt_otrosPsi.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label81;
+        protected global::System.Web.UI.WebControls.TextBox txt_otrosPsi;
 
         /// <summary>
         /// Control txt_puestotrabajo21.
