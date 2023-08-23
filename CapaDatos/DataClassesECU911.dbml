@@ -22,7 +22,6 @@
       <Column Name="cent_dirrecionInstitucional" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="cent_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Centro_Tbl_Person" Member="Tbl_Person" ThisKey="cent_id" OtherKey="cent_id" Type="Tbl_Person" />
-      <Association Name="Tbl_Centro_Tbl_Profesional" Member="Tbl_Profesional" ThisKey="cent_id" OtherKey="cent_id" Type="Tbl_Profesional" />
     </Type>
   </Table>
   <Table Name="dbo.Tbl_Certificado" Member="Tbl_Certificado">
@@ -69,7 +68,6 @@
       <Column Name="Emp_descripcion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Emp_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Empresa_Tbl_Certificado" Member="Tbl_Certificado" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Certificado" />
-      <Association Name="Tbl_Empresa_Tbl_Evolucion" Member="Tbl_Evolucion" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Evolucion" />
       <Association Name="Tbl_Empresa_Tbl_FichasMedicas" Member="Tbl_FichasMedicas" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_FichasMedicas" />
       <Association Name="Tbl_Empresa_Tbl_Inicial" Member="Tbl_Inicial" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Inicial" />
       <Association Name="Tbl_Empresa_Tbl_Inmunizaciones" Member="Tbl_Inmunizaciones" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Inmunizaciones" />
@@ -175,7 +173,6 @@
       <Column Name="Emp_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="evo_fechaHoraGuardado" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="evo_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
-      <Association Name="Tbl_Empresa_Tbl_Evolucion" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
       <Association Name="Tbl_Person_Tbl_Evolucion" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />
     </Type>
   </Table>
@@ -436,6 +433,7 @@
       <Column Name="inicial_ventilacionFis" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_fluElectricoFis" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosFis" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosFisTxt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_atraMaquinasMec" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_atraSuperfiiesMec" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_atraObjetosMec" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -451,6 +449,7 @@
       <Column Name="inicial_atropeVehiMec" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_coliVehiMec" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosMec" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosMecTxt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_solidosQui" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_polvosQui" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_humosQui" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -460,6 +459,7 @@
       <Column Name="inicial_neblinasQui" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_gaseososQui" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosQui" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosQuiTxt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_virusBio" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_hongosBio" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_bacteriasBio" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -467,11 +467,13 @@
       <Column Name="inicial_expVectBio" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_expAniSelvaBio" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosBio" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosBioTxt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_maneManCarErg" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_movRepeErg" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_posForzaErg" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_trabPvdErg" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosErg" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosErgtxt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_monoTrabPsi" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_sobrecarLabPsi" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_minuTareaPsi" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -485,6 +487,7 @@
       <Column Name="inicial_relInterperPsi" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_inesLabPsi" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosPsi" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosPsiTxt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_medPreventivas" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="inicial_area2" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="inicial_actividades2" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
@@ -498,6 +501,7 @@
       <Column Name="inicial_ventilacionFis2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_fluElectricoFis2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosFis2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosFis2Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_atraMaquinasMec2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_atraSuperfiiesMec2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_atraObjetosMec2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -513,6 +517,7 @@
       <Column Name="inicial_atropeVehiMec2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_coliVehiMec2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosMec2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosMec2Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_solidosQui2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_polvosQui2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_humosQui2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -522,6 +527,7 @@
       <Column Name="inicial_neblinasQui2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_gaseososQui2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosQui2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosQui2Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_virusBio2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_hongosBio2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_bacteriasBio2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -529,11 +535,13 @@
       <Column Name="inicial_expVectBio2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_expAniSelvaBio2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosBio2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosBio2Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_maneManCarErg2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_movRepeErg2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_posForzaErg2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_trabPvdErg2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosErg2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosErg2Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_monoTrabPsi2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_sobrecarLabPsi2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_minuTareaPsi2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -547,6 +555,7 @@
       <Column Name="inicial_relInterperPsi2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_inesLabPsi2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosPsi2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosPsi2Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_medPreventivas2" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="inicial_area3" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="inicial_actividades3" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
@@ -560,6 +569,7 @@
       <Column Name="inicial_ventilacionFis3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_fluElectricoFis3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosFis3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosFis3Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_atraMaquinasMec3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_atraSuperfiiesMec3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_atraObjetosMec3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -575,6 +585,7 @@
       <Column Name="inicial_atropeVehiMec3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_coliVehiMec3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosMec3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosMec3Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_solidosQui3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_polvosQui3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_humosQui3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -584,6 +595,7 @@
       <Column Name="inicial_neblinasQui3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_gaseososQui3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosQui3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosQui3Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_virusBio3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_hongosBio3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_bacteriasBio3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -591,11 +603,13 @@
       <Column Name="inicial_expVectBio3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_expAniSelvaBio3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosBio3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosBio3Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_maneManCarErg3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_movRepeErg3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_posForzaErg3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_trabPvdErg3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosErg3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosErg3Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_monoTrabPsi3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_sobrecarLabPsi3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_minuTareaPsi3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -609,6 +623,7 @@
       <Column Name="inicial_relInterperPsi3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_inesLabPsi3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosPsi3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosPsi3Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_medPreventivas3" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="inicial_area4" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="inicial_actividades4" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
@@ -622,6 +637,7 @@
       <Column Name="inicial_ventilacionFis4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_fluElectricoFis4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosFis4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosFis4Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_atraMaquinasMec4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_atraSuperfiiesMec4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_atraObjetosMec4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -637,6 +653,7 @@
       <Column Name="inicial_atropeVehiMec4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_coliVehiMec4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosMec4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosMec4Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_solidosQui4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_polvosQui4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_humosQui4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -646,6 +663,7 @@
       <Column Name="inicial_neblinasQui4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_gaseososQui4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosQui4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosQui4Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_virusBio4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_hongosBio4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_bacteriasBio4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -653,11 +671,13 @@
       <Column Name="inicial_expVectBio4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_expAniSelvaBio4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosBio4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosBio4Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_maneManCarErg4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_movRepeErg4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_posForzaErg4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_trabPvdErg4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosErg4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosErg4Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_monoTrabPsi4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_sobrecarLabPsi4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_minuTareaPsi4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -671,6 +691,7 @@
       <Column Name="inicial_relInterperPsi4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_inesLabPsi4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="inicial_otrosPsi4" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="inicial_otrosPsi4Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="inicial_medPreventivas4" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="inicial_descripActExtLab" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="inicial_descripEnfActual" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
@@ -1245,6 +1266,7 @@
       <Column Name="perio_ventilacionFis" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_fluElectricoFis" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosFis" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosFisTxt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_atraMaquinasMec" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_atraSuperfiiesMec" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_atraObjetosMec" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -1260,6 +1282,7 @@
       <Column Name="perio_atropeVehiMec" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_coliVehiMec" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosMec" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosMecTxt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_solidosQui" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_polvosQui" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_humosQui" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -1269,6 +1292,7 @@
       <Column Name="perio_neblinasQui" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_gaseososQui" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosQui" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosQuiTxt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_virusBio" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_hongosBio" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_bacteriasBio" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -1276,11 +1300,13 @@
       <Column Name="perio_expVectBio" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_expAniSelvaBio" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosBio" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosBioTxt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_maneManCarErg" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_movRepeErg" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_posForzaErg" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_trabPvdErg" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosErg" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosErgTxt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_monoTrabPsi" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_sobrecarLabPsi" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_minuTareaPsi" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -1294,6 +1320,7 @@
       <Column Name="perio_relInterperPsi" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_inesLabPsi" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosPsi" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosPsiTxt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_medPreventivas" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="perio_area2" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="perio_actividades2" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
@@ -1308,6 +1335,7 @@
       <Column Name="perio_ventilacionFis2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_fluElectricoFis2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosFis2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosFis2Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_atraMaquinasMec2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_atraSuperfiiesMec2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_atraObjetosMec2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -1323,6 +1351,7 @@
       <Column Name="perio_atropeVehiMec2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_coliVehiMec2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosMec2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosMec2Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_solidosQui2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_polvosQui2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_humosQui2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -1332,6 +1361,7 @@
       <Column Name="perio_neblinasQui2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_gaseososQui2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosQui2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosQui2Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_virusBio2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_hongosBio2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_bacteriasBio2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -1339,11 +1369,13 @@
       <Column Name="perio_expVectBio2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_expAniSelvaBio2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosBio2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosBio2Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_maneManCarErg2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_movRepeErg2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_posForzaErg2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_trabPvdErg2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosErg2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosErg2Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_monoTrabPsi2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_sobrecarLabPsi2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_minuTareaPsi2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -1357,6 +1389,7 @@
       <Column Name="perio_relInterperPsi2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_inesLabPsi2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosPsi2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosPsi2Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_medPreventivas2" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="perio_area3" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="perio_actividades3" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
@@ -1371,6 +1404,7 @@
       <Column Name="perio_ventilacionFis3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_fluElectricoFis3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosFis3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosFis3Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_atraMaquinasMec3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_atraSuperfiiesMec3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_atraObjetosMec3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -1386,6 +1420,7 @@
       <Column Name="perio_atropeVehiMec3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_coliVehiMec3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosMec3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosMec3Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_solidosQui3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_polvosQui3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_humosQui3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -1395,6 +1430,7 @@
       <Column Name="perio_neblinasQui3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_gaseososQui3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosQui3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosQui3Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_virusBio3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_hongosBio3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_bacteriasBio3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -1402,11 +1438,13 @@
       <Column Name="perio_expVectBio3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_expAniSelvaBio3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosBio3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosBio3Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_maneManCarErg3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_movRepeErg3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_posForzaErg3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_trabPvdErg3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosErg3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosErg3Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_monoTrabPsi3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_sobrecarLabPsi3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_minuTareaPsi3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -1420,6 +1458,7 @@
       <Column Name="perio_relInterperPsi3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_inesLabPsi3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_otrosPsi3" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_otrosPsi3Txt" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="perio_medPreventivas3" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="perio_descripEnfActual" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="perio_pielAnexos" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
@@ -1524,9 +1563,9 @@
   <Table Name="dbo.Tbl_Person" Member="Tbl_Person">
     <Type Name="Tbl_Person">
       <Column Name="Per_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Per_imgNombre" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Per_imgNombre" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="Per_imgByte" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="Per_cedula" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Per_cedula" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="Per_priApellido" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
       <Column Name="Per_segApellido" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
       <Column Name="Per_priNombre" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
@@ -1542,10 +1581,10 @@
       <Column Name="Per_nomlogin" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
       <Column Name="Per_pass" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Per_correo" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Column Name="Emp_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="cent_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="tusu_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Per_estado" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="Emp_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cent_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tusu_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Per_estado" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Person_Tbl_Certificado" Member="Tbl_Certificado" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Certificado" />
       <Association Name="Tbl_Person_Tbl_Evolucion" Member="Tbl_Evolucion" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Evolucion" />
       <Association Name="Tbl_Person_Tbl_FichasMedicas" Member="Tbl_FichasMedicas" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_FichasMedicas" />
@@ -1575,7 +1614,6 @@
       <Association Name="Tbl_Profesional_Tbl_Periodica" Member="Tbl_Periodica" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_Periodica" />
       <Association Name="Tbl_Profesional_Tbl_Reintegro" Member="Tbl_Reintegro" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_Reintegro" />
       <Association Name="Tbl_Profesional_Tbl_Retiro" Member="Tbl_Retiro" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_Retiro" />
-      <Association Name="Tbl_Centro_Tbl_Profesional" Member="Tbl_Centro" ThisKey="cent_id" OtherKey="cent_id" Type="Tbl_Centro" IsForeignKey="true" />
       <Association Name="Tbl_Especialidad_Tbl_Profesional" Member="Tbl_Especialidad" ThisKey="espec_id" OtherKey="espec_id" Type="Tbl_Especialidad" IsForeignKey="true" />
     </Type>
   </Table>
@@ -2096,31 +2134,35 @@
       <Column Name="numero_personas" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.CargarImagen" Method="CargarImagen">
+  <Function Name="dbo.CargarImagen" Method="CargarImagen" IsComposable="true">
     <Parameter Name="img_id" Type="System.Int32" DbType="Int" />
+    <Return Type="object" />
   </Function>
-  <Function Name="dbo.InsertarPersona" Method="InsertarPersona">
+  <Function Name="dbo.InsertarPersona" Method="InsertarPersona" IsComposable="true">
     <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="Imagen" Parameter="imagen" Type="System.Data.Linq.Binary" DbType="Image" />
     <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="VarChar(1)" />
+    <Return Type="object" />
   </Function>
-  <Function Name="dbo.ModificarPersona" Method="ModificarPersona">
+  <Function Name="dbo.ModificarPersona" Method="ModificarPersona" IsComposable="true">
     <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="Imagen" Parameter="imagen" Type="System.Data.Linq.Binary" DbType="Image" />
     <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="VarChar(1)" />
+    <Return Type="object" />
   </Function>
   <Function Name="dbo.ObtenerPaciente" Method="ObtenerPaciente">
     <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="VarChar(10)" />
     <ElementType Name="ObtenerPacienteResult">
       <Column Name="idFichaMedica" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Per_cedula" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Per_cedula" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="prof_NomApe" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="fechaHoraGuardado" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.RegistrarImagen" Method="RegistrarImagen">
+  <Function Name="dbo.RegistrarImagen" Method="RegistrarImagen" IsComposable="true">
     <Parameter Name="cedula" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="imagen" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Return Type="object" />
   </Function>
   <Function Name="dbo.Sp_Grafico_AntecedentePer" Method="Sp_Grafico_AntecedentePer">
     <ElementType Name="Sp_Grafico_AntecedentePerResult">

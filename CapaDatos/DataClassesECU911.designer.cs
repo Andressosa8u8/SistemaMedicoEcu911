@@ -263,22 +263,22 @@ namespace CapaDatos
 			return ((ISingleResult<Sp_Npersona_puestoTrabajoResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CargarImagen")]
-		public void CargarImagen([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> img_id)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CargarImagen", IsComposable=true)]
+		public object CargarImagen([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> img_id)
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), img_id);
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), img_id).ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertarPersona")]
-		public void InsertarPersona([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Imagen", DbType="Image")] System.Data.Linq.Binary imagen, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Estado", DbType="VarChar(1)")] string estado)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertarPersona", IsComposable=true)]
+		public object InsertarPersona([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Imagen", DbType="Image")] System.Data.Linq.Binary imagen, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Estado", DbType="VarChar(1)")] string estado)
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, imagen, estado);
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, imagen, estado).ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ModificarPersona")]
-		public void ModificarPersona([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Imagen", DbType="Image")] System.Data.Linq.Binary imagen, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Estado", DbType="VarChar(1)")] string estado)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ModificarPersona", IsComposable=true)]
+		public object ModificarPersona([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Imagen", DbType="Image")] System.Data.Linq.Binary imagen, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Estado", DbType="VarChar(1)")] string estado)
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, imagen, estado);
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, imagen, estado).ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ObtenerPaciente")]
@@ -288,10 +288,10 @@ namespace CapaDatos
 			return ((ISingleResult<ObtenerPacienteResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.RegistrarImagen")]
-		public void RegistrarImagen([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Image")] System.Data.Linq.Binary imagen)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.RegistrarImagen", IsComposable=true)]
+		public object RegistrarImagen([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Image")] System.Data.Linq.Binary imagen)
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, imagen);
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, imagen).ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Grafico_AntecedentePer")]
@@ -551,8 +551,6 @@ namespace CapaDatos
 		
 		private EntitySet<Tbl_Person> _Tbl_Person;
 		
-		private EntitySet<Tbl_Profesional> _Tbl_Profesional;
-		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -572,7 +570,6 @@ namespace CapaDatos
 		public Tbl_Centro()
 		{
 			this._Tbl_Person = new EntitySet<Tbl_Person>(new Action<Tbl_Person>(this.attach_Tbl_Person), new Action<Tbl_Person>(this.detach_Tbl_Person));
-			this._Tbl_Profesional = new EntitySet<Tbl_Profesional>(new Action<Tbl_Profesional>(this.attach_Tbl_Profesional), new Action<Tbl_Profesional>(this.detach_Tbl_Profesional));
 			OnCreated();
 		}
 		
@@ -689,19 +686,6 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Centro_Tbl_Profesional", Storage="_Tbl_Profesional", ThisKey="cent_id", OtherKey="cent_id")]
-		public EntitySet<Tbl_Profesional> Tbl_Profesional
-		{
-			get
-			{
-				return this._Tbl_Profesional;
-			}
-			set
-			{
-				this._Tbl_Profesional.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -729,18 +713,6 @@ namespace CapaDatos
 		}
 		
 		private void detach_Tbl_Person(Tbl_Person entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Centro = null;
-		}
-		
-		private void attach_Tbl_Profesional(Tbl_Profesional entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Centro = this;
-		}
-		
-		private void detach_Tbl_Profesional(Tbl_Profesional entity)
 		{
 			this.SendPropertyChanging();
 			entity.Tbl_Centro = null;
@@ -1644,8 +1616,6 @@ namespace CapaDatos
 		
 		private EntitySet<Tbl_Certificado> _Tbl_Certificado;
 		
-		private EntitySet<Tbl_Evolucion> _Tbl_Evolucion;
-		
 		private EntitySet<Tbl_FichasMedicas> _Tbl_FichasMedicas;
 		
 		private EntitySet<Tbl_Inicial> _Tbl_Inicial;
@@ -1681,7 +1651,6 @@ namespace CapaDatos
 		public Tbl_Empresa()
 		{
 			this._Tbl_Certificado = new EntitySet<Tbl_Certificado>(new Action<Tbl_Certificado>(this.attach_Tbl_Certificado), new Action<Tbl_Certificado>(this.detach_Tbl_Certificado));
-			this._Tbl_Evolucion = new EntitySet<Tbl_Evolucion>(new Action<Tbl_Evolucion>(this.attach_Tbl_Evolucion), new Action<Tbl_Evolucion>(this.detach_Tbl_Evolucion));
 			this._Tbl_FichasMedicas = new EntitySet<Tbl_FichasMedicas>(new Action<Tbl_FichasMedicas>(this.attach_Tbl_FichasMedicas), new Action<Tbl_FichasMedicas>(this.detach_Tbl_FichasMedicas));
 			this._Tbl_Inicial = new EntitySet<Tbl_Inicial>(new Action<Tbl_Inicial>(this.attach_Tbl_Inicial), new Action<Tbl_Inicial>(this.detach_Tbl_Inicial));
 			this._Tbl_Inmunizaciones = new EntitySet<Tbl_Inmunizaciones>(new Action<Tbl_Inmunizaciones>(this.attach_Tbl_Inmunizaciones), new Action<Tbl_Inmunizaciones>(this.detach_Tbl_Inmunizaciones));
@@ -1784,19 +1753,6 @@ namespace CapaDatos
 			set
 			{
 				this._Tbl_Certificado.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Empresa_Tbl_Evolucion", Storage="_Tbl_Evolucion", ThisKey="Emp_id", OtherKey="Emp_id")]
-		public EntitySet<Tbl_Evolucion> Tbl_Evolucion
-		{
-			get
-			{
-				return this._Tbl_Evolucion;
-			}
-			set
-			{
-				this._Tbl_Evolucion.Assign(value);
 			}
 		}
 		
@@ -1944,18 +1900,6 @@ namespace CapaDatos
 		}
 		
 		private void detach_Tbl_Certificado(Tbl_Certificado entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Empresa = null;
-		}
-		
-		private void attach_Tbl_Evolucion(Tbl_Evolucion entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Empresa = this;
-		}
-		
-		private void detach_Tbl_Evolucion(Tbl_Evolucion entity)
 		{
 			this.SendPropertyChanging();
 			entity.Tbl_Empresa = null;
@@ -2408,8 +2352,6 @@ namespace CapaDatos
 		
 		private string _evo_estado;
 		
-		private EntityRef<Tbl_Empresa> _Tbl_Empresa;
-		
 		private EntityRef<Tbl_Person> _Tbl_Person;
 		
     #region Definiciones de métodos de extensibilidad
@@ -2586,7 +2528,6 @@ namespace CapaDatos
 		
 		public Tbl_Evolucion()
 		{
-			this._Tbl_Empresa = default(EntityRef<Tbl_Empresa>);
 			this._Tbl_Person = default(EntityRef<Tbl_Person>);
 			OnCreated();
 		}
@@ -4206,10 +4147,6 @@ namespace CapaDatos
 			{
 				if ((this._Emp_id != value))
 				{
-					if (this._Tbl_Empresa.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnEmp_idChanging(value);
 					this.SendPropertyChanging();
 					this._Emp_id = value;
@@ -4255,40 +4192,6 @@ namespace CapaDatos
 					this._evo_estado = value;
 					this.SendPropertyChanged("evo_estado");
 					this.Onevo_estadoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Empresa_Tbl_Evolucion", Storage="_Tbl_Empresa", ThisKey="Emp_id", OtherKey="Emp_id", IsForeignKey=true)]
-		public Tbl_Empresa Tbl_Empresa
-		{
-			get
-			{
-				return this._Tbl_Empresa.Entity;
-			}
-			set
-			{
-				Tbl_Empresa previousValue = this._Tbl_Empresa.Entity;
-				if (((previousValue != value) 
-							|| (this._Tbl_Empresa.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tbl_Empresa.Entity = null;
-						previousValue.Tbl_Evolucion.Remove(this);
-					}
-					this._Tbl_Empresa.Entity = value;
-					if ((value != null))
-					{
-						value.Tbl_Evolucion.Add(this);
-						this._Emp_id = value.Emp_id;
-					}
-					else
-					{
-						this._Emp_id = default(int);
-					}
-					this.SendPropertyChanged("Tbl_Empresa");
 				}
 			}
 		}
@@ -6502,6 +6405,8 @@ namespace CapaDatos
 		
 		private string _inicial_otrosFis;
 		
+		private string _inicial_otrosFisTxt;
+		
 		private string _inicial_atraMaquinasMec;
 		
 		private string _inicial_atraSuperfiiesMec;
@@ -6532,6 +6437,8 @@ namespace CapaDatos
 		
 		private string _inicial_otrosMec;
 		
+		private string _inicial_otrosMecTxt;
+		
 		private string _inicial_solidosQui;
 		
 		private string _inicial_polvosQui;
@@ -6550,6 +6457,8 @@ namespace CapaDatos
 		
 		private string _inicial_otrosQui;
 		
+		private string _inicial_otrosQuiTxt;
+		
 		private string _inicial_virusBio;
 		
 		private string _inicial_hongosBio;
@@ -6564,6 +6473,8 @@ namespace CapaDatos
 		
 		private string _inicial_otrosBio;
 		
+		private string _inicial_otrosBioTxt;
+		
 		private string _inicial_maneManCarErg;
 		
 		private string _inicial_movRepeErg;
@@ -6573,6 +6484,8 @@ namespace CapaDatos
 		private string _inicial_trabPvdErg;
 		
 		private string _inicial_otrosErg;
+		
+		private string _inicial_otrosErgtxt;
 		
 		private string _inicial_monoTrabPsi;
 		
@@ -6600,6 +6513,8 @@ namespace CapaDatos
 		
 		private string _inicial_otrosPsi;
 		
+		private string _inicial_otrosPsiTxt;
+		
 		private string _inicial_medPreventivas;
 		
 		private string _inicial_area2;
@@ -6625,6 +6540,8 @@ namespace CapaDatos
 		private string _inicial_fluElectricoFis2;
 		
 		private string _inicial_otrosFis2;
+		
+		private string _inicial_otrosFis2Txt;
 		
 		private string _inicial_atraMaquinasMec2;
 		
@@ -6656,6 +6573,8 @@ namespace CapaDatos
 		
 		private string _inicial_otrosMec2;
 		
+		private string _inicial_otrosMec2Txt;
+		
 		private string _inicial_solidosQui2;
 		
 		private string _inicial_polvosQui2;
@@ -6674,6 +6593,8 @@ namespace CapaDatos
 		
 		private string _inicial_otrosQui2;
 		
+		private string _inicial_otrosQui2Txt;
+		
 		private string _inicial_virusBio2;
 		
 		private string _inicial_hongosBio2;
@@ -6688,6 +6609,8 @@ namespace CapaDatos
 		
 		private string _inicial_otrosBio2;
 		
+		private string _inicial_otrosBio2Txt;
+		
 		private string _inicial_maneManCarErg2;
 		
 		private string _inicial_movRepeErg2;
@@ -6697,6 +6620,8 @@ namespace CapaDatos
 		private string _inicial_trabPvdErg2;
 		
 		private string _inicial_otrosErg2;
+		
+		private string _inicial_otrosErg2Txt;
 		
 		private string _inicial_monoTrabPsi2;
 		
@@ -6724,6 +6649,8 @@ namespace CapaDatos
 		
 		private string _inicial_otrosPsi2;
 		
+		private string _inicial_otrosPsi2Txt;
+		
 		private string _inicial_medPreventivas2;
 		
 		private string _inicial_area3;
@@ -6749,6 +6676,8 @@ namespace CapaDatos
 		private string _inicial_fluElectricoFis3;
 		
 		private string _inicial_otrosFis3;
+		
+		private string _inicial_otrosFis3Txt;
 		
 		private string _inicial_atraMaquinasMec3;
 		
@@ -6780,6 +6709,8 @@ namespace CapaDatos
 		
 		private string _inicial_otrosMec3;
 		
+		private string _inicial_otrosMec3Txt;
+		
 		private string _inicial_solidosQui3;
 		
 		private string _inicial_polvosQui3;
@@ -6798,6 +6729,8 @@ namespace CapaDatos
 		
 		private string _inicial_otrosQui3;
 		
+		private string _inicial_otrosQui3Txt;
+		
 		private string _inicial_virusBio3;
 		
 		private string _inicial_hongosBio3;
@@ -6812,6 +6745,8 @@ namespace CapaDatos
 		
 		private string _inicial_otrosBio3;
 		
+		private string _inicial_otrosBio3Txt;
+		
 		private string _inicial_maneManCarErg3;
 		
 		private string _inicial_movRepeErg3;
@@ -6821,6 +6756,8 @@ namespace CapaDatos
 		private string _inicial_trabPvdErg3;
 		
 		private string _inicial_otrosErg3;
+		
+		private string _inicial_otrosErg3Txt;
 		
 		private string _inicial_monoTrabPsi3;
 		
@@ -6848,6 +6785,8 @@ namespace CapaDatos
 		
 		private string _inicial_otrosPsi3;
 		
+		private string _inicial_otrosPsi3Txt;
+		
 		private string _inicial_medPreventivas3;
 		
 		private string _inicial_area4;
@@ -6873,6 +6812,8 @@ namespace CapaDatos
 		private string _inicial_fluElectricoFis4;
 		
 		private string _inicial_otrosFis4;
+		
+		private string _inicial_otrosFis4Txt;
 		
 		private string _inicial_atraMaquinasMec4;
 		
@@ -6904,6 +6845,8 @@ namespace CapaDatos
 		
 		private string _inicial_otrosMec4;
 		
+		private string _inicial_otrosMec4Txt;
+		
 		private string _inicial_solidosQui4;
 		
 		private string _inicial_polvosQui4;
@@ -6922,6 +6865,8 @@ namespace CapaDatos
 		
 		private string _inicial_otrosQui4;
 		
+		private string _inicial_otrosQui4Txt;
+		
 		private string _inicial_virusBio4;
 		
 		private string _inicial_hongosBio4;
@@ -6936,6 +6881,8 @@ namespace CapaDatos
 		
 		private string _inicial_otrosBio4;
 		
+		private string _inicial_otrosBio4Txt;
+		
 		private string _inicial_maneManCarErg4;
 		
 		private string _inicial_movRepeErg4;
@@ -6945,6 +6892,8 @@ namespace CapaDatos
 		private string _inicial_trabPvdErg4;
 		
 		private string _inicial_otrosErg4;
+		
+		private string _inicial_otrosErg4Txt;
 		
 		private string _inicial_monoTrabPsi4;
 		
@@ -6971,6 +6920,8 @@ namespace CapaDatos
 		private string _inicial_inesLabPsi4;
 		
 		private string _inicial_otrosPsi4;
+		
+		private string _inicial_otrosPsi4Txt;
 		
 		private string _inicial_medPreventivas4;
 		
@@ -7550,6 +7501,8 @@ namespace CapaDatos
     partial void Oninicial_fluElectricoFisChanged();
     partial void Oninicial_otrosFisChanging(string value);
     partial void Oninicial_otrosFisChanged();
+    partial void Oninicial_otrosFisTxtChanging(string value);
+    partial void Oninicial_otrosFisTxtChanged();
     partial void Oninicial_atraMaquinasMecChanging(string value);
     partial void Oninicial_atraMaquinasMecChanged();
     partial void Oninicial_atraSuperfiiesMecChanging(string value);
@@ -7580,6 +7533,8 @@ namespace CapaDatos
     partial void Oninicial_coliVehiMecChanged();
     partial void Oninicial_otrosMecChanging(string value);
     partial void Oninicial_otrosMecChanged();
+    partial void Oninicial_otrosMecTxtChanging(string value);
+    partial void Oninicial_otrosMecTxtChanged();
     partial void Oninicial_solidosQuiChanging(string value);
     partial void Oninicial_solidosQuiChanged();
     partial void Oninicial_polvosQuiChanging(string value);
@@ -7598,6 +7553,8 @@ namespace CapaDatos
     partial void Oninicial_gaseososQuiChanged();
     partial void Oninicial_otrosQuiChanging(string value);
     partial void Oninicial_otrosQuiChanged();
+    partial void Oninicial_otrosQuiTxtChanging(string value);
+    partial void Oninicial_otrosQuiTxtChanged();
     partial void Oninicial_virusBioChanging(string value);
     partial void Oninicial_virusBioChanged();
     partial void Oninicial_hongosBioChanging(string value);
@@ -7612,6 +7569,8 @@ namespace CapaDatos
     partial void Oninicial_expAniSelvaBioChanged();
     partial void Oninicial_otrosBioChanging(string value);
     partial void Oninicial_otrosBioChanged();
+    partial void Oninicial_otrosBioTxtChanging(string value);
+    partial void Oninicial_otrosBioTxtChanged();
     partial void Oninicial_maneManCarErgChanging(string value);
     partial void Oninicial_maneManCarErgChanged();
     partial void Oninicial_movRepeErgChanging(string value);
@@ -7622,6 +7581,8 @@ namespace CapaDatos
     partial void Oninicial_trabPvdErgChanged();
     partial void Oninicial_otrosErgChanging(string value);
     partial void Oninicial_otrosErgChanged();
+    partial void Oninicial_otrosErgtxtChanging(string value);
+    partial void Oninicial_otrosErgtxtChanged();
     partial void Oninicial_monoTrabPsiChanging(string value);
     partial void Oninicial_monoTrabPsiChanged();
     partial void Oninicial_sobrecarLabPsiChanging(string value);
@@ -7648,6 +7609,8 @@ namespace CapaDatos
     partial void Oninicial_inesLabPsiChanged();
     partial void Oninicial_otrosPsiChanging(string value);
     partial void Oninicial_otrosPsiChanged();
+    partial void Oninicial_otrosPsiTxtChanging(string value);
+    partial void Oninicial_otrosPsiTxtChanged();
     partial void Oninicial_medPreventivasChanging(string value);
     partial void Oninicial_medPreventivasChanged();
     partial void Oninicial_area2Changing(string value);
@@ -7674,6 +7637,8 @@ namespace CapaDatos
     partial void Oninicial_fluElectricoFis2Changed();
     partial void Oninicial_otrosFis2Changing(string value);
     partial void Oninicial_otrosFis2Changed();
+    partial void Oninicial_otrosFis2TxtChanging(string value);
+    partial void Oninicial_otrosFis2TxtChanged();
     partial void Oninicial_atraMaquinasMec2Changing(string value);
     partial void Oninicial_atraMaquinasMec2Changed();
     partial void Oninicial_atraSuperfiiesMec2Changing(string value);
@@ -7704,6 +7669,8 @@ namespace CapaDatos
     partial void Oninicial_coliVehiMec2Changed();
     partial void Oninicial_otrosMec2Changing(string value);
     partial void Oninicial_otrosMec2Changed();
+    partial void Oninicial_otrosMec2TxtChanging(string value);
+    partial void Oninicial_otrosMec2TxtChanged();
     partial void Oninicial_solidosQui2Changing(string value);
     partial void Oninicial_solidosQui2Changed();
     partial void Oninicial_polvosQui2Changing(string value);
@@ -7722,6 +7689,8 @@ namespace CapaDatos
     partial void Oninicial_gaseososQui2Changed();
     partial void Oninicial_otrosQui2Changing(string value);
     partial void Oninicial_otrosQui2Changed();
+    partial void Oninicial_otrosQui2TxtChanging(string value);
+    partial void Oninicial_otrosQui2TxtChanged();
     partial void Oninicial_virusBio2Changing(string value);
     partial void Oninicial_virusBio2Changed();
     partial void Oninicial_hongosBio2Changing(string value);
@@ -7736,6 +7705,8 @@ namespace CapaDatos
     partial void Oninicial_expAniSelvaBio2Changed();
     partial void Oninicial_otrosBio2Changing(string value);
     partial void Oninicial_otrosBio2Changed();
+    partial void Oninicial_otrosBio2TxtChanging(string value);
+    partial void Oninicial_otrosBio2TxtChanged();
     partial void Oninicial_maneManCarErg2Changing(string value);
     partial void Oninicial_maneManCarErg2Changed();
     partial void Oninicial_movRepeErg2Changing(string value);
@@ -7746,6 +7717,8 @@ namespace CapaDatos
     partial void Oninicial_trabPvdErg2Changed();
     partial void Oninicial_otrosErg2Changing(string value);
     partial void Oninicial_otrosErg2Changed();
+    partial void Oninicial_otrosErg2TxtChanging(string value);
+    partial void Oninicial_otrosErg2TxtChanged();
     partial void Oninicial_monoTrabPsi2Changing(string value);
     partial void Oninicial_monoTrabPsi2Changed();
     partial void Oninicial_sobrecarLabPsi2Changing(string value);
@@ -7772,6 +7745,8 @@ namespace CapaDatos
     partial void Oninicial_inesLabPsi2Changed();
     partial void Oninicial_otrosPsi2Changing(string value);
     partial void Oninicial_otrosPsi2Changed();
+    partial void Oninicial_otrosPsi2TxtChanging(string value);
+    partial void Oninicial_otrosPsi2TxtChanged();
     partial void Oninicial_medPreventivas2Changing(string value);
     partial void Oninicial_medPreventivas2Changed();
     partial void Oninicial_area3Changing(string value);
@@ -7798,6 +7773,8 @@ namespace CapaDatos
     partial void Oninicial_fluElectricoFis3Changed();
     partial void Oninicial_otrosFis3Changing(string value);
     partial void Oninicial_otrosFis3Changed();
+    partial void Oninicial_otrosFis3TxtChanging(string value);
+    partial void Oninicial_otrosFis3TxtChanged();
     partial void Oninicial_atraMaquinasMec3Changing(string value);
     partial void Oninicial_atraMaquinasMec3Changed();
     partial void Oninicial_atraSuperfiiesMec3Changing(string value);
@@ -7828,6 +7805,8 @@ namespace CapaDatos
     partial void Oninicial_coliVehiMec3Changed();
     partial void Oninicial_otrosMec3Changing(string value);
     partial void Oninicial_otrosMec3Changed();
+    partial void Oninicial_otrosMec3TxtChanging(string value);
+    partial void Oninicial_otrosMec3TxtChanged();
     partial void Oninicial_solidosQui3Changing(string value);
     partial void Oninicial_solidosQui3Changed();
     partial void Oninicial_polvosQui3Changing(string value);
@@ -7846,6 +7825,8 @@ namespace CapaDatos
     partial void Oninicial_gaseososQui3Changed();
     partial void Oninicial_otrosQui3Changing(string value);
     partial void Oninicial_otrosQui3Changed();
+    partial void Oninicial_otrosQui3TxtChanging(string value);
+    partial void Oninicial_otrosQui3TxtChanged();
     partial void Oninicial_virusBio3Changing(string value);
     partial void Oninicial_virusBio3Changed();
     partial void Oninicial_hongosBio3Changing(string value);
@@ -7860,6 +7841,8 @@ namespace CapaDatos
     partial void Oninicial_expAniSelvaBio3Changed();
     partial void Oninicial_otrosBio3Changing(string value);
     partial void Oninicial_otrosBio3Changed();
+    partial void Oninicial_otrosBio3TxtChanging(string value);
+    partial void Oninicial_otrosBio3TxtChanged();
     partial void Oninicial_maneManCarErg3Changing(string value);
     partial void Oninicial_maneManCarErg3Changed();
     partial void Oninicial_movRepeErg3Changing(string value);
@@ -7870,6 +7853,8 @@ namespace CapaDatos
     partial void Oninicial_trabPvdErg3Changed();
     partial void Oninicial_otrosErg3Changing(string value);
     partial void Oninicial_otrosErg3Changed();
+    partial void Oninicial_otrosErg3TxtChanging(string value);
+    partial void Oninicial_otrosErg3TxtChanged();
     partial void Oninicial_monoTrabPsi3Changing(string value);
     partial void Oninicial_monoTrabPsi3Changed();
     partial void Oninicial_sobrecarLabPsi3Changing(string value);
@@ -7896,6 +7881,8 @@ namespace CapaDatos
     partial void Oninicial_inesLabPsi3Changed();
     partial void Oninicial_otrosPsi3Changing(string value);
     partial void Oninicial_otrosPsi3Changed();
+    partial void Oninicial_otrosPsi3TxtChanging(string value);
+    partial void Oninicial_otrosPsi3TxtChanged();
     partial void Oninicial_medPreventivas3Changing(string value);
     partial void Oninicial_medPreventivas3Changed();
     partial void Oninicial_area4Changing(string value);
@@ -7922,6 +7909,8 @@ namespace CapaDatos
     partial void Oninicial_fluElectricoFis4Changed();
     partial void Oninicial_otrosFis4Changing(string value);
     partial void Oninicial_otrosFis4Changed();
+    partial void Oninicial_otrosFis4TxtChanging(string value);
+    partial void Oninicial_otrosFis4TxtChanged();
     partial void Oninicial_atraMaquinasMec4Changing(string value);
     partial void Oninicial_atraMaquinasMec4Changed();
     partial void Oninicial_atraSuperfiiesMec4Changing(string value);
@@ -7952,6 +7941,8 @@ namespace CapaDatos
     partial void Oninicial_coliVehiMec4Changed();
     partial void Oninicial_otrosMec4Changing(string value);
     partial void Oninicial_otrosMec4Changed();
+    partial void Oninicial_otrosMec4TxtChanging(string value);
+    partial void Oninicial_otrosMec4TxtChanged();
     partial void Oninicial_solidosQui4Changing(string value);
     partial void Oninicial_solidosQui4Changed();
     partial void Oninicial_polvosQui4Changing(string value);
@@ -7970,6 +7961,8 @@ namespace CapaDatos
     partial void Oninicial_gaseososQui4Changed();
     partial void Oninicial_otrosQui4Changing(string value);
     partial void Oninicial_otrosQui4Changed();
+    partial void Oninicial_otrosQui4TxtChanging(string value);
+    partial void Oninicial_otrosQui4TxtChanged();
     partial void Oninicial_virusBio4Changing(string value);
     partial void Oninicial_virusBio4Changed();
     partial void Oninicial_hongosBio4Changing(string value);
@@ -7984,6 +7977,8 @@ namespace CapaDatos
     partial void Oninicial_expAniSelvaBio4Changed();
     partial void Oninicial_otrosBio4Changing(string value);
     partial void Oninicial_otrosBio4Changed();
+    partial void Oninicial_otrosBio4TxtChanging(string value);
+    partial void Oninicial_otrosBio4TxtChanged();
     partial void Oninicial_maneManCarErg4Changing(string value);
     partial void Oninicial_maneManCarErg4Changed();
     partial void Oninicial_movRepeErg4Changing(string value);
@@ -7994,6 +7989,8 @@ namespace CapaDatos
     partial void Oninicial_trabPvdErg4Changed();
     partial void Oninicial_otrosErg4Changing(string value);
     partial void Oninicial_otrosErg4Changed();
+    partial void Oninicial_otrosErg4TxtChanging(string value);
+    partial void Oninicial_otrosErg4TxtChanged();
     partial void Oninicial_monoTrabPsi4Changing(string value);
     partial void Oninicial_monoTrabPsi4Changed();
     partial void Oninicial_sobrecarLabPsi4Changing(string value);
@@ -8020,6 +8017,8 @@ namespace CapaDatos
     partial void Oninicial_inesLabPsi4Changed();
     partial void Oninicial_otrosPsi4Changing(string value);
     partial void Oninicial_otrosPsi4Changed();
+    partial void Oninicial_otrosPsi4TxtChanging(string value);
+    partial void Oninicial_otrosPsi4TxtChanged();
     partial void Oninicial_medPreventivas4Changing(string value);
     partial void Oninicial_medPreventivas4Changed();
     partial void Oninicial_descripActExtLabChanging(string value);
@@ -11856,6 +11855,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosFisTxt", DbType="VarChar(150)")]
+		public string inicial_otrosFisTxt
+		{
+			get
+			{
+				return this._inicial_otrosFisTxt;
+			}
+			set
+			{
+				if ((this._inicial_otrosFisTxt != value))
+				{
+					this.Oninicial_otrosFisTxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosFisTxt = value;
+					this.SendPropertyChanged("inicial_otrosFisTxt");
+					this.Oninicial_otrosFisTxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_atraMaquinasMec", DbType="VarChar(2)")]
 		public string inicial_atraMaquinasMec
 		{
@@ -12156,6 +12175,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosMecTxt", DbType="VarChar(150)")]
+		public string inicial_otrosMecTxt
+		{
+			get
+			{
+				return this._inicial_otrosMecTxt;
+			}
+			set
+			{
+				if ((this._inicial_otrosMecTxt != value))
+				{
+					this.Oninicial_otrosMecTxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosMecTxt = value;
+					this.SendPropertyChanged("inicial_otrosMecTxt");
+					this.Oninicial_otrosMecTxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_solidosQui", DbType="VarChar(2)")]
 		public string inicial_solidosQui
 		{
@@ -12336,6 +12375,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosQuiTxt", DbType="VarChar(150)")]
+		public string inicial_otrosQuiTxt
+		{
+			get
+			{
+				return this._inicial_otrosQuiTxt;
+			}
+			set
+			{
+				if ((this._inicial_otrosQuiTxt != value))
+				{
+					this.Oninicial_otrosQuiTxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosQuiTxt = value;
+					this.SendPropertyChanged("inicial_otrosQuiTxt");
+					this.Oninicial_otrosQuiTxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_virusBio", DbType="VarChar(2)")]
 		public string inicial_virusBio
 		{
@@ -12476,6 +12535,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosBioTxt", DbType="VarChar(150)")]
+		public string inicial_otrosBioTxt
+		{
+			get
+			{
+				return this._inicial_otrosBioTxt;
+			}
+			set
+			{
+				if ((this._inicial_otrosBioTxt != value))
+				{
+					this.Oninicial_otrosBioTxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosBioTxt = value;
+					this.SendPropertyChanged("inicial_otrosBioTxt");
+					this.Oninicial_otrosBioTxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_maneManCarErg", DbType="VarChar(2)")]
 		public string inicial_maneManCarErg
 		{
@@ -12572,6 +12651,26 @@ namespace CapaDatos
 					this._inicial_otrosErg = value;
 					this.SendPropertyChanged("inicial_otrosErg");
 					this.Oninicial_otrosErgChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosErgtxt", DbType="VarChar(150)")]
+		public string inicial_otrosErgtxt
+		{
+			get
+			{
+				return this._inicial_otrosErgtxt;
+			}
+			set
+			{
+				if ((this._inicial_otrosErgtxt != value))
+				{
+					this.Oninicial_otrosErgtxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosErgtxt = value;
+					this.SendPropertyChanged("inicial_otrosErgtxt");
+					this.Oninicial_otrosErgtxtChanged();
 				}
 			}
 		}
@@ -12836,6 +12935,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosPsiTxt", DbType="VarChar(150)")]
+		public string inicial_otrosPsiTxt
+		{
+			get
+			{
+				return this._inicial_otrosPsiTxt;
+			}
+			set
+			{
+				if ((this._inicial_otrosPsiTxt != value))
+				{
+					this.Oninicial_otrosPsiTxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosPsiTxt = value;
+					this.SendPropertyChanged("inicial_otrosPsiTxt");
+					this.Oninicial_otrosPsiTxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_medPreventivas", DbType="VarChar(MAX)")]
 		public string inicial_medPreventivas
 		{
@@ -13092,6 +13211,26 @@ namespace CapaDatos
 					this._inicial_otrosFis2 = value;
 					this.SendPropertyChanged("inicial_otrosFis2");
 					this.Oninicial_otrosFis2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosFis2Txt", DbType="VarChar(150)")]
+		public string inicial_otrosFis2Txt
+		{
+			get
+			{
+				return this._inicial_otrosFis2Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosFis2Txt != value))
+				{
+					this.Oninicial_otrosFis2TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosFis2Txt = value;
+					this.SendPropertyChanged("inicial_otrosFis2Txt");
+					this.Oninicial_otrosFis2TxtChanged();
 				}
 			}
 		}
@@ -13396,6 +13535,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosMec2Txt", DbType="VarChar(150)")]
+		public string inicial_otrosMec2Txt
+		{
+			get
+			{
+				return this._inicial_otrosMec2Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosMec2Txt != value))
+				{
+					this.Oninicial_otrosMec2TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosMec2Txt = value;
+					this.SendPropertyChanged("inicial_otrosMec2Txt");
+					this.Oninicial_otrosMec2TxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_solidosQui2", DbType="VarChar(2)")]
 		public string inicial_solidosQui2
 		{
@@ -13576,6 +13735,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosQui2Txt", DbType="VarChar(150)")]
+		public string inicial_otrosQui2Txt
+		{
+			get
+			{
+				return this._inicial_otrosQui2Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosQui2Txt != value))
+				{
+					this.Oninicial_otrosQui2TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosQui2Txt = value;
+					this.SendPropertyChanged("inicial_otrosQui2Txt");
+					this.Oninicial_otrosQui2TxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_virusBio2", DbType="VarChar(2)")]
 		public string inicial_virusBio2
 		{
@@ -13716,6 +13895,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosBio2Txt", DbType="VarChar(150)")]
+		public string inicial_otrosBio2Txt
+		{
+			get
+			{
+				return this._inicial_otrosBio2Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosBio2Txt != value))
+				{
+					this.Oninicial_otrosBio2TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosBio2Txt = value;
+					this.SendPropertyChanged("inicial_otrosBio2Txt");
+					this.Oninicial_otrosBio2TxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_maneManCarErg2", DbType="VarChar(2)")]
 		public string inicial_maneManCarErg2
 		{
@@ -13812,6 +14011,26 @@ namespace CapaDatos
 					this._inicial_otrosErg2 = value;
 					this.SendPropertyChanged("inicial_otrosErg2");
 					this.Oninicial_otrosErg2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosErg2Txt", DbType="VarChar(150)")]
+		public string inicial_otrosErg2Txt
+		{
+			get
+			{
+				return this._inicial_otrosErg2Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosErg2Txt != value))
+				{
+					this.Oninicial_otrosErg2TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosErg2Txt = value;
+					this.SendPropertyChanged("inicial_otrosErg2Txt");
+					this.Oninicial_otrosErg2TxtChanged();
 				}
 			}
 		}
@@ -14076,6 +14295,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosPsi2Txt", DbType="VarChar(150)")]
+		public string inicial_otrosPsi2Txt
+		{
+			get
+			{
+				return this._inicial_otrosPsi2Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosPsi2Txt != value))
+				{
+					this.Oninicial_otrosPsi2TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosPsi2Txt = value;
+					this.SendPropertyChanged("inicial_otrosPsi2Txt");
+					this.Oninicial_otrosPsi2TxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_medPreventivas2", DbType="VarChar(MAX)")]
 		public string inicial_medPreventivas2
 		{
@@ -14332,6 +14571,26 @@ namespace CapaDatos
 					this._inicial_otrosFis3 = value;
 					this.SendPropertyChanged("inicial_otrosFis3");
 					this.Oninicial_otrosFis3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosFis3Txt", DbType="VarChar(150)")]
+		public string inicial_otrosFis3Txt
+		{
+			get
+			{
+				return this._inicial_otrosFis3Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosFis3Txt != value))
+				{
+					this.Oninicial_otrosFis3TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosFis3Txt = value;
+					this.SendPropertyChanged("inicial_otrosFis3Txt");
+					this.Oninicial_otrosFis3TxtChanged();
 				}
 			}
 		}
@@ -14636,6 +14895,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosMec3Txt", DbType="VarChar(150)")]
+		public string inicial_otrosMec3Txt
+		{
+			get
+			{
+				return this._inicial_otrosMec3Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosMec3Txt != value))
+				{
+					this.Oninicial_otrosMec3TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosMec3Txt = value;
+					this.SendPropertyChanged("inicial_otrosMec3Txt");
+					this.Oninicial_otrosMec3TxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_solidosQui3", DbType="VarChar(2)")]
 		public string inicial_solidosQui3
 		{
@@ -14816,6 +15095,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosQui3Txt", DbType="VarChar(150)")]
+		public string inicial_otrosQui3Txt
+		{
+			get
+			{
+				return this._inicial_otrosQui3Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosQui3Txt != value))
+				{
+					this.Oninicial_otrosQui3TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosQui3Txt = value;
+					this.SendPropertyChanged("inicial_otrosQui3Txt");
+					this.Oninicial_otrosQui3TxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_virusBio3", DbType="VarChar(2)")]
 		public string inicial_virusBio3
 		{
@@ -14956,6 +15255,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosBio3Txt", DbType="VarChar(150)")]
+		public string inicial_otrosBio3Txt
+		{
+			get
+			{
+				return this._inicial_otrosBio3Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosBio3Txt != value))
+				{
+					this.Oninicial_otrosBio3TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosBio3Txt = value;
+					this.SendPropertyChanged("inicial_otrosBio3Txt");
+					this.Oninicial_otrosBio3TxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_maneManCarErg3", DbType="VarChar(2)")]
 		public string inicial_maneManCarErg3
 		{
@@ -15052,6 +15371,26 @@ namespace CapaDatos
 					this._inicial_otrosErg3 = value;
 					this.SendPropertyChanged("inicial_otrosErg3");
 					this.Oninicial_otrosErg3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosErg3Txt", DbType="VarChar(150)")]
+		public string inicial_otrosErg3Txt
+		{
+			get
+			{
+				return this._inicial_otrosErg3Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosErg3Txt != value))
+				{
+					this.Oninicial_otrosErg3TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosErg3Txt = value;
+					this.SendPropertyChanged("inicial_otrosErg3Txt");
+					this.Oninicial_otrosErg3TxtChanged();
 				}
 			}
 		}
@@ -15316,6 +15655,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosPsi3Txt", DbType="VarChar(150)")]
+		public string inicial_otrosPsi3Txt
+		{
+			get
+			{
+				return this._inicial_otrosPsi3Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosPsi3Txt != value))
+				{
+					this.Oninicial_otrosPsi3TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosPsi3Txt = value;
+					this.SendPropertyChanged("inicial_otrosPsi3Txt");
+					this.Oninicial_otrosPsi3TxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_medPreventivas3", DbType="VarChar(MAX)")]
 		public string inicial_medPreventivas3
 		{
@@ -15572,6 +15931,26 @@ namespace CapaDatos
 					this._inicial_otrosFis4 = value;
 					this.SendPropertyChanged("inicial_otrosFis4");
 					this.Oninicial_otrosFis4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosFis4Txt", DbType="VarChar(150)")]
+		public string inicial_otrosFis4Txt
+		{
+			get
+			{
+				return this._inicial_otrosFis4Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosFis4Txt != value))
+				{
+					this.Oninicial_otrosFis4TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosFis4Txt = value;
+					this.SendPropertyChanged("inicial_otrosFis4Txt");
+					this.Oninicial_otrosFis4TxtChanged();
 				}
 			}
 		}
@@ -15876,6 +16255,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosMec4Txt", DbType="VarChar(150)")]
+		public string inicial_otrosMec4Txt
+		{
+			get
+			{
+				return this._inicial_otrosMec4Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosMec4Txt != value))
+				{
+					this.Oninicial_otrosMec4TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosMec4Txt = value;
+					this.SendPropertyChanged("inicial_otrosMec4Txt");
+					this.Oninicial_otrosMec4TxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_solidosQui4", DbType="VarChar(2)")]
 		public string inicial_solidosQui4
 		{
@@ -16056,6 +16455,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosQui4Txt", DbType="VarChar(150)")]
+		public string inicial_otrosQui4Txt
+		{
+			get
+			{
+				return this._inicial_otrosQui4Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosQui4Txt != value))
+				{
+					this.Oninicial_otrosQui4TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosQui4Txt = value;
+					this.SendPropertyChanged("inicial_otrosQui4Txt");
+					this.Oninicial_otrosQui4TxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_virusBio4", DbType="VarChar(2)")]
 		public string inicial_virusBio4
 		{
@@ -16196,6 +16615,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosBio4Txt", DbType="VarChar(150)")]
+		public string inicial_otrosBio4Txt
+		{
+			get
+			{
+				return this._inicial_otrosBio4Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosBio4Txt != value))
+				{
+					this.Oninicial_otrosBio4TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosBio4Txt = value;
+					this.SendPropertyChanged("inicial_otrosBio4Txt");
+					this.Oninicial_otrosBio4TxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_maneManCarErg4", DbType="VarChar(2)")]
 		public string inicial_maneManCarErg4
 		{
@@ -16292,6 +16731,26 @@ namespace CapaDatos
 					this._inicial_otrosErg4 = value;
 					this.SendPropertyChanged("inicial_otrosErg4");
 					this.Oninicial_otrosErg4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosErg4Txt", DbType="VarChar(150)")]
+		public string inicial_otrosErg4Txt
+		{
+			get
+			{
+				return this._inicial_otrosErg4Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosErg4Txt != value))
+				{
+					this.Oninicial_otrosErg4TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosErg4Txt = value;
+					this.SendPropertyChanged("inicial_otrosErg4Txt");
+					this.Oninicial_otrosErg4TxtChanged();
 				}
 			}
 		}
@@ -16552,6 +17011,26 @@ namespace CapaDatos
 					this._inicial_otrosPsi4 = value;
 					this.SendPropertyChanged("inicial_otrosPsi4");
 					this.Oninicial_otrosPsi4Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inicial_otrosPsi4Txt", DbType="VarChar(150)")]
+		public string inicial_otrosPsi4Txt
+		{
+			get
+			{
+				return this._inicial_otrosPsi4Txt;
+			}
+			set
+			{
+				if ((this._inicial_otrosPsi4Txt != value))
+				{
+					this.Oninicial_otrosPsi4TxtChanging(value);
+					this.SendPropertyChanging();
+					this._inicial_otrosPsi4Txt = value;
+					this.SendPropertyChanged("inicial_otrosPsi4Txt");
+					this.Oninicial_otrosPsi4TxtChanged();
 				}
 			}
 		}
@@ -28239,6 +28718,8 @@ namespace CapaDatos
 		
 		private string _perio_otrosFis;
 		
+		private string _perio_otrosFisTxt;
+		
 		private string _perio_atraMaquinasMec;
 		
 		private string _perio_atraSuperfiiesMec;
@@ -28269,6 +28750,8 @@ namespace CapaDatos
 		
 		private string _perio_otrosMec;
 		
+		private string _perio_otrosMecTxt;
+		
 		private string _perio_solidosQui;
 		
 		private string _perio_polvosQui;
@@ -28287,6 +28770,8 @@ namespace CapaDatos
 		
 		private string _perio_otrosQui;
 		
+		private string _perio_otrosQuiTxt;
+		
 		private string _perio_virusBio;
 		
 		private string _perio_hongosBio;
@@ -28301,6 +28786,8 @@ namespace CapaDatos
 		
 		private string _perio_otrosBio;
 		
+		private string _perio_otrosBioTxt;
+		
 		private string _perio_maneManCarErg;
 		
 		private string _perio_movRepeErg;
@@ -28310,6 +28797,8 @@ namespace CapaDatos
 		private string _perio_trabPvdErg;
 		
 		private string _perio_otrosErg;
+		
+		private string _perio_otrosErgTxt;
 		
 		private string _perio_monoTrabPsi;
 		
@@ -28336,6 +28825,8 @@ namespace CapaDatos
 		private string _perio_inesLabPsi;
 		
 		private string _perio_otrosPsi;
+		
+		private string _perio_otrosPsiTxt;
 		
 		private string _perio_medPreventivas;
 		
@@ -28364,6 +28855,8 @@ namespace CapaDatos
 		private string _perio_fluElectricoFis2;
 		
 		private string _perio_otrosFis2;
+		
+		private string _perio_otrosFis2Txt;
 		
 		private string _perio_atraMaquinasMec2;
 		
@@ -28395,6 +28888,8 @@ namespace CapaDatos
 		
 		private string _perio_otrosMec2;
 		
+		private string _perio_otrosMec2Txt;
+		
 		private string _perio_solidosQui2;
 		
 		private string _perio_polvosQui2;
@@ -28413,6 +28908,8 @@ namespace CapaDatos
 		
 		private string _perio_otrosQui2;
 		
+		private string _perio_otrosQui2Txt;
+		
 		private string _perio_virusBio2;
 		
 		private string _perio_hongosBio2;
@@ -28427,6 +28924,8 @@ namespace CapaDatos
 		
 		private string _perio_otrosBio2;
 		
+		private string _perio_otrosBio2Txt;
+		
 		private string _perio_maneManCarErg2;
 		
 		private string _perio_movRepeErg2;
@@ -28436,6 +28935,8 @@ namespace CapaDatos
 		private string _perio_trabPvdErg2;
 		
 		private string _perio_otrosErg2;
+		
+		private string _perio_otrosErg2Txt;
 		
 		private string _perio_monoTrabPsi2;
 		
@@ -28462,6 +28963,8 @@ namespace CapaDatos
 		private string _perio_inesLabPsi2;
 		
 		private string _perio_otrosPsi2;
+		
+		private string _perio_otrosPsi2Txt;
 		
 		private string _perio_medPreventivas2;
 		
@@ -28490,6 +28993,8 @@ namespace CapaDatos
 		private string _perio_fluElectricoFis3;
 		
 		private string _perio_otrosFis3;
+		
+		private string _perio_otrosFis3Txt;
 		
 		private string _perio_atraMaquinasMec3;
 		
@@ -28521,6 +29026,8 @@ namespace CapaDatos
 		
 		private string _perio_otrosMec3;
 		
+		private string _perio_otrosMec3Txt;
+		
 		private string _perio_solidosQui3;
 		
 		private string _perio_polvosQui3;
@@ -28539,6 +29046,8 @@ namespace CapaDatos
 		
 		private string _perio_otrosQui3;
 		
+		private string _perio_otrosQui3Txt;
+		
 		private string _perio_virusBio3;
 		
 		private string _perio_hongosBio3;
@@ -28553,6 +29062,8 @@ namespace CapaDatos
 		
 		private string _perio_otrosBio3;
 		
+		private string _perio_otrosBio3Txt;
+		
 		private string _perio_maneManCarErg3;
 		
 		private string _perio_movRepeErg3;
@@ -28562,6 +29073,8 @@ namespace CapaDatos
 		private string _perio_trabPvdErg3;
 		
 		private string _perio_otrosErg3;
+		
+		private string _perio_otrosErg3Txt;
 		
 		private string _perio_monoTrabPsi3;
 		
@@ -28588,6 +29101,8 @@ namespace CapaDatos
 		private string _perio_inesLabPsi3;
 		
 		private string _perio_otrosPsi3;
+		
+		private string _perio_otrosPsi3Txt;
 		
 		private string _perio_medPreventivas3;
 		
@@ -28937,6 +29452,8 @@ namespace CapaDatos
     partial void Onperio_fluElectricoFisChanged();
     partial void Onperio_otrosFisChanging(string value);
     partial void Onperio_otrosFisChanged();
+    partial void Onperio_otrosFisTxtChanging(string value);
+    partial void Onperio_otrosFisTxtChanged();
     partial void Onperio_atraMaquinasMecChanging(string value);
     partial void Onperio_atraMaquinasMecChanged();
     partial void Onperio_atraSuperfiiesMecChanging(string value);
@@ -28967,6 +29484,8 @@ namespace CapaDatos
     partial void Onperio_coliVehiMecChanged();
     partial void Onperio_otrosMecChanging(string value);
     partial void Onperio_otrosMecChanged();
+    partial void Onperio_otrosMecTxtChanging(string value);
+    partial void Onperio_otrosMecTxtChanged();
     partial void Onperio_solidosQuiChanging(string value);
     partial void Onperio_solidosQuiChanged();
     partial void Onperio_polvosQuiChanging(string value);
@@ -28985,6 +29504,8 @@ namespace CapaDatos
     partial void Onperio_gaseososQuiChanged();
     partial void Onperio_otrosQuiChanging(string value);
     partial void Onperio_otrosQuiChanged();
+    partial void Onperio_otrosQuiTxtChanging(string value);
+    partial void Onperio_otrosQuiTxtChanged();
     partial void Onperio_virusBioChanging(string value);
     partial void Onperio_virusBioChanged();
     partial void Onperio_hongosBioChanging(string value);
@@ -28999,6 +29520,8 @@ namespace CapaDatos
     partial void Onperio_expAniSelvaBioChanged();
     partial void Onperio_otrosBioChanging(string value);
     partial void Onperio_otrosBioChanged();
+    partial void Onperio_otrosBioTxtChanging(string value);
+    partial void Onperio_otrosBioTxtChanged();
     partial void Onperio_maneManCarErgChanging(string value);
     partial void Onperio_maneManCarErgChanged();
     partial void Onperio_movRepeErgChanging(string value);
@@ -29009,6 +29532,8 @@ namespace CapaDatos
     partial void Onperio_trabPvdErgChanged();
     partial void Onperio_otrosErgChanging(string value);
     partial void Onperio_otrosErgChanged();
+    partial void Onperio_otrosErgTxtChanging(string value);
+    partial void Onperio_otrosErgTxtChanged();
     partial void Onperio_monoTrabPsiChanging(string value);
     partial void Onperio_monoTrabPsiChanged();
     partial void Onperio_sobrecarLabPsiChanging(string value);
@@ -29035,6 +29560,8 @@ namespace CapaDatos
     partial void Onperio_inesLabPsiChanged();
     partial void Onperio_otrosPsiChanging(string value);
     partial void Onperio_otrosPsiChanged();
+    partial void Onperio_otrosPsiTxtChanging(string value);
+    partial void Onperio_otrosPsiTxtChanged();
     partial void Onperio_medPreventivasChanging(string value);
     partial void Onperio_medPreventivasChanged();
     partial void Onperio_area2Changing(string value);
@@ -29063,6 +29590,8 @@ namespace CapaDatos
     partial void Onperio_fluElectricoFis2Changed();
     partial void Onperio_otrosFis2Changing(string value);
     partial void Onperio_otrosFis2Changed();
+    partial void Onperio_otrosFis2TxtChanging(string value);
+    partial void Onperio_otrosFis2TxtChanged();
     partial void Onperio_atraMaquinasMec2Changing(string value);
     partial void Onperio_atraMaquinasMec2Changed();
     partial void Onperio_atraSuperfiiesMec2Changing(string value);
@@ -29093,6 +29622,8 @@ namespace CapaDatos
     partial void Onperio_coliVehiMec2Changed();
     partial void Onperio_otrosMec2Changing(string value);
     partial void Onperio_otrosMec2Changed();
+    partial void Onperio_otrosMec2TxtChanging(string value);
+    partial void Onperio_otrosMec2TxtChanged();
     partial void Onperio_solidosQui2Changing(string value);
     partial void Onperio_solidosQui2Changed();
     partial void Onperio_polvosQui2Changing(string value);
@@ -29111,6 +29642,8 @@ namespace CapaDatos
     partial void Onperio_gaseososQui2Changed();
     partial void Onperio_otrosQui2Changing(string value);
     partial void Onperio_otrosQui2Changed();
+    partial void Onperio_otrosQui2TxtChanging(string value);
+    partial void Onperio_otrosQui2TxtChanged();
     partial void Onperio_virusBio2Changing(string value);
     partial void Onperio_virusBio2Changed();
     partial void Onperio_hongosBio2Changing(string value);
@@ -29125,6 +29658,8 @@ namespace CapaDatos
     partial void Onperio_expAniSelvaBio2Changed();
     partial void Onperio_otrosBio2Changing(string value);
     partial void Onperio_otrosBio2Changed();
+    partial void Onperio_otrosBio2TxtChanging(string value);
+    partial void Onperio_otrosBio2TxtChanged();
     partial void Onperio_maneManCarErg2Changing(string value);
     partial void Onperio_maneManCarErg2Changed();
     partial void Onperio_movRepeErg2Changing(string value);
@@ -29135,6 +29670,8 @@ namespace CapaDatos
     partial void Onperio_trabPvdErg2Changed();
     partial void Onperio_otrosErg2Changing(string value);
     partial void Onperio_otrosErg2Changed();
+    partial void Onperio_otrosErg2TxtChanging(string value);
+    partial void Onperio_otrosErg2TxtChanged();
     partial void Onperio_monoTrabPsi2Changing(string value);
     partial void Onperio_monoTrabPsi2Changed();
     partial void Onperio_sobrecarLabPsi2Changing(string value);
@@ -29161,6 +29698,8 @@ namespace CapaDatos
     partial void Onperio_inesLabPsi2Changed();
     partial void Onperio_otrosPsi2Changing(string value);
     partial void Onperio_otrosPsi2Changed();
+    partial void Onperio_otrosPsi2TxtChanging(string value);
+    partial void Onperio_otrosPsi2TxtChanged();
     partial void Onperio_medPreventivas2Changing(string value);
     partial void Onperio_medPreventivas2Changed();
     partial void Onperio_area3Changing(string value);
@@ -29189,6 +29728,8 @@ namespace CapaDatos
     partial void Onperio_fluElectricoFis3Changed();
     partial void Onperio_otrosFis3Changing(string value);
     partial void Onperio_otrosFis3Changed();
+    partial void Onperio_otrosFis3TxtChanging(string value);
+    partial void Onperio_otrosFis3TxtChanged();
     partial void Onperio_atraMaquinasMec3Changing(string value);
     partial void Onperio_atraMaquinasMec3Changed();
     partial void Onperio_atraSuperfiiesMec3Changing(string value);
@@ -29219,6 +29760,8 @@ namespace CapaDatos
     partial void Onperio_coliVehiMec3Changed();
     partial void Onperio_otrosMec3Changing(string value);
     partial void Onperio_otrosMec3Changed();
+    partial void Onperio_otrosMec3TxtChanging(string value);
+    partial void Onperio_otrosMec3TxtChanged();
     partial void Onperio_solidosQui3Changing(string value);
     partial void Onperio_solidosQui3Changed();
     partial void Onperio_polvosQui3Changing(string value);
@@ -29237,6 +29780,8 @@ namespace CapaDatos
     partial void Onperio_gaseososQui3Changed();
     partial void Onperio_otrosQui3Changing(string value);
     partial void Onperio_otrosQui3Changed();
+    partial void Onperio_otrosQui3TxtChanging(string value);
+    partial void Onperio_otrosQui3TxtChanged();
     partial void Onperio_virusBio3Changing(string value);
     partial void Onperio_virusBio3Changed();
     partial void Onperio_hongosBio3Changing(string value);
@@ -29251,6 +29796,8 @@ namespace CapaDatos
     partial void Onperio_expAniSelvaBio3Changed();
     partial void Onperio_otrosBio3Changing(string value);
     partial void Onperio_otrosBio3Changed();
+    partial void Onperio_otrosBio3TxtChanging(string value);
+    partial void Onperio_otrosBio3TxtChanged();
     partial void Onperio_maneManCarErg3Changing(string value);
     partial void Onperio_maneManCarErg3Changed();
     partial void Onperio_movRepeErg3Changing(string value);
@@ -29261,6 +29808,8 @@ namespace CapaDatos
     partial void Onperio_trabPvdErg3Changed();
     partial void Onperio_otrosErg3Changing(string value);
     partial void Onperio_otrosErg3Changed();
+    partial void Onperio_otrosErg3TxtChanging(string value);
+    partial void Onperio_otrosErg3TxtChanged();
     partial void Onperio_monoTrabPsi3Changing(string value);
     partial void Onperio_monoTrabPsi3Changed();
     partial void Onperio_sobrecarLabPsi3Changing(string value);
@@ -29287,6 +29836,8 @@ namespace CapaDatos
     partial void Onperio_inesLabPsi3Changed();
     partial void Onperio_otrosPsi3Changing(string value);
     partial void Onperio_otrosPsi3Changed();
+    partial void Onperio_otrosPsi3TxtChanging(string value);
+    partial void Onperio_otrosPsi3TxtChanged();
     partial void Onperio_medPreventivas3Changing(string value);
     partial void Onperio_medPreventivas3Changed();
     partial void Onperio_descripEnfActualChanging(string value);
@@ -30949,6 +31500,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosFisTxt", DbType="VarChar(150)")]
+		public string perio_otrosFisTxt
+		{
+			get
+			{
+				return this._perio_otrosFisTxt;
+			}
+			set
+			{
+				if ((this._perio_otrosFisTxt != value))
+				{
+					this.Onperio_otrosFisTxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosFisTxt = value;
+					this.SendPropertyChanged("perio_otrosFisTxt");
+					this.Onperio_otrosFisTxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_atraMaquinasMec", DbType="VarChar(2)")]
 		public string perio_atraMaquinasMec
 		{
@@ -31249,6 +31820,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosMecTxt", DbType="VarChar(150)")]
+		public string perio_otrosMecTxt
+		{
+			get
+			{
+				return this._perio_otrosMecTxt;
+			}
+			set
+			{
+				if ((this._perio_otrosMecTxt != value))
+				{
+					this.Onperio_otrosMecTxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosMecTxt = value;
+					this.SendPropertyChanged("perio_otrosMecTxt");
+					this.Onperio_otrosMecTxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_solidosQui", DbType="VarChar(2)")]
 		public string perio_solidosQui
 		{
@@ -31429,6 +32020,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosQuiTxt", DbType="VarChar(150)")]
+		public string perio_otrosQuiTxt
+		{
+			get
+			{
+				return this._perio_otrosQuiTxt;
+			}
+			set
+			{
+				if ((this._perio_otrosQuiTxt != value))
+				{
+					this.Onperio_otrosQuiTxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosQuiTxt = value;
+					this.SendPropertyChanged("perio_otrosQuiTxt");
+					this.Onperio_otrosQuiTxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_virusBio", DbType="VarChar(2)")]
 		public string perio_virusBio
 		{
@@ -31569,6 +32180,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosBioTxt", DbType="VarChar(150)")]
+		public string perio_otrosBioTxt
+		{
+			get
+			{
+				return this._perio_otrosBioTxt;
+			}
+			set
+			{
+				if ((this._perio_otrosBioTxt != value))
+				{
+					this.Onperio_otrosBioTxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosBioTxt = value;
+					this.SendPropertyChanged("perio_otrosBioTxt");
+					this.Onperio_otrosBioTxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_maneManCarErg", DbType="VarChar(2)")]
 		public string perio_maneManCarErg
 		{
@@ -31665,6 +32296,26 @@ namespace CapaDatos
 					this._perio_otrosErg = value;
 					this.SendPropertyChanged("perio_otrosErg");
 					this.Onperio_otrosErgChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosErgTxt", DbType="VarChar(150)")]
+		public string perio_otrosErgTxt
+		{
+			get
+			{
+				return this._perio_otrosErgTxt;
+			}
+			set
+			{
+				if ((this._perio_otrosErgTxt != value))
+				{
+					this.Onperio_otrosErgTxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosErgTxt = value;
+					this.SendPropertyChanged("perio_otrosErgTxt");
+					this.Onperio_otrosErgTxtChanged();
 				}
 			}
 		}
@@ -31925,6 +32576,26 @@ namespace CapaDatos
 					this._perio_otrosPsi = value;
 					this.SendPropertyChanged("perio_otrosPsi");
 					this.Onperio_otrosPsiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosPsiTxt", DbType="VarChar(150)")]
+		public string perio_otrosPsiTxt
+		{
+			get
+			{
+				return this._perio_otrosPsiTxt;
+			}
+			set
+			{
+				if ((this._perio_otrosPsiTxt != value))
+				{
+					this.Onperio_otrosPsiTxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosPsiTxt = value;
+					this.SendPropertyChanged("perio_otrosPsiTxt");
+					this.Onperio_otrosPsiTxtChanged();
 				}
 			}
 		}
@@ -32205,6 +32876,26 @@ namespace CapaDatos
 					this._perio_otrosFis2 = value;
 					this.SendPropertyChanged("perio_otrosFis2");
 					this.Onperio_otrosFis2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosFis2Txt", DbType="VarChar(150)")]
+		public string perio_otrosFis2Txt
+		{
+			get
+			{
+				return this._perio_otrosFis2Txt;
+			}
+			set
+			{
+				if ((this._perio_otrosFis2Txt != value))
+				{
+					this.Onperio_otrosFis2TxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosFis2Txt = value;
+					this.SendPropertyChanged("perio_otrosFis2Txt");
+					this.Onperio_otrosFis2TxtChanged();
 				}
 			}
 		}
@@ -32509,6 +33200,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosMec2Txt", DbType="VarChar(150)")]
+		public string perio_otrosMec2Txt
+		{
+			get
+			{
+				return this._perio_otrosMec2Txt;
+			}
+			set
+			{
+				if ((this._perio_otrosMec2Txt != value))
+				{
+					this.Onperio_otrosMec2TxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosMec2Txt = value;
+					this.SendPropertyChanged("perio_otrosMec2Txt");
+					this.Onperio_otrosMec2TxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_solidosQui2", DbType="VarChar(2)")]
 		public string perio_solidosQui2
 		{
@@ -32689,6 +33400,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosQui2Txt", DbType="VarChar(150)")]
+		public string perio_otrosQui2Txt
+		{
+			get
+			{
+				return this._perio_otrosQui2Txt;
+			}
+			set
+			{
+				if ((this._perio_otrosQui2Txt != value))
+				{
+					this.Onperio_otrosQui2TxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosQui2Txt = value;
+					this.SendPropertyChanged("perio_otrosQui2Txt");
+					this.Onperio_otrosQui2TxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_virusBio2", DbType="VarChar(2)")]
 		public string perio_virusBio2
 		{
@@ -32829,6 +33560,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosBio2Txt", DbType="VarChar(150)")]
+		public string perio_otrosBio2Txt
+		{
+			get
+			{
+				return this._perio_otrosBio2Txt;
+			}
+			set
+			{
+				if ((this._perio_otrosBio2Txt != value))
+				{
+					this.Onperio_otrosBio2TxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosBio2Txt = value;
+					this.SendPropertyChanged("perio_otrosBio2Txt");
+					this.Onperio_otrosBio2TxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_maneManCarErg2", DbType="VarChar(2)")]
 		public string perio_maneManCarErg2
 		{
@@ -32925,6 +33676,26 @@ namespace CapaDatos
 					this._perio_otrosErg2 = value;
 					this.SendPropertyChanged("perio_otrosErg2");
 					this.Onperio_otrosErg2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosErg2Txt", DbType="VarChar(150)")]
+		public string perio_otrosErg2Txt
+		{
+			get
+			{
+				return this._perio_otrosErg2Txt;
+			}
+			set
+			{
+				if ((this._perio_otrosErg2Txt != value))
+				{
+					this.Onperio_otrosErg2TxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosErg2Txt = value;
+					this.SendPropertyChanged("perio_otrosErg2Txt");
+					this.Onperio_otrosErg2TxtChanged();
 				}
 			}
 		}
@@ -33185,6 +33956,26 @@ namespace CapaDatos
 					this._perio_otrosPsi2 = value;
 					this.SendPropertyChanged("perio_otrosPsi2");
 					this.Onperio_otrosPsi2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosPsi2Txt", DbType="VarChar(150)")]
+		public string perio_otrosPsi2Txt
+		{
+			get
+			{
+				return this._perio_otrosPsi2Txt;
+			}
+			set
+			{
+				if ((this._perio_otrosPsi2Txt != value))
+				{
+					this.Onperio_otrosPsi2TxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosPsi2Txt = value;
+					this.SendPropertyChanged("perio_otrosPsi2Txt");
+					this.Onperio_otrosPsi2TxtChanged();
 				}
 			}
 		}
@@ -33465,6 +34256,26 @@ namespace CapaDatos
 					this._perio_otrosFis3 = value;
 					this.SendPropertyChanged("perio_otrosFis3");
 					this.Onperio_otrosFis3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosFis3Txt", DbType="VarChar(150)")]
+		public string perio_otrosFis3Txt
+		{
+			get
+			{
+				return this._perio_otrosFis3Txt;
+			}
+			set
+			{
+				if ((this._perio_otrosFis3Txt != value))
+				{
+					this.Onperio_otrosFis3TxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosFis3Txt = value;
+					this.SendPropertyChanged("perio_otrosFis3Txt");
+					this.Onperio_otrosFis3TxtChanged();
 				}
 			}
 		}
@@ -33769,6 +34580,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosMec3Txt", DbType="VarChar(150)")]
+		public string perio_otrosMec3Txt
+		{
+			get
+			{
+				return this._perio_otrosMec3Txt;
+			}
+			set
+			{
+				if ((this._perio_otrosMec3Txt != value))
+				{
+					this.Onperio_otrosMec3TxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosMec3Txt = value;
+					this.SendPropertyChanged("perio_otrosMec3Txt");
+					this.Onperio_otrosMec3TxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_solidosQui3", DbType="VarChar(2)")]
 		public string perio_solidosQui3
 		{
@@ -33949,6 +34780,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosQui3Txt", DbType="VarChar(150)")]
+		public string perio_otrosQui3Txt
+		{
+			get
+			{
+				return this._perio_otrosQui3Txt;
+			}
+			set
+			{
+				if ((this._perio_otrosQui3Txt != value))
+				{
+					this.Onperio_otrosQui3TxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosQui3Txt = value;
+					this.SendPropertyChanged("perio_otrosQui3Txt");
+					this.Onperio_otrosQui3TxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_virusBio3", DbType="VarChar(2)")]
 		public string perio_virusBio3
 		{
@@ -34089,6 +34940,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosBio3Txt", DbType="VarChar(150)")]
+		public string perio_otrosBio3Txt
+		{
+			get
+			{
+				return this._perio_otrosBio3Txt;
+			}
+			set
+			{
+				if ((this._perio_otrosBio3Txt != value))
+				{
+					this.Onperio_otrosBio3TxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosBio3Txt = value;
+					this.SendPropertyChanged("perio_otrosBio3Txt");
+					this.Onperio_otrosBio3TxtChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_maneManCarErg3", DbType="VarChar(2)")]
 		public string perio_maneManCarErg3
 		{
@@ -34185,6 +35056,26 @@ namespace CapaDatos
 					this._perio_otrosErg3 = value;
 					this.SendPropertyChanged("perio_otrosErg3");
 					this.Onperio_otrosErg3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosErg3Txt", DbType="VarChar(150)")]
+		public string perio_otrosErg3Txt
+		{
+			get
+			{
+				return this._perio_otrosErg3Txt;
+			}
+			set
+			{
+				if ((this._perio_otrosErg3Txt != value))
+				{
+					this.Onperio_otrosErg3TxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosErg3Txt = value;
+					this.SendPropertyChanged("perio_otrosErg3Txt");
+					this.Onperio_otrosErg3TxtChanged();
 				}
 			}
 		}
@@ -34445,6 +35336,26 @@ namespace CapaDatos
 					this._perio_otrosPsi3 = value;
 					this.SendPropertyChanged("perio_otrosPsi3");
 					this.Onperio_otrosPsi3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_perio_otrosPsi3Txt", DbType="VarChar(150)")]
+		public string perio_otrosPsi3Txt
+		{
+			get
+			{
+				return this._perio_otrosPsi3Txt;
+			}
+			set
+			{
+				if ((this._perio_otrosPsi3Txt != value))
+				{
+					this.Onperio_otrosPsi3TxtChanging(value);
+					this.SendPropertyChanging();
+					this._perio_otrosPsi3Txt = value;
+					this.SendPropertyChanged("perio_otrosPsi3Txt");
+					this.Onperio_otrosPsi3TxtChanged();
 				}
 			}
 		}
@@ -36548,11 +37459,11 @@ namespace CapaDatos
 		
 		private string _Per_correo;
 		
-		private System.Nullable<int> _Emp_id;
+		private int _Emp_id;
 		
-		private System.Nullable<int> _cent_id;
+		private int _cent_id;
 		
-		private System.Nullable<int> _tusu_id;
+		private int _tusu_id;
 		
 		private string _Per_estado;
 		
@@ -36624,11 +37535,11 @@ namespace CapaDatos
     partial void OnPer_passChanged();
     partial void OnPer_correoChanging(string value);
     partial void OnPer_correoChanged();
-    partial void OnEmp_idChanging(System.Nullable<int> value);
+    partial void OnEmp_idChanging(int value);
     partial void OnEmp_idChanged();
-    partial void Oncent_idChanging(System.Nullable<int> value);
+    partial void Oncent_idChanging(int value);
     partial void Oncent_idChanged();
-    partial void Ontusu_idChanging(System.Nullable<int> value);
+    partial void Ontusu_idChanging(int value);
     partial void Ontusu_idChanged();
     partial void OnPer_estadoChanging(string value);
     partial void OnPer_estadoChanged();
@@ -36672,7 +37583,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_imgNombre", DbType="VarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_imgNombre", DbType="VarChar(150)")]
 		public string Per_imgNombre
 		{
 			get
@@ -36712,7 +37623,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_cedula", DbType="VarChar(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_cedula", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
 		public string Per_cedula
 		{
 			get
@@ -37032,8 +37943,8 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Emp_id", DbType="Int")]
-		public System.Nullable<int> Emp_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Emp_id", DbType="Int NOT NULL")]
+		public int Emp_id
 		{
 			get
 			{
@@ -37056,8 +37967,8 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cent_id", DbType="Int")]
-		public System.Nullable<int> cent_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cent_id", DbType="Int NOT NULL")]
+		public int cent_id
 		{
 			get
 			{
@@ -37080,8 +37991,8 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tusu_id", DbType="Int")]
-		public System.Nullable<int> tusu_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tusu_id", DbType="Int NOT NULL")]
+		public int tusu_id
 		{
 			get
 			{
@@ -37104,7 +38015,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_estado", DbType="VarChar(2)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_estado", DbType="VarChar(2) NOT NULL", CanBeNull=false)]
 		public string Per_estado
 		{
 			get
@@ -37281,7 +38192,7 @@ namespace CapaDatos
 					}
 					else
 					{
-						this._cent_id = default(Nullable<int>);
+						this._cent_id = default(int);
 					}
 					this.SendPropertyChanged("Tbl_Centro");
 				}
@@ -37315,7 +38226,7 @@ namespace CapaDatos
 					}
 					else
 					{
-						this._Emp_id = default(Nullable<int>);
+						this._Emp_id = default(int);
 					}
 					this.SendPropertyChanged("Tbl_Empresa");
 				}
@@ -37349,7 +38260,7 @@ namespace CapaDatos
 					}
 					else
 					{
-						this._tusu_id = default(Nullable<int>);
+						this._tusu_id = default(int);
 					}
 					this.SendPropertyChanged("Tbl_TipoUsuario");
 				}
@@ -37527,8 +38438,6 @@ namespace CapaDatos
 		
 		private EntitySet<Tbl_Retiro> _Tbl_Retiro;
 		
-		private EntityRef<Tbl_Centro> _Tbl_Centro;
-		
 		private EntityRef<Tbl_Especialidad> _Tbl_Especialidad;
 		
     #region Definiciones de métodos de extensibilidad
@@ -37557,7 +38466,6 @@ namespace CapaDatos
 			this._Tbl_Periodica = new EntitySet<Tbl_Periodica>(new Action<Tbl_Periodica>(this.attach_Tbl_Periodica), new Action<Tbl_Periodica>(this.detach_Tbl_Periodica));
 			this._Tbl_Reintegro = new EntitySet<Tbl_Reintegro>(new Action<Tbl_Reintegro>(this.attach_Tbl_Reintegro), new Action<Tbl_Reintegro>(this.detach_Tbl_Reintegro));
 			this._Tbl_Retiro = new EntitySet<Tbl_Retiro>(new Action<Tbl_Retiro>(this.attach_Tbl_Retiro), new Action<Tbl_Retiro>(this.detach_Tbl_Retiro));
-			this._Tbl_Centro = default(EntityRef<Tbl_Centro>);
 			this._Tbl_Especialidad = default(EntityRef<Tbl_Especialidad>);
 			OnCreated();
 		}
@@ -37657,10 +38565,6 @@ namespace CapaDatos
 			{
 				if ((this._cent_id != value))
 				{
-					if (this._Tbl_Centro.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.Oncent_idChanging(value);
 					this.SendPropertyChanging();
 					this._cent_id = value;
@@ -37765,40 +38669,6 @@ namespace CapaDatos
 			set
 			{
 				this._Tbl_Retiro.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Centro_Tbl_Profesional", Storage="_Tbl_Centro", ThisKey="cent_id", OtherKey="cent_id", IsForeignKey=true)]
-		public Tbl_Centro Tbl_Centro
-		{
-			get
-			{
-				return this._Tbl_Centro.Entity;
-			}
-			set
-			{
-				Tbl_Centro previousValue = this._Tbl_Centro.Entity;
-				if (((previousValue != value) 
-							|| (this._Tbl_Centro.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tbl_Centro.Entity = null;
-						previousValue.Tbl_Profesional.Remove(this);
-					}
-					this._Tbl_Centro.Entity = value;
-					if ((value != null))
-					{
-						value.Tbl_Profesional.Add(this);
-						this._cent_id = value.cent_id;
-					}
-					else
-					{
-						this._cent_id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Tbl_Centro");
-				}
 			}
 		}
 		
@@ -50112,7 +50982,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_cedula", DbType="VarChar(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_cedula", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
 		public string Per_cedula
 		{
 			get

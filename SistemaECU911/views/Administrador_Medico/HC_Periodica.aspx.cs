@@ -2472,6 +2472,12 @@ namespace SistemaECU911.Template.Views
                             txt_medpreventivas.Text = perio.perio_medPreventivas.ToString();
                             txt_medpreventivas2.Text = perio.perio_medPreventivas2.ToString();
                             txt_medpreventivas3.Text = perio.perio_medPreventivas3.ToString();
+                            txt_otrosFis.Text = perio.perio_otrosFisTxt.ToString();
+                            txt_otrosMec.Text = perio.perio_otrosMecTxt.ToString();
+                            txt_otrosQui.Text = perio.perio_otrosQuiTxt.ToString();
+                            txt_otrosBio.Text = perio.perio_otrosBioTxt.ToString();
+                            txt_otrosErg.Text = perio.perio_otrosErgTxt.ToString();
+                            txt_otrosPsi.Text = perio.perio_otrosPsiTxt.ToString();
 
                             //F
                             txt_enfermedadactualperiodica.Text = perio.perio_descripEnfActual.ToString();
@@ -3899,6 +3905,12 @@ namespace SistemaECU911.Template.Views
                 perio.perio_medPreventivas = txt_medpreventivas.Text.ToUpper();
                 perio.perio_medPreventivas2 = txt_medpreventivas2.Text.ToUpper();
                 perio.perio_medPreventivas3 = txt_medpreventivas3.Text.ToUpper();
+                perio.perio_otrosFisTxt = txt_otrosFis.Text.ToUpper();
+                perio.perio_otrosMecTxt = txt_otrosMec.Text.ToUpper();
+                perio.perio_otrosQuiTxt = txt_otrosQui.Text.ToUpper();
+                perio.perio_otrosBioTxt = txt_otrosBio.Text.ToUpper();
+                perio.perio_otrosErgTxt = txt_otrosErg.Text.ToUpper();
+                perio.perio_otrosPsiTxt = txt_otrosPsi.Text.ToUpper();
 
                 //F.
                 perio.perio_descripEnfActual = txt_enfermedadactualperiodica.Text.ToUpper();
@@ -6132,6 +6144,12 @@ namespace SistemaECU911.Template.Views
                 perio.perio_medPreventivas = txt_medpreventivas.Text.ToUpper();
                 perio.perio_medPreventivas2 = txt_medpreventivas2.Text.ToUpper();
                 perio.perio_medPreventivas3 = txt_medpreventivas3.Text.ToUpper();
+                perio.perio_otrosFisTxt = txt_otrosFis.Text.ToUpper();
+                perio.perio_otrosMecTxt = txt_otrosMec.Text.ToUpper();
+                perio.perio_otrosQuiTxt = txt_otrosQui.Text.ToUpper();
+                perio.perio_otrosBioTxt = txt_otrosBio.Text.ToUpper();
+                perio.perio_otrosErgTxt = txt_otrosErg.Text.ToUpper();
+                perio.perio_otrosPsiTxt = txt_otrosPsi.Text.ToUpper();
 
                 //F.
                 perio.perio_descripEnfActual = txt_enfermedadactualperiodica.Text.ToUpper();

@@ -3644,6 +3644,12 @@ namespace SistemaECU911.Template.Views
                             txt_medpreventivas2.Text = inicial.inicial_medPreventivas.ToString();
                             txt_medpreventivas3.Text = inicial.inicial_medPreventivas.ToString();
                             txt_medpreventivas4.Text = inicial.inicial_medPreventivas.ToString();
+                            txt_otrosFis.Text = inicial.inicial_otrosFisTxt.ToString();
+                            txt_otrosMec.Text = inicial.inicial_otrosMecTxt.ToString();
+                            txt_otrosQui.Text = inicial.inicial_otrosQuiTxt.ToString();
+                            txt_otrosBio.Text = inicial.inicial_otrosBioTxt.ToString();
+                            txt_otrosErg.Text = inicial.inicial_otrosErgtxt.ToString();
+                            txt_otrosPsi.Text = inicial.inicial_otrosPsiTxt.ToString();
 
                             //G
                             txt_descrextralaborales.Text = inicial.inicial_descripActExtLab.ToString();
@@ -3722,8 +3728,8 @@ namespace SistemaECU911.Template.Views
                             txt_descripdiagnostico2.Text = inicial.inicial_descripcioninicialnostico2.ToString();
                             txt_cie2.Text = inicial.inicial_cie2.ToString();
                             txt_descripdiagnostico3.Text = inicial.inicial_descripcioninicialnostico3.ToString();
-                            txt_cie3.Text = inicial.inicial_cie3.ToString();
-
+                            txt_cie3.Text = inicial.inicial_cie3.ToString(); 
+                            
                             //N
                             txt_observacionaptitud.Text = inicial.inicial_ObservAptMed.ToString();
                             txt_limitacionaptitud.Text = inicial.inicial_LimitAptMed.ToString();
@@ -3734,6 +3740,7 @@ namespace SistemaECU911.Template.Views
                             //P                            
                             ddl_profesional.SelectedValue = inicial.prof_id.ToString();
                             txt_codigoDatProf.Text = inicial.inicial_cod.ToString();
+
                         }
                     }
                 }
@@ -5643,6 +5650,11 @@ namespace SistemaECU911.Template.Views
                 inicial.inicial_medPreventivas2 = txt_medpreventivas2.Text.ToUpper();
                 inicial.inicial_medPreventivas3 = txt_medpreventivas3.Text.ToUpper();
                 inicial.inicial_medPreventivas4 = txt_medpreventivas4.Text.ToUpper();
+                inicial.inicial_otrosFisTxt = txt_otrosFis.Text.ToUpper();
+                inicial.inicial_otrosQuiTxt = txt_otrosQui.Text.ToUpper();
+                inicial.inicial_otrosBioTxt = txt_otrosBio.Text.ToUpper();
+                inicial.inicial_otrosErgtxt = txt_otrosErg.Text.ToUpper();
+                inicial.inicial_otrosPsiTxt = txt_otrosPsi.Text.ToUpper();
 
                 //G
                 inicial.inicial_descripActExtLab = txt_descrextralaborales.Text.ToUpper();
@@ -5689,6 +5701,7 @@ namespace SistemaECU911.Template.Views
                 inicial.inicial_cie2 = txt_cie2.Text.ToUpper();
                 inicial.inicial_descripcioninicialnostico3 = txt_descripdiagnostico3.Text.ToUpper();
                 inicial.inicial_cie3 = txt_cie3.Text.ToUpper();
+                inicial.inicial_otrosMecTxt = txt_otrosMec.Text.ToUpper();
 
                 //N
                 inicial.inicial_ObservAptMed = txt_observacionaptitud.Text.ToUpper();
@@ -8848,6 +8861,11 @@ namespace SistemaECU911.Template.Views
                 inicial.inicial_medPreventivas2 = txt_medpreventivas2.Text.ToUpper();
                 inicial.inicial_medPreventivas3 = txt_medpreventivas3.Text.ToUpper();
                 inicial.inicial_medPreventivas4 = txt_medpreventivas4.Text.ToUpper();
+                inicial.inicial_otrosFisTxt = txt_otrosFis.Text.ToUpper();
+                inicial.inicial_otrosQuiTxt = txt_otrosQui.Text.ToUpper();
+                inicial.inicial_otrosBioTxt = txt_otrosBio.Text.ToUpper();
+                inicial.inicial_otrosErgtxt = txt_otrosErg.Text.ToUpper();
+                inicial.inicial_otrosPsiTxt = txt_otrosPsi.Text.ToUpper();
 
                 //G
                 inicial.inicial_descripActExtLab = txt_descrextralaborales.Text.ToUpper();
@@ -8894,6 +8912,7 @@ namespace SistemaECU911.Template.Views
                 inicial.inicial_cie2 = txt_cie2.Text.ToUpper();
                 inicial.inicial_descripcioninicialnostico3 = txt_descripdiagnostico3.Text.ToUpper();
                 inicial.inicial_cie3 = txt_cie3.Text.ToUpper();
+                inicial.inicial_otrosMecTxt = txt_otrosMec.Text.ToUpper();
 
                 //N
                 inicial.inicial_ObservAptMed = txt_observacionaptitud.Text.ToUpper();
@@ -9030,7 +9049,7 @@ namespace SistemaECU911.Template.Views
                 txt_talla.Focus();
             }
         }
-
+            
         private void defaultValidaciones()
         {
             txt_tipodiscapacidad.Enabled = false;
