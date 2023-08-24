@@ -6636,7 +6636,7 @@ namespace SistemaECU911.Template.Views
             pdfDoc.Open();
 
             //IMAGEN ENCABEZADO
-            string imageURL = Server.MapPath("../Template Principal/images") + "/ecu911.jpg";
+            string imageURL = Server.MapPath("../../resources/images") + "/ic1.png";
             iTextSharp.text.Image fotologo = iTextSharp.text.Image.GetInstance(imageURL);
             fotologo.ScalePercent(30f);
 
@@ -7031,7 +7031,7 @@ namespace SistemaECU911.Template.Views
             var tblfr = new PdfPTable(new float[] { 70f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblfr.AddCell(new PdfPCell(new Paragraph("E.  FACTORES DE RIESGOS DEL PUESTO DE TRABAJO", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(204, 205, 254), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblfr);
-            var tblfrTitulo = new PdfPTable(new float[] { 70f, 70f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblfrTitulo = new PdfPTable(new float[] { 70f, 70f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 15f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblfrTitulo.AddCell(new PdfPCell(new Paragraph("PUESTO DE TRABAJO / ÁREA", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, Rowspan = 2, VerticalAlignment = Element.ALIGN_MIDDLE });
             tblfrTitulo.AddCell(new PdfPCell(new Paragraph("ACTIVIDADES", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, Rowspan = 2, VerticalAlignment = Element.ALIGN_MIDDLE });
             tblfrTitulo.AddCell(new PdfPCell(new Paragraph("FÍSICO", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, Colspan = 10 });
@@ -7044,9 +7044,9 @@ namespace SistemaECU911.Template.Views
             tblfrTitulo.AddCell(new PdfPCell(new Paragraph("ILUMINACIÓN", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
             tblfrTitulo.AddCell(new PdfPCell(new Paragraph("VENTILACIÓN", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
             tblfrTitulo.AddCell(new PdfPCell(new Paragraph("FLUIDO ELÉCTRICO", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
-            tblfrTitulo.AddCell(new PdfPCell(new Paragraph("! OTROS", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
+            tblfrTitulo.AddCell(new PdfPCell(new Paragraph(txt_otrosFis.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90, FixedHeight = 110, NoWrap = true });
             pdfDoc.Add(tblfrTitulo);
-            var tblfrDatos = new PdfPTable(new float[] { 10f, 60f, 70f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblfrDatos = new PdfPTable(new float[] { 10f, 60f, 70f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 15f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblfrDatos.AddCell(new PdfPCell(new Paragraph("1.", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblfrDatos.AddCell(new PdfPCell(new Paragraph(txt_puestotrabajo.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblfrDatos.AddCell(new PdfPCell(new Paragraph(txt_act.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
@@ -7131,7 +7131,7 @@ namespace SistemaECU911.Template.Views
                 tblfrDatos.AddCell(new PdfPCell(new Paragraph(" ", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             }
             pdfDoc.Add(tblfrDatos);
-            var tblfrDatos1 = new PdfPTable(new float[] { 10f, 60f, 70f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblfrDatos1 = new PdfPTable(new float[] { 10f, 60f, 70f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 15f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblfrDatos1.AddCell(new PdfPCell(new Paragraph("2.", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblfrDatos1.AddCell(new PdfPCell(new Paragraph(txt_puestotrabajo2.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblfrDatos1.AddCell(new PdfPCell(new Paragraph(txt_act2.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
@@ -7216,7 +7216,7 @@ namespace SistemaECU911.Template.Views
                 tblfrDatos1.AddCell(new PdfPCell(new Paragraph(" ", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             }
             pdfDoc.Add(tblfrDatos1);
-            var tblfrDatos2 = new PdfPTable(new float[] { 10f, 60f, 70f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblfrDatos2 = new PdfPTable(new float[] { 10f, 60f, 70f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 15f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblfrDatos2.AddCell(new PdfPCell(new Paragraph("3.", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblfrDatos2.AddCell(new PdfPCell(new Paragraph(txt_puestotrabajo3.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblfrDatos2.AddCell(new PdfPCell(new Paragraph(txt_act3.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
@@ -7303,7 +7303,7 @@ namespace SistemaECU911.Template.Views
             pdfDoc.Add(tblfrDatos2);
 
             pdfDoc.Add(new Paragraph(" "));
-            var tblmqTitulo = new PdfPTable(new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblmqTitulo = new PdfPTable(new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 15f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 15f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblmqTitulo.AddCell(new PdfPCell(new Paragraph("MECÁNICO", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Colspan = 15 });
             tblmqTitulo.AddCell(new PdfPCell(new Paragraph("QUÍMICO", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Colspan = 9 });
             tblmqTitulo.AddCell(new PdfPCell(new Paragraph("ATRAPAMIENTO ENTRE MÁQUINAS", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
@@ -7320,7 +7320,7 @@ namespace SistemaECU911.Template.Views
             tblmqTitulo.AddCell(new PdfPCell(new Paragraph("CORTES", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
             tblmqTitulo.AddCell(new PdfPCell(new Paragraph("ATROPELLAMIENTOS POR VEHÍCULOS", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
             tblmqTitulo.AddCell(new PdfPCell(new Paragraph("CHOQUES /COLISIÓN VEHICULAR", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
-            tblmqTitulo.AddCell(new PdfPCell(new Paragraph("OTROS __________", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
+            tblmqTitulo.AddCell(new PdfPCell(new Paragraph(txt_otrosMec.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90, FixedHeight = 110, NoWrap = true });
             tblmqTitulo.AddCell(new PdfPCell(new Paragraph("SÓLIDOS", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
             tblmqTitulo.AddCell(new PdfPCell(new Paragraph("POLVOS", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
             tblmqTitulo.AddCell(new PdfPCell(new Paragraph("HUMOS", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
@@ -7329,9 +7329,9 @@ namespace SistemaECU911.Template.Views
             tblmqTitulo.AddCell(new PdfPCell(new Paragraph("AEROSOLES", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
             tblmqTitulo.AddCell(new PdfPCell(new Paragraph("NEBLINAS", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
             tblmqTitulo.AddCell(new PdfPCell(new Paragraph("GASEOSOS", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
-            tblmqTitulo.AddCell(new PdfPCell(new Paragraph("OTROS __________", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
+            tblmqTitulo.AddCell(new PdfPCell(new Paragraph(txt_otrosQui.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90, FixedHeight = 110, NoWrap = true });
             pdfDoc.Add(tblmqTitulo);
-            var tblmqDatos = new PdfPTable(new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblmqDatos = new PdfPTable(new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 15f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 15f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             if (ckb_atrapmaquinas.Checked == true)
             {
                 tblmqDatos.AddCell(new PdfPCell(new Paragraph("x", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
@@ -7525,7 +7525,7 @@ namespace SistemaECU911.Template.Views
                 tblmqDatos.AddCell(new PdfPCell(new Paragraph(" ", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             }
             pdfDoc.Add(tblmqDatos);
-            var tblmqDatos1 = new PdfPTable(new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblmqDatos1 = new PdfPTable(new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 15f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 15f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             if (ckb_atrapmaquinas2.Checked == true)
             {
                 tblmqDatos1.AddCell(new PdfPCell(new Paragraph("x", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
@@ -7719,7 +7719,7 @@ namespace SistemaECU911.Template.Views
                 tblmqDatos1.AddCell(new PdfPCell(new Paragraph(" ", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             }
             pdfDoc.Add(tblmqDatos1);
-            var tblmqDatos2 = new PdfPTable(new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblmqDatos2 = new PdfPTable(new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 15f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 15f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             if (ckb_atrapmaquinas3.Checked == true)
             {
                 tblmqDatos2.AddCell(new PdfPCell(new Paragraph("x", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
@@ -7915,7 +7915,7 @@ namespace SistemaECU911.Template.Views
             pdfDoc.Add(tblmqDatos2);
 
             pdfDoc.Add(new Paragraph(" "));
-            var tblbeTitulo = new PdfPTable(new float[] { 70f, 70f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblbeTitulo = new PdfPTable(new float[] { 70f, 70f, 10f, 10f, 10f, 10f, 10f, 10f, 15f, 10f, 10f, 10f, 10f, 15f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblbeTitulo.AddCell(new PdfPCell(new Paragraph("PUESTO DE TRABAJO / ÁREA", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, Rowspan = 2, VerticalAlignment = Element.ALIGN_MIDDLE });
             tblbeTitulo.AddCell(new PdfPCell(new Paragraph("ACTIVIDADES", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, Rowspan = 2, VerticalAlignment = Element.ALIGN_MIDDLE });
             tblbeTitulo.AddCell(new PdfPCell(new Paragraph("BIÓLOGO", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, Colspan = 7 });
@@ -7926,14 +7926,14 @@ namespace SistemaECU911.Template.Views
             tblbeTitulo.AddCell(new PdfPCell(new Paragraph("PARÁSITOS", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
             tblbeTitulo.AddCell(new PdfPCell(new Paragraph("EXPOSICIÓN A VECTORES", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
             tblbeTitulo.AddCell(new PdfPCell(new Paragraph("EXPOSICIÓN A ANIMALES SELVÁTICOS", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
-            tblbeTitulo.AddCell(new PdfPCell(new Paragraph("OTROS __________", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
+            tblbeTitulo.AddCell(new PdfPCell(new Paragraph(txt_otrosBio.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90, FixedHeight = 110, NoWrap = true });
             tblbeTitulo.AddCell(new PdfPCell(new Paragraph("MANEJO MANUAL DE CARGAS", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
             tblbeTitulo.AddCell(new PdfPCell(new Paragraph("MOVIMIENTO REPETITIVOS", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
             tblbeTitulo.AddCell(new PdfPCell(new Paragraph("POSTURAS FORZADAS", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
             tblbeTitulo.AddCell(new PdfPCell(new Paragraph("TRABAJOS CON PVD", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
-            tblbeTitulo.AddCell(new PdfPCell(new Paragraph("OTROS __________", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
+            tblbeTitulo.AddCell(new PdfPCell(new Paragraph(txt_otrosErg.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90, FixedHeight = 110, NoWrap = true });
             pdfDoc.Add(tblbeTitulo);
-            var tblbeDatos = new PdfPTable(new float[] { 10f, 60f, 70f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblbeDatos = new PdfPTable(new float[] { 10f, 60f, 70f, 10f, 10f, 10f, 10f, 10f, 10f, 15f, 10f, 10f, 10f, 10f, 15f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblbeDatos.AddCell(new PdfPCell(new Paragraph("1.", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblbeDatos.AddCell(new PdfPCell(new Paragraph(txt_puestotrabajo21.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblbeDatos.AddCell(new PdfPCell(new Paragraph(txt_act21.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
@@ -8034,7 +8034,7 @@ namespace SistemaECU911.Template.Views
                 tblbeDatos.AddCell(new PdfPCell(new Paragraph(" ", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             }
             pdfDoc.Add(tblbeDatos);
-            var tblbeDatos1 = new PdfPTable(new float[] { 10f, 60f, 70f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblbeDatos1 = new PdfPTable(new float[] { 10f, 60f, 70f, 10f, 10f, 10f, 10f, 10f, 10f, 15f, 10f, 10f, 10f, 10f, 15f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblbeDatos1.AddCell(new PdfPCell(new Paragraph("2.", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblbeDatos1.AddCell(new PdfPCell(new Paragraph(txt_puestotrabajo22.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblbeDatos1.AddCell(new PdfPCell(new Paragraph(txt_act22.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
@@ -8135,7 +8135,7 @@ namespace SistemaECU911.Template.Views
                 tblbeDatos1.AddCell(new PdfPCell(new Paragraph(" ", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             }
             pdfDoc.Add(tblbeDatos1);
-            var tblbeDatos2 = new PdfPTable(new float[] { 10f, 60f, 70f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblbeDatos2 = new PdfPTable(new float[] { 10f, 60f, 70f, 10f, 10f, 10f, 10f, 10f, 10f, 15f, 10f, 10f, 10f, 10f, 15f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblbeDatos2.AddCell(new PdfPCell(new Paragraph("3.", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblbeDatos2.AddCell(new PdfPCell(new Paragraph(txt_puestotrabajo23.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblbeDatos2.AddCell(new PdfPCell(new Paragraph(txt_act23.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
@@ -8238,7 +8238,7 @@ namespace SistemaECU911.Template.Views
             pdfDoc.Add(tblbeDatos2);
 
             pdfDoc.Add(new Paragraph(" "));
-            var tblpsTitulo = new PdfPTable(new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 70f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblpsTitulo = new PdfPTable(new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 15f, 70f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblpsTitulo.AddCell(new PdfPCell(new Paragraph("PSICOSOCIAL", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Colspan = 13 });
             tblpsTitulo.AddCell(new PdfPCell(new Paragraph("MEDIDAS PREVENTIVAS", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rowspan = 2 });
             tblpsTitulo.AddCell(new PdfPCell(new Paragraph("MONOTONÍA DEL TRABAJO", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
@@ -8253,9 +8253,9 @@ namespace SistemaECU911.Template.Views
             tblpsTitulo.AddCell(new PdfPCell(new Paragraph("TURNOS ROTATIVOS", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
             tblpsTitulo.AddCell(new PdfPCell(new Paragraph("RELACIONES INTERPERSONALES", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
             tblpsTitulo.AddCell(new PdfPCell(new Paragraph("INESTABILIDAD LABORAL", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
-            tblpsTitulo.AddCell(new PdfPCell(new Paragraph("OTROS __________", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90 });
+            tblpsTitulo.AddCell(new PdfPCell(new Paragraph(txt_otrosPsi.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rotation = 90, FixedHeight = 110, NoWrap = true });
             pdfDoc.Add(tblpsTitulo);
-            var tblpsDatos = new PdfPTable(new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 70f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblpsDatos = new PdfPTable(new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 15f, 70f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             if (ckb_montrabajo.Checked == true)
             {
                 tblpsDatos.AddCell(new PdfPCell(new Paragraph("x", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
@@ -8362,7 +8362,7 @@ namespace SistemaECU911.Template.Views
             }
             tblpsDatos.AddCell(new PdfPCell(new Paragraph(txt_medpreventivas.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             pdfDoc.Add(tblpsDatos);
-            var tblpsDatos1 = new PdfPTable(new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 70f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblpsDatos1 = new PdfPTable(new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 15f, 70f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             if (ckb_montrabajo2.Checked == true)
             {
                 tblpsDatos1.AddCell(new PdfPCell(new Paragraph("x", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
@@ -8469,7 +8469,7 @@ namespace SistemaECU911.Template.Views
             }
             tblpsDatos1.AddCell(new PdfPCell(new Paragraph(txt_medpreventivas2.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             pdfDoc.Add(tblpsDatos1);
-            var tblpsDatos2 = new PdfPTable(new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 70f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblpsDatos2 = new PdfPTable(new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 15f, 70f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             if (ckb_montrabajo3.Checked == true)
             {
                 tblpsDatos2.AddCell(new PdfPCell(new Paragraph("x", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
