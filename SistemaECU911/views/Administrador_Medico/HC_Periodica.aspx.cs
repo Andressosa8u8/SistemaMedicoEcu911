@@ -2483,10 +2483,9 @@ namespace SistemaECU911.Template.Views
                             txt_puestotrabajo22.Text = perio.perio_area2.ToString();
                             txt_puestotrabajo23.Text = perio.perio_area3.ToString();
 
-                            //txt_act21.Text = inicial.inicial_actividades.ToString();
-                            //txt_act22.Text = inicial.inicial_actividades2.ToString();
-                            //txt_act23.Text = inicial.inicial_actividades3.ToString();
-                            //txt_act24.Text = inicial.inicial_actividades4.ToString();
+                            txt_act21.Text = perio.perio_actividades.ToString();
+                            txt_act22.Text = perio.perio_actividades2.ToString();
+                            txt_act23.Text = perio.perio_actividades3.ToString();
 
                             //F
                             txt_enfermedadactualperiodica.Text = perio.perio_descripEnfActual.ToString();
@@ -6784,7 +6783,7 @@ namespace SistemaECU911.Template.Views
             tblhtDatos2.AddCell(new PdfPCell(new Paragraph(txt_exConsumiConsuNociAlcoHabToxi.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblhtDatos2.AddCell(new PdfPCell(new Paragraph(txt_tiemAbstiConsuNociAlcoHabToxi.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             pdfDoc.Add(tblhtDatos2);
-            var tblhtDatos3 = new PdfPTable(new float[] { 100f, 20f, 20f, 50f, 60f, 60f, 60f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblhtDatos3 = new PdfPTable(new float[] { 100f, 40f, 50f, 60f, 60f, 60f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblhtDatos3.AddCell(new PdfPCell(new Paragraph("OTRAS DROGAS", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             if (ckb_siConsuNociOtrasDroHabToxi.Checked == true)
             {
@@ -6808,9 +6807,11 @@ namespace SistemaECU911.Template.Views
             tblhtDatos3.AddCell(new PdfPCell(new Paragraph(txt_tiemAbsti1ConsuNociOtrasDroHabToxi.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             pdfDoc.Add(tblhtDatos3);
 
-            var tblhtDatos4 = new PdfPTable(new float[] { 100f, 50f, 60f, 60f, 60f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            var tblhtDatos4 = new PdfPTable(new float[] { 100f, 40f, 50f, 60f, 60f, 60f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblhtDatos4.AddCell(new PdfPCell(new Paragraph(txt_otrasConsuNociOtrasDroHabToxi.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
-            tblhtDatos4.AddCell(new PdfPCell(new Paragraph(txt_otrasConsuNociOtrasDroHabToxi.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
+            tblhtDatos4.AddCell(new PdfPCell(new Paragraph("", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
+            tblhtDatos4.AddCell(new PdfPCell(new Paragraph("", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
+            tblhtDatos4.AddCell(new PdfPCell(new Paragraph(txt_tiemCon2ConsuNociOtrasDroHabToxi.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblhtDatos4.AddCell(new PdfPCell(new Paragraph(txt_canti2ConsuNociOtrasDroHabToxi.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblhtDatos4.AddCell(new PdfPCell(new Paragraph(txt_exConsumi2ConsuNociOtrasDroHabToxi.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblhtDatos4.AddCell(new PdfPCell(new Paragraph(txt_tiemAbsti2ConsuNociOtrasDroHabToxi.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
