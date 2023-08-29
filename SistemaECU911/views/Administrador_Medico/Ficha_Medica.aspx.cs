@@ -77,7 +77,7 @@ namespace SistemaECU911.Template.Views
                             //}
                             //else
                             //{
-                                
+
                             //    ddl_tipoAntPer.SelectedItem.Text = fichasmedicas.tipAntecedentePer.ToString();
                             //}
                             ddl_tipoAntPer.SelectedValue = fichasmedicas.tipAntecedentePer.ToString();
@@ -703,7 +703,7 @@ namespace SistemaECU911.Template.Views
             pdfDoc.Add(new Paragraph("FICHA MÉDICA", titulo) { Alignment = Element.ALIGN_CENTER });
             pdfDoc.Add(new Chunk(Chunk.NEWLINE));
             //string imageURL = Server.MapPath("../Template Principal/images") + "/Foto_Perfil.png";
-            string imageURL = Server.MapPath("../Template Principal/images") + "/Foto_Perfil.png";
+            string imageURL = Server.MapPath("../../resources/images") + "/ic1.png";
             iTextSharp.text.Image fotoperfil = iTextSharp.text.Image.GetInstance(imageURL);
             fotoperfil.ScaleAbsolute(75, 75);
             fotoperfil.SetAbsolutePosition(260, 700);
@@ -1037,6 +1037,12 @@ namespace SistemaECU911.Template.Views
             pdfDoc.Add(tblefTitulo);
             var tblefDatos = new PdfPTable(new float[] { 50f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             //tblefDatos.AddCell(new PdfPCell(new Paragraph(ddl_tipoAntFam.SelectedItem.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            tblefDatos.AddCell(new PdfPCell(new Paragraph(txt_tipoRegion.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            tblefDatos.AddCell(new PdfPCell(new Paragraph(txt_tipoRegion.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            tblefDatos.AddCell(new PdfPCell(new Paragraph(txt_exafisdescripcion.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            tblefDatos.AddCell(new PdfPCell(new Paragraph(txt_tipoRegion2.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            tblefDatos.AddCell(new PdfPCell(new Paragraph(txt_tipoRegion2.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            tblefDatos.AddCell(new PdfPCell(new Paragraph(txt_exafisdescripcion2.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblefDatos.AddCell(new PdfPCell(new Paragraph(txt_anteFamiliares.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblefDatos.AddCell(new PdfPCell(new Paragraph(txt_anteFamDescripcion.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblefDatos);
@@ -1079,7 +1085,7 @@ namespace SistemaECU911.Template.Views
             tblpp.AddCell(new PdfPCell(new Paragraph("11. PRESCRIPCIONES", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(204, 205, 254), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblpp);
             var tblppDatos = new PdfPTable(new float[] { 70f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
-            tblppDatos.AddCell(new PdfPCell(new Paragraph(txt_evolucion.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            tblppDatos.AddCell(new PdfPCell(new Paragraph(txt_prescipciones.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblppDatos);
             pdfDoc.Add(new Paragraph(" "));
             var tbldatTitulo = new PdfPTable(new float[] { 50f, 50f, 50f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
@@ -1121,6 +1127,23 @@ namespace SistemaECU911.Template.Views
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Write(pdfDoc);
             Response.End();
+        }
+
+        protected void ddl_profesional_TextChanged(object sender, EventArgs e)
+        {
+            string nombre;
+            nombre = ddl_profesional.SelectedItem.Text;
+            var cedula = dc.Tbl_Profesional.Where(prof => prof.prof_NomApe == nombre)
+                                           .Select(prof => prof.prof_cedula)
+                                           .FirstOrDefault();
+            if (cedula == null)
+            {
+                txt_codigo.Text = "";
+            }
+            else
+            {
+                txt_codigo.Text = cedula;
+            }
         }
     }
 

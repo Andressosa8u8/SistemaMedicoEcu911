@@ -3650,6 +3650,14 @@ namespace SistemaECU911.Template.Views
                             txt_otrosBio.Text = inicial.inicial_otrosBioTxt.ToString();
                             txt_otrosErg.Text = inicial.inicial_otrosErgtxt.ToString();
                             txt_otrosPsi.Text = inicial.inicial_otrosPsiTxt.ToString();
+                            txt_puestodetrabajo21.Text = inicial.inicial_area.ToString();
+                            txt_puestodetrabajo22.Text = inicial.inicial_area2.ToString();
+                            txt_puestodetrabajo23.Text = inicial.inicial_area3.ToString();
+                            txt_puestodetrabajo24.Text = inicial.inicial_area4.ToString();
+                            txt_act21.Text = inicial.inicial_actividades.ToString();
+                            txt_act22.Text = inicial.inicial_actividades2.ToString();
+                            txt_act23.Text = inicial.inicial_actividades3.ToString();
+                            txt_act24.Text = inicial.inicial_actividades4.ToString();
 
                             //G
                             txt_descrextralaborales.Text = inicial.inicial_descripActExtLab.ToString();
@@ -3757,18 +3765,18 @@ namespace SistemaECU911.Template.Views
                 txt_vivosHijosAntReproMascu.MaxLength = 2;
                 txt_muertosHijosAntReproMascu.MaxLength = 2;
                 txt_tiempoExaRealiEcoProstaAntReproMascu.MaxLength = 2;
-                txt_tiemConConsuNociTabaHabToxi.MaxLength = 2;
-                txt_tiemAbstiConsuNociTabaHabToxi.MaxLength = 2;
-                txt_tiemConConsuNociAlcoHabToxi.MaxLength = 2;
-                txt_tiemAbstiConsuNociAlcoHabToxi.MaxLength = 2;
-                txt_tiemCon1ConsuNociOtrasDroHabToxi.MaxLength = 2;
-                txt_tiemAbsti1ConsuNociOtrasDroHabToxi.MaxLength = 2;
-                txt_tiemCon2ConsuNociOtrasDroHabToxi.MaxLength = 2;
-                txt_tiemAbsti2ConsuNociOtrasDroHabToxi.MaxLength = 2;
-                txt_tiempotrabajo.MaxLength = 2;
-                txt_tiempotrabajo2.MaxLength = 2;
-                txt_tiempotrabajo3.MaxLength = 2;
-                txt_tiempotrabajo4.MaxLength = 2;
+                txt_tiemConConsuNociTabaHabToxi.MaxLength = 3;
+                txt_tiemAbstiConsuNociTabaHabToxi.MaxLength = 3;
+                txt_tiemConConsuNociAlcoHabToxi.MaxLength = 3;
+                txt_tiemAbstiConsuNociAlcoHabToxi.MaxLength = 3;
+                txt_tiemCon1ConsuNociOtrasDroHabToxi.MaxLength = 3;
+                txt_tiemAbsti1ConsuNociOtrasDroHabToxi.MaxLength = 3;
+                txt_tiemCon2ConsuNociOtrasDroHabToxi.MaxLength = 3;
+                txt_tiemAbsti2ConsuNociOtrasDroHabToxi.MaxLength = 3;
+                txt_tiempotrabajo.MaxLength = 3;
+                txt_tiempotrabajo2.MaxLength = 3;
+                txt_tiempotrabajo3.MaxLength = 3;
+                txt_tiempotrabajo4.MaxLength = 3;
 
                 Timer1.Enabled = false;
                 cargarProfesional();
@@ -5655,6 +5663,10 @@ namespace SistemaECU911.Template.Views
                 inicial.inicial_otrosBioTxt = txt_otrosBio.Text.ToUpper();
                 inicial.inicial_otrosErgtxt = txt_otrosErg.Text.ToUpper();
                 inicial.inicial_otrosPsiTxt = txt_otrosPsi.Text.ToUpper();
+                inicial.inicial_area = txt_puestodetrabajo21.Text.ToUpper();
+                inicial.inicial_area2 = txt_puestodetrabajo22.Text.ToUpper();
+                inicial.inicial_area3 = txt_puestodetrabajo23.Text.ToUpper();
+                inicial.inicial_area4 = txt_puestodetrabajo24.Text.ToUpper();
 
                 //G
                 inicial.inicial_descripActExtLab = txt_descrextralaborales.Text.ToUpper();
@@ -8866,6 +8878,10 @@ namespace SistemaECU911.Template.Views
                 inicial.inicial_otrosBioTxt = txt_otrosBio.Text.ToUpper();
                 inicial.inicial_otrosErgtxt = txt_otrosErg.Text.ToUpper();
                 inicial.inicial_otrosPsiTxt = txt_otrosPsi.Text.ToUpper();
+                inicial.inicial_area = txt_puestodetrabajo21.Text.ToUpper();
+                inicial.inicial_area2 = txt_puestodetrabajo22.Text.ToUpper();
+                inicial.inicial_area3 = txt_puestodetrabajo23.Text.ToUpper();
+                inicial.inicial_area4 = txt_puestodetrabajo24.Text.ToUpper();
 
                 //G
                 inicial.inicial_descripActExtLab = txt_descrextralaborales.Text.ToUpper();
@@ -10412,6 +10428,8 @@ namespace SistemaECU911.Template.Views
             var tblaeaDatos = new PdfPTable(new float[] { 40f, 40f, 70f, 30f, 10f, 10f, 10f, 10f, 10f, 10f, 70f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblaeaDatos.AddCell(new PdfPCell(new Paragraph(txt_empresa.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblaeaDatos.AddCell(new PdfPCell(new Paragraph(txt_puestotrabajo.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
+            tblaeaDatos.AddCell(new PdfPCell(new Paragraph(txt_descrorganosysistemas.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
+            
             tblaeaDatos.AddCell(new PdfPCell(new Paragraph(txt_actdesempeña.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblaeaDatos.AddCell(new PdfPCell(new Paragraph(txt_tiempotrabajo.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             if (ckb_fisico.Checked == true)
@@ -13352,6 +13370,7 @@ namespace SistemaECU911.Template.Views
             tblegTitulo.AddCell(new PdfPCell(new Paragraph("FECHA", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER });
             tblegTitulo.AddCell(new PdfPCell(new Paragraph("RESULTADO", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER });
             pdfDoc.Add(tblegTitulo);
+
             var tblegDatos = new PdfPTable(new float[] { 40f, 20f, 60f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblegDatos.AddCell(new PdfPCell(new Paragraph(txt_examen.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblegDatos.AddCell(new PdfPCell(new Paragraph(txt_fechaexamen.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
@@ -13362,6 +13381,16 @@ namespace SistemaECU911.Template.Views
             tblegDatos1.AddCell(new PdfPCell(new Paragraph(txt_fechaexamen2.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblegDatos1.AddCell(new PdfPCell(new Paragraph(txt_resultadoexamen2.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             pdfDoc.Add(tblegDatos1);
+            var tblegDatos3 = new PdfPTable(new float[] { 40f, 20f, 60f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            tblegDatos3.AddCell(new PdfPCell(new Paragraph(txt_examen3.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
+            tblegDatos3.AddCell(new PdfPCell(new Paragraph(txt_fechaexamen3.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
+            tblegDatos3.AddCell(new PdfPCell(new Paragraph(txt_resultadoexamen3.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
+            pdfDoc.Add(tblegDatos3);
+            var tblegDatos4 = new PdfPTable(new float[] { 40f, 20f, 60f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
+            tblegDatos4.AddCell(new PdfPCell(new Paragraph(txt_examen4.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
+            tblegDatos4.AddCell(new PdfPCell(new Paragraph(txt_fechaexamen4.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
+            tblegDatos4.AddCell(new PdfPCell(new Paragraph(txt_resultadoexamen4.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
+            pdfDoc.Add(tblegDatos4);
             var tblegDatos2 = new PdfPTable(new float[] { 70f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblegDatos2.AddCell(new PdfPCell(new Paragraph(txt_observacionexamen.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblegDatos2);

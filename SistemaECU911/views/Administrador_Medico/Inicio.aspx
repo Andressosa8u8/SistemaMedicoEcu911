@@ -77,31 +77,31 @@
 
                 <div class="col-md-4">
                     <div class="list-group justify-content-end">
-                        <a href="#" class="list-group-item list-group-item-action">
+                        <a class="list-group-item list-group-item-action">
                             <asp:Label ID="lbl_sinAntecedente" runat="server"></asp:Label>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-primary">
+                        <a class="list-group-item list-group-item-action list-group-item-primary">
                             <asp:Label ID="lbl_cardioVascular" runat="server"></asp:Label>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">
+                        <a class="list-group-item list-group-item-action list-group-item-secondary">
                             <asp:Label ID="lbl_metabolica" runat="server"></asp:Label>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+                        <a class="list-group-item list-group-item-action list-group-item-success">
                             <asp:Label ID="lbl_neurologia" runat="server"></asp:Label>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-danger">
+                        <a class="list-group-item list-group-item-action list-group-item-danger">
                             <asp:Label ID="lbl_oncologica" runat="server"></asp:Label>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-warning">
+                        <a class="list-group-item list-group-item-action list-group-item-warning">
                             <asp:Label ID="lbl_infecciosa" runat="server"></asp:Label>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-info">
+                        <a class="list-group-item list-group-item-action list-group-item-info">
                             <asp:Label ID="lbl_herediCongonita" runat="server"></asp:Label>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-light">
+                        <a class="list-group-item list-group-item-action list-group-item-light">
                             <asp:Label ID="lbl_discapacidad" runat="server"></asp:Label>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-dark">
+                        <a class="list-group-item list-group-item-action list-group-item-dark">
                             <asp:Label ID="lbl_otros" runat="server"></asp:Label>
                         </a>
                     </div>

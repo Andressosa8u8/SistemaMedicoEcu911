@@ -2479,6 +2479,15 @@ namespace SistemaECU911.Template.Views
                             txt_otrosErg.Text = perio.perio_otrosErgTxt.ToString();
                             txt_otrosPsi.Text = perio.perio_otrosPsiTxt.ToString();
 
+                            txt_puestotrabajo21.Text = perio.perio_area.ToString();
+                            txt_puestotrabajo22.Text = perio.perio_area2.ToString();
+                            txt_puestotrabajo23.Text = perio.perio_area3.ToString();
+
+                            //txt_act21.Text = inicial.inicial_actividades.ToString();
+                            //txt_act22.Text = inicial.inicial_actividades2.ToString();
+                            //txt_act23.Text = inicial.inicial_actividades3.ToString();
+                            //txt_act24.Text = inicial.inicial_actividades4.ToString();
+
                             //F
                             txt_enfermedadactualperiodica.Text = perio.perio_descripEnfActual.ToString();
 
@@ -2544,20 +2553,20 @@ namespace SistemaECU911.Template.Views
                     }
                 }
                 txt_numHClinica.MaxLength = 10;
-                txt_tiemConConsuNociTabaHabToxi.MaxLength = 2;
-                txt_tiemAbstiConsuNociTabaHabToxi.MaxLength = 2;
-                txt_tiemConConsuNociAlcoHabToxi.MaxLength = 2;
-                txt_tiemAbstiConsuNociAlcoHabToxi.MaxLength = 2;
-                txt_tiemCon1ConsuNociOtrasDroHabToxi.MaxLength = 2;
-                txt_tiemAbsti1ConsuNociOtrasDroHabToxi.MaxLength = 2;
-                txt_tiemCon2ConsuNociOtrasDroHabToxi.MaxLength = 2;
-                txt_tiemAbsti2ConsuNociOtrasDroHabToxi.MaxLength = 2;
-                txt_tiempotrabajo.MaxLength = 2;
-                txt_tiempotrabajo2.MaxLength = 2;
-                txt_tiempotrabajo3.MaxLength = 2;
-                txt_tiempotrabajo21.MaxLength = 2;
-                txt_tiempotrabajo22.MaxLength = 2;
-                txt_tiempotrabajo23.MaxLength = 2;
+                txt_tiemConConsuNociTabaHabToxi.MaxLength = 3;
+                txt_tiemAbstiConsuNociTabaHabToxi.MaxLength = 3;
+                txt_tiemConConsuNociAlcoHabToxi.MaxLength = 3;
+                txt_tiemAbstiConsuNociAlcoHabToxi.MaxLength = 3;
+                txt_tiemCon1ConsuNociOtrasDroHabToxi.MaxLength = 3;
+                txt_tiemAbsti1ConsuNociOtrasDroHabToxi.MaxLength = 3;
+                txt_tiemCon2ConsuNociOtrasDroHabToxi.MaxLength = 3;
+                txt_tiemAbsti2ConsuNociOtrasDroHabToxi.MaxLength = 3;
+                txt_tiempotrabajo.MaxLength = 3;
+                txt_tiempotrabajo2.MaxLength = 3;
+                txt_tiempotrabajo3.MaxLength = 3;
+                txt_tiempotrabajo21.MaxLength = 3;
+                txt_tiempotrabajo22.MaxLength = 3;
+                txt_tiempotrabajo23.MaxLength = 3;
 
                 Timer1.Enabled = false;
                 cargarProfesional();
@@ -6150,6 +6159,9 @@ namespace SistemaECU911.Template.Views
                 perio.perio_otrosBioTxt = txt_otrosBio.Text.ToUpper();
                 perio.perio_otrosErgTxt = txt_otrosErg.Text.ToUpper();
                 perio.perio_otrosPsiTxt = txt_otrosPsi.Text.ToUpper();
+                perio.perio_area = txt_puestotrabajo21.Text.ToUpper();
+                perio.perio_area2 = txt_puestotrabajo22.Text.ToUpper();
+                perio.perio_area3 = txt_puestotrabajo23.Text.ToUpper();
 
                 //F.
                 perio.perio_descripEnfActual = txt_enfermedadactualperiodica.Text.ToUpper();

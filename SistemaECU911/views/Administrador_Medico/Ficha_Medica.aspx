@@ -604,12 +604,12 @@
                                     <%--<asp:RequiredFieldValidator ID="rfv_profesional" runat="server" ForeColor="Red" InitialValue="0" ControlToValidate="ddl_especialidad" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>--%>
                                 </asp:TableCell>
                                 <asp:TableCell Style="width: 400px; background-color: white; font-size: 14px">
-                                    <asp:DropDownList ID="ddl_profesional" CssClass="form-check" Style="width: 100%; text-transform: uppercase; border: none; background-color: transparent" onchange="borrarMensaje();" runat="server"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddl_profesional" AutoPostBack="true" OnTextChanged="ddl_profesional_TextChanged" CssClass="form-check" Style="width: 100%; text-transform: uppercase; border: none; background-color: transparent" onchange="borrarMensaje();" runat="server"></asp:DropDownList>
                                     <asp:Label ID="lbl_profesional" ForeColor="Red" runat="server"></asp:Label>
                                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" InitialValue="0" ControlToValidate="ddl_profesional" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>--%>
                                 </asp:TableCell>
                                 <asp:TableCell Style="width: 200px; background-color: white; font-size: 14px">
-                                    <asp:TextBox ID="txt_codigo" runat="server" BorderStyle="None" Style="width: 100%; text-transform: uppercase; text-align: center"></asp:TextBox>
+                                    <asp:TextBox ID="txt_codigo" AutoPostBack="true" Enabled="false" runat="server" BorderStyle="None" Style="width: 100%; text-transform: uppercase; text-align: center"></asp:TextBox>
                                 </asp:TableCell>
                                 <asp:TableCell Style="width: 150px; background-color: white; font-size: 14px"></asp:TableCell>
                             </asp:TableRow>
