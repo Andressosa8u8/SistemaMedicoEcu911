@@ -68,6 +68,19 @@ namespace SistemaECU911.Template.Views
                 CargarCentros();
                 Validaciones();
                 ddl_estado.Text = "A";
+                txt_priNombre.Enabled = false;
+                txt_priApellido.Enabled = false;
+                txt_segNombre.Enabled = false;
+                txt_segApellido.Enabled = false;
+                txt_fechaNacimiento.Enabled = false;
+                ddl_genero.Enabled = false;
+                ddl_zonal.Enabled = false;
+                ddl_centro.Enabled = false;
+                txt_fechaIngresoTrabajo.Enabled = false;
+                ddl_puestoTrabajo.Enabled = false;
+                ddl_cargo.Enabled = false;
+                ddl_area.Enabled = false;
+                ddl_estado.Enabled = false;
             }
         }
 
@@ -233,6 +246,59 @@ namespace SistemaECU911.Template.Views
             stream = md5.ComputeHash(encoding.GetBytes(str));
             for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
             return sb.ToString();
+        }
+
+        protected void txt_cedula_TextChanged(object sender, EventArgs e)
+        {
+            ExisteCedula();
+        }
+
+        private void ExisteCedula()
+        {
+
+            string cedula = txt_cedula.Text;
+
+            var query = from c in dc.Tbl_Person
+                        where c.Per_cedula == cedula
+                        select c;
+            if (query.Any())
+            {
+                lbl_cedula.Text = "El paciente ya existe !!!";
+                lbl_cedula.Enabled = true;
+                txt_priNombre.Enabled = false;
+                txt_priApellido.Enabled = false;
+                txt_segNombre.Enabled = false;
+                txt_segApellido.Enabled = false;
+                txt_fechaNacimiento.Enabled = false;
+                ddl_genero.Enabled = false;
+                ddl_zonal.Enabled = false;
+                ddl_centro.Enabled = false;
+                txt_fechaIngresoTrabajo.Enabled = false;
+                ddl_puestoTrabajo.Enabled = false;
+                ddl_cargo.Enabled = false;
+                ddl_area.Enabled = false;
+                ddl_estado.Enabled = false;
+                txt_priNombre.Text = txt_priApellido.Text = txt_segNombre.Text = txt_segApellido.Text = txt_fechaNacimiento.Text = txt_fechaIngresoTrabajo.Text = string.Empty;
+                ddl_genero.Text = ddl_zonal.Text = ddl_centro.Text = ddl_puestoTrabajo.Text = ddl_cargo.Text = ddl_area.Text = ddl_estado.Text = default(string);
+            }
+            else
+            {
+                lbl_cedula.Text = "";
+                lbl_cedula.Enabled = false;
+                txt_priNombre.Enabled = true;
+                txt_priApellido.Enabled = true;
+                txt_segNombre.Enabled = true;
+                txt_segApellido.Enabled = true;
+                txt_fechaNacimiento.Enabled = true;
+                ddl_genero.Enabled = true;
+                ddl_zonal.Enabled = true;
+                ddl_centro.Enabled = true;
+                txt_fechaIngresoTrabajo.Enabled = true;
+                ddl_puestoTrabajo.Enabled = true;
+                ddl_cargo.Enabled = true;
+                ddl_area.Enabled = true;
+                ddl_estado.Enabled = true;
+            }
         }
     }
 }

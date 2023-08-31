@@ -194,7 +194,7 @@ namespace SistemaECU911.Template.Views
                         }
 
                         txt_nomEmpresa.Text = emp.Emp_nombre.ToString();
-                        //txt_rucEmp.Text = cen.cent_ruc.ToString();
+                        txt_rucEmp.Text = per.Tbl_Centro.cent_ruc.ToString();
                         txt_priNombre.Text = per.Per_priNombre.ToString();
                         txt_segNombre.Text = per.Per_segNombre.ToString();
                         txt_priApellido.Text = per.Per_priApellido.ToString();
@@ -810,7 +810,7 @@ namespace SistemaECU911.Template.Views
 
             pdfDoc.Open();
             //IMAGEN ENCABEZADO
-            string imageURL = Server.MapPath("../Template Principal/images") + "/ecu911.jpg";
+            string imageURL = Server.MapPath("../../resources/images") + "/ic1.png";
             iTextSharp.text.Image fotologo = iTextSharp.text.Image.GetInstance(imageURL);
             fotologo.ScalePercent(30f);
 

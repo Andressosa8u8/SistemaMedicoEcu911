@@ -41,8 +41,9 @@
                 <div class="row">
                     <div class="col-md-2">
                         <label class="form-label">CEDULA</label>
-                        <asp:TextBox class="form-control" runat="server" ID="txt_cedula" Style="width: 100%; background-color: transparent; text-transform: uppercase"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" ControlToValidate="txt_cedula" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
+                        <asp:TextBox class="form-control" runat="server" AutoPostBack="true" OnTextChanged="txt_cedula_TextChanged" ID="txt_cedula" Style="width: 100%; background-color: transparent; text-transform: uppercase"></asp:TextBox>
+                        <asp:Label ID="lbl_cedula" ForeColor="Red" runat="server"></asp:Label>
+                        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" ControlToValidate="txt_cedula" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>--%>
                     </div>
                     <div class="col-md-2">
                         <label class="form-label">FECHA DE NACIMIENTO</label>
