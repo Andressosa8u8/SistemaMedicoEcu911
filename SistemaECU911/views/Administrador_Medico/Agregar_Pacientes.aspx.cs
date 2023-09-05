@@ -60,7 +60,7 @@ namespace SistemaECU911.Template.Views
                         ddl_puestoTrabajo.Text = per.Per_puestoTrabajo.ToString();
                         ddl_cargo.Text = per.Per_cargoOcupacion.ToString();
                         ddl_area.Text = per.Per_areaTrabajo.ToString();
-                        ddl_estado.Text = per.Per_estado.ToString();
+                        ddl_estado.Text = per.Per_estado.ToString();//cambiar
                     }
                 }
                 Timer1.Enabled = false;
