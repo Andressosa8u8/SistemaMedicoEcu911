@@ -6,14 +6,6 @@
       <Column Name="dec10" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Tbl_TipoUsuario" Member="Tbl_TipoUsuario">
-    <Type Name="Tbl_TipoUsuario">
-      <Column Name="tusu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="tusu_nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="tusu_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
-      <Association Name="Tbl_TipoUsuario_Tbl_Person" Member="Tbl_Person" ThisKey="tusu_id" OtherKey="tusu_id" Type="Tbl_Person" />
-    </Type>
-  </Table>
   <Table Name="dbo.Tbl_Centro" Member="Tbl_Centro">
     <Type Name="Tbl_Centro">
       <Column Name="cent_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -1205,10 +1197,10 @@
       <Column Name="perio_noConsuNocivosTabaco" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_noConsuNocivosAlcohol" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="perio_noConsuNocivosOtrasDrogas" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="perio_tiempoConsuConsuNocivosTabaco" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="perio_tiempoConsuConsuNocivosAlcohol" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="perio_tiempoConsu1ConsuNocivosOtrasDrogas" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="perio_tiempoConsu2ConsuNocivosOtrasDrogas" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="perio_tiempoConsuConsuNocivosTabaco" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="perio_tiempoConsuConsuNocivosAlcohol" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="perio_tiempoConsu1ConsuNocivosOtrasDrogas" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="perio_tiempoConsu2ConsuNocivosOtrasDrogas" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
       <Column Name="perio_cantidadConsuNocivosTabaco" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
       <Column Name="perio_cantidadConsuNocivosAlcohol" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
       <Column Name="perio_cantidad1ConsuNocivosOtrasDrogas" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
@@ -2120,6 +2112,14 @@
       <Column Name="Socio_economico__estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Empresa_Tbl_SocioEconomico" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
       <Association Name="Tbl_Person_Tbl_SocioEconomico" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_TipoUsuario" Member="Tbl_TipoUsuario">
+    <Type Name="Tbl_TipoUsuario">
+      <Column Name="tusu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tusu_nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="tusu_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Association Name="Tbl_TipoUsuario_Tbl_Person" Member="Tbl_Person" ThisKey="tusu_id" OtherKey="tusu_id" Type="Tbl_Person" />
     </Type>
   </Table>
   <Function Name="dbo.AutentificarxUsuario" Method="AutentificarxUsuario">

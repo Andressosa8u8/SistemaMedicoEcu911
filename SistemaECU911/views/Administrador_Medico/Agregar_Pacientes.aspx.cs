@@ -68,19 +68,6 @@ namespace SistemaECU911.Template.Views
                 CargarCentros();
                 Validaciones();
                 ddl_estado.Text = "A";
-                txt_priNombre.Enabled = false;
-                txt_priApellido.Enabled = false;
-                txt_segNombre.Enabled = false;
-                txt_segApellido.Enabled = false;
-                txt_fechaNacimiento.Enabled = false;
-                ddl_genero.Enabled = false;
-                ddl_zonal.Enabled = false;
-                ddl_centro.Enabled = false;
-                txt_fechaIngresoTrabajo.Enabled = false;
-                ddl_puestoTrabajo.Enabled = false;
-                ddl_cargo.Enabled = false;
-                ddl_area.Enabled = false;
-                ddl_estado.Enabled = false;
             }
         }
 
