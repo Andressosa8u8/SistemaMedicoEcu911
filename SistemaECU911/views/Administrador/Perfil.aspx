@@ -74,6 +74,7 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
+
     <script type="text/javascript">
         function showPreviewImage() {
             var fileInput = document.getElementById('<%= FileUploadProfilePic.ClientID %>');
@@ -91,4 +92,5 @@
             }
         }
     </script>
+
 </asp:Content>
