@@ -3487,7 +3487,7 @@ namespace SistemaECU911.Template.Views
                         }
 
                         txt_nomEmpresa.Text = emp.Emp_nombre.ToString();
-                        //txt_rucEmp.Text = cen.cent_ruc.ToString();+++++++
+                        txt_rucEmp.Text = per.Tbl_Centro.cent_ruc.ToString();
                         txt_numHClinica.Text = per.Per_cedula.ToString();
                         txt_priNombre.Text = per.Per_priNombre.ToString();
                         txt_segNombre.Text = per.Per_segNombre.ToString();

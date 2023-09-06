@@ -50,7 +50,7 @@ namespace SistemaECU911.Template.Views
 
                         //A
                         txt_nomEmpresa.Text = emp.Emp_nombre.ToString();
-                        txt_rucEmp.Text = cen.cent_ruc.ToString();
+                        txt_rucEmp.Text = per.Tbl_Centro.cent_ruc.ToString();
                         txt_priNombre.Text = per.Per_priNombre.ToString();
                         txt_segNombre.Text = per.Per_segNombre.ToString();
                         txt_priApellido.Text = per.Per_priApellido.ToString();
@@ -294,7 +294,7 @@ namespace SistemaECU911.Template.Views
                             txt_1esqueCompleInmuAcuerTipoEmpRies2.Text = inmu.inmu_1esqueCompleInmuAcuerTipoEmpRies2.ToString();
                             txt_1nomCompleResponVacuInmuAcuerTipoEmpRies2.Text = inmu.inmu_1nomCompleResponVacuInmuAcuerTipoEmpRies2.ToString();
                             txt_1estaSaludColocoVacuInmuAcuerTipoEmpRies2.Text = inmu.inmu_1estaSaludColocoVacuInmuAcuerTipoEmpRies2.ToString();
-                            txt_1observaInmuAcuerTipoEmpRies1.Text = inmu.inmu_1observaInmuAcuerTipoEmpRies2.ToString();
+                            txt_1observaInmuAcuerTipoEmpRies2.Text = inmu.inmu_1observaInmuAcuerTipoEmpRies2.ToString();
                             if (inmu.inmu_1fechaInmuAcuerTipoEmpRies3 == "")
                             {
                                 txt_1fechaInmuAcuerTipoEmpRies3.Text = inmu.inmu_1fechaInmuAcuerTipoEmpRies3.ToString();
@@ -362,7 +362,7 @@ namespace SistemaECU911.Template.Views
                             txt_2esqueCompleInmuAcuerTipoEmpRies2.Text = inmu.inmu_2esqueCompleInmuAcuerTipoEmpRies2.ToString();
                             txt_2nomCompleResponVacuInmuAcuerTipoEmpRies2.Text = inmu.inmu_2nomCompleResponVacuInmuAcuerTipoEmpRies2.ToString();
                             txt_2estaSaludColocoVacuInmuAcuerTipoEmpRies2.Text = inmu.inmu_2estaSaludColocoVacuInmuAcuerTipoEmpRies2.ToString();
-                            txt_2observaInmuAcuerTipoEmpRies1.Text = inmu.inmu_2observaInmuAcuerTipoEmpRies2.ToString();
+                            txt_2observaInmuAcuerTipoEmpRies2.Text = inmu.inmu_2observaInmuAcuerTipoEmpRies2.ToString();
                             if (inmu.inmu_2fechaInmuAcuerTipoEmpRies3 == "")
                             {
                                 txt_2fechaInmuAcuerTipoEmpRies3.Text = inmu.inmu_2fechaInmuAcuerTipoEmpRies3.ToString();
@@ -430,7 +430,7 @@ namespace SistemaECU911.Template.Views
                             txt_3esqueCompleInmuAcuerTipoEmpRies2.Text = inmu.inmu_3esqueCompleInmuAcuerTipoEmpRies2.ToString();
                             txt_3nomCompleResponVacuInmuAcuerTipoEmpRies2.Text = inmu.inmu_3nomCompleResponVacuInmuAcuerTipoEmpRies2.ToString();
                             txt_3estaSaludColocoVacuInmuAcuerTipoEmpRies2.Text = inmu.inmu_3estaSaludColocoVacuInmuAcuerTipoEmpRies2.ToString();
-                            txt_3observaInmuAcuerTipoEmpRies1.Text = inmu.inmu_3observaInmuAcuerTipoEmpRies2.ToString();
+                            txt_3observaInmuAcuerTipoEmpRies2.Text = inmu.inmu_3observaInmuAcuerTipoEmpRies2.ToString();
                             if (inmu.inmu_3fechaInmuAcuerTipoEmpRies3 == "")
                             {
                                 txt_3fechaInmuAcuerTipoEmpRies3.Text = inmu.inmu_3fechaInmuAcuerTipoEmpRies3.ToString();
@@ -498,7 +498,7 @@ namespace SistemaECU911.Template.Views
                             txt_4esqueCompleInmuAcuerTipoEmpRies2.Text = inmu.inmu_4esqueCompleInmuAcuerTipoEmpRies2.ToString();
                             txt_4nomCompleResponVacuInmuAcuerTipoEmpRies2.Text = inmu.inmu_4nomCompleResponVacuInmuAcuerTipoEmpRies2.ToString();
                             txt_4estaSaludColocoVacuInmuAcuerTipoEmpRies2.Text = inmu.inmu_4estaSaludColocoVacuInmuAcuerTipoEmpRies2.ToString();
-                            txt_4observaInmuAcuerTipoEmpRies1.Text = inmu.inmu_4observaInmuAcuerTipoEmpRies2.ToString();
+                            txt_4observaInmuAcuerTipoEmpRies2.Text = inmu.inmu_4observaInmuAcuerTipoEmpRies2.ToString();
                             if (inmu.inmu_4fechaInmuAcuerTipoEmpRies3 == "")
                             {
                                 txt_4fechaInmuAcuerTipoEmpRies3.Text = inmu.inmu_4fechaInmuAcuerTipoEmpRies3.ToString();
@@ -1237,9 +1237,9 @@ namespace SistemaECU911.Template.Views
 
             pdfDoc.Open();
             //IMAGEN ENCABEZADO
-            string imageURL = Server.MapPath("../Template Principal/images") + "/ecu911.jpg";
+            string imageURL = Server.MapPath("../../resources/images") + "/ic1.png";
             iTextSharp.text.Image fotologo = iTextSharp.text.Image.GetInstance(imageURL);
-            fotologo.ScalePercent(30f);
+            fotologo.ScalePercent(30f);  
 
             //ENCABEZADO
             var tblEncabezado = new PdfPTable(new float[] { 100f, 200f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
@@ -1407,7 +1407,7 @@ namespace SistemaECU911.Template.Views
             tblieDatos.AddCell(new PdfPCell(new Paragraph(txt_esqueCompleInfluenza.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblieDatos.AddCell(new PdfPCell(new Paragraph(txt_nomCompleResponVacuInfluenza.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblieDatos.AddCell(new PdfPCell(new Paragraph(txt_estaSaludColocoVacuInfluenza.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
-            tblieDatos.AddCell(new PdfPCell(new Paragraph(txt_observaInfluenza.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            tblieDatos.AddCell(new PdfPCell(new Paragraph(txt_observaInfluenza.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             pdfDoc.Add(tblieDatos);
             var tblfaDatos = new PdfPTable(new float[] { 30f, 20f, 20f, 20f, 30f, 40f, 50f, 80f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblfaDatos.AddCell(new PdfPCell(new Paragraph("FIEBRE AMARILLA", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(204, 255, 255), HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE, Rowspan = 5 });
@@ -1435,7 +1435,7 @@ namespace SistemaECU911.Template.Views
             tblsrDatos.AddCell(new PdfPCell(new Paragraph(txt_esqueCompleSarampion2.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblsrDatos.AddCell(new PdfPCell(new Paragraph(txt_nomCompleResponVacuSarampion2.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             tblsrDatos.AddCell(new PdfPCell(new Paragraph(txt_estaSaludColocoVacuSarampion2.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
-            tblsrDatos.AddCell(new PdfPCell(new Paragraph(txt_observaHepatitisB2.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
+            tblsrDatos.AddCell(new PdfPCell(new Paragraph(txt_observaSarampion2.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
             pdfDoc.Add(tblsrDatos);
             var tblerDatos = new PdfPTable(new float[] { 100f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblerDatos.AddCell(new PdfPCell(new Paragraph("INMUNIZACIONES DE ACUERDO AL TIPO DE EMPRESA Y RIESGO", cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_LEFT });
