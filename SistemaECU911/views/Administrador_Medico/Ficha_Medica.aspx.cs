@@ -202,7 +202,7 @@ namespace SistemaECU911.Template.Views
             {
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["conexion"].ToString());
                 con.Open();
-                SqlCommand cmd = new SqlCommand("select top(10) Per_cedula from Tbl_Person where Per_cedula LIKE + @Cedula + '%'", con);
+                SqlCommand cmd = new SqlCommand("select top(10) Per_cedula from Tbl_Person where Per_cedula LIKE + @Cedula + '%' and Per_estado = 'AP'", con);
                 cmd.Parameters.AddWithValue("@Cedula", prefixText);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
 
@@ -237,7 +237,7 @@ namespace SistemaECU911.Template.Views
             {
                 var lista = from c in dc.Tbl_Person
                             join e in dc.Tbl_Empresa on c.Emp_id equals e.Emp_id
-                            where c.Per_cedula == cedula
+                            where c.Per_cedula == cedula && c.Per_estado == "AP"
                             select new
                             {
                                 e.Emp_nombre,
@@ -249,33 +249,46 @@ namespace SistemaECU911.Template.Views
                                 c.Per_fechaNacimiento
                             };
 
-                foreach (var item in lista)
+                if (lista.Any())
                 {
-                    string nomEmpresa = item.Emp_nombre;
-                    txt_nomEmpresa.Text = nomEmpresa;
+                    foreach (var item in lista)
+                    {
+                        string nomEmpresa = item.Emp_nombre;
+                        txt_nomEmpresa.Text = nomEmpresa;
 
-                    string priNombre = item.Per_priNombre;
-                    txt_priNombre.Text = priNombre;
+                        string priNombre = item.Per_priNombre;
+                        txt_priNombre.Text = priNombre;
 
-                    string segNombre = item.Per_segNombre;
-                    txt_segNombre.Text = segNombre;
+                        string segNombre = item.Per_segNombre;
+                        txt_segNombre.Text = segNombre;
 
-                    string priApellido = item.Per_priApellido;
-                    txt_priApellido.Text = priApellido;
+                        string priApellido = item.Per_priApellido;
+                        txt_priApellido.Text = priApellido;
 
-                    string segApellido = item.Per_segApellido;
-                    txt_segApellido.Text = segApellido;
+                        string segApellido = item.Per_segApellido;
+                        txt_segApellido.Text = segApellido;
 
-                    string sexo = item.Per_genero;
-                    txt_sexo.Text = sexo;
+                        string sexo = item.Per_genero;
+                        txt_sexo.Text = sexo;
 
-                    DateTime edad = Convert.ToDateTime(item.Per_fechaNacimiento);
-                    DateTime naci = Convert.ToDateTime(edad);
+                        DateTime edad = Convert.ToDateTime(item.Per_fechaNacimiento);
+                        DateTime naci = Convert.ToDateTime(edad);
 
-                    DateTime actual = DateTime.Now;
-                    Calculo(naci, actual);
-
+                        DateTime actual = DateTime.Now;
+                        Calculo(naci, actual);
+                    }
                 }
+                else
+                {
+                    txt_nomEmpresa.Text = string.Empty;
+                    txt_priNombre.Text = string.Empty;
+                    txt_segNombre.Text = string.Empty;
+                    txt_segNombre.Text = string.Empty;
+                    txt_priApellido.Text = string.Empty;
+                    txt_segApellido.Text = string.Empty;
+                    txt_sexo.Text = string.Empty;
+                    txt_edad.Text = string.Empty;
+                }                
             }
             else
             {

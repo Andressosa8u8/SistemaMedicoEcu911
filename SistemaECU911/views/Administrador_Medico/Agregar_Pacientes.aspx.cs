@@ -13,7 +13,6 @@ namespace SistemaECU911.Template.Views
 {
     public partial class Personas : System.Web.UI.Page
     {
-
         private readonly DataClassesECU911DataContext dc = new DataClassesECU911DataContext();
 
         private Tbl_Person per = new Tbl_Person();
@@ -63,17 +62,28 @@ namespace SistemaECU911.Template.Views
                         ddl_estado.Text = per.Per_estado.ToString();//cambiar
                     }
                 }
+                else
+                {
+                    txt_priNombre.Enabled = false;
+                    txt_segNombre.Enabled = false;
+                    txt_priApellido.Enabled = false;
+                    txt_segApellido.Enabled = false;
+                    txt_fechaNacimiento.Enabled = false;
+                    ddl_genero.Enabled = false;
+                    ddl_zonal.Enabled = false;
+                    ddl_centro.Enabled = false;
+                    txt_fechaIngresoTrabajo.Enabled = false;
+                    ddl_puestoTrabajo.Enabled = false;
+                    ddl_cargo.Enabled = false;
+                    ddl_area.Enabled = false;
+                    ddl_estado.Enabled = false;
+                }
+
                 Timer1.Enabled = false;
                 CargarZonales();
                 CargarCentros();
-                Validaciones();
-                ddl_estado.Text = "A";
+                ddl_estado.Text = "AP";                
             }
-        }
-
-        private void Validaciones()
-        {
-            ddl_estado.Text = "ACTIVO";
         }
 
         private void GuardarPersona()
@@ -151,11 +161,7 @@ namespace SistemaECU911.Template.Views
                 per.Per_areaTrabajo = ddl_area.Text.ToUpper();
                 per.Per_estado = ddl_estado.SelectedValue;
 
-                //Datos Update Tbl_Usuarios
-                per.Per_estado = ddl_estado.SelectedValue;
-
                 CN_Personas.ModificarPersona(per);
-                //CN_Usuarios.ModificarUsuarios(usu);
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Exito!', 'Datos Modificados Exitosamente', 'success')", true);
                 Timer1.Enabled = true;

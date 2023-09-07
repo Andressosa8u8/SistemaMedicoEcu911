@@ -14,6 +14,7 @@ namespace SistemaECU911.views.Administrador_Medico
         private readonly DataClassesECU911DataContext dc = new DataClassesECU911DataContext();
 
         private Tbl_Profesional pro = new Tbl_Profesional();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -45,7 +46,7 @@ namespace SistemaECU911.views.Administrador_Medico
                 ddl_estado.Text = "A";
                 cargarEspecialidad();
                 txt_cedula.MaxLength = 10;
-                lbl_cedula.Enabled = false;
+
                 txt_Nombre.Enabled = false;
                 ddl_especialidad.Enabled = false;
                 ddl_estado.Enabled = false;

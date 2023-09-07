@@ -15,6 +15,14 @@
             <div class="container" style="background-color: white">
                 <br />
                 <div class="row">
+                    <div class="col-md-2">
+                        <label class="form-label">CEDULA</label>
+                        <asp:TextBox class="form-control" runat="server" AutoPostBack="true" OnTextChanged="txt_cedula_TextChanged" ID="txt_cedula" Style="width: 100%; background-color: transparent; text-transform: uppercase"></asp:TextBox>
+                        <asp:Label ID="lbl_cedula" ForeColor="Red" runat="server"></asp:Label>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
                     <div class="col-md-6">
                         <label class="form-label">PRIMER NOMBRE</label>
                         <asp:TextBox class="form-control" runat="server" ID="txt_priNombre" Style="width: 100%; background-color: transparent; text-transform: uppercase"></asp:TextBox>
@@ -38,19 +46,13 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ForeColor="Red" ControlToValidate="txt_segApellido" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-2">
-                        <label class="form-label">CEDULA</label>
-                        <asp:TextBox class="form-control" runat="server" AutoPostBack="true" OnTextChanged="txt_cedula_TextChanged" ID="txt_cedula" Style="width: 100%; background-color: transparent; text-transform: uppercase"></asp:TextBox>
-                        <asp:Label ID="lbl_cedula" ForeColor="Red" runat="server"></asp:Label>
-                        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" ControlToValidate="txt_cedula" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>--%>
-                    </div>
-                    <div class="col-md-2">
+                <div class="row">         
+                    <div class="col-md-3">
                         <label class="form-label">FECHA DE NACIMIENTO</label>
                         <asp:TextBox class="form-control" runat="server" ID="txt_fechaNacimiento" Style="width: 100%; background-color: transparent; text-transform: uppercase" TextMode="Date"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ForeColor="Red" ControlToValidate="txt_fechaNacimiento" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-2">
                         <label class="form-label">GÉNERO</label>
                         <asp:DropDownList ID="ddl_genero" CssClass="form-control" Style="width: 100%; text-transform: uppercase; background-color: transparent; font-size: 14px" runat="server">
                             <asp:ListItem Value="0" Text="Seleccione...."></asp:ListItem>
@@ -319,8 +321,8 @@
                         <label class="form-label">ESTADO</label>
                         <asp:DropDownList ID="ddl_estado" CssClass="form-control" Style="width: 100%; text-transform: uppercase; background-color: transparent; font-size: 14px" runat="server">
                             <asp:ListItem Value="0" Text="SELECCIONE ......"></asp:ListItem>
-                            <asp:ListItem Value="A" Text="ACTIVO"></asp:ListItem>
-                            <asp:ListItem Value="I" Text="INACTIVO"></asp:ListItem>
+                            <asp:ListItem Value="AP" Text="ACTIVO"></asp:ListItem>
+                            <asp:ListItem Value="PP" Text="PASIVO"></asp:ListItem>
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ForeColor="Red" InitialValue="0" ControlToValidate="ddl_estado" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
                     </div>

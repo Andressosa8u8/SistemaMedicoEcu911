@@ -29,7 +29,7 @@ namespace SistemaECU911.Template.Views
         public void cantidadPacientes()
         {
             //cargar informacion cards
-            var querySocio = dc.Tbl_Person.Count(p => p.Per_estado == "IP");
+            var querySocio = dc.Tbl_Person.Count(p => p.Per_estado == "PP");
             totalInactivos.Text = querySocio.ToString();
             //pacientes activos
             var queryPaciente = dc.Tbl_Person.Count(pa => pa.Per_estado == "AP");

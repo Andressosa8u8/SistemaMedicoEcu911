@@ -676,7 +676,7 @@ namespace SistemaECU911.Template.Views
             {
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["conexion"].ToString());
                 con.Open();
-                SqlCommand cmd = new SqlCommand("select top(10) Per_cedula from Tbl_Person where Per_cedula LIKE + @Cedula + '%'", con);
+                SqlCommand cmd = new SqlCommand("select top(10) Per_cedula from Tbl_Person where Per_cedula LIKE + @Cedula + '%' and Per_estado = 'AP'", con);
                 cmd.Parameters.AddWithValue("@Cedula", prefixText);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
 
@@ -712,7 +712,7 @@ namespace SistemaECU911.Template.Views
                 var lista = from c in dc.Tbl_Person
                             join e in dc.Tbl_Empresa on c.Emp_id equals e.Emp_id
                             join ce in dc.Tbl_Centro on c.Emp_id equals ce.cent_id
-                            where c.Per_cedula == cedula
+                            where c.Per_cedula == cedula && c.Per_estado == "AP"
                             select new
                             {
                                 e.Emp_nombre,
@@ -728,32 +728,39 @@ namespace SistemaECU911.Template.Views
                                 c.Per_areaTrabajo
                             };
 
-                foreach (var item in lista)
+                if (lista.Any())
                 {
-                    string nomEmpresa = item.Emp_nombre;
-                    txt_nomEmpresa.Text = nomEmpresa;
+                    foreach (var item in lista)
+                    {
+                        string nomEmpresa = item.Emp_nombre;
+                        txt_nomEmpresa.Text = nomEmpresa;
 
-                    string rucEmpresa = item.cent_ruc;
-                    txt_rucEmp.Text = rucEmpresa;
+                        string rucEmpresa = item.cent_ruc;
+                        txt_rucEmp.Text = rucEmpresa;
 
-                    string priNombre = item.Per_priNombre;
-                    txt_priNombre.Text = priNombre;
+                        string priNombre = item.Per_priNombre;
+                        txt_priNombre.Text = priNombre;
 
-                    string segNombre = item.Per_segNombre;
-                    txt_segNombre.Text = segNombre;
+                        string segNombre = item.Per_segNombre;
+                        txt_segNombre.Text = segNombre;
 
-                    string priApellido = item.Per_priApellido;
-                    txt_priApellido.Text = priApellido;
+                        string priApellido = item.Per_priApellido;
+                        txt_priApellido.Text = priApellido;
 
-                    string segApellido = item.Per_segApellido;
-                    txt_segApellido.Text = segApellido;
+                        string segApellido = item.Per_segApellido;
+                        txt_segApellido.Text = segApellido;
 
-                    string sexo = item.Per_genero;
-                    txt_sexo.Text = sexo;
+                        string sexo = item.Per_genero;
+                        txt_sexo.Text = sexo;
 
-                    string puestoTrabajo = item.Per_puestoTrabajo;
-                    txt_puestoTrabajo.Text = puestoTrabajo;
+                        string puestoTrabajo = item.Per_puestoTrabajo;
+                        txt_puestoTrabajo.Text = puestoTrabajo;
+                    }
                 }
+                else
+                {
+                    txt_nomEmpresa.Text = txt_rucEmp.Text = txt_priNombre.Text = txt_segNombre.Text = txt_priApellido.Text = txt_segApellido.Text = txt_sexo.Text = txt_puestoTrabajo.Text = string.Empty;
+                }                
             }
             else
             {
