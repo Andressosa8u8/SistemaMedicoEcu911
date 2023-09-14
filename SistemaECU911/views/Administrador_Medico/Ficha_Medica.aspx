@@ -71,7 +71,7 @@
                 </div>
                 <br />
                 <div align="center">
-                    <img src="../../resources/images/User.jpg" alt="logo" style="width: 100px; height: 100px" />
+                    <asp:Image ID="imgPreview" ImageUrl="~/resources/images/User.jpg" runat="server" Width="175" Height="200" />
                 </div>
                 <br />
                 <div class="card" style="width: auto;">
@@ -644,7 +644,7 @@
                 return false;
             }
         }
-    </script>
+    </script>
 
     <script>
         function borrarMensaje() {

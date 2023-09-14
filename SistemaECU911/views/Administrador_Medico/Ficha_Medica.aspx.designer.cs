@@ -42,6 +42,15 @@ namespace SistemaECU911.Template.Views
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
+        /// Control imgPreview.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgPreview;
+
+        /// <summary>
         /// Control txt_nomEmpresa.
         /// </summary>
         /// <remarks>

@@ -108,6 +108,7 @@
     <Content Include="resources\images\carousel\banner_8.jpg" />
     <Content Include="resources\images\carousel\banner_9.jpg" />
     <Content Include="resources\images\ChangePassword.png" />
+    <Content Include="resources\images\croquis.png" />
     <Content Include="resources\images\ECU911.png" />
     <Content Include="resources\images\faces\face1.jpg" />
     <Content Include="resources\images\faces\face10.jpg" />
@@ -883,6 +884,7 @@
     <Content Include="views\Pacientes\Registros_Ficha_Medica.aspx" />
     <Content Include="views\Pacientes\SocioEconomico.aspx" />
     <Content Include="views\Pacientes\SSO.aspx" />
+    <Content Include="views\Socio_Economico\Lista_Personas.aspx" />
     <Content Include="views\Socio_Economico\Perfil.aspx" />
     <Content Include="views\Socio_Economico\Cambiar_Contraseña.aspx" />
     <Content Include="views\Socio_Economico\Inicio.aspx" />
@@ -1129,6 +1131,13 @@
     </Compile>
     <Compile Include="views\Pacientes\SSO.aspx.designer.cs">
       <DependentUpon>SSO.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="views\Socio_Economico\Lista_Personas.aspx.cs">
+      <DependentUpon>Lista_Personas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\Socio_Economico\Lista_Personas.aspx.designer.cs">
+      <DependentUpon>Lista_Personas.aspx</DependentUpon>
     </Compile>
     <Compile Include="views\Socio_Economico\Perfil.aspx.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>

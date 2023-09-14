@@ -57,6 +57,14 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                         DateTime actual = DateTime.Now;
                         Calculo(naci, actual);
 
+
+                        // Cargar la imagen del usuario si está disponible
+                        if (!string.IsNullOrEmpty(per.Per_imgNombre) && per.Per_imgByte != null)
+                        {
+                            string base64Image = Convert.ToBase64String(per.Per_imgByte.ToArray());
+                            imgPreview.ImageUrl = "data:image/png;base64," + base64Image;
+                        }
+
                         if (sso != null)
                         {
                             //Datos código y versión
@@ -1505,6 +1513,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                     }
                 }
                 txt_fecharegistro.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                Timer1.Enabled = false;
             }
         }
 
@@ -1550,7 +1559,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
             {
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["conexion"].ToString());
                 con.Open();
-                SqlCommand cmd = new SqlCommand("select top(10) Per_cedula from Tbl_Person where Per_cedula LIKE + @Cedula + '%'", con);
+                SqlCommand cmd = new SqlCommand("select top(10) Per_cedula from Tbl_Person where Per_cedula LIKE + @Cedula + '%' and Per_estado = 'AP'", con);
                 cmd.Parameters.AddWithValue("@Cedula", prefixText);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
 
@@ -1580,43 +1589,57 @@ namespace SistemaECU911.Template.Views_Socio_Economico
         {
             string cedula = txt_cedula.Text;
 
-            var lista = from c in dc.Tbl_Person
-                        where c.Per_cedula == cedula
-                        select c;
-
-            foreach (var item in lista)
+            if (cedula != "")
             {
-                string priNombre = item.Per_priNombre;
-                txt_prinombre.Text = priNombre;
+                var lista = from c in dc.Tbl_Person
+                            where c.Per_cedula == cedula && c.Per_estado == "AP"
+                            select c;
 
-                string segNombre = item.Per_segNombre;
-                txt_segnombre.Text = segNombre;
+                if (lista.Any())
+                {
+                    foreach (var item in lista)
+                    {
+                        string priNombre = item.Per_priNombre;
+                        txt_prinombre.Text = priNombre;
 
-                string priApellido = item.Per_priApellido;
-                txt_priapellido.Text = priApellido;
+                        string segNombre = item.Per_segNombre;
+                        txt_segnombre.Text = segNombre;
 
-                string segApellido = item.Per_segApellido;
-                txt_segapellido.Text = segApellido;
+                        string priApellido = item.Per_priApellido;
+                        txt_priapellido.Text = priApellido;
 
-                string areaTrabajo = item.Per_areaTrabajo;
-                txt_areatrabajo.Text = areaTrabajo;
+                        string segApellido = item.Per_segApellido;
+                        txt_segapellido.Text = segApellido;
 
-                string cargo = item.Per_cargoOcupacion;
-                txt_cargoinstitucional.Text = cargo;
+                        string areaTrabajo = item.Per_areaTrabajo;
+                        txt_areatrabajo.Text = areaTrabajo;
 
-                DateTime fechaIngresoEcu = Convert.ToDateTime(item.Per_fechInicioTrabajo);
-                txt_fechaingresoalsisecu.Text = Convert.ToDateTime(fechaIngresoEcu).ToString("yyyy-MM-dd");
+                        string cargo = item.Per_cargoOcupacion;
+                        txt_cargoinstitucional.Text = cargo;
 
-                DateTime fechaNacimiento = Convert.ToDateTime(item.Per_fechaNacimiento);
-                txt_fechanacimiento.Text = Convert.ToDateTime(fechaNacimiento).ToString("yyyy-MM-dd");
+                        DateTime fechaIngresoEcu = Convert.ToDateTime(item.Per_fechInicioTrabajo);
+                        txt_fechaingresoalsisecu.Text = Convert.ToDateTime(fechaIngresoEcu).ToString("yyyy-MM-dd");
 
-                DateTime edad = Convert.ToDateTime(item.Per_fechaNacimiento);
-                DateTime naci = Convert.ToDateTime(edad);
+                        DateTime fechaNacimiento = Convert.ToDateTime(item.Per_fechaNacimiento);
+                        txt_fechanacimiento.Text = Convert.ToDateTime(fechaNacimiento).ToString("yyyy-MM-dd");
 
-                DateTime actual = DateTime.Now;
-                Calculo(naci, actual);
+                        DateTime edad = Convert.ToDateTime(item.Per_fechaNacimiento);
+                        DateTime naci = Convert.ToDateTime(edad);
+
+                        DateTime actual = DateTime.Now;
+                        Calculo(naci, actual);
+                    }
+                }
+                else
+                {
+                    txt_prinombre.Text = txt_segnombre.Text = txt_priapellido.Text = txt_segapellido.Text = txt_areatrabajo.Text = txt_cargoinstitucional.Text = txt_fechaingresoalsisecu.Text = txt_fechanacimiento.Text = string.Empty;
+                }
             }
-        }        
+            else
+            {
+                txt_prinombre.Text = txt_segnombre.Text = txt_priapellido.Text = txt_segapellido.Text = txt_areatrabajo.Text = txt_cargoinstitucional.Text = txt_fechaingresoalsisecu.Text = txt_fechanacimiento.Text = string.Empty;
+            }
+        }
 
         private void GuardarSocioEconomico()
         {
@@ -2420,21 +2443,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 sso.Socio_economico_nivel_salud_familia_porque = txt_nivelsaludfamiliarporque.Text.ToUpper();
                 sso.Socio_economico_familia_observaciones = txt_observacionesgenerales.Text.ToUpper();
                 sso.Socio_economico_informacion_adicional = txt_informacionadicional.Text.ToUpper();
-
-                ////Obtener datos de la imagen
-                ////Devolver el tamaño de la imagen que se esta enviando
-                //int tamanio = FileUploadImageGeo.PostedFile.ContentLength;
-                //byte[] ImagenOriginal = new byte[tamanio];
-                ////Lee la imagen original apartir del FileUpload
-                //FileUploadImageGeo.PostedFile.InputStream.Read(ImagenOriginal, 0, tamanio);
-                ////Bitmap ImagenOriginalBinaria = new Bitmap(FileUploadImageGeo.PostedFile.InputStream);
-                //System.Drawing.Bitmap ImagenOriginalBinaria = new System.Drawing.Bitmap(FileUploadImageGeo.PostedFile.InputStream);
-                ////Muestra la imagen en binario sin tenerla fisicamente
-                //string ImagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(ImagenOriginal);
-                //Muestra la imagen cargada
-                ////Image1.ImageUrl = ImagenDataURL64;
-
-                //sso.Socio_economico_imagen_geolocalizacion = ImagenOriginal;
+                sso.Emp_id = 1;
 
                 sso.Per_id = perso;
 
@@ -2443,7 +2452,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 //Mensaje de confirmacion
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Exito!', 'Datos Guardados Exitosamente', 'success')", true);
 
-                Response.Redirect("~/Template/Views_Socio_Economico/PacientesSocioEconomico.aspx");
+                Timer1.Enabled = true;
 
             }
             catch (Exception)
@@ -5241,53 +5250,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 cb_certificosi.Checked = false;
 
             }
-        }
-
-        //protected void FileUploadImageGeo_Load(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (FileUploadImageGeo.FileContent != null)
-        //        {
-        //            //Obtener datos de la iagen
-        //            int tamanio = FileUploadImageGeo.PostedFile.ContentLength;
-        //            byte[] ImagenOriginal = new byte[tamanio];
-        //            FileUploadImageGeo.PostedFile.InputStream.Read(ImagenOriginal, 0, tamanio);
-        //            System.Drawing.Bitmap ImagenOriginalBinaria = new System.Drawing.Bitmap(FileUploadImageGeo.PostedFile.InputStream);
-
-        //            string ImagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(ImagenOriginal);
-        //            Image1.ImageUrl = ImagenDataURL64;
-        //        }
-        //        else
-        //        {
-        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Por favor, cargue su imagen')", true);
-        //        }
-
-        //    }
-        //    catch (Exception)
-        //    {
-        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Por favor, cargue su imagen')", true);
-        //    }
-        //}
-
-        //protected void btn_mostrarimagen_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        //Obtener datos de la iagen
-        //        int tamanio = FileUploadImageGeo.PostedFile.ContentLength;
-        //        byte[] ImagenOriginal = new byte[tamanio];
-        //        FileUploadImageGeo.PostedFile.InputStream.Read(ImagenOriginal, 0, tamanio);
-        //        System.Drawing.Bitmap ImagenOriginalBinaria = new System.Drawing.Bitmap(FileUploadImageGeo.PostedFile.InputStream);
-
-        //        string ImagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(ImagenOriginal);
-        //        Image1.ImageUrl = ImagenDataURL64;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Por favor, cargue su imagen')", true);
-        //    }
-        //}
+        }    
 
         protected void btn_imprimir_Click(object sender, EventArgs e)
         {
@@ -7219,6 +7182,11 @@ namespace SistemaECU911.Template.Views_Socio_Economico
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Write(pdfDoc);
             Response.End();
+        }
+
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+            Response.Redirect("~/views/Socio_Economico/Inicio.aspx");
         }
     }
 }

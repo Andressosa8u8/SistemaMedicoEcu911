@@ -20,6 +20,8 @@ using iTextSharp.text.html.simpleparser;
 using System.Configuration;
 using iTextSharp.tool.xml.css.apply;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Linq;
+using iTextSharp.xmp.impl;
 
 namespace SistemaECU911.Template.Views
 {
@@ -148,6 +150,11 @@ namespace SistemaECU911.Template.Views
                             ddl_especialidad.SelectedValue = fichasmedicas.espec_id.ToString();
                             ddl_profesional.SelectedValue = fichasmedicas.prof_id.ToString();
                             txt_codigo.Text = fichasmedicas.codigoPro.ToString();
+                            if (!string.IsNullOrEmpty(per.Per_imgNombre) && per.Per_imgByte != null)
+                            {
+                                string base64Image = Convert.ToBase64String(per.Per_imgByte.ToArray());
+                                imgPreview.ImageUrl = "data:image/png;base64," + base64Image;
+                            }
                         }
                     }
                 }
@@ -229,6 +236,36 @@ namespace SistemaECU911.Template.Views
             ObtenerCedula();
         }
 
+        private string ObtenerUrl()
+        {
+            string cedula = txt_numHClinica.Text;
+            string url;
+
+            if (cedula != "")
+            {
+                var lista = from c in dc.Tbl_Person
+                            where c.Per_cedula == cedula && c.Per_estado == "AP"
+                            select new
+                            {
+                                c.Per_imgByte
+                            };
+                if (lista.Any())
+                {
+                    foreach (var item in lista)
+                    {
+                        string base64Image = Convert.ToBase64String(item.Per_imgByte.ToArray());
+                        return url = imgPreview.ImageUrl = "data:image/png;base64," + base64Image;                        
+                    }
+                }
+                else
+                {
+                    return url = imgPreview.ImageUrl = "~/resources/images/User.jpg";
+                }
+
+            }            
+            return url = imgPreview.ImageUrl = "~/resources/images/User.jpg";
+        }
+
         private void ObtenerCedula()
         {
             string cedula = txt_numHClinica.Text;
@@ -246,7 +283,8 @@ namespace SistemaECU911.Template.Views
                                 c.Per_priApellido,
                                 c.Per_segApellido,
                                 c.Per_genero,
-                                c.Per_fechaNacimiento
+                                c.Per_fechaNacimiento,
+                                c.Per_imgByte
                             };
 
                 if (lista.Any())
@@ -271,6 +309,19 @@ namespace SistemaECU911.Template.Views
                         string sexo = item.Per_genero;
                         txt_sexo.Text = sexo;
 
+                        if (item.Per_imgByte == null)
+                        {
+                            imgPreview.ImageUrl = "~/resources/images/User.jpg";
+                        }
+                        else
+                        {
+                            string base64Image = Convert.ToBase64String(item.Per_imgByte.ToArray());
+                            imgPreview.ImageUrl = "data:image/png;base64," + base64Image;
+                        }
+
+                        
+
+
                         DateTime edad = Convert.ToDateTime(item.Per_fechaNacimiento);
                         DateTime naci = Convert.ToDateTime(edad);
 
@@ -288,7 +339,8 @@ namespace SistemaECU911.Template.Views
                     txt_segApellido.Text = string.Empty;
                     txt_sexo.Text = string.Empty;
                     txt_edad.Text = string.Empty;
-                }                
+                    imgPreview.ImageUrl = "~/resources/images/User.jpg";
+                }
             }
             else
             {
@@ -300,6 +352,7 @@ namespace SistemaECU911.Template.Views
                 txt_segApellido.Text = string.Empty;
                 txt_sexo.Text = string.Empty;
                 txt_edad.Text = string.Empty;
+                imgPreview.ImageUrl = "~/resources/images/User.jpg";
             }
         }
 
@@ -712,16 +765,24 @@ namespace SistemaECU911.Template.Views
             BaseFont fuente3 = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, true);
             Font cuadro = new Font(fuente3, 10f, Font.NORMAL, new BaseColor(0, 0, 0));
 
+
+
             pdfDoc.Open();
             pdfDoc.Add(new Paragraph("FICHA MÉDICA", titulo) { Alignment = Element.ALIGN_CENTER });
-            pdfDoc.Add(new Chunk(Chunk.NEWLINE));
+            var ruta = Path.Combine();
+            //pdfDoc.Add(new Chunk(Chunk.NEWLINE));
             //string imageURL = Server.MapPath("../Template Principal/images") + "/Foto_Perfil.png";
-            string imageURL = Server.MapPath("../../resources/images") + "/ic1.png";
-            iTextSharp.text.Image fotoperfil = iTextSharp.text.Image.GetInstance(imageURL);
-            fotoperfil.ScaleAbsolute(75, 75);
-            fotoperfil.SetAbsolutePosition(260, 700);
-            pdfDoc.Add(fotoperfil);
-            pdfDoc.Add(new Chunk(Chunk.NEWLINE));
+            //string url = ObtenerUrl();
+
+
+            ////string imageURL = Server.MapPath(url);
+            //var imgbyte = Convert.FromBase64String(url);
+
+            //iTextSharp.text.Image fotoperfil = iTextSharp.text.Image.GetInstance(imgbyte);
+            //fotoperfil.ScaleAbsolute(75, 75);
+            //fotoperfil.SetAbsolutePosition(260, 700);
+            //pdfDoc.Add(fotoperfil);
+            //pdfDoc.Add(new Chunk(Chunk.NEWLINE));
             pdfDoc.Add(new Chunk(Chunk.NEWLINE));
             var tblTitulo = new PdfPTable(new float[] { 70f, 50f, 50f, 50f, 50f, 30f, 50f, 50f }) { WidthPercentage = 100, HorizontalAlignment = Element.ALIGN_CENTER };
             tblTitulo.AddCell(new PdfPCell(new Paragraph("ESTABLECIMIENTO DE SALUD", cuadro)) { BorderColor = new BaseColor(238, 240, 242), BackgroundColor = new BaseColor(205, 254, 204), HorizontalAlignment = Element.ALIGN_CENTER });
