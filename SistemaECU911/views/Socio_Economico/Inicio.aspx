@@ -18,7 +18,7 @@
                             <div class="container">
                                 <div class="row justify-content-center">
                                     <div class="col-auto">
-                                        <asp:GridView ID="grvPacientesSocioEconomico" OnRowCommand="grvPacientesSocioEconomico_RowCommand" AutoGenerateColumns="false" Width="100%" CssClass="table table-hover text-center table-responsive" GridLines="None" runat="server" Style="margin-right: 0px">
+                                        <asp:GridView ID="grvPacientesSocioEconomico" ShowHeader="false" OnRowCommand="grvPacientesSocioEconomico_RowCommand" AutoGenerateColumns="false" Width="100%" CssClass="table table-hover text-center table-responsive" GridLines="None" runat="server" Style="margin-right: 0px">
                                             <Columns>
                                                 <asp:TemplateField HeaderText="CEDULA">
                                                     <ItemTemplate>

@@ -1644,7 +1644,7 @@
                         <br />
                         <div class="row">
                             <div align="center">
-                                <asp:FileUpload ID="FileUploadProfilePic" runat="server" onchange="showPreviewImage()" />
+                                <asp:FileUpload ID="FileUploadPic" runat="server" onchange="showPreviewImage()" />
                             </div>
                         </div>
                         <div class="row">
@@ -1673,8 +1673,8 @@
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
     <script type="text/javascript">
         function showPreviewImage() {
-            var fileInput = document.getElementById('<%= FileUploadProfilePic.ClientID %>');
-        var previewImage = document.getElementById('<%= imgPreview.ClientID %>');
+            var fileInput = document.getElementById('<%= FileUploadPic.ClientID %>');
+            var previewImage = document.getElementById('<%= imgPreview.ClientID %>');
 
             if (fileInput.files && fileInput.files[0]) {
                 var reader = new FileReader();

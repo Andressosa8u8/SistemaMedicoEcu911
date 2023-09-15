@@ -1554,7 +1554,7 @@
   </Table>
   <Table Name="dbo.Tbl_Person" Member="Tbl_Person">
     <Type Name="Tbl_Person">
-      <Column Name="Per_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Per_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Per_imgNombre" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
       <Column Name="Per_imgByte" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="Per_cedula" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
@@ -2106,6 +2106,8 @@
       <Column Name="Socio_economico_informacion_general_real_no" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
       <Column Name="Socio_economico_imagen_geolocalizacion" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="Socio_economico_fechaHoraModificacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Socio_economico_imgNombre" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Socio_economico_imgByte" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="Per_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Emp_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Socio_economico_fechaHoraGuardado" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />

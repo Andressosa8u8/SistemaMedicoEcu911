@@ -2652,13 +2652,13 @@ namespace SistemaECU911.Template.Views_Socio_Economico
         protected global::System.Web.UI.WebControls.TextBox txt_firmadelservidor;
 
         /// <summary>
-        /// Control FileUploadProfilePic.
+        /// Control FileUploadPic.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUploadProfilePic;
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadPic;
 
         /// <summary>
         /// Control imgPreview.

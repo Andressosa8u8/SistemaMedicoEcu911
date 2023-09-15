@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Services;
@@ -42,6 +43,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
 
                     if (per != null)
                     {
+
                         txt_cedula.ReadOnly = true;
                         txt_cedula.Text = per.Per_cedula.ToString();
                         txt_priapellido.Text = per.Per_priApellido.ToString();
@@ -67,6 +69,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
 
                         if (sso != null)
                         {
+                            //imgPreview.ImageUrl = "~/resources/images/croquis.png";
                             //Datos código y versión
                             txt_codigoinicio.Text = sso.Socio_economico_codigo_inicial.ToString();
                             txt_version.Text = sso.Socio_economico_version.ToString();
@@ -1511,9 +1514,11 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                             }
                         }
                     }
+
                 }
                 txt_fecharegistro.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 Timer1.Enabled = false;
+                
             }
         }
 
@@ -2444,15 +2449,43 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 sso.Socio_economico_familia_observaciones = txt_observacionesgenerales.Text.ToUpper();
                 sso.Socio_economico_informacion_adicional = txt_informacionadicional.Text.ToUpper();
                 sso.Emp_id = 1;
+                if (FileUploadPic.HasFile)
+                {
+
+                    string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
+                    string fileExtension = Path.GetExtension(FileUploadPic.FileName).ToLower();
+                    if (allowedExtensions.Contains(fileExtension))
+                    {
+                        string filename = Path.GetFileName(FileUploadPic.FileName);
+
+                        byte[] imageData;
+                        using (Stream fs = FileUploadPic.PostedFile.InputStream)
+                        {
+                            imageData = new byte[fs.Length];
+                            fs.Read(imageData, 0, imageData.Length);
+                        }
+                        sso.Socio_economico_imgNombre = filename;
+                        sso.Socio_economico_imgByte = imageData;
+                    }
+                }
+                else
+                {                    
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "Solo se admiten archivos ( .jpg / .jpeg / .png / .gif ), 'error'", true);
+                    Timer1.Enabled = false;
+                }
 
                 sso.Per_id = perso;
 
                 CN_SocioEconomico.GuardarSocioEconomico(sso);
 
                 //Mensaje de confirmacion
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Exito!', 'Datos Guardados Exitosamente', 'success')", true);
-
+                string script = "Swal.fire('Exito!', 'Datos Guardados Exitosamente', 'success');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", script, true);
                 Timer1.Enabled = true;
+
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", , true);
+
+                //Timer1.Enabled = true;
 
             }
             catch (Exception)
@@ -3858,6 +3891,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
             else
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Por favor, marque la casilla SI, para validar que la información suministrada es real', 'error')", true);
+                Timer1.Enabled = false;
             }
         }
 
@@ -5250,7 +5284,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 cb_certificosi.Checked = false;
 
             }
-        }    
+        }
 
         protected void btn_imprimir_Click(object sender, EventArgs e)
         {

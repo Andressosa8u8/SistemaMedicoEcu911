@@ -26,7 +26,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
         {
             var query = from r in dc.Tbl_SocioEconomico
                         join p in dc.Tbl_Person on r.Per_id equals p.Per_id
-                        orderby r.Socio_economico_fechaHoraGuardado descending
+                        //orderby r.Socio_economico_fechaHoraGuardado descending
                         select new
                         {
                             r.Socio_economico_id,

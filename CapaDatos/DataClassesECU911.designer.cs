@@ -37425,7 +37425,7 @@ namespace CapaDatos
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		public int Per_id
 		{
 			get
@@ -44373,6 +44373,10 @@ namespace CapaDatos
 		
 		private System.Nullable<System.DateTime> _Socio_economico_fechaHoraModificacion;
 		
+		private string _Socio_economico_imgNombre;
+		
+		private System.Data.Linq.Binary _Socio_economico_imgByte;
+		
 		private int _Per_id;
 		
 		private int _Emp_id;
@@ -44949,6 +44953,10 @@ namespace CapaDatos
     partial void OnSocio_economico_imagen_geolocalizacionChanged();
     partial void OnSocio_economico_fechaHoraModificacionChanging(System.Nullable<System.DateTime> value);
     partial void OnSocio_economico_fechaHoraModificacionChanged();
+    partial void OnSocio_economico_imgNombreChanging(string value);
+    partial void OnSocio_economico_imgNombreChanged();
+    partial void OnSocio_economico_imgByteChanging(System.Data.Linq.Binary value);
+    partial void OnSocio_economico_imgByteChanged();
     partial void OnPer_idChanging(int value);
     partial void OnPer_idChanged();
     partial void OnEmp_idChanging(int value);
@@ -50562,6 +50570,46 @@ namespace CapaDatos
 					this._Socio_economico_fechaHoraModificacion = value;
 					this.SendPropertyChanged("Socio_economico_fechaHoraModificacion");
 					this.OnSocio_economico_fechaHoraModificacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Socio_economico_imgNombre", DbType="VarChar(150)")]
+		public string Socio_economico_imgNombre
+		{
+			get
+			{
+				return this._Socio_economico_imgNombre;
+			}
+			set
+			{
+				if ((this._Socio_economico_imgNombre != value))
+				{
+					this.OnSocio_economico_imgNombreChanging(value);
+					this.SendPropertyChanging();
+					this._Socio_economico_imgNombre = value;
+					this.SendPropertyChanged("Socio_economico_imgNombre");
+					this.OnSocio_economico_imgNombreChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Socio_economico_imgByte", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Socio_economico_imgByte
+		{
+			get
+			{
+				return this._Socio_economico_imgByte;
+			}
+			set
+			{
+				if ((this._Socio_economico_imgByte != value))
+				{
+					this.OnSocio_economico_imgByteChanging(value);
+					this.SendPropertyChanging();
+					this._Socio_economico_imgByte = value;
+					this.SendPropertyChanged("Socio_economico_imgByte");
+					this.OnSocio_economico_imgByteChanged();
 				}
 			}
 		}
