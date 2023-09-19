@@ -57,8 +57,7 @@
                     </div>
                 </div>
             </div>
-
-
+            <hr />
             <div class="row">
                 <center>
                     <div class="col-md-9">
@@ -68,7 +67,7 @@
                     </div>
                 </center>
             </div>
-
+            <hr />
             <div class="row align-items-center" style="vertical-align: middle">
                 <div class="col-md-8">
                     <h4 align="center">TIPOS DE ENFERMEDADES PERSONALES</h4>
@@ -76,7 +75,9 @@
                 </div>
 
                 <div class="col-md-4">
-                    <div class="list-group justify-content-end">
+                    <h5 align="center">PORCENTAJES A NIVEL NACIONAL</h5>
+                    <br />
+                    <div class="list-group justify-content-end" style="font-size:14px">
                         <a class="list-group-item list-group-item-action">
                             <asp:Label ID="lbl_sinAntecedente" runat="server"></asp:Label>
                         </a>

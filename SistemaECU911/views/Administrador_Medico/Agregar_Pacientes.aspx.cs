@@ -25,10 +25,9 @@ namespace SistemaECU911.Template.Views
                 {
                     int codigo = Convert.ToInt32(Request["cod"]);
                     per = CN_Personas.ObtenerPersonaPorId(codigo);
-                    //int personasid = Convert.ToInt32(per.Per_id.ToString());
-                    //per = CN_Personas.ObtenerPersonaPorId(personasid);
 
                     btn_guardar.Text = "Actualizar";
+                    txt_cedula.ReadOnly = true;
 
                     if (per != null)
                     {
@@ -59,7 +58,7 @@ namespace SistemaECU911.Template.Views
                         ddl_puestoTrabajo.Text = per.Per_puestoTrabajo.ToString();
                         ddl_cargo.Text = per.Per_cargoOcupacion.ToString();
                         ddl_area.Text = per.Per_areaTrabajo.ToString();
-                        ddl_estado.Text = per.Per_estado.ToString();//cambiar
+                        ddl_estado.Text = per.Per_estado.ToString();
                     }
                 }
                 else
@@ -80,9 +79,10 @@ namespace SistemaECU911.Template.Views
                 }
 
                 Timer1.Enabled = false;
-                CargarZonales();
+                CargarInstitucion();
                 CargarCentros();
-                ddl_estado.Text = "AP";                
+                ddl_estado.Text = "AP";
+                txt_cedula.MaxLength = 10;
             }
         }
 
@@ -189,7 +189,7 @@ namespace SistemaECU911.Template.Views
             }
         }
 
-        private void CargarZonales()
+        private void CargarInstitucion()
         {
             List<Tbl_Empresa> listaEmp = new List<Tbl_Empresa>();
             listaEmp = CN_Personas.ObtenerEmpresa();
@@ -201,6 +201,7 @@ namespace SistemaECU911.Template.Views
             ddl_zonal.DataBind();
 
         }
+
         private void CargarCentros()
         {
             List<Tbl_Centro> listacen = new List<Tbl_Centro>();
@@ -254,6 +255,7 @@ namespace SistemaECU911.Template.Views
             var query = from c in dc.Tbl_Person
                         where c.Per_cedula == cedula
                         select c;
+
             if (query.Any())
             {
                 lbl_cedula.Text = "El paciente ya existe !!!";
@@ -271,6 +273,7 @@ namespace SistemaECU911.Template.Views
                 ddl_cargo.Enabled = false;
                 ddl_area.Enabled = false;
                 ddl_estado.Enabled = false;
+
                 txt_priNombre.Text = txt_priApellido.Text = txt_segNombre.Text = txt_segApellido.Text = txt_fechaNacimiento.Text = txt_fechaIngresoTrabajo.Text = string.Empty;
                 ddl_genero.Text = ddl_zonal.Text = ddl_centro.Text = ddl_puestoTrabajo.Text = ddl_cargo.Text = ddl_area.Text = ddl_estado.Text = default(string);
             }

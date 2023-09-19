@@ -49,7 +49,7 @@
                         </li>
                         <li class="nav-item nav-profile dropdown" style="border: none">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                                <asp:Image ID="imgPerfil" Height="45" Width="45" ImageUrl="~/resources/images/User.jpg" Style="background-color: white" runat="server" />
+                                <asp:Image ID="imgPerfil" Height="45" Width="45" ImageUrl="~/resources/images/User.png" Style="background-color: white" runat="server" />
                             </a>
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                                 <a class="dropdown-item" href="Perfil.aspx"><i class="fa-regular fa-id-card-clip"></i>Perfil</a>
@@ -72,7 +72,7 @@
                         <li class="nav-item nav-profile">
                             <div class="nav-link">
                                 <div class="profile-image">
-                                    <asp:Image ID="imgPerfil2" Height="45" Width="45" ImageUrl="~/resources/images/User.jpg" runat="server" />
+                                    <asp:Image ID="imgPerfil2" Height="45" Width="45" ImageUrl="~/resources/images/User.png" runat="server" />
                                 </div>
                                 <div class="profile-name">
                                     <p class="name">
@@ -170,8 +170,8 @@
                             </a>
                             <div class="collapse" id="certificados">
                                 <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"><a class="nav-link" href="Certificado_Covid.aspx">Certificado Covid 19</a></li>
                                     <li class="nav-item"><a class="nav-link" href="Certificado_Medico.aspx">Certificado Medico</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="Certificado_Covid.aspx">Certificado Covid 19</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -185,9 +185,9 @@
                                 <ul class="nav flex-column sub-menu">
                                     <li class="nav-item"><a class="nav-link" href="Lista_Antecedentes_Personales.aspx">Antecedentes Personales</a></li>
                                     <li class="nav-item"><a class="nav-link" href="Lista_Antecedentes_Familiares.aspx">Antecedentes Familiares</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="Lista_Diagnostico_Codigo.aspx">Reporte Codigo-Diagnostico</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="Lista_Cantidad_Enfermedad.aspx">Cantidad Por Enfermedad</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="Lista_Cantidad_Puesto_Trabajo.aspx">Cantidad Por Puesto De Trabajo</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="Lista_Cantidad_Enfermedad.aspx">Tipos de Enfermedad</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="Lista_Cantidad_Puesto_Trabajo.aspx">Puesto de Trabajo</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="Lista_Diagnostico_Codigo.aspx">Diagnosticos</a></li>
                                 </ul>
                             </div>
                         </li>

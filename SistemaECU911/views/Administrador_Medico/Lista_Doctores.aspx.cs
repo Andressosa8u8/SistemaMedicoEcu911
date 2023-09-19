@@ -26,7 +26,9 @@ namespace SistemaECU911.views.Administrador_Medico
                         {
                             p.prof_id,
                             p.prof_NomApe,
-                            p.prof_cedula
+                            p.prof_cedula,
+                            p.espec_id,
+                            p.cent_id
                         };
 
             grvDoctores.DataSource = query.ToList();

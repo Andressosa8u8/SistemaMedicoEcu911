@@ -96,6 +96,24 @@ namespace SistemaECU911.views.Administrador_Medico
         protected global::System.Web.UI.WebControls.Label lbl_especialidad;
 
         /// <summary>
+        /// Control ddl_centro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_centro;
+
+        /// <summary>
+        /// Control lbl_centro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_centro;
+
+        /// <summary>
         /// Control ddl_estado.
         /// </summary>
         /// <remarks>

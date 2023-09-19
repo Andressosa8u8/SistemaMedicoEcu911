@@ -175,7 +175,7 @@
     <Content Include="resources\images\samples\300x300\8.jpg" />
     <Content Include="resources\images\samples\300x300\9.jpg" />
     <Content Include="resources\images\sprites\jsgrid-icons.png" />
-    <Content Include="resources\images\User.jpg" />
+    <Content Include="resources\images\User.png" />
     <Content Include="resources\js\alerts.js" />
     <Content Include="resources\js\avgrund.js" />
     <Content Include="resources\js\bt-maxLength.js" />

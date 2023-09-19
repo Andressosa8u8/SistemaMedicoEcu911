@@ -71,7 +71,7 @@
                 </div>
                 <br />
                 <div align="center">
-                    <asp:Image ID="imgPreview" ImageUrl="~/resources/images/User.jpg" runat="server" Width="175" Height="200" />
+                    <asp:Image ID="imgPreview" ImageUrl="~/resources/images/User.png" runat="server" Width="175" Height="200" />
                 </div>
                 <br />
                 <div class="card" style="width: auto;">

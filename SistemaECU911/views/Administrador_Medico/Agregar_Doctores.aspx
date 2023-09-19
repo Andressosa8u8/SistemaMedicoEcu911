@@ -16,19 +16,25 @@
                 <div class="row">
                     <div class="col-md-3">
                         <label class="form-label">CEDULA</label>
-                        <asp:TextBox class="form-control" runat="server" ID="txt_cedula" Style="width: 100%; background-color: transparent; text-transform: uppercase" OnTextChanged="txt_Nombre_TextChanged" AutoPostBack="true" onkeypress="return SoloNumeros(event)" oninput="borrarMensaje()"></asp:TextBox>
+                        <asp:TextBox class="form-control" runat="server" ID="txt_cedula" Style="width: 100%; background-color: transparent; text-transform: uppercase" OnTextChanged="txt_cedula_TextChanged" AutoPostBack="true" onkeypress="return SoloNumeros(event)" oninput="borrarMensaje()"></asp:TextBox>
                         <asp:Label ID="lbl_cedula" ForeColor="Red" runat="server"></asp:Label>
                         <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" ControlToValidate="txt_cedula" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>--%>
                     </div>
                     <div class="col-md-9">
                         <label class="form-label">NOMBRE COMPLETO</label>
-                        <asp:TextBox class="form-control" runat="server" ID="txt_Nombre" Style="width: 100%; background-color: transparent; text-transform: uppercase" OnTextChanged="txt_Nombre_TextChanged" AutoPostBack="true"  onkeypress="return SoloNumeros(event)" oninput="borrarMensaje()"></asp:TextBox>
+                        <asp:TextBox class="form-control" runat="server" ID="txt_Nombre" Style="width: 100%; background-color: transparent; text-transform: uppercase" AutoPostBack="true" oninput="borrarMensaje()"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ForeColor="Red" ControlToValidate="txt_Nombre" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
                     </div>
                     <div class="col-md-5">
                         <label class="form-label">ESPECIALIDAD</label>
                         <asp:DropDownList ID="ddl_especialidad" CssClass="form-control" Style="width: 100%; text-transform: uppercase; background-color: transparent; font-size: 14px" runat="server"></asp:DropDownList>
                         <asp:Label ID="lbl_especialidad" ForeColor="Red" runat="server"></asp:Label>
+                    </div>
+                    <br />
+                    <div class="col-md-5">
+                        <label class="form-label">CENTRO</label>
+                        <asp:DropDownList ID="ddl_centro" CssClass="form-control" Style="width: 100%; text-transform: uppercase; background-color: transparent; font-size: 14px" runat="server"></asp:DropDownList>
+                        <asp:Label ID="lbl_centro" ForeColor="Red" runat="server"></asp:Label>
                     </div>
                     <br />
                     <div class="col-md-2">

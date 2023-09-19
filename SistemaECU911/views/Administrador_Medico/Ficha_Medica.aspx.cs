@@ -319,9 +319,6 @@ namespace SistemaECU911.Template.Views
                             imgPreview.ImageUrl = "data:image/png;base64," + base64Image;
                         }
 
-                        
-
-
                         DateTime edad = Convert.ToDateTime(item.Per_fechaNacimiento);
                         DateTime naci = Convert.ToDateTime(edad);
 

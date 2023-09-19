@@ -17,7 +17,7 @@
         <br />
         <div class="row">
             <div align="center">
-                <asp:Image ID="imgPreview" ImageUrl="~/resources/images/User.jpg" runat="server" Width="175" Height="200" />
+                <asp:Image ID="imgPreview" ImageUrl="~/resources/images/User.png" runat="server" Width="175" Height="200" />
             </div>
         </div>
         <br />

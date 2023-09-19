@@ -37,10 +37,20 @@
                                                                     <ItemTemplate>
                                                                         <asp:Label ID="prof_cedula" runat="server" Text='<%#Eval("prof_cedula")%>'></asp:Label>
                                                                     </ItemTemplate>
-                                                                </asp:TemplateField>                                                                
-                                                                <asp:TemplateField ItemStyle-Width="17" HeaderStyle-Width="17" ShowHeader="false">
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="ESPECIALIDAD">
                                                                     <ItemTemplate>
-                                                                        <asp:LinkButton ID="lnbEditar" Width="16" Height="16" CommandArgument='<%#Eval("prof_id")%>' Visible="false" CommandName="Editar" runat="server"><i class="fas fa-pen"></i></asp:LinkButton>
+                                                                        <asp:Label ID="espec_id" runat="server" Text='<%#Eval("espec_id")%>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="CENTRO">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="cent_id" runat="server" Text='<%#Eval("cent_id")%>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField ItemStyle-Width="17" HeaderStyle-Width="17" HeaderText="">
+                                                                    <ItemTemplate>
+                                                                        <asp:LinkButton ID="lnbEditar" Width="16" Height="16" CommandArgument='<%#Eval("prof_id")%>' CommandName="Editar" runat="server"><i class="fas fa-pen"></i></asp:LinkButton>
                                                                     </ItemTemplate>
                                                                     <HeaderStyle Width="17px" />
                                                                     <ItemStyle Width="17px" />
@@ -66,8 +76,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.css">
 
-
-
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
@@ -78,8 +86,6 @@
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
     <script src=" https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
 
-
-
     <%--Julian--%>
     <script>
         $(document).ready(function () {
@@ -87,6 +93,8 @@
                 "columns": [
                     { "data": "prof_NomApe", "title": "NOMBRE COMPLETO" },
                     { "data": "prof_cedula", "title": "CEDULA" },
+                    { "data": "espec_id", "title": "ESPECIALIDAD" },
+                    { "data": "cent_id", "title": "CENTRO" },
 
                     null // Columna de EDICIÓN sin datos específicos
                 ],

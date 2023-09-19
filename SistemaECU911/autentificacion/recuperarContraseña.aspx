@@ -7,14 +7,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>ECU 911</title>
-    <link rel="stylesheet" href="../Template/Template Principal/vendors/iconfonts/font-awesome/css/all.min.css" />
-    <link rel="stylesheet" href="../Template/Template Principal/vendors/iconfonts/font-awesome-6.1.1/css/all.min.css" />
-    <link rel="stylesheet" href="../Template/Template Principal/vendors/css/vendor.bundle.base.css" />
-    <link rel="stylesheet" href="../Template/Template Principal/vendors/css/vendor.bundle.addons.css" />
-    <link rel="stylesheet" href="../Template/Template Principal/css/style.css" />
-    <link rel="stylesheet" href="../Template/Template Principal/css/Style_Prueba.css" />
-    <link rel="stylesheet" href="../Template/Template Principal/css/style-andres.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../resources/vendors/iconfonts/font-awesome/css/all.min.css" />
+    <link rel="stylesheet" href="../resources/vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" href="../resources/vendors/css/vendor.bundle.addons.css" />
+    <link rel="stylesheet" href="../resources/css/style.css" />
+
+    <%--Enlaces Extras--%>
+    <link rel="stylesheet" href="../../resources/vendors/font-awesome-pro-v6-6/css/all.min.css" />
+    <link rel="stylesheet" href="../../resources/vendors/bootstrap-5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../resources/css/Style_Prueba.css" />
+    <link rel="stylesheet" href="../resources/css/style-andres.css" />
     <link rel="shortcut icon" href="http://www.urbanui.com/" />
 </head>
 <body>
@@ -25,7 +28,7 @@
                     <div class="col-lg-6 d-flex align-items-center justify-content-center">
                         <div class="auth-form-transparent text-left p-3">
                             <div class="brand-logo">
-                                <img src="../resources/images/cambioContraseña.png" alt="logo" />
+                                <img src="../resources/images/LogoECU.png" style="width:100%; height:100px" alt="logo" />
                             </div>
                             <div class="login-title">
                                 <h2 class="text-black">Has olvidado tu contraseña</h2>
@@ -43,7 +46,7 @@
                                                         <i class="fa-solid fa-envelope"></i>
                                                     </span>
                                                 </div>
-                                                <asp:TextBox ID="txt_email" autocomplete="off" type="email" class="form-control form-control-lg border-left-0" placeholder="Correo Electrónico" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txt_email" autocomplete="off" TextMode="Email" class="form-control form-control-lg border-left-0" placeholder="Correo Electrónico" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="row align-items-center">
@@ -66,19 +69,19 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-lg-6 login-half-bg d-flex flex-row">
+                    <div class="col-lg-6 login-half-bg d-flex flex-row" style="background-image:url('../resources/images/auth/img2.jpg'); background-size: cover">
                         <p class="text-black font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2021  Todos los derechos reservados.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="../Template/Template Principal/vendors/js/vendor.bundle.base.js"></script>
-    <script src="../Template/Template Principal/vendors/js/vendor.bundle.addons.js"></script>
-    <script src="../Template/Template Principal/js/off-canvas.js"></script>
-    <script src="../Template/Template Principal/js/hoverable-collapse.js"></script>
-    <script src="../Template/Template Principal/js/misc.js"></script>
-    <script src="../Template/Template Principal/js/settings.js"></script>
-    <script src="../Template/Template Principal/js/todolist.js"></script>
+    <script src="../resources/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../resources/vendors/js/vendor.bundle.addons.js"></script>
+    <script src="../resources/js/off-canvas.js"></script>
+    <script src="../resources/js/hoverable-collapse.js"></script>
+    <script src="../resources/js/misc.js"></script>
+    <script src="../resources/js/settings.js"></script>
+    <script src="../resources/js/todolist.js"></script>
 </body>
 </html>

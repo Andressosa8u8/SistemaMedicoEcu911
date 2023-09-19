@@ -18,7 +18,6 @@ namespace CapaNegocio
         public static bool autentificarxCedula(string cedula)
         {
             var cedu = dc.Tbl_Profesional.Any(pro => pro.prof_estado == "A" && pro.prof_cedula.Equals(cedula));
-            //var cedu = dc.Tbl_Person.Any(per => per.Per_estado == "AP" && per.Per_cedula.Equals(cedula));
             return cedu;
         }
         // Metodo para guardar datos de los profesionales

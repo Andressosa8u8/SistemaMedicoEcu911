@@ -26,37 +26,49 @@ namespace SistemaECU911.views.Administrador_Medico
                     pro = CN_Profesionales.ObtenerProfesionalPorId(codigo);
                     int profesionalesId = Convert.ToInt32(pro.prof_id.ToString());
                     pro = CN_Profesionales.ObtenerProfesionalPorId(profesionalesId);
-                    //per = CN_Personas.ObtenerPersonaPorId(codigo);
-                    //int personasid = Convert.ToInt32(per.Per_id.ToString());
-                    //per = CN_Personas.ObtenerPersonaPorId(personasid);
 
                     btn_guardar.Text = "Actualizar";
+                    txt_cedula.ReadOnly = true;
 
                     if (pro != null)
                     {
-                        txt_Nombre.Text = pro.prof_NomApe.ToString();
                         txt_cedula.Text = pro.prof_cedula.ToString();
+                        txt_Nombre.Text = pro.prof_NomApe.ToString();
+                        ddl_especialidad.Text = pro.espec_id.ToString();
+                        ddl_centro.Text = pro.cent_id.ToString();
                         ddl_estado.Text = pro.prof_estado.ToString();
-                        //ddl_especialidad.Text = pro.Espec_id.ToString();
 
                     }
                 }
-                Timer1.Enabled = false;
-                Validaciones();
-                ddl_estado.Text = "A";
-                cargarEspecialidad();
-                txt_cedula.MaxLength = 10;
+                else
+                {
+                    txt_Nombre.Enabled = false;
+                    ddl_especialidad.Enabled = false;
+                    ddl_centro.Enabled = false;
+                    ddl_estado.Enabled = false;
+                }
 
-                txt_Nombre.Enabled = false;
-                ddl_especialidad.Enabled = false;
-                ddl_estado.Enabled = false;
+                Timer1.Enabled = false;
+                cargarEspecialidad();
+                CargarCentros();
+                ddl_estado.Text = "A";
+                txt_cedula.MaxLength = 10;
             }
         }
 
-        private void Validaciones()
+        private void CargarCentros()
         {
-            //ddl_estado.Text = "ACTIVO";
+            List<Tbl_Centro> listacen = new List<Tbl_Centro>();
+            listacen = CN_Personas.ObtenerCentros();
+            listacen.Insert(0, new Tbl_Centro() { cent_nombre = "Seleccione...." });
+
+            ddl_centro.DataSource = listacen;
+            ddl_centro.DataTextField = "cent_nombre";
+            ddl_centro.DataValueField = "cent_id";
+            ddl_centro.DataBind();
+
         }
+
         private void cargarEspecialidad()
         {
             List<Tbl_Especialidad> listaEspec = new List<Tbl_Especialidad>();
@@ -68,11 +80,11 @@ namespace SistemaECU911.views.Administrador_Medico
             ddl_especialidad.DataValueField = "espec_id";
             ddl_especialidad.DataBind();
         }
+
         private void GuardarProfesional()
         {
             try
             {
-                //bool existeCedula = CN_Personas.autentificarxCedula(txt_cedula.Text);
                 bool existeCedula = CN_Profesionales.autentificarxCedula(txt_cedula.Text);
 
                 if (existeCedula)
@@ -82,12 +94,12 @@ namespace SistemaECU911.views.Administrador_Medico
                 else
                 {
                     pro = new Tbl_Profesional();
+
                     pro.prof_NomApe = txt_Nombre.Text.ToUpper();
                     pro.prof_cedula = txt_cedula.Text.ToUpper();
-                    pro.prof_estado = ddl_estado.Text.ToUpper();
-                    //pro.Espec_id = ddl_especialidad.Text.ToUpper();
-
-                    //per = new Tbl_Person();
+                    pro.espec_id = Convert.ToInt32(ddl_especialidad.SelectedValue);
+                    pro.cent_id = Convert.ToInt32(ddl_centro.SelectedValue);
+                    pro.prof_estado = ddl_estado.SelectedValue;
 
                     CN_Profesionales.GuardarProfesional(pro);
 
@@ -107,11 +119,11 @@ namespace SistemaECU911.views.Administrador_Medico
         {
             try
             {
-                //Datos Update Tbl_Profesional
                 pro.prof_NomApe = txt_Nombre.Text.ToUpper().Trim();
                 pro.prof_cedula = txt_cedula.Text.Trim();
+                pro.espec_id = Convert.ToInt32(ddl_especialidad.SelectedValue);
+                pro.espec_id = Convert.ToInt32(ddl_centro.SelectedValue);
                 pro.prof_estado = ddl_estado.SelectedValue;
-                //pro.Espec_id = ddl_especialidad.SelectedValue;
 
                 CN_Profesionales.ModificarPersona(pro);
 
@@ -155,10 +167,12 @@ namespace SistemaECU911.views.Administrador_Medico
         {
             Response.Redirect("~/views/Administrador_Medico/Inicio.aspx");
         }
-        protected void txt_Nombre_TextChanged(object sender, EventArgs e)
+
+        protected void txt_cedula_TextChanged(object sender, EventArgs e)
         {
             ExisteCedula();
         }
+
         private void ExisteCedula()
         {
             string cedula = txt_cedula.Text;
@@ -166,22 +180,29 @@ namespace SistemaECU911.views.Administrador_Medico
             var query = from c in dc.Tbl_Profesional
                         where c.prof_cedula == cedula
                         select c;
+
             if (query.Any())
             {
-                lbl_cedula.Enabled = true;
                 lbl_cedula.Text = "El Doctor ya existe !!";
+                lbl_cedula.Enabled = true;
                 txt_Nombre.Enabled = false;
                 ddl_especialidad.Enabled = false;
+                ddl_centro.Enabled = false;
                 ddl_estado.Enabled = false;
+
+                txt_Nombre.Text = string.Empty;
+                ddl_especialidad.Text = ddl_centro.Text = ddl_estado.Text = default(string);
             }
             else
             {
                 lbl_cedula.Text = "";
-                lbl_cedula.Enabled = false;
+                lbl_cedula.Enabled = false;                
                 txt_Nombre.Enabled = true;
                 ddl_especialidad.Enabled = true;
+                ddl_centro.Enabled = true;
                 ddl_estado.Enabled = true;
             }
-        }        
+        }
+        
     }
 }
