@@ -33,9 +33,8 @@ namespace SistemaECU911.Template.Views
         private Tbl_Empresa emp = new Tbl_Empresa();
         private Tbl_FichasMedicas fichasmedicas = new Tbl_FichasMedicas();
 
-
         protected void Page_Load(object sender, EventArgs e)
-        {
+        { 
             if (!IsPostBack)
             {
                 if (Request["cod"] != null)
@@ -46,6 +45,7 @@ namespace SistemaECU911.Template.Views
                     per = CN_HistorialMedico.ObtenerPersonasxId(personasid);
                     int empresaid = Convert.ToInt32(fichasmedicas.Emp_id.ToString());
                     emp = CN_HistorialMedico.ObtenerEmpresaxId(empresaid);
+                    
 
                     btn_guardar.Text = "Actualizar";
 
@@ -160,8 +160,8 @@ namespace SistemaECU911.Template.Views
                 }
                 txt_numHClinica.MaxLength = 10;
                 Timer1.Enabled = false;
-                cargarEspecialidad();
-                cargarProfesional();
+                cargarEspecialidad(); 
+                cargarProfesional(); 
 
                 txt_fechahora.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
             }
@@ -697,27 +697,46 @@ namespace SistemaECU911.Template.Views
 
         private void cargarProfesional()
         {
-            List<Tbl_Profesional> listaProf = new List<Tbl_Profesional>();
-            listaProf = CN_HistorialMedico.ObtenerProfesional();
-            listaProf.Insert(0, new Tbl_Profesional() { prof_NomApe = "Seleccione ........" });
+            // Consulta LINQ para obtener la lista de profesionales
+            var query = from pro in dc.Tbl_Profesional
+                        orderby pro.prof_NomApe
+                        select new
+                        {
+                            pro.prof_id,
+                            pro.prof_NomApe
+                        };
 
-            ddl_profesional.DataSource = listaProf;
+            // Asigna la lista de profesionales al DropDownList
+            ddl_profesional.DataSource = query.ToList();
             ddl_profesional.DataTextField = "prof_NomApe";
             ddl_profesional.DataValueField = "prof_id";
             ddl_profesional.DataBind();
+
+            // Elemento predeterminado Seleccione ...
+            ddl_profesional.Items.Insert(0, new ListItem("Seleccione ........", "0"));
         }
 
         private void cargarEspecialidad()
         {
-            List<Tbl_Especialidad> listaEspec = new List<Tbl_Especialidad>();
-            listaEspec = CN_HistorialMedico.ObtenerEspecialidad();
-            listaEspec.Insert(0, new Tbl_Especialidad() { espec_nombre = "Seleccione ........" });
+            // Consulta LINQ para obtener la lista de especialidades
+            var query = from esp in dc.Tbl_Especialidad
+                        orderby esp.espec_nombre
+                        select new
+                        {
+                            esp.espec_id,
+                            esp.espec_nombre
+                        };
 
-            ddl_especialidad.DataSource = listaEspec;
+            // Asigna la lista de especialidades al DropDownList
+            ddl_especialidad.DataSource = query.ToList();
             ddl_especialidad.DataTextField = "espec_nombre";
             ddl_especialidad.DataValueField = "espec_id";
             ddl_especialidad.DataBind();
+
+            // Elemento predeterminado Seleccione ...
+            ddl_especialidad.Items.Insert(0, new ListItem("Seleccione ........", "0"));
         }
+
 
         protected void txt_talla_TextChanged(object sender, EventArgs e)
         {

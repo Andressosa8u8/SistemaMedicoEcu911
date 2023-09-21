@@ -1,9 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SistemaECU911" Class="DataClassesECU911DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=SistemaECU911;Integrated Security=True" SettingsObjectName="CapaDatos.Properties.Settings" SettingsPropertyName="SistemaECU911ConnectionString8" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=SistemaECU911;Integrated Security=True" SettingsObjectName="CapaDatos.Properties.Settings" SettingsPropertyName="SistemaECU911ConnectionString9" Provider="System.Data.SqlClient" />
   <Table Name="dbo.cie10" Member="cie10">
     <Type Name="cie10">
       <Column Name="id10" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="dec10" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tbl_TipoUsuario" Member="Tbl_TipoUsuario">
+    <Type Name="Tbl_TipoUsuario">
+      <Column Name="tusu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tusu_nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="tusu_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Association Name="Tbl_TipoUsuario_Tbl_Person" Member="Tbl_Person" ThisKey="tusu_id" OtherKey="tusu_id" Type="Tbl_Person" />
     </Type>
   </Table>
   <Table Name="dbo.Tbl_Centro" Member="Tbl_Centro">
@@ -2116,14 +2124,6 @@
       <Association Name="Tbl_Person_Tbl_SocioEconomico" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Tbl_TipoUsuario" Member="Tbl_TipoUsuario">
-    <Type Name="Tbl_TipoUsuario">
-      <Column Name="tusu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="tusu_nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="tusu_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
-      <Association Name="Tbl_TipoUsuario_Tbl_Person" Member="Tbl_Person" ThisKey="tusu_id" OtherKey="tusu_id" Type="Tbl_Person" />
-    </Type>
-  </Table>
   <Function Name="dbo.AutentificarxUsuario" Method="AutentificarxUsuario">
     <Parameter Name="Usuario" Parameter="usuario" Type="System.String" DbType="VarChar(25)" />
     <ElementType Name="AutentificarxUsuarioResult">
@@ -2136,21 +2136,18 @@
       <Column Name="numero_personas" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.CargarImagen" Method="CargarImagen" IsComposable="true">
+  <Function Name="dbo.CargarImagen" Method="CargarImagen">
     <Parameter Name="img_id" Type="System.Int32" DbType="Int" />
-    <Return Type="object" />
   </Function>
-  <Function Name="dbo.InsertarPersona" Method="InsertarPersona" IsComposable="true">
+  <Function Name="dbo.InsertarPersona" Method="InsertarPersona">
     <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="Imagen" Parameter="imagen" Type="System.Data.Linq.Binary" DbType="Image" />
     <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="VarChar(1)" />
-    <Return Type="object" />
   </Function>
-  <Function Name="dbo.ModificarPersona" Method="ModificarPersona" IsComposable="true">
+  <Function Name="dbo.ModificarPersona" Method="ModificarPersona">
     <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="Imagen" Parameter="imagen" Type="System.Data.Linq.Binary" DbType="Image" />
     <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="VarChar(1)" />
-    <Return Type="object" />
   </Function>
   <Function Name="dbo.ObtenerPaciente" Method="ObtenerPaciente">
     <Parameter Name="Cedula" Parameter="cedula" Type="System.String" DbType="VarChar(10)" />
@@ -2161,10 +2158,9 @@
       <Column Name="fechaHoraGuardado" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.RegistrarImagen" Method="RegistrarImagen" IsComposable="true">
+  <Function Name="dbo.RegistrarImagen" Method="RegistrarImagen">
     <Parameter Name="cedula" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="imagen" Type="System.Data.Linq.Binary" DbType="Image" />
-    <Return Type="object" />
   </Function>
   <Function Name="dbo.Sp_Grafico_AntecedentePer" Method="Sp_Grafico_AntecedentePer">
     <ElementType Name="Sp_Grafico_AntecedentePerResult">

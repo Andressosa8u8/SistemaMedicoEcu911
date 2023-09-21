@@ -13,6 +13,8 @@ using CapaDatos;
 using CapaNegocio;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using ListItem = System.Web.UI.WebControls.ListItem;
+
 
 namespace SistemaECU911.Template.Views
 {
@@ -1723,14 +1725,23 @@ namespace SistemaECU911.Template.Views
 
         private void cargarProfesional()
         {
-            List<Tbl_Profesional> listaProf = new List<Tbl_Profesional>();
-            listaProf = CN_HistorialMedico.ObtenerProfesional();
-            listaProf.Insert(0, new Tbl_Profesional() { prof_NomApe = "Seleccione ........" });
+            // Consulta LINQ para obtener la lista de profesionales
+            var query = from pro in dc.Tbl_Profesional
+                        orderby pro.prof_NomApe
+                        select new
+                        {
+                            pro.prof_id,
+                            pro.prof_NomApe
+                        };
 
-            ddl_profesional.DataSource = listaProf;
+            // Asigna la lista de profesionales al DropDownList
+            ddl_profesional.DataSource = query.ToList();
             ddl_profesional.DataTextField = "prof_NomApe";
             ddl_profesional.DataValueField = "prof_id";
             ddl_profesional.DataBind();
+
+            // Elemento predeterminado Seleccione ...
+            ddl_profesional.Items.Insert(0, new ListItem("Seleccione ........", "0"));
         }
 
         protected void txt_talla_TextChanged(object sender, EventArgs e)

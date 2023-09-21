@@ -58,27 +58,45 @@ namespace SistemaECU911.views.Administrador_Medico
 
         private void CargarCentros()
         {
-            List<Tbl_Centro> listacen = new List<Tbl_Centro>();
-            listacen = CN_Personas.ObtenerCentros();
-            listacen.Insert(0, new Tbl_Centro() { cent_nombre = "Seleccione...." });
+            // Consulta LINQ para obtener la lista de centros
+            var query = from centro in dc.Tbl_Centro
+                        orderby centro.cent_nombre
+                        select new
+                        {
+                            centro.cent_id,
+                            centro.cent_nombre
+                        };
 
-            ddl_centro.DataSource = listacen;
+            // Asigna la lista de centros al DropDownList
+            ddl_centro.DataSource = query.ToList();
             ddl_centro.DataTextField = "cent_nombre";
             ddl_centro.DataValueField = "cent_id";
             ddl_centro.DataBind();
+
+            // Elemento predeterminado Seleccione ...
+            ddl_centro.Items.Insert(0, new ListItem("Seleccione....", "0"));
 
         }
 
         private void cargarEspecialidad()
         {
-            List<Tbl_Especialidad> listaEspec = new List<Tbl_Especialidad>();
-            listaEspec = CN_HistorialMedico.ObtenerEspecialidad();
-            listaEspec.Insert(0, new Tbl_Especialidad() { espec_nombre = "Seleccione ........" });
+            // Consulta LINQ para obtener la lista de especialidades
+            var query = from esp in dc.Tbl_Especialidad
+                        orderby esp.espec_nombre
+                        select new
+                        {
+                            esp.espec_id,
+                            esp.espec_nombre
+                        };
 
-            ddl_especialidad.DataSource = listaEspec;
+            // Asigna la lista de especialidades al DropDownList
+            ddl_especialidad.DataSource = query.ToList();
             ddl_especialidad.DataTextField = "espec_nombre";
             ddl_especialidad.DataValueField = "espec_id";
             ddl_especialidad.DataBind();
+
+            // Elemento predeterminado Seleccione ...
+            ddl_especialidad.Items.Insert(0, new ListItem("Seleccione ........", "0"));
         }
 
         private void GuardarProfesional()
@@ -122,10 +140,11 @@ namespace SistemaECU911.views.Administrador_Medico
                 pro.prof_NomApe = txt_Nombre.Text.ToUpper().Trim();
                 pro.prof_cedula = txt_cedula.Text.Trim();
                 pro.espec_id = Convert.ToInt32(ddl_especialidad.SelectedValue);
-                pro.espec_id = Convert.ToInt32(ddl_centro.SelectedValue);
+                pro.cent_id = Convert.ToInt32(ddl_centro.SelectedValue);
                 pro.prof_estado = ddl_estado.SelectedValue;
 
                 CN_Profesionales.ModificarPersona(pro);
+
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Exito!', 'Datos Modificados Exitosamente', 'success')", true);
                 Timer1.Enabled = true;

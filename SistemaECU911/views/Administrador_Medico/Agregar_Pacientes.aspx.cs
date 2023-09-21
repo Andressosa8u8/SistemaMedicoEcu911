@@ -191,27 +191,45 @@ namespace SistemaECU911.Template.Views
 
         private void CargarInstitucion()
         {
-            List<Tbl_Empresa> listaEmp = new List<Tbl_Empresa>();
-            listaEmp = CN_Personas.ObtenerEmpresa();
-            listaEmp.Insert(0, new Tbl_Empresa() { Emp_nombre = "Seleccione...." });
+            // Consulta LINQ para obtener la lista de empresas
+            var query = from empresa in dc.Tbl_Empresa
+                        orderby empresa.Emp_nombre
+                        select new
+                        {
+                            empresa.Emp_id,
+                            empresa.Emp_nombre
+                        };
 
-            ddl_zonal.DataSource = listaEmp;
+            // Asigna la lista de empresas al DropDownList
+            ddl_zonal.DataSource = query.ToList();
             ddl_zonal.DataTextField = "Emp_nombre";
             ddl_zonal.DataValueField = "Emp_id";
             ddl_zonal.DataBind();
+
+            // Elemento predeterminado Seleccione ....
+            ddl_zonal.Items.Insert(0, new ListItem("Seleccione....", "0"));
 
         }
 
         private void CargarCentros()
         {
-            List<Tbl_Centro> listacen = new List<Tbl_Centro>();
-            listacen = CN_Personas.ObtenerCentros();
-            listacen.Insert(0, new Tbl_Centro() { cent_nombre = "Seleccione...." });
+            // Consulta LINQ para obtener la lista de centros
+            var query = from centro in dc.Tbl_Centro
+                        orderby centro.cent_nombre
+                        select new
+                        {
+                            centro.cent_id,
+                            centro.cent_nombre
+                        };
 
-            ddl_centro.DataSource = listacen;
+            // Asigna la lista de centros al DropDownList
+            ddl_centro.DataSource = query.ToList();
             ddl_centro.DataTextField = "cent_nombre";
             ddl_centro.DataValueField = "cent_id";
             ddl_centro.DataBind();
+
+            // Elemento predeterminado Seleccione ...
+            ddl_centro.Items.Insert(0, new ListItem("Seleccione....", "0"));
 
         }
 

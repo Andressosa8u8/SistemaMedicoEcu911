@@ -3,6 +3,8 @@ using CapaNegocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -24,10 +26,9 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 {
                     int codigo = Convert.ToInt32(Request["cod"]);
                     per = CN_Personas.ObtenerPersonaPorId(codigo);
-                    //int personasid = Convert.ToInt32(per.Per_id.ToString());
-                    //per = CN_Personas.ObtenerPersonaPorId(personasid);
 
                     btn_guardar.Text = "Actualizar";
+                    txt_cedula.ReadOnly = true;
 
                     if (per != null)
                     {
@@ -58,7 +59,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                         ddl_puestoTrabajo.Text = per.Per_puestoTrabajo.ToString();
                         ddl_cargo.Text = per.Per_cargoOcupacion.ToString();
                         ddl_area.Text = per.Per_areaTrabajo.ToString();
-                        ddl_estado.Text = per.Per_estado.ToString();//cambiar
+                        ddl_estado.Text = per.Per_estado.ToString();
                     }
                 }
                 else
@@ -77,58 +78,60 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                     ddl_area.Enabled = false;
                     ddl_estado.Enabled = false;
                 }
+
                 Timer1.Enabled = false;
-                CargarZonales();
+                CargarInstitucion();
                 CargarCentros();
                 ddl_estado.Text = "AP";
+                txt_cedula.MaxLength = 10;
             }
-        }
-
-        private void Validaciones()
-        {
-            ddl_estado.Text = "ACTIVO";
         }
 
         private void GuardarPersona()
         {
             try
             {
-                bool existeCedula = CN_Personas.autentificarxCedula(txt_cedula.Text);
 
-                if (existeCedula)
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!','El paciente ya existe !! Verifique el número de cedula', 'error')", true);
-                }
-                else
-                {
-                    per = new Tbl_Person();
+                per = new Tbl_Person();
 
-                    per.Per_priNombre = txt_priNombre.Text.ToUpper();
-                    per.Per_segNombre = txt_segNombre.Text.ToUpper();
-                    per.Per_priApellido = txt_priApellido.Text.ToUpper();
-                    per.Per_segApellido = txt_segApellido.Text.ToUpper();
-                    per.Per_cedula = txt_cedula.Text.ToUpper();
-                    per.Per_fechaNacimiento = txt_fechaNacimiento.Text.ToUpper();
-                    per.Per_genero = ddl_genero.Text.ToUpper();
-                    per.Emp_id = Convert.ToInt32(ddl_zonal.Text.ToUpper());
-                    per.Per_fechInicioTrabajo = txt_fechaIngresoTrabajo.Text.ToUpper();
-                    per.Per_puestoTrabajo = ddl_puestoTrabajo.Text.ToUpper();
-                    per.Per_cargoOcupacion = ddl_cargo.Text.ToUpper();
-                    per.Per_areaTrabajo = ddl_area.Text.ToUpper();
-                    per.Per_estado = ddl_estado.Text.ToUpper();
+                //Datos Tbl_Personas
+                per.Per_priNombre = txt_priNombre.Text.ToUpper();
+                per.Per_segNombre = txt_segNombre.Text.ToUpper();
+                per.Per_priApellido = txt_priApellido.Text.ToUpper();
+                per.Per_segApellido = txt_segApellido.Text.ToUpper();
+                per.Per_cedula = txt_cedula.Text.ToUpper();
+                per.Per_fechaNacimiento = txt_fechaNacimiento.Text.ToUpper();
+                per.Per_genero = ddl_genero.Text.ToUpper();
+                per.Emp_id = Convert.ToInt32(ddl_zonal.Text.ToUpper());
+                per.cent_id = Convert.ToInt32(ddl_centro.Text.ToUpper());
+                per.Per_fechInicioTrabajo = txt_fechaIngresoTrabajo.Text.ToUpper();
+                per.Per_puestoTrabajo = ddl_puestoTrabajo.Text.ToUpper();
+                per.Per_cargoOcupacion = ddl_cargo.Text.ToUpper();
+                per.Per_areaTrabajo = ddl_area.Text.ToUpper();
+                per.Per_estado = ddl_estado.Text.ToUpper();
 
-                    CN_Personas.GuardarPersona(per);
+                //Datos Tbl_Usuarios
+                per.Per_cedula = txt_cedula.Text.ToUpper();
+                per.Per_priApellido = txt_priApellido.Text.ToUpper();
+                per.Per_segApellido = txt_segApellido.Text.ToUpper();
+                per.Per_priNombre = txt_priNombre.Text.ToUpper();
+                per.Per_segNombre = txt_segNombre.Text.ToUpper();
+                per.Per_nomlogin = txt_cedula.Text.ToUpper();
+                per.Per_pass = GetMD5(txt_cedula.Text.ToUpper());
+                per.tusu_id = 2;
+                per.Per_estado = ddl_estado.SelectedValue;
 
-                    //Mensaje de confirmacion
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Exito!', 'Paciente Registrado Exitosamente', 'success')", true);
+                CN_Personas.GuardarPersona(per);
 
-                    Response.Redirect("~/Template/Views/Inicio.aspx");
-                }
+                //Mensaje de confirmacion
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Exito!', 'Persona Registrado Exitosamente', 'success')", true);
+                Timer1.Enabled = true;
+
 
             }
             catch (Exception)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'El Paciente No Fue Registrado', 'error')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'La Persona No Fue Registrado', 'error')", true);
             }
         }
 
@@ -136,6 +139,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
         {
             try
             {
+                //Datos Update Tbl_Personas
                 per.Per_priNombre = txt_priNombre.Text.ToUpper();
                 per.Per_segNombre = txt_segNombre.Text.ToUpper();
                 per.Per_priApellido = txt_priApellido.Text.ToUpper();
@@ -144,6 +148,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 per.Per_fechaNacimiento = txt_fechaNacimiento.Text.ToUpper();
                 per.Per_genero = ddl_genero.Text.ToUpper();
                 per.Emp_id = Convert.ToInt32(ddl_zonal.SelectedValue);
+                per.cent_id = Convert.ToInt32(ddl_centro.SelectedValue);
                 per.Per_fechInicioTrabajo = txt_fechaIngresoTrabajo.Text.ToUpper();
                 per.Per_puestoTrabajo = ddl_puestoTrabajo.Text.ToUpper();
                 per.Per_cargoOcupacion = ddl_cargo.Text.ToUpper();
@@ -153,7 +158,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 CN_Personas.ModificarPersona(per);
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Exito!', 'Datos Modificados Exitosamente', 'success')", true);
-                Response.Redirect("~/views/Socio_Economico/Inicio.aspx");
+                Timer1.Enabled = true;
             }
             catch (Exception)
             {
@@ -177,28 +182,48 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 }
             }
         }
-        private void CargarZonales()
-        {
-            List<Tbl_Empresa> listaEmp = new List<Tbl_Empresa>();
-            listaEmp = CN_Personas.ObtenerEmpresa();
-            listaEmp.Insert(0, new Tbl_Empresa() { Emp_nombre = "Seleccione...." });
 
-            ddl_zonal.DataSource = listaEmp;
+        private void CargarInstitucion()
+        {
+            // Consulta LINQ para obtener la lista de empresas
+            var query = from empresa in dc.Tbl_Empresa
+                        orderby empresa.Emp_nombre
+                        select new
+                        {
+                            empresa.Emp_id,
+                            empresa.Emp_nombre
+                        };
+
+            // Asigna la lista de empresas al DropDownList
+            ddl_zonal.DataSource = query.ToList();
             ddl_zonal.DataTextField = "Emp_nombre";
             ddl_zonal.DataValueField = "Emp_id";
             ddl_zonal.DataBind();
 
+            // Elemento predeterminado Seleccione ....
+            ddl_zonal.Items.Insert(0, new ListItem("Seleccione....", "0"));
+
         }
+
         private void CargarCentros()
         {
-            List<Tbl_Centro> listacen = new List<Tbl_Centro>();
-            listacen = CN_Personas.ObtenerCentros();
-            listacen.Insert(0, new Tbl_Centro() { cent_nombre = "Seleccione...." });
+            // Consulta LINQ para obtener la lista de centros
+            var query = from centro in dc.Tbl_Centro
+                        orderby centro.cent_nombre
+                        select new
+                        {
+                            centro.cent_id,
+                            centro.cent_nombre
+                        };
 
-            ddl_centro.DataSource = listacen;
+            // Asigna la lista de centros al DropDownList
+            ddl_centro.DataSource = query.ToList();
             ddl_centro.DataTextField = "cent_nombre";
             ddl_centro.DataValueField = "cent_id";
             ddl_centro.DataBind();
+
+            // Elemento predeterminado Seleccione ...
+            ddl_centro.Items.Insert(0, new ListItem("Seleccione....", "0"));
 
         }
 
@@ -209,18 +234,31 @@ namespace SistemaECU911.Template.Views_Socio_Economico
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/views/Socio_Economico/Inicio.aspx");
+            Response.Redirect("~/Views/Socio_Economico/Inicio.aspx");
         }
 
         protected void Timer1_Tick(object sender, EventArgs e)
         {
-            Response.Redirect("~/views/Socio_Economico/Inicio.aspx");
+            Response.Redirect("~/Views/Socio_Economico/Inicio.aspx");
+        }
+
+
+        public static string GetMD5(string str)
+        {
+            MD5 md5 = MD5CryptoServiceProvider.Create();
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            byte[] stream = null;
+            StringBuilder sb = new StringBuilder();
+            stream = md5.ComputeHash(encoding.GetBytes(str));
+            for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
+            return sb.ToString();
         }
 
         protected void txt_cedula_TextChanged(object sender, EventArgs e)
         {
             ExisteCedula();
         }
+
         private void ExisteCedula()
         {
 
@@ -229,9 +267,10 @@ namespace SistemaECU911.Template.Views_Socio_Economico
             var query = from c in dc.Tbl_Person
                         where c.Per_cedula == cedula
                         select c;
+
             if (query.Any())
             {
-                lbl_cedula.Text = "El persona ya esta registrada !!!";
+                lbl_cedula.Text = "La Persona ya existe !!!";
                 lbl_cedula.Enabled = true;
                 txt_priNombre.Enabled = false;
                 txt_priApellido.Enabled = false;
@@ -246,6 +285,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 ddl_cargo.Enabled = false;
                 ddl_area.Enabled = false;
                 ddl_estado.Enabled = false;
+
                 txt_priNombre.Text = txt_priApellido.Text = txt_segNombre.Text = txt_segApellido.Text = txt_fechaNacimiento.Text = txt_fechaIngresoTrabajo.Text = string.Empty;
                 ddl_genero.Text = ddl_zonal.Text = ddl_centro.Text = ddl_puestoTrabajo.Text = ddl_cargo.Text = ddl_area.Text = ddl_estado.Text = default(string);
             }
