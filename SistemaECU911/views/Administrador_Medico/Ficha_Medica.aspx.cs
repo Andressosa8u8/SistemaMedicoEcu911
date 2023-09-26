@@ -167,11 +167,6 @@ namespace SistemaECU911.Template.Views
             }
         }
 
-        //protected void timerFechaHora_Tick(object sender, EventArgs e)
-        //{
-        //    this.txt_fechahora.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
-        //}
-
         public void Calculo(DateTime nac, DateTime actual)
         {
             int año = nac.Year;

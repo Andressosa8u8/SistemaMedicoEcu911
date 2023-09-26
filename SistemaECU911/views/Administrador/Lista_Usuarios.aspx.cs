@@ -10,7 +10,9 @@ namespace SistemaECU911.views.Administrador
 {
     public partial class Control_Usuarios : System.Web.UI.Page
     {
+
         DataClassesECU911DataContext dc = new DataClassesECU911DataContext();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -41,7 +43,7 @@ namespace SistemaECU911.views.Administrador
             int codigo = Convert.ToInt32(e.CommandArgument);
             if (e.CommandName == "Editar")
             {
-                Response.Redirect("~/views/Administrador/Agregar_Pacientes.aspx?cod=" + codigo, true);
+                Response.Redirect("~/views/Administrador/Agregar_Usuarios.aspx?cod=" + codigo, true);
             }
         }
     }

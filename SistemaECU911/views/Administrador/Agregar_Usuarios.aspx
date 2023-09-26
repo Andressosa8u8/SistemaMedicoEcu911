@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/views/Administrador/Administrador.Master" AutoEventWireup="true" CodeBehind="Agregar_Pacientes.aspx.cs" Inherits="SistemaECU911.views.Administrador.Agregar_Pacientes" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/views/Administrador/Administrador.Master" AutoEventWireup="true" CodeBehind="Agregar_Usuarios.aspx.cs" Inherits="SistemaECU911.views.Administrador.Agregar_Usuarios" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
-    Agregar Paciente | Sistema Médico
+    Agregar Usuario | Sistema Médico
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>
@@ -13,6 +13,19 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <div class="container" style="background-color: white">
+                <br />
+                <div class="row">
+                    <div class="col-md-2">
+                        <label class="form-label">CEDULA</label>
+                        <asp:TextBox class="form-control" runat="server" AutoPostBack="true" OnTextChanged="txt_cedula_TextChanged" ID="txt_cedula" Style="width: 100%; background-color: transparent; text-transform: uppercase" onkeypress="return SoloNumeros(event)"></asp:TextBox>
+                        <asp:Label ID="lbl_cedula" ForeColor="Red" runat="server"></asp:Label>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">TIPO DE USUARIO</label>
+                        <asp:DropDownList ID="ddl_tipoUsuario" CssClass="form-control" Style="width: 100%; text-transform: uppercase; background-color: transparent; font-size: 14px" OnTextChanged="ddl_tipoUsuario_TextChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ForeColor="Red" InitialValue="0" ControlToValidate="ddl_tipoUsuario" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
+                    </div>
+                </div>
                 <br />
                 <div class="row">
                     <div class="col-md-6">
@@ -39,17 +52,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-2">
-                        <label class="form-label">CEDULA</label>
-                        <asp:TextBox class="form-control" runat="server" ID="txt_cedula" Style="width: 100%; background-color: transparent; text-transform: uppercase"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" ControlToValidate="txt_cedula" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
-                    </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <label class="form-label">FECHA DE NACIMIENTO</label>
                         <asp:TextBox class="form-control" runat="server" ID="txt_fechaNacimiento" Style="width: 100%; background-color: transparent; text-transform: uppercase" TextMode="Date"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ForeColor="Red" ControlToValidate="txt_fechaNacimiento" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-2">
                         <label class="form-label">GÉNERO</label>
                         <asp:DropDownList ID="ddl_genero" CssClass="form-control" Style="width: 100%; text-transform: uppercase; background-color: transparent; font-size: 14px" runat="server">
                             <asp:ListItem Value="0" Text="Seleccione...."></asp:ListItem>
@@ -63,7 +71,7 @@
                         <asp:DropDownList ID="ddl_zonal" CssClass="form-control" Style="width: 100%; text-transform: uppercase; background-color: transparent; font-size: 14px" runat="server"></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ForeColor="Red" InitialValue="0" ControlToValidate="ddl_zonal" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
                     </div>
-                     <div class="col-md-3">
+                    <div class="col-md-3">
                         <label class="form-label">CENTRO</label>
                         <asp:DropDownList ID="ddl_centro" CssClass="form-control" Style="width: 100%; text-transform: uppercase; background-color: transparent; font-size: 14px" runat="server"></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ForeColor="Red" InitialValue="0" ControlToValidate="ddl_centro" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
@@ -318,10 +326,29 @@
                         <label class="form-label">ESTADO</label>
                         <asp:DropDownList ID="ddl_estado" CssClass="form-control" Style="width: 100%; text-transform: uppercase; background-color: transparent; font-size: 14px" runat="server">
                             <asp:ListItem Value="0" Text="SELECCIONE ......"></asp:ListItem>
-                            <asp:ListItem Value="A" Text="ACTIVO"></asp:ListItem>
-                            <asp:ListItem Value="I" Text="INACTIVO"></asp:ListItem>
+                            <asp:ListItem Value="AP" Text="ACTIVO"></asp:ListItem>
+                            <asp:ListItem Value="PP" Text="PASIVO"></asp:ListItem>
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ForeColor="Red" InitialValue="0" ControlToValidate="ddl_estado" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="form-label">NOMBRE DE USUARIO</label>
+                        <asp:TextBox class="form-control" runat="server" ID="txt_usuario" AutoComplete="off" Style="width: 100%; background-color: transparent; text-transform: uppercase"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" ControlToValidate="txt_usuario" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">CONTRASEÑA</label>
+                        <div style="position: relative; width: 100%;">
+                            <asp:TextBox class="form-control" runat="server" ID="txt_pass" TextMode="Password" autocomplete="new-password" Style="width: 100%; background-color: transparent; text-transform: uppercase;"></asp:TextBox>
+                            <span class="fa-stack" style="cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); right: 10px;" onclick="mostrarOcultarContraseña()">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-eye fa-stack-1x fa-inverse" id="eyeIcon"></i>
+                            </span>
+                        </div>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ForeColor="Red" ControlToValidate="txt_pass" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <br />
@@ -335,4 +362,34 @@
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
+    <script type="text/javascript">
+        function SoloNumeros(e) {
+            // Verificar el código de la tecla presionada
+            var key = e.which || e.keyCode;
+            if (key < 48 || key > 57) {
+                // Si el código de la tecla no está en el rango de dígitos (0-9), se cancela el evento
+                e.preventDefault();
+                return false;
+            }
+        }
+    </script>
+
+    <script>
+        function mostrarOcultarContraseña() {
+            var txtPass = document.getElementById('<%= txt_pass.ClientID %>');
+            var eyeIcon = document.getElementById('eyeIcon');
+
+            if (txtPass.type === 'password') {
+                txtPass.type = 'text'; // Mostrar la contraseña
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash'); // Cambiar el ícono a "ojo tachado"
+            } else {
+                txtPass.type = 'password'; // Ocultar la contraseña
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye'); // Cambiar el ícono a "ojo"
+            }
+        }
+
+    </script>
+
 </asp:Content>

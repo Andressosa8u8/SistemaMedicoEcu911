@@ -4,112 +4,112 @@
     Inicio | Sistema Médico
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Head" runat="server">
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
-
-
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Message" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Content" runat="server">
-    <div class="main-panel" style="width: auto">
-        <div class="content-wrapper" style="background-color: white">
-            <div class="row">
-                <div class="col-12 grid-margin">
-                    <div class="card card-statistics">
-                        <div class="card-body">
-                            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
-                                <div class="statistics-item">
-                                    <p>
-                                        <i class="fas fa-clipboard-list mr-2"></i>
-                                        PACIENTES INACTIVOS
-                                    </p>
-                                    <asp:Label ID="totalInactivos" CssClass="h2" runat="server" Text=""></asp:Label>
-                                    <br />
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <div class="main-panel" style="width: auto">
+                <div class="content-wrapper" style="background-color: white">
+                    <div class="row">
+                        <div class="col-12 grid-margin">
+                            <div class="card card-statistics">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+                                        <div class="statistics-item">
+                                            <p>
+                                                <i class="fas fa-clipboard-list mr-2"></i>
+                                                PACIENTES INACTIVOS
+                                            </p>
+                                            <asp:Label ID="totalInactivos" CssClass="h2" runat="server" Text=""></asp:Label>
+                                            <br />
+                                        </div>
+                                        <div class="statistics-item">
+                                            <p>
+                                                <i class="fas fa-user-injured mr-2"></i>
+                                                PACIENTES ACTIVOS
+                                            </p>
+                                            <asp:Label ID="totalPacientes" CssClass="h2" runat="server" Text=""></asp:Label>
+                                            <br />
+                                        </div>
+                                        <div class="statistics-item">
+                                            <p>
+                                                <i class="fas fa-user-friends mr-2"></i>
+                                                PACIENTES ECU
+                                            </p>
+                                            <asp:Label ID="totalEcu" CssClass="h2" runat="server" Text=""></asp:Label>
+                                        </div>
+                                        <div class="statistics-item">
+                                            <p>
+                                                <i class="fas fa-user-nurse mr-2"></i>
+                                                PACIENTES ARTICULADOS
+                                            </p>
+                                            <asp:Label ID="totalArticulados" CssClass="h2" runat="server" Text=""></asp:Label>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="statistics-item">
-                                    <p>
-                                        <i class="fas fa-user-injured mr-2"></i>
-                                        PACIENTES ACTIVOS
-                                    </p>
-                                    <asp:Label ID="totalPacientes" CssClass="h2" runat="server" Text=""></asp:Label>
-                                    <br />
-                                </div>
-                                <div class="statistics-item">
-                                    <p>
-                                        <i class="fas fa-user-friends mr-2"></i>
-                                        PACIENTES ECU
-                                    </p>
-                                    <asp:Label ID="totalEcu" CssClass="h2" runat="server" Text=""></asp:Label>
-                                </div>
-                                <div class="statistics-item">
-                                    <p>
-                                        <i class="fas fa-user-nurse mr-2"></i>
-                                        PACIENTES ARTICULADOS
-                                    </p>
-                                    <asp:Label ID="totalArticulados" CssClass="h2" runat="server" Text=""></asp:Label>
-                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <center>
+                            <div class="col-md-9">
+
+                                <h4 align="center">REVISIÓN DE ÓRGANOS Y SISTEMAS</h4>
+                                <canvas id="crt_organosySistemas" width="400"></canvas>
+                            </div>
+                        </center>
+                    </div>
+                    <hr />
+                    <div class="row align-items-center" style="vertical-align: middle">
+                        <div class="col-md-8">
+                            <h4 align="center">TIPOS DE ENFERMEDADES PERSONALES</h4>
+                            <canvas id="crt_tiposdeEnfermedades" width="400"></canvas>
+                        </div>
+
+                        <div class="col-md-4">
+                            <h5 align="center">PORCENTAJES A NIVEL NACIONAL</h5>
+                            <br />
+                            <div class="list-group justify-content-end" style="font-size: 14px">
+                                <a class="list-group-item list-group-item-action">
+                                    <asp:Label ID="lbl_sinAntecedente" runat="server"></asp:Label>
+                                </a>
+                                <a class="list-group-item list-group-item-action list-group-item-primary">
+                                    <asp:Label ID="lbl_cardioVascular" runat="server"></asp:Label>
+                                </a>
+                                <a class="list-group-item list-group-item-action list-group-item-secondary">
+                                    <asp:Label ID="lbl_metabolica" runat="server"></asp:Label>
+                                </a>
+                                <a class="list-group-item list-group-item-action list-group-item-success">
+                                    <asp:Label ID="lbl_neurologia" runat="server"></asp:Label>
+                                </a>
+                                <a class="list-group-item list-group-item-action list-group-item-danger">
+                                    <asp:Label ID="lbl_oncologica" runat="server"></asp:Label>
+                                </a>
+                                <a class="list-group-item list-group-item-action list-group-item-warning">
+                                    <asp:Label ID="lbl_infecciosa" runat="server"></asp:Label>
+                                </a>
+                                <a class="list-group-item list-group-item-action list-group-item-info">
+                                    <asp:Label ID="lbl_herediCongonita" runat="server"></asp:Label>
+                                </a>
+                                <a class="list-group-item list-group-item-action list-group-item-light">
+                                    <asp:Label ID="lbl_discapacidad" runat="server"></asp:Label>
+                                </a>
+                                <a class="list-group-item list-group-item-action list-group-item-dark">
+                                    <asp:Label ID="lbl_otros" runat="server"></asp:Label>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <hr />
-            <div class="row">
-                <center>
-                    <div class="col-md-9">
-
-                        <h4 align="center">REVISIÓN DE ÓRGANOS Y SISTEMAS</h4>
-                        <canvas id="crt_organosySistemas" width="400"></canvas>
-                    </div>
-                </center>
-            </div>
-            <hr />
-            <div class="row align-items-center" style="vertical-align: middle">
-                <div class="col-md-8">
-                    <h4 align="center">TIPOS DE ENFERMEDADES PERSONALES</h4>
-                    <canvas id="crt_tiposdeEnfermedades" width="400"></canvas>
-                </div>
-
-                <div class="col-md-4">
-                    <h5 align="center">PORCENTAJES A NIVEL NACIONAL</h5>
-                    <br />
-                    <div class="list-group justify-content-end" style="font-size:14px">
-                        <a class="list-group-item list-group-item-action">
-                            <asp:Label ID="lbl_sinAntecedente" runat="server"></asp:Label>
-                        </a>
-                        <a class="list-group-item list-group-item-action list-group-item-primary">
-                            <asp:Label ID="lbl_cardioVascular" runat="server"></asp:Label>
-                        </a>
-                        <a class="list-group-item list-group-item-action list-group-item-secondary">
-                            <asp:Label ID="lbl_metabolica" runat="server"></asp:Label>
-                        </a>
-                        <a class="list-group-item list-group-item-action list-group-item-success">
-                            <asp:Label ID="lbl_neurologia" runat="server"></asp:Label>
-                        </a>
-                        <a class="list-group-item list-group-item-action list-group-item-danger">
-                            <asp:Label ID="lbl_oncologica" runat="server"></asp:Label>
-                        </a>
-                        <a class="list-group-item list-group-item-action list-group-item-warning">
-                            <asp:Label ID="lbl_infecciosa" runat="server"></asp:Label>
-                        </a>
-                        <a class="list-group-item list-group-item-action list-group-item-info">
-                            <asp:Label ID="lbl_herediCongonita" runat="server"></asp:Label>
-                        </a>
-                        <a class="list-group-item list-group-item-action list-group-item-light">
-                            <asp:Label ID="lbl_discapacidad" runat="server"></asp:Label>
-                        </a>
-                        <a class="list-group-item list-group-item-action list-group-item-dark">
-                            <asp:Label ID="lbl_otros" runat="server"></asp:Label>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -341,6 +341,6 @@
                 console.log(error);
             }
         });
-    </script>           
+    </script>
     <%-- ------------------------------------------------------------------------------------------------------------------------------------ --%>
 </asp:Content>

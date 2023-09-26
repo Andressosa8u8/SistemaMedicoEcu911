@@ -13593,7 +13593,7 @@ namespace SistemaECU911.Template.Views
         protected void txt_puestodetrabajo_TextChanged(object sender, EventArgs e)
         {
             var valor = txt_puestodetrabajo.Text;
-            txt_puestodetrabajo21.Text = valor;
+            txt_puestodetrabajo21.Text = valor; 
         }
 
         protected void txt_puestodetrabajo2_TextChanged(object sender, EventArgs e)

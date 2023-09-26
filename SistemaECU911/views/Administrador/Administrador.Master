@@ -27,7 +27,7 @@
     <%--Fin Enlaces Extras--%>
 </head>
 <body class="sidebar-toggle-display sidebar-hidden">
-    <form id="fmr" runat="server">
+    <form id="fmr" runat="server" autocomplete="off">
         <div class="container-scroller">
             <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
                 <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -37,7 +37,7 @@
                         <img src="../../resources/images/ic2.jpg" alt="logo" />
                     </a>
                 </div>
-                <div class="navbar-menu-wrapper d-flex align-items-stretch">                    
+                <div class="navbar-menu-wrapper d-flex align-items-stretch">
                     <a href="#" class="navbar-toggler navbar-toggler align-self-center" data-toggle="minimize">
                         <i class="fa-regular fa-bars-progress fa-lg"></i>
                     </a>
@@ -46,7 +46,7 @@
                             <a href="#!" onclick="javascript:toggleFullScreen()">
                                 <i class="fa-sharp fa-regular fa-expand fa-2xl text-dark"></i>
                             </a>
-                        </li>                        
+                        </li>
                         <li class="nav-item nav-profile dropdown" style="border: none">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                                 <asp:Image ID="imgPerfil" Height="45" Width="45" ImageUrl="~/resources/images/User.png" Style="background-color: white" runat="server" />
@@ -77,10 +77,10 @@
                                 <div class="profile-name">
                                     <p class="name">
                                         <asp:Label ID="lbl_nombre" runat="server" Style="font-size: 14px"></asp:Label><br />
-                                        <asp:Label ID="lbl_apellido" runat="server" Style="font-size: 14px"></asp:Label>         
+                                        <asp:Label ID="lbl_apellido" runat="server" Style="font-size: 14px"></asp:Label>
                                     </p>
                                     <p class="designation">
-                                        <asp:Label ID="lbl_rol" runat="server" Style="font-size: 16px"></asp:Label>      
+                                        <asp:Label ID="lbl_rol" runat="server" Style="font-size: 16px"></asp:Label>
                                     </p>
                                 </div>
                             </div>
@@ -91,11 +91,50 @@
                                 <span class="menu-title">Inicio</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <%--<li class="nav-item">
                             <a class="nav-link" href="Control_Usuarios.aspx">
                                 <i class="fa-regular fa-wave-pulse menu-icon"></i>
                                 <span class="menu-title">Control Usuarios</span>
                             </a>
+                        </li>--%>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#usuarios" aria-expanded="false" aria-controls="hc_ocupacional">
+                                <i class="fa-solid fa-users menu-icon"></i>
+                                <span class="menu-title">Usuarios</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="collapse" id="usuarios">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item"><a class="nav-link" href="Lista_Usuarios.aspx">Lista Usuarios</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="Agregar_Usuarios.aspx">Agregar Usuarios</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#especialidades" aria-expanded="false" aria-controls="hc_ocupacional">
+                                <i class="fa-regular fa-display-medical menu-icon"></i>
+                                <span class="menu-title">Especialidades</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="collapse" id="especialidades">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item"><a class="nav-link" href="Lista_Especialidades.aspx">Lista Especialidades</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="Agregar_Especialidad.aspx">Agregar Especialidad</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#instituciones" aria-expanded="false" aria-controls="hc_ocupacional">
+                                <i class="fa-regular fa-city menu-icon"></i>
+                                <span class="menu-title">Instituciones</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="collapse" id="instituciones">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item"><a class="nav-link" href="Lista_Instituciones.aspx">Lista de Instituciones</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="Agregar_Instituciones.aspx">Agregar Institucion</a></li>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                 </nav>

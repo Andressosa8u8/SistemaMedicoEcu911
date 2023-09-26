@@ -84,7 +84,7 @@ namespace CapaDatos
     #endregion
 		
 		public DataClassesECU911DataContext() : 
-				base(global::CapaDatos.Properties.Settings.Default.SistemaECU911ConnectionString9, mappingSource)
+				base(global::CapaDatos.Properties.Settings.Default.SistemaECU911ConnectionString8, mappingSource)
 		{
 			OnCreated();
 		}
@@ -249,38 +249,6 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.AutentificarxUsuario")]
-		public ISingleResult<AutentificarxUsuarioResult> AutentificarxUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Usuario", DbType="VarChar(25)")] string usuario)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuario);
-			return ((ISingleResult<AutentificarxUsuarioResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Npersona_puestoTrabajo")]
-		public ISingleResult<Sp_Npersona_puestoTrabajoResult> Sp_Npersona_puestoTrabajo()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<Sp_Npersona_puestoTrabajoResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CargarImagen")]
-		public void CargarImagen([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> img_id)
-		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), img_id);
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertarPersona")]
-		public void InsertarPersona([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Imagen", DbType="Image")] System.Data.Linq.Binary imagen, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Estado", DbType="VarChar(1)")] string estado)
-		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, imagen, estado);
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ModificarPersona")]
-		public void ModificarPersona([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Imagen", DbType="Image")] System.Data.Linq.Binary imagen, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Estado", DbType="VarChar(1)")] string estado)
-		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, imagen, estado);
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ObtenerPaciente")]
 		public ISingleResult<ObtenerPacienteResult> ObtenerPaciente([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula)
 		{
@@ -288,10 +256,11 @@ namespace CapaDatos
 			return ((ISingleResult<ObtenerPacienteResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.RegistrarImagen")]
-		public void RegistrarImagen([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Image")] System.Data.Linq.Binary imagen)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Npersona_puestoTrabajo")]
+		public ISingleResult<Sp_Npersona_puestoTrabajoResult> Sp_Npersona_puestoTrabajo()
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, imagen);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Sp_Npersona_puestoTrabajoResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Grafico_AntecedentePer")]
@@ -37563,7 +37532,7 @@ namespace CapaDatos
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Per_id
 		{
 			get
@@ -50929,76 +50898,6 @@ namespace CapaDatos
 		}
 	}
 	
-	public partial class AutentificarxUsuarioResult
-	{
-		
-		private string _Per_nomlogin;
-		
-		public AutentificarxUsuarioResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_nomlogin", DbType="VarChar(25)")]
-		public string Per_nomlogin
-		{
-			get
-			{
-				return this._Per_nomlogin;
-			}
-			set
-			{
-				if ((this._Per_nomlogin != value))
-				{
-					this._Per_nomlogin = value;
-				}
-			}
-		}
-	}
-	
-	public partial class Sp_Npersona_puestoTrabajoResult
-	{
-		
-		private string _Per_puestoTrabajo;
-		
-		private System.Nullable<int> _numero_personas;
-		
-		public Sp_Npersona_puestoTrabajoResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_puestoTrabajo", DbType="VarChar(MAX)")]
-		public string Per_puestoTrabajo
-		{
-			get
-			{
-				return this._Per_puestoTrabajo;
-			}
-			set
-			{
-				if ((this._Per_puestoTrabajo != value))
-				{
-					this._Per_puestoTrabajo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numero_personas", DbType="Int")]
-		public System.Nullable<int> numero_personas
-		{
-			get
-			{
-				return this._numero_personas;
-			}
-			set
-			{
-				if ((this._numero_personas != value))
-				{
-					this._numero_personas = value;
-				}
-			}
-		}
-	}
-	
 	public partial class ObtenerPacienteResult
 	{
 		
@@ -51074,6 +50973,50 @@ namespace CapaDatos
 				if ((this._fechaHoraGuardado != value))
 				{
 					this._fechaHoraGuardado = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Sp_Npersona_puestoTrabajoResult
+	{
+		
+		private string _Per_puestoTrabajo;
+		
+		private System.Nullable<int> _numero_personas;
+		
+		public Sp_Npersona_puestoTrabajoResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_puestoTrabajo", DbType="VarChar(MAX)")]
+		public string Per_puestoTrabajo
+		{
+			get
+			{
+				return this._Per_puestoTrabajo;
+			}
+			set
+			{
+				if ((this._Per_puestoTrabajo != value))
+				{
+					this._Per_puestoTrabajo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numero_personas", DbType="Int")]
+		public System.Nullable<int> numero_personas
+		{
+			get
+			{
+				return this._numero_personas;
+			}
+			set
+			{
+				if ((this._numero_personas != value))
+				{
+					this._numero_personas = value;
 				}
 			}
 		}

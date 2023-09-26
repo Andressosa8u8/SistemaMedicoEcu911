@@ -95,6 +95,8 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 per = new Tbl_Person();
 
                 //Datos Tbl_Personas
+                per.Per_cedula = txt_cedula.Text.ToUpper();
+
                 per.Per_priNombre = txt_priNombre.Text.ToUpper();
                 per.Per_segNombre = txt_segNombre.Text.ToUpper();
                 per.Per_priApellido = txt_priApellido.Text.ToUpper();
@@ -111,27 +113,21 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 per.Per_estado = ddl_estado.Text.ToUpper();
 
                 //Datos Tbl_Usuarios
-                per.Per_cedula = txt_cedula.Text.ToUpper();
-                per.Per_priApellido = txt_priApellido.Text.ToUpper();
-                per.Per_segApellido = txt_segApellido.Text.ToUpper();
-                per.Per_priNombre = txt_priNombre.Text.ToUpper();
-                per.Per_segNombre = txt_segNombre.Text.ToUpper();
-                per.Per_nomlogin = txt_cedula.Text.ToUpper();
-                per.Per_pass = GetMD5(txt_cedula.Text.ToUpper());
-                per.tusu_id = 2;
-                per.Per_estado = ddl_estado.SelectedValue;
+                per.Per_nomlogin = txt_cedula.Text;
+                per.Per_pass = GetMD5(txt_cedula.Text);
+                per.tusu_id = 3;
 
                 CN_Personas.GuardarPersona(per);
 
                 //Mensaje de confirmacion
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Exito!', 'Persona Registrado Exitosamente', 'success')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Exito!', 'Persona Registrada Exitosamente', 'success')", true);
                 Timer1.Enabled = true;
 
 
             }
             catch (Exception)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'La Persona No Fue Registrado', 'error')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'La Persona No Fue Registrada', 'error')", true);
             }
         }
 

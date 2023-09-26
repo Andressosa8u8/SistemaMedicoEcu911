@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/views/Administrador/Administrador.Master" AutoEventWireup="true" CodeBehind="Control_Usuarios.aspx.cs" Inherits="SistemaECU911.views.Administrador.Control_Usuarios" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/views/Administrador/Administrador.Master" AutoEventWireup="true" CodeBehind="Lista_Instituciones.aspx.cs" Inherits="SistemaECU911.views.Administrador.Lista_Instituciones" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
-    Control de Usuarios | Administrador Sistema Médico 
+    Lista de Instituciones | Administrador Sistema Médico
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>
@@ -15,7 +15,7 @@
                 <h4 class="card-title">
                     <%--<i class="fas fa-envelope"></i>--%>
                     <i class="fa-solid fa-hospital-user"></i>
-                    PACIENTES
+                    INSTITUCIONES
                 </h4>
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
@@ -24,42 +24,21 @@
                                 <div class="container">
                                     <div class="row justify-content-center">
                                         <div class="col-auto">
-
-                                            <asp:GridView ID="grvPacientes" OnRowCommand="grvPacientes_RowCommand" AutoGenerateColumns="false" Width="100%" CssClass="table table-hover text-center table-responsive" GridLines="None" runat="server" Style="margin-right: 0px" ShowHeader="false">
+                                            <asp:GridView CssClass="table table-hover text-center table-responsive" ID="grvInstituciones" OnRowCommand="grvInstituciones_RowCommand" AutoGenerateColumns="false" Width="100%" GridLines="None" runat="server" ShowHeader="false">
                                                 <Columns>
-                                                    <asp:TemplateField HeaderText="CEDULA">
+                                                    <asp:TemplateField HeaderText="NOMBRE DE LA INSTITUCION">
                                                         <ItemTemplate>
-                                                            <asp:Label ID="Per_cedula" runat="server" Text='<%#Eval("Per_cedula")%>'></asp:Label>
+                                                            <asp:Label ID="Emp_nombre" runat="server" Text='<%#Eval("Emp_nombre")%>'></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="PRIMER NOMBRE">
+                                                    <asp:TemplateField HeaderText="ESTADO">
                                                         <ItemTemplate>
-                                                            <asp:Label ID="Per_priNombre" runat="server" Text='<%#Eval("Per_priNombre")%>'></asp:Label>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="SEGUNDO NOMBRE">
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="Per_segNombre" runat="server" Text='<%#Eval("Per_segNombre")%>'></asp:Label>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="PRIMER APELLIDO">
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="Per_priApellido" runat="server" Text='<%#Eval("Per_priApellido")%>'></asp:Label>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="SEGUNDO APELLIDO">
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="Per_segApellido" runat="server" Text='<%#Eval("Per_segApellido")%>'></asp:Label>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="GÉNERO">
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="Per_genero" runat="server" Text='<%#Eval("Per_genero")%>'></asp:Label>
+                                                            <asp:Label ID="Emp_estado" runat="server" Text='<%#Eval("Emp_estado")%>'></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:TemplateField ItemStyle-Width="17" HeaderStyle-Width="17" HeaderText="">
                                                         <ItemTemplate>
-                                                            <asp:LinkButton ID="lnbEditar" Width="16" Height="16" CommandArgument='<%#Eval("Per_id")%>' CommandName="Editar" runat="server"><i class="fas fa-pen"></i></asp:LinkButton>
+                                                            <asp:LinkButton ID="lnbEditar" Width="16" Height="16" CommandArgument='<%#Eval("Emp_id")%>' CommandName="Editar" runat="server"><i class="fas fa-pen"></i></asp:LinkButton>
                                                         </ItemTemplate>
                                                         <HeaderStyle Width="17px" />
                                                         <ItemStyle Width="17px" />
@@ -94,14 +73,10 @@
 
     <script>
         $(document).ready(function () {
-            var dataTable = $('#<%= grvPacientes.ClientID %>').DataTable({
+            var dataTable = $('#<%= grvInstituciones.ClientID %>').DataTable({
                 "columns": [
-                    { "data": "Per_cedula", "title": "CÉDULA" },
-                    { "data": "Per_priNombre", "title": "PRIMER NOMBRE" },
-                    { "data": "Per_segNombre", "title": "SEGUNDO NOMBRE" },
-                    { "data": "Per_priApellido", "title": "PRIMER APELLIDO" },
-                    { "data": "Per_segApellido", "title": "SEGUNDO APELLIDO" },
-                    { "data": "Per_genero", "title": "GÉNERO" },
+                    { "data": "Emp_nombre", "title": "NOMBRE DE LA INSTITUCION" },
+                    { "data": "Emp_estado", "title": "ESTADO" },
 
                     null // Columna de EDICIÓN sin datos específicos
                 ],
@@ -122,7 +97,7 @@
                         init: function (api, node, config) {
                             $(node).append('<i class="fas fa-file-excel fa-lg"></i>');
                         },
-                        title: 'LISTADO DE PACIENTES', // Título del contenido del EXCEL
+                        title: 'LISTADO DE INSTITUCIONES', // Título del contenido del EXCEL
                         exportOptions: {
                             columns: ':visible' // Exporta solo las columnas visibles
                         },
@@ -141,7 +116,7 @@
                         init: function (api, node, config) {
                             $(node).append('<i class="fas fa-file-pdf fa-lg"></i>');
                         },
-                        title: 'LISTADO DE PACIENTES', // Título del contenido del PDF
+                        title: 'LISTADO DE INSTITUCIONES', // Título del contenido del PDF
                         exportOptions: {
                             columns: ':visible' // Exporta solo las columnas visibles
                         },
@@ -154,7 +129,7 @@
                         }
                     },
                     {
-                        title: 'LISTADO DE PACIENTES', // Título del contenido en IMPRIMIR
+                        title: 'LISTADO DE INSTITUCIONES', // Título del contenido en IMPRIMIR
                         exportOptions: {
                             columns: ':visible' // Exporta solo las columnas visibles
                         },
@@ -260,7 +235,8 @@
                             y: {
                                 beginAtZero: true
                             }
-                        }                    }
+                        }
+                    }
                 });
 
                 //

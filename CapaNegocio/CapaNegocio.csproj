@@ -60,8 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="CN_Administrador.cs" />
     <Compile Include="CN_Certificado.cs" />
     <Compile Include="CN_Email.cs" />
+    <Compile Include="CN_Empresa.cs" />
     <Compile Include="CN_Evolucion.cs" />
     <Compile Include="CN_HistorialMedico.cs" />
     <Compile Include="CN_Inicial.cs" />

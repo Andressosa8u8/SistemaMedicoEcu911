@@ -81,7 +81,6 @@ namespace SistemaECU911.Template.Views
                 Timer1.Enabled = false;
                 CargarInstitucion();
                 CargarCentros();
-                ddl_estado.Text = "AP";
                 txt_cedula.MaxLength = 10;
             }
         }
@@ -100,7 +99,9 @@ namespace SistemaECU911.Template.Views
                 {
                     per = new Tbl_Person();
 
-                    //Datos Tbl_Personas
+                    //Datos Tbl_Person
+                    per.Per_cedula = txt_cedula.Text.ToUpper();
+
                     per.Per_priNombre = txt_priNombre.Text.ToUpper();
                     per.Per_segNombre = txt_segNombre.Text.ToUpper();
                     per.Per_priApellido = txt_priApellido.Text.ToUpper();
@@ -115,17 +116,9 @@ namespace SistemaECU911.Template.Views
                     per.Per_cargoOcupacion = ddl_cargo.Text.ToUpper();
                     per.Per_areaTrabajo = ddl_area.Text.ToUpper();
                     per.Per_estado = ddl_estado.Text.ToUpper();
-
-                    //Datos Tbl_Usuarios
-                    per.Per_cedula = txt_cedula.Text.ToUpper();
-                    per.Per_priApellido = txt_priApellido.Text.ToUpper();
-                    per.Per_segApellido = txt_segApellido.Text.ToUpper();
-                    per.Per_priNombre = txt_priNombre.Text.ToUpper();
-                    per.Per_segNombre = txt_segNombre.Text.ToUpper();
-                    per.Per_nomlogin = txt_cedula.Text.ToUpper();
-                    per.Per_pass = GetMD5(txt_cedula.Text.ToUpper());
-                    per.tusu_id = 2;
-                    per.Per_estado = ddl_estado.SelectedValue;
+                    per.Per_nomlogin = txt_cedula.Text;
+                    per.Per_pass = GetMD5(txt_cedula.Text);
+                    per.tusu_id = 3;
 
                     CN_Personas.GuardarPersona(per);
 

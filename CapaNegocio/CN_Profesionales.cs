@@ -10,16 +10,19 @@ namespace CapaNegocio
     public class CN_Profesionales
     {
         private static DataClassesECU911DataContext dc = new DataClassesECU911DataContext();
+
         public static Tbl_Profesional ObtenerProfesionalPorId(int id)
         {
             var perid = dc.Tbl_Profesional.FirstOrDefault(per => per.prof_id.Equals(id));
             return perid;
         }
+
         public static bool autentificarxCedula(string cedula)
         {
             var cedu = dc.Tbl_Profesional.Any(pro => pro.prof_estado == "A" && pro.prof_cedula.Equals(cedula));
             return cedu;
         }
+
         // Metodo para guardar datos de los profesionales
         public static void GuardarProfesional(Tbl_Profesional pro)
         {

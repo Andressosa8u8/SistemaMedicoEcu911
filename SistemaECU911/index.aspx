@@ -25,7 +25,7 @@
                     <div class="col-lg-6 d-flex align-items-center justify-content-center">
                         <div class="auth-form-transparent text-left p-3">
                             <div class="brand-logo">
-                                <img src="resources/images/LogoECU.png" style="width:100%; height:100px"/>
+                                <img src="resources/images/LogoECU.png" style="width: 100%; height: 100px" />
                             </div>
                             <h3>Bienvenido al Sistema!</h3>
                             <h6 class="font-weight-light">Un gusto verte de nuevo!</h6>
@@ -45,7 +45,7 @@
                                                 <asp:TextBox ID="txt_user" type="text" class="form-control form-control-lg border-left-0" placeholder="Nombre de usuario" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <%--<div class="form-group">
                                             <asp:Label ID="lbl_pass" for="exampleInputPassword" runat="server" Text="Contraseña"></asp:Label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend bg-transparent">
@@ -55,19 +55,39 @@
                                                 </div>
                                                 <asp:TextBox ID="txt_pass" type="password" class="form-control form-control-lg border-left-0" placeholder="Contraseña" runat="server"></asp:TextBox>
                                             </div>
+                                        </div>--%>
+
+
+                                        <div class="form-group">
+                                            <asp:Label ID="lbl_pass" for="exampleInputPassword" runat="server" Text="Contraseña"></asp:Label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend bg-transparent">
+                                                    <span class="input-group-text bg-transparent border-right-0">
+                                                        <i class="fa fa-lock text-secondary"></i>
+                                                    </span>
+                                                </div>
+                                                <asp:TextBox ID="txt_pass" type="password" class="form-control form-control-lg border-left-0" placeholder="Contraseña" runat="server"></asp:TextBox>
+                                                <div class="input-group-append" style="cursor: pointer;" onclick="mostrarOcultarContraseña()">
+                                                    <span class="input-group-text bg-transparent border-left-0">
+                                                        <i class="fa fa-eye text-secondary" id="eyeIcon"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
+
+
                                         <div class="my-2 d-flex justify-content-between align-items-center">
                                             <a href="autentificacion/recuperarContraseña.aspx" class="auth-link text-black">Olvidaste tu contraseña?</a>
                                         </div>
                                         <div class="my-3">
-                                            <asp:Button ID="btn_ingresar" style="background-color: lightskyblue" class="btn btn-block btn-lg font-weight-medium auth-form-btn" type="submit" runat="server" Text="INGRESAR" OnClick="btn_ingresar_Click" />
+                                            <asp:Button ID="btn_ingresar" Style="background-color: lightskyblue" class="btn btn-block btn-lg font-weight-medium auth-form-btn" type="submit" runat="server" Text="INGRESAR" OnClick="btn_ingresar_Click" />
                                         </div>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
                             </form>
                         </div>
                     </div>
-                    <div class="col-lg-6 login-half-bg d-flex flex-row" style="background-image:url('resources/images/auth/img2.jpg'); background-size: cover">
+                    <div class="col-lg-6 login-half-bg d-flex flex-row" style="background-image: url('resources/images/auth/img2.jpg'); background-size: cover">
                         <p class="text-black font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2023  Todos los derechos reservados.</p>
                     </div>
                 </div>
@@ -81,5 +101,27 @@
     <script src="resources/js/misc.js"></script>
     <script src="resources/js/settings.js"></script>
     <script src="resources/js/todolist.js"></script>
+
+    <script type="text/javascript">
+        var contraseñaVisible = false;
+
+        function mostrarOcultarContraseña() {
+            var txtPass = document.getElementById('<%= txt_pass.ClientID %>');
+            var eyeIcon = document.getElementById('eyeIcon');
+
+            if (contraseñaVisible) {
+                txtPass.type = 'password'; // Ocultar la contraseña
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            } else {
+                txtPass.type = 'text'; // Mostrar la contraseña
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            }
+
+            contraseñaVisible = !contraseñaVisible;
+        }
+    </script>
+
 </body>
 </html>
