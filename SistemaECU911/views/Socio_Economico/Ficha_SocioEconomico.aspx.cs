@@ -3897,7 +3897,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Template/Views_Socio_Economico/Inicio.aspx");
+            Response.Redirect("~/views/Socio_Economico/Inicio.aspx");
         }
 
 
