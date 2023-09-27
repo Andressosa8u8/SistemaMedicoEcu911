@@ -100,7 +100,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="SocioEconomico.aspx">
                                 <i class="fa-regular fa-wave-pulse menu-icon"></i>
-                                <span class="menu-title">SSO</span>
+                                <span class="menu-title">Ficha SSO</span>
                             </a>
                         </li> 
                     </ul>
