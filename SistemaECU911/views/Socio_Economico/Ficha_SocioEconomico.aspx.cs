@@ -58,7 +58,8 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                         DateTime naci = Convert.ToDateTime(edad);
                         DateTime actual = DateTime.Now;
                         Calculo(naci, actual);
-
+                        cb_certificosi.Enabled = false;
+                        cb_certificono.Enabled = false;
 
                         // Cargar la imagen del usuario si está disponible
                         if (!string.IsNullOrEmpty(per.Per_imgNombre) && per.Per_imgByte != null)
@@ -1518,8 +1519,18 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 }
                 txt_fecharegistro.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 Timer1.Enabled = false;
-                
+
+                //string previewImageSrc = (string)localStorage.getItem('previewImageSrc');
+                //if (!string.IsNullOrEmpty(previewImageSrc))
+                //{
+                //    imgPreview.Src = previewImageSrc;
+                //    imgPreview.Style.Add("display", "block");
+                //}
+
             }
+
+
+
         }
 
         //protected void timerFechaHora_Tick(object sender, EventArgs e)
@@ -1587,6 +1598,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
 
         protected void txt_cedula_TextChanged(object sender, EventArgs e)
         {
+            lbl_cedula.Text = "";
             ObtenerCedula();
         }
 
@@ -3856,7 +3868,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 CN_SocioEconomico.ModificarSocioEconomico(sso);
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Exito!', 'Datos Modificados Exitosamente', 'success')", true);
-                Response.Redirect("~/Template/Views_Socio_Economico/PacientesSocioEconomico.aspx");
+                Response.Redirect("~/views/Socio_Economico/Inicio.aspx");
             }
             catch (Exception)
             {
@@ -3884,15 +3896,40 @@ namespace SistemaECU911.Template.Views_Socio_Economico
 
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
-            if (cb_certificosi.Checked == true)
+            bool camposCompletos = true;
+
+            if (string.IsNullOrEmpty(txt_cedula.Text))
             {
+                lbl_cedula.Text = "CAMPO OBLIGATORIO";
+                camposCompletos = false;
+            }
+            else
+            {
+                lbl_cedula.Text = "";
+            }
+
+            if (cb_certificosi.Checked == true && camposCompletos)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "ShowLoading", "ShowLoadingElement();", true);
+
                 Guardar_modificar_datos(Convert.ToInt32(Request["cod"]));
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "HideLoading", "HideLoadingElement();", true);
+
             }
             else
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Por favor, marque la casilla SI, para validar que la información suministrada es real', 'error')", true);
                 Timer1.Enabled = false;
             }
+
+            // Al menos uno de los campos está incompleto, enfocar el primer campo vacío
+            if (string.IsNullOrEmpty(txt_cedula.Text))
+            {
+                txt_cedula.Focus();
+                ScriptManager.RegisterStartupScript(this, GetType(), "ScrollToField", "window.scrollTo(0, document.getElementById('" + txt_cedula.ClientID + "').offsetTop);", true);
+            }
+
         }
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
@@ -5304,7 +5341,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
             pdfDoc.Open();
 
             //IMAGEN ENCABEZADO
-            string imageURL = Server.MapPath("../Template Principal/images") + "/ecu911.jpg";
+            string imageURL = Server.MapPath("../../resources/images") + "/ic1.png";
             iTextSharp.text.Image fotologo = iTextSharp.text.Image.GetInstance(imageURL);
             fotologo.ScalePercent(40f);
 

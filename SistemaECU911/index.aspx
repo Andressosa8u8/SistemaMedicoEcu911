@@ -9,7 +9,7 @@
     <title>ECU 911</title>
     <link rel="stylesheet" href="resources/vendors/iconfonts/font-awesome/css/all.min.css" />
     <link rel="stylesheet" href="resources/vendors/iconfonts/font-awesome-6.1.1/css/all.min.css" />
-    <link rel="stylesheet" href="resources/vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" href="resources/vendors/css/vendor.bundle.base.css" />   
     <link rel="stylesheet" href="resources/vendors/css/vendor.bundle.addons.css" />
     <link rel="stylesheet" href="resources/css/style.css" />
     <link rel="stylesheet" href="resources/css/Style_Prueba.css" />

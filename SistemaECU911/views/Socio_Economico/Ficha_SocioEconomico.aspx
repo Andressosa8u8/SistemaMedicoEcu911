@@ -133,14 +133,15 @@
                                 </asp:TableCell>
                                 <asp:TableCell Style="background-color: #cdfecc; color: black; font-family: Arial; width: 200px; font-size: 12px">CEDULA CIUDADANIA:</asp:TableCell>
                                 <asp:TableCell Style="background-color: white; text-align: left">
-                                    <asp:TextBox runat="server" ID="txt_cedula" OnTextChanged="txt_cedula_TextChanged" BorderStyle="None" Style="width: 100%; font-family: Arial; font-size: 12px; background-color: transparent" AutoPostBack="true"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="txt_cedula" OnTextChanged="txt_cedula_TextChanged" BorderStyle="None" Style="width: 100%; font-family: Arial; font-size: 12px; background-color: transparent" AutoPostBack="true" onkeypress="return SoloNumeros(event)" oninput="borrarMensaje()"></asp:TextBox>
+                                    <asp:Label ID="lbl_cedula" ForeColor="Red" runat="server"></asp:Label>
                                     <ajaxToolkit:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" CompletionInterval="10" DelimiterCharacters="" Enabled="True"
                                         MinimumPrefixLength="1" ServiceMethod="ObtenerNumHClinica"
                                         TargetControlID="txt_cedula" CompletionListCssClass="CompletionList"
                                         CompletionListHighlightedItemCssClass="CompletionListHighlightedItem"
                                         CompletionListItemCssClass="CompletionListItem">
                                     </ajaxToolkit:AutoCompleteExtender>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator_txtcedula" runat="server" ErrorMessage="!Este campo es obligatorio!" ControlToValidate="txt_cedula" ForeColor="Red" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
+<%--                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator_txtcedula" runat="server" ErrorMessage="!Este campo es obligatorio!" ControlToValidate="txt_cedula" ForeColor="Red" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>--%>
                                 </asp:TableCell>
                             </asp:TableRow>
                         </asp:Table>
@@ -281,7 +282,7 @@
                                 <asp:TableCell Style="background-color: white; width: 50px">
                                     <asp:CheckBox ID="cb_diplomado" OnCheckedChanged="cb_diplomado_CheckedChanged" AutoPostBack="true" runat="server" />
                                 </asp:TableCell>
-                                <asp:TableCell Style="background-color: #cdfecc; color: black; font-family: Arial; width: 50px; font-size: 12px">MESTRIA</asp:TableCell>
+                                <asp:TableCell Style="background-color: #cdfecc; color: black; font-family: Arial; width: 50px; font-size: 12px">MAESTRIA</asp:TableCell>
                                 <asp:TableCell Style="background-color: white; width: 50px">
                                     <asp:CheckBox ID="cb_maestria" OnCheckedChanged="cb_maestria_CheckedChanged" AutoPostBack="true" runat="server" />
                                 </asp:TableCell>
@@ -1208,7 +1209,7 @@
                                 <asp:TableCell Style="background-color: white; width: 20px">
                                     <asp:CheckBox ID="cb_dependenciaministeriotrabajono" OnCheckedChanged="cb_dependenciaministeriotrabajono_CheckedChanged" AutoPostBack="true" runat="server" />
                                 </asp:TableCell>
-                                <asp:TableCell Style="background-color: #cdfecc; color: black; font-family: Arial; font-size: 12px">Tiempo:</asp:TableCell>
+                                <asp:TableCell Style="background-color: #cdfecc; color: black; font-family: Arial; font-size: 12px">TIEMPO:</asp:TableCell>
                                 <asp:TableCell Style="background-color: white">
                                     <asp:TextBox runat="server" ID="txt_dependenciaministeriotrabajotiempo" BorderStyle="None" Style="width: 100%; font-family: Arial; font-size: 12px; background-color: transparent"></asp:TextBox>
                                 </asp:TableCell>
@@ -1671,16 +1672,56 @@
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    
+
     <script type="text/javascript">
+        function SoloNumeros(e) {
+            // Verificar el código de la tecla presionada
+            var key = e.which || e.keyCode;
+            if (key < 48 || key > 57) {
+                // Si el código de la tecla no está en el rango de dígitos (0-9), se cancela el evento
+                e.preventDefault();
+                return false;
+            }
+        }
+    </script>
+
+    <script>
+        function borrarMensaje() {
+            var lblCedula = document.getElementById("<%= lbl_cedula.ClientID %>");
+<%--            var lblProfesional = document.getElementById("<%= lbl_profesional.ClientID %>");--%>
+
+            if (lblCedula) {
+                lblCedula.innerHTML = "";
+            }
+        }
+    </script>
+
+    <script>
         function showPreviewImage() {
             var fileInput = document.getElementById('<%= FileUploadPic.ClientID %>');
             var previewImage = document.getElementById('<%= imgPreview.ClientID %>');
+            var previewLoaded = previewImage.src && previewImage.src !== '';
 
             if (fileInput.files && fileInput.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
                     previewImage.src = e.target.result;
                     previewImage.style.display = "block";
+
+                    // Guardar la URL de la imagen en el almacenamiento local
+                    localStorage.setItem('previewImageSrc', e.target.result);
+
+                    // Actualizar el UpdatePanel sólo si la vista previa no ha sido cargada previamente
+                    if (!previewLoaded) {
+                        var updatePanel = document.getElementById('<%= UpdatePanel1.ClientID %>');
+                        if (updatePanel) {
+                            __doPostBack(updatePanel.id, '');
+                        }
+                    }
                 };
                 reader.readAsDataURL(fileInput.files[0]);
             } else {
@@ -1688,4 +1729,5 @@
             }
         }
     </script>
+
 </asp:Content>

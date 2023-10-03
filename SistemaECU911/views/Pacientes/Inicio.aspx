@@ -4,6 +4,9 @@
     Inicio | Sistema Médico Paciente
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Head" runat="server">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Message" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -60,6 +63,70 @@
                                     </div>
                                 </div>
                             </div>
+
+
+
+                            <%--                            HISTORIA SOCIO ECONÓMICO--%>
+
+
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <i class="fa-solid fa-hospital-user"></i>
+                                        HISTORIA SOCIO ECONÓMICO
+                                    </h4>
+                                    <div class="card" style="width: auto;">
+                                        <div class="list-group list-group-flush" style="padding: 10px; text-align: center">
+                                            <div class="container">
+                                                <div class="row justify-content-center">
+                                                    <div class="col-auto">
+
+                                                        <asp:GridView ID="grvPacientesSocioEconomico" OnRowCommand="grvPacientesSocioEconomico_RowCommand" AutoGenerateColumns="false" Width="100%" CssClass="table table-hover text-center table-responsive" GridLines="None" runat="server" Style="margin-right: 0px" ShowHeader="false">
+                                                            <Columns>
+                                                                <asp:TemplateField HeaderText="CEDULA">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Per_cedula" runat="server" Text='<%#Eval("Per_cedula")%>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="NOMBRE">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Per_priNombre" runat="server" Text='<%#Eval("Per_priNombre")%>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="APELLIDO">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Per_priApellido" runat="server" Text='<%#Eval("Per_priApellido")%>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="FECHA GUARDADO">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Socio_economico_fechaHoraGuardado" runat="server" Text='<%#Eval("Socio_economico_fechaHoraGuardado")%>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="FECHA MODIFICACION">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="Socio_economico_fechaHoraModificacion" runat="server" Text='<%#Eval("Socio_economico_fechaHoraModificacion")%>'></asp:Label>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField ItemStyle-Width="17" HeaderStyle-Width="17" HeaderText="">
+                                                                    <ItemTemplate>
+                                                                        <asp:LinkButton ID="lnbEditar" Width="16" Height="16" CommandArgument='<%#Eval("Socio_economico_id")%>' CommandName="Visualizar" runat="server"><i class="fa-solid fa-eye"></i></asp:LinkButton>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle Width="17px" />
+                                                                    <ItemStyle Width="17px" />
+                                                                </asp:TemplateField>
+                                                            </Columns>
+                                                        </asp:GridView>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -68,6 +135,9 @@
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
+
+
+
     <script>
         $('document').ready(function () {
             $('#<%=grvHClinica.ClientID%>').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
@@ -93,5 +163,52 @@
                 //},
             });
         });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var dataTable = $('#<%= grvPacientesSocioEconomico.ClientID %>').DataTable({
+               "columns": [
+                   { "data": "Per_cedula", "title": "CEDULA" },
+                   { "data": "Per_priNombre", "title": "NOMBRE" },
+                   { "data": "Per_priApellido", "title": "APELLIDO" },
+                   { "data": "Socio_economico_fechaHoraGuardado", "title": "FECHA GUARDADO" },
+                   { "data": "Socio_economico_fechaHoraModificacion", "title": "FECHA MODIFICACION" },
+                   //{ "data": "Per_genero", "title": "GÉNERO" },
+
+                   null // Columna de EDICIÓN sin datos específicos
+               ],
+
+               "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+               "language": {
+                   "lengthMenu": 'Show <select>' +
+                       '<option value="10">10</option>' +
+                       '<option value="25">25</option>' +
+                       '<option value="50">50</option>' +
+                       '<option value="-1">Todos</option>' +
+                       '</select> entries'
+               },
+               "initComplete": function (settings, json) {
+                   var table = this.api();
+                   var lengthMenuContainer = $(table.table().container()).find('.dataTables_length');
+                   var searchContainer = $(table.table().container()).find('.dataTables_filter');
+                   var buttonsContainer = $('<div class="float-right ml-2"></div>');
+
+                   lengthMenuContainer.addClass('d-inline-block');
+                   lengthMenuContainer.find('label').addClass('mr-2 mb-0');
+                   lengthMenuContainer.find('select').addClass('custom-length-select');
+
+                   searchContainer.addClass('d-inline-block').addClass('mr-2');
+
+                   table.buttons().container().appendTo(buttonsContainer);
+                   $('.top').prepend(buttonsContainer);
+               },
+               "drawCallback": function (settings) {
+                   var table = this.api();
+                   var lengthSelect = $(table.table().container()).find('.custom-length-select');
+                   lengthSelect.val(table.page.len());
+               }
+           });
+       });
     </script>
 </asp:Content>

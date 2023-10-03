@@ -24,6 +24,15 @@ namespace SistemaECU911.Template.Views_Pacientes
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
+        /// Control Timer1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.Timer Timer1;
+
+        /// <summary>
         /// Control UpdatePanel1.
         /// </summary>
         /// <remarks>
@@ -112,15 +121,6 @@ namespace SistemaECU911.Template.Views_Pacientes
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::AjaxControlToolkit.AutoCompleteExtender AutoCompleteExtender1;
-
-        /// <summary>
-        /// Control RequiredFieldValidator_txtcedula.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator_txtcedula;
 
         /// <summary>
         /// Control txt_areatrabajo.
@@ -2643,13 +2643,13 @@ namespace SistemaECU911.Template.Views_Pacientes
         protected global::System.Web.UI.WebControls.TextBox txt_firmadelservidor;
 
         /// <summary>
-        /// Control btn_guardar.
+        /// Control btn_imprimir.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_guardar;
+        protected global::System.Web.UI.WebControls.Button btn_imprimir;
 
         /// <summary>
         /// Control btn_cancelar.
@@ -2659,14 +2659,5 @@ namespace SistemaECU911.Template.Views_Pacientes
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_cancelar;
-
-        /// <summary>
-        /// Control btn_imprimir.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_imprimir;
     }
 }
