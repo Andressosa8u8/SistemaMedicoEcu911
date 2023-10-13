@@ -392,7 +392,7 @@ namespace SistemaECU911
             return resultado;
         }
 
-        public static string GetMD5(string str)
+        public static string GetMD5(string str) 
         {
             MD5 md5 = MD5CryptoServiceProvider.Create();
             ASCIIEncoding encoding = new ASCIIEncoding();

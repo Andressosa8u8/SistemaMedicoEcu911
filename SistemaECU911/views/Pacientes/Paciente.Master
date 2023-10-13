@@ -90,13 +90,7 @@
                                 <i class="fa-solid fa-house menu-icon"></i>
                                 <span class="menu-title">Inicio</span>
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Ficha_Medica.aspx">
-                                <i class="fa-regular fa-wave-pulse menu-icon"></i>
-                                <span class="menu-title">Ficha Medica</span>
-                            </a>
-                        </li> 
+                        </li>  
                         <li class="nav-item">
                             <a class="nav-link" href="SocioEconomico.aspx">
                                 <i class="fa-regular fa-wave-pulse menu-icon"></i>

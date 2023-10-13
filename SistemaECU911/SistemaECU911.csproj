@@ -68,6 +68,7 @@
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -867,6 +868,7 @@
     <Content Include="views\Administrador\Lista_Especialidades.aspx" />
     <Content Include="views\Administrador\Lista_Usuarios.aspx" />
     <Content Include="views\Administrador\Inicio.aspx" />
+    <Content Include="views\Administrador\Lista_Usuarios_Pasivos.aspx" />
     <Content Include="views\Administrador\Perfil.aspx" />
     <Content Include="views\Administrador_Medico\Agregar_Doctores.aspx" />
     <Content Include="views\Administrador_Medico\Certificado_Covid.aspx" />
@@ -1002,6 +1004,13 @@
     </Compile>
     <Compile Include="views\Administrador\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="views\Administrador\Lista_Usuarios_Pasivos.aspx.cs">
+      <DependentUpon>Lista_Usuarios_Pasivos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="views\Administrador\Lista_Usuarios_Pasivos.aspx.designer.cs">
+      <DependentUpon>Lista_Usuarios_Pasivos.aspx</DependentUpon>
     </Compile>
     <Compile Include="views\Administrador\Perfil.aspx.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>

@@ -22,7 +22,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">
                                         <i class="fa-solid fa-hospital-user"></i>
-                                        HISTORIA CLINICA
+                                        FICHAS MÉDICAS
                                     </h4>
                                     <div class="card" style="width: auto;">
                                         <div class="list-group list-group-flush" style="padding: 10px; text-align: center">
@@ -70,7 +70,7 @@
 
 
 
-                            <div class="card">
+                           <%-- <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">
                                         <i class="fa-solid fa-hospital-user"></i>
@@ -124,7 +124,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>--%>
 
 
                         </div>
@@ -163,52 +163,5 @@
                 //},
             });
         });
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            var dataTable = $('#<%= grvPacientesSocioEconomico.ClientID %>').DataTable({
-               "columns": [
-                   { "data": "Per_cedula", "title": "CEDULA" },
-                   { "data": "Per_priNombre", "title": "NOMBRE" },
-                   { "data": "Per_priApellido", "title": "APELLIDO" },
-                   { "data": "Socio_economico_fechaHoraGuardado", "title": "FECHA GUARDADO" },
-                   { "data": "Socio_economico_fechaHoraModificacion", "title": "FECHA MODIFICACION" },
-                   //{ "data": "Per_genero", "title": "GÉNERO" },
-
-                   null // Columna de EDICIÓN sin datos específicos
-               ],
-
-               "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-               "language": {
-                   "lengthMenu": 'Show <select>' +
-                       '<option value="10">10</option>' +
-                       '<option value="25">25</option>' +
-                       '<option value="50">50</option>' +
-                       '<option value="-1">Todos</option>' +
-                       '</select> entries'
-               },
-               "initComplete": function (settings, json) {
-                   var table = this.api();
-                   var lengthMenuContainer = $(table.table().container()).find('.dataTables_length');
-                   var searchContainer = $(table.table().container()).find('.dataTables_filter');
-                   var buttonsContainer = $('<div class="float-right ml-2"></div>');
-
-                   lengthMenuContainer.addClass('d-inline-block');
-                   lengthMenuContainer.find('label').addClass('mr-2 mb-0');
-                   lengthMenuContainer.find('select').addClass('custom-length-select');
-
-                   searchContainer.addClass('d-inline-block').addClass('mr-2');
-
-                   table.buttons().container().appendTo(buttonsContainer);
-                   $('.top').prepend(buttonsContainer);
-               },
-               "drawCallback": function (settings) {
-                   var table = this.api();
-                   var lengthSelect = $(table.table().container()).find('.custom-length-select');
-                   lengthSelect.val(table.page.len());
-               }
-           });
-       });
     </script>
 </asp:Content>

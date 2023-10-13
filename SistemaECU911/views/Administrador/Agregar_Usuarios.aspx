@@ -342,7 +342,7 @@
                     <div class="col-md-3">
                         <label class="form-label">CONTRASEÑA</label>
                         <div style="position: relative; width: 100%;">
-                            <asp:TextBox class="form-control" runat="server" ID="txt_pass" TextMode="Password" autocomplete="new-password" Style="width: 100%; background-color: transparent; text-transform: uppercase;"></asp:TextBox>
+                            <asp:TextBox class="form-control" runat="server" ID="txt_pass" autocomplete="new-password" Style="width: 100%; background-color: transparent; text-transform: uppercase;"></asp:TextBox>
                             <span class="fa-stack" style="cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); right: 10px;" onclick="mostrarOcultarContraseña()">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fas fa-eye fa-stack-1x fa-inverse" id="eyeIcon"></i>

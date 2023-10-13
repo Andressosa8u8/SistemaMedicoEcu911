@@ -1634,7 +1634,7 @@
                             </asp:TableRow>
                             <asp:TableRow>
                                 <asp:TableCell Style="background-color: white">
-                                    <asp:TextBox runat="server" ID="txt_firmadelservidor" BorderStyle="None" Style="width: 100%" BackColor="white" TextMode="MultiLine" Rows="3" ReadOnly="true"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="txt_firmadelservidor" BorderStyle="None" Style="width: 100%; text-align: center;" BackColor="white" TextMode="MultiLine" Rows="3" ReadOnly="true"></asp:TextBox>
                                 </asp:TableCell>
                             </asp:TableRow>     
                         </asp:Table>

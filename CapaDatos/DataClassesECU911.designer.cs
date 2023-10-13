@@ -249,11 +249,11 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ObtenerPaciente")]
-		public ISingleResult<ObtenerPacienteResult> ObtenerPaciente([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(10)")] string cedula)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Grafico_AntecedentePer")]
+		public ISingleResult<Sp_Grafico_AntecedentePerResult> Sp_Grafico_AntecedentePer()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula);
-			return ((ISingleResult<ObtenerPacienteResult>)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Sp_Grafico_AntecedentePerResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Npersona_puestoTrabajo")]
@@ -261,13 +261,6 @@ namespace CapaDatos
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<Sp_Npersona_puestoTrabajoResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Grafico_AntecedentePer")]
-		public ISingleResult<Sp_Grafico_AntecedentePerResult> Sp_Grafico_AntecedentePer()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<Sp_Grafico_AntecedentePerResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Grafico_OrganosYSistemas")]
@@ -44490,6 +44483,8 @@ namespace CapaDatos
 		
 		private System.DateTime _Socio_economico_fechaHoraGuardado;
 		
+		private string _Socio_economico_GuardadoPor;
+		
 		private string _Socio_economico__estado;
 		
 		private EntityRef<Tbl_Empresa> _Tbl_Empresa;
@@ -45070,6 +45065,8 @@ namespace CapaDatos
     partial void OnEmp_idChanged();
     partial void OnSocio_economico_fechaHoraGuardadoChanging(System.DateTime value);
     partial void OnSocio_economico_fechaHoraGuardadoChanged();
+    partial void OnSocio_economico_GuardadoPorChanging(string value);
+    partial void OnSocio_economico_GuardadoPorChanged();
     partial void OnSocio_economico__estadoChanging(string value);
     partial void OnSocio_economico__estadoChanged();
     #endregion
@@ -50789,6 +50786,26 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Socio_economico_GuardadoPor", DbType="VarChar(50)")]
+		public string Socio_economico_GuardadoPor
+		{
+			get
+			{
+				return this._Socio_economico_GuardadoPor;
+			}
+			set
+			{
+				if ((this._Socio_economico_GuardadoPor != value))
+				{
+					this.OnSocio_economico_GuardadoPorChanging(value);
+					this.SendPropertyChanging();
+					this._Socio_economico_GuardadoPor = value;
+					this.SendPropertyChanged("Socio_economico_GuardadoPor");
+					this.OnSocio_economico_GuardadoPorChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Socio_economico__estado", DbType="VarChar(1) NOT NULL", CanBeNull=false)]
 		public string Socio_economico__estado
 		{
@@ -50894,130 +50911,6 @@ namespace CapaDatos
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	public partial class ObtenerPacienteResult
-	{
-		
-		private int _idFichaMedica;
-		
-		private string _Per_cedula;
-		
-		private string _prof_NomApe;
-		
-		private System.DateTime _fechaHoraGuardado;
-		
-		public ObtenerPacienteResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idFichaMedica", DbType="Int NOT NULL")]
-		public int idFichaMedica
-		{
-			get
-			{
-				return this._idFichaMedica;
-			}
-			set
-			{
-				if ((this._idFichaMedica != value))
-				{
-					this._idFichaMedica = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_cedula", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
-		public string Per_cedula
-		{
-			get
-			{
-				return this._Per_cedula;
-			}
-			set
-			{
-				if ((this._Per_cedula != value))
-				{
-					this._Per_cedula = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prof_NomApe", DbType="VarChar(100)")]
-		public string prof_NomApe
-		{
-			get
-			{
-				return this._prof_NomApe;
-			}
-			set
-			{
-				if ((this._prof_NomApe != value))
-				{
-					this._prof_NomApe = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaHoraGuardado", DbType="DateTime NOT NULL")]
-		public System.DateTime fechaHoraGuardado
-		{
-			get
-			{
-				return this._fechaHoraGuardado;
-			}
-			set
-			{
-				if ((this._fechaHoraGuardado != value))
-				{
-					this._fechaHoraGuardado = value;
-				}
-			}
-		}
-	}
-	
-	public partial class Sp_Npersona_puestoTrabajoResult
-	{
-		
-		private string _Per_puestoTrabajo;
-		
-		private System.Nullable<int> _numero_personas;
-		
-		public Sp_Npersona_puestoTrabajoResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_puestoTrabajo", DbType="VarChar(MAX)")]
-		public string Per_puestoTrabajo
-		{
-			get
-			{
-				return this._Per_puestoTrabajo;
-			}
-			set
-			{
-				if ((this._Per_puestoTrabajo != value))
-				{
-					this._Per_puestoTrabajo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numero_personas", DbType="Int")]
-		public System.Nullable<int> numero_personas
-		{
-			get
-			{
-				return this._numero_personas;
-			}
-			set
-			{
-				if ((this._numero_personas != value))
-				{
-					this._numero_personas = value;
-				}
 			}
 		}
 	}
@@ -51187,6 +51080,50 @@ namespace CapaDatos
 				if ((this._CantPersonaOtrosAntecePerson != value))
 				{
 					this._CantPersonaOtrosAntecePerson = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Sp_Npersona_puestoTrabajoResult
+	{
+		
+		private string _Per_puestoTrabajo;
+		
+		private System.Nullable<int> _numero_personas;
+		
+		public Sp_Npersona_puestoTrabajoResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_puestoTrabajo", DbType="VarChar(MAX)")]
+		public string Per_puestoTrabajo
+		{
+			get
+			{
+				return this._Per_puestoTrabajo;
+			}
+			set
+			{
+				if ((this._Per_puestoTrabajo != value))
+				{
+					this._Per_puestoTrabajo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numero_personas", DbType="Int")]
+		public System.Nullable<int> numero_personas
+		{
+			get
+			{
+				return this._numero_personas;
+			}
+			set
+			{
+				if ((this._numero_personas != value))
+				{
+					this._numero_personas = value;
 				}
 			}
 		}

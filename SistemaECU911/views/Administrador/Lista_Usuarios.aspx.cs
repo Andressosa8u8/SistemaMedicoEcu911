@@ -22,7 +22,8 @@ namespace SistemaECU911.views.Administrador
         }
         private void cargarPaciente()
         {
-            var query = from p in dc.Tbl_Person                       
+            var query = from p in dc.Tbl_Person
+                        where p.Per_estado == "AA" || p.Per_estado == "AM" || p.Per_estado == "AS" || p.Per_estado == "AP"
                         select new
                         {
                             p.Per_id,
@@ -37,6 +38,7 @@ namespace SistemaECU911.views.Administrador
             grvPacientes.DataSource = query.ToList();
             grvPacientes.DataBind();
         }
+
 
         protected void grvPacientes_RowCommand(object sender, GridViewCommandEventArgs e)
         {

@@ -320,21 +320,8 @@ namespace SistemaECU911.Template.Views_Pacientes
                             txt_observacionesgenerales.Text = sso.Socio_economico_familia_observaciones.ToString();
                             txt_informacionadicional.Text = sso.Socio_economico_informacion_adicional.ToString();
 
-                            //Obtener datos de la imagen
-
-                            //string img = sso.Socio_economico_imagen_geolocalizacion.ToString();
-
-                            //string ImagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(img);
-                            //Image1.ImageUrl = ImagenDataURL64;
-
-                            //byte ImagenOriginal = Convert.ToByte(sso.Socio_economico_imagen_geolocalizacion.ToString());
-                            //string img = Convert.ToString(ImagenOriginal);
-                            //string ImagenDataURL64 = img;
-                            //Image1.ImageUrl = ImagenDataURL64;
-
-                            //Image1.ImageUrl = sso.Socio_economico_imagen_geolocalizacion.ToString();
-
-
+                            //INFORMACIÓN DE LA PERSONA QUE GUARDO
+                            txt_firmadelservidor.Text = sso.Socio_economico_GuardadoPor.ToString();
 
                             //DATOS GENERALES
                             //Modalidad de Trabajo
@@ -1502,7 +1489,7 @@ namespace SistemaECU911.Template.Views_Pacientes
                             else
                             {
                                 cb_certificono.Checked = true;
-                            }
+                            }  
                         }
                     }
 

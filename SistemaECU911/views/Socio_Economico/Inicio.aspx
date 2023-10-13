@@ -45,6 +45,11 @@
                                                         <asp:Label ID="Socio_economico_fechaHoraModificacion" runat="server" Text='<%#Eval("Socio_economico_fechaHoraModificacion")%>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="GUARDADO POR">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Socio_economico_GuardadoPor" runat="server" Text='<%#Eval("Socio_economico_GuardadoPor")%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                                 <asp:TemplateField ItemStyle-Width="17" HeaderStyle-Width="17" HeaderText="">
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="lnbEditar" Width="16" Height="16" CommandArgument='<%#Eval("Socio_economico_id")%>' CommandName="Editar" runat="server"><i class="fas fa-pen"></i></asp:LinkButton>
@@ -88,6 +93,7 @@
                     { "data": "Per_priApellido", "title": "APELLIDO" },
                     { "data": "Socio_economico_fechaHoraGuardado", "title": "FECHA GUARDADO" },
                     { "data": "Socio_economico_fechaHoraModificacion", "title": "FECHA MODIFICACION" },
+                    { "data": "Socio_economico_GuardadoPor", "title": "GUARDADO POR" },
                     //{ "data": "Per_genero", "title": "GÉNERO" },
 
                     null // Columna de EDICIÓN sin datos específicos

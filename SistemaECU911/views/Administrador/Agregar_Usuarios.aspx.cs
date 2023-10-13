@@ -1,13 +1,16 @@
 ﻿using CapaDatos;
 using CapaNegocio;
+using Org.BouncyCastle.Math;
 using System;
-using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Numerics;
+using System.IO;
 
 namespace SistemaECU911.views.Administrador
 {
@@ -61,7 +64,6 @@ namespace SistemaECU911.views.Administrador
                         ddl_cargo.Text = per.Per_cargoOcupacion.ToString();
                         ddl_area.Text = per.Per_areaTrabajo.ToString();
                         ddl_estado.Text = per.Per_estado.ToString();
-
                         ddl_tipoUsuario.Text = per.tusu_id.ToString();
                         txt_usuario.Text = per.Per_nomlogin.ToString();
                     }
@@ -121,7 +123,7 @@ namespace SistemaECU911.views.Administrador
                     per.Per_estado = ddl_estado.Text.ToUpper();
 
                     per.Per_nomlogin = txt_cedula.Text.ToUpper();
-                    per.Per_pass = GetMD5(txt_cedula.Text);
+                    per.Per_pass = txt_pass.Text.ToUpper();
                 }
                 else
                 {

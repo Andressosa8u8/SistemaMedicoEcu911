@@ -54,6 +54,13 @@
         }
     </style>
 
+    <script type="text/javascript">
+        function mostrarSweetAlertSSO1() {
+            Swal.fire(
+                'warning'
+            );
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Message" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -1637,7 +1644,7 @@
                             </asp:TableRow>
                             <asp:TableRow>
                                 <asp:TableCell Style="background-color: white">
-                                    <asp:TextBox runat="server" ID="txt_firmadelservidor" BorderStyle="None" Style="width: 100%" BackColor="white" TextMode="MultiLine" Rows="3" ReadOnly="true"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="txt_firmadelservidor" BorderStyle="None" Style="width: 100%; text-align: center;" BackColor="white" TextMode="MultiLine" Rows="3" ReadOnly="true"></asp:TextBox>
                                 </asp:TableCell>
                             </asp:TableRow>
                         </asp:Table>
@@ -1674,8 +1681,6 @@
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-    
 
     <script type="text/javascript">
         function SoloNumeros(e) {

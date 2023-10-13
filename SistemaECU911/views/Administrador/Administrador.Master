@@ -105,7 +105,8 @@
                             </a>
                             <div class="collapse" id="usuarios">
                                 <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"><a class="nav-link" href="Lista_Usuarios.aspx">Lista Usuarios</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="Lista_Usuarios.aspx">Lista Usuarios Activos</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="Lista_Usuarios_Pasivos.aspx">Lista Usuarios Inactivos</a></li>
                                     <li class="nav-item"><a class="nav-link" href="Agregar_Usuarios.aspx">Agregar Usuarios</a></li>
                                 </ul>
                             </div>

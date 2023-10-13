@@ -27,7 +27,6 @@ namespace SistemaECU911.Template.Views_Pacientes
                 if (Session["Paciente"] != null)
                 {
                     cargarHClinica();
-                    cargarPaciente();
                 }
                 else
                 {
@@ -57,34 +56,29 @@ namespace SistemaECU911.Template.Views_Pacientes
 
                 grvHClinica.DataSource = query.ToList();
                 grvHClinica.DataBind();
-            }
-            else
-            {
-                // Manejar el caso donde Session["Paciente"] es null
-                // Por ejemplo, redirigir a una página de inicio de sesión.
-            }
+            } 
         }
 
 
 
-        private void cargarPaciente()
-        {
-            var query = from r in dc.Tbl_SocioEconomico
-                        join p in dc.Tbl_Person on r.Per_id equals p.Per_id
-                        //orderby r.Socio_economico_fechaHoraGuardado descending
-                        select new
-                        {
-                            r.Socio_economico_id,
-                            p.Per_cedula,
-                            p.Per_priNombre,
-                            p.Per_priApellido,
-                            r.Socio_economico_fechaHoraGuardado,
-                            r.Socio_economico_fechaHoraModificacion
-                        };
+        //private void cargarPaciente()
+        //{
+        //    var query = from r in dc.Tbl_SocioEconomico
+        //                join p in dc.Tbl_Person on r.Per_id equals p.Per_id
+        //                //orderby r.Socio_economico_fechaHoraGuardado descending
+        //                select new
+        //                {
+        //                    r.Socio_economico_id,
+        //                    p.Per_cedula,
+        //                    p.Per_priNombre,
+        //                    p.Per_priApellido,
+        //                    r.Socio_economico_fechaHoraGuardado,
+        //                    r.Socio_economico_fechaHoraModificacion
+        //                };
 
-            grvPacientesSocioEconomico.DataSource = query.ToList();
-            grvPacientesSocioEconomico.DataBind();
-        }
+        //    grvPacientesSocioEconomico.DataSource = query.ToList();
+        //    grvPacientesSocioEconomico.DataBind();
+        //}
 
         protected void grvHClinica_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -95,13 +89,13 @@ namespace SistemaECU911.Template.Views_Pacientes
             }
         }
 
-        protected void grvPacientesSocioEconomico_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            int codigo = Convert.ToInt32(e.CommandArgument);
-            if (e.CommandName == "Visualizar")
-            {
-                Response.Redirect("~/views/Pacientes/SocioEconomico.aspx?cod=" + codigo, true);
-            }
-        }
+        //protected void grvPacientesSocioEconomico_RowCommand(object sender, GridViewCommandEventArgs e)
+        //{
+        //    int codigo = Convert.ToInt32(e.CommandArgument);
+        //    if (e.CommandName == "Visualizar")
+        //    {
+        //        Response.Redirect("~/views/Pacientes/SocioEconomico.aspx?cod=" + codigo, true);
+        //    }
+        //}
     }
 }

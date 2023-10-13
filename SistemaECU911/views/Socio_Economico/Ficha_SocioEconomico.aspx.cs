@@ -27,11 +27,30 @@ namespace SistemaECU911.Template.Views_Socio_Economico
 
         private Tbl_SocioEconomico sso = new Tbl_SocioEconomico();
 
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                if (Session["Trabajo Social"] != null)
+                {
+                    int usulogueado = Convert.ToInt32(Session["Trabajo Social"].ToString());
+                    per = CN_Usuarios.obtenerUsuariosxId(usulogueado);
+
+                    if (per != null)
+                    {
+                        string usulogeado = Session["Trabajo Social"].ToString();
+                        string priNom = Session["prinombre"].ToString();
+                        string segNom = Session["segnombre"].ToString();
+                        string priApe = Session["priapellido"].ToString();
+                        string segApe = Session["segapellido"].ToString();
+                        txt_firmadelservidor.Text = priNom + " " + segNom + " " + priApe + " " + segApe;                      
+                    }
+                }
+
+                txt_firmadelservidor.ReadOnly = true;
+
                 if (Request["cod"] != null)
                 {
                     int codigo = Convert.ToInt32(Request["cod"]);
@@ -330,20 +349,8 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                             txt_observacionesgenerales.Text = sso.Socio_economico_familia_observaciones.ToString();
                             txt_informacionadicional.Text = sso.Socio_economico_informacion_adicional.ToString();
 
-                            //Obtener datos de la imagen
-
-                            //string img = sso.Socio_economico_imagen_geolocalizacion.ToString();
-
-                            //string ImagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(img);
-                            //Image1.ImageUrl = ImagenDataURL64;
-
-                            //byte ImagenOriginal = Convert.ToByte(sso.Socio_economico_imagen_geolocalizacion.ToString());
-                            //string img = Convert.ToString(ImagenOriginal);
-                            //string ImagenDataURL64 = img;
-                            //Image1.ImageUrl = ImagenDataURL64;
-
-                            //Image1.ImageUrl = sso.Socio_economico_imagen_geolocalizacion.ToString();
-
+                            //INFORMACIÓN DE LA PERSONA QUE GUARDO
+                            txt_firmadelservidor.Text = sso.Socio_economico_GuardadoPor.ToString();
 
 
                             //DATOS GENERALES
@@ -1519,24 +1526,11 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 }
                 txt_fecharegistro.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 Timer1.Enabled = false;
-
-                //string previewImageSrc = (string)localStorage.getItem('previewImageSrc');
-                //if (!string.IsNullOrEmpty(previewImageSrc))
-                //{
-                //    imgPreview.Src = previewImageSrc;
-                //    imgPreview.Style.Add("display", "block");
-                //}
+                txt_cedula.MaxLength = 10;
+             
 
             }
-
-
-
         }
-
-        //protected void timerFechaHora_Tick(object sender, EventArgs e)
-        //{
-        //    this.txt_fecharegistro.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-dd");
-        //}
 
         public void Calculo(DateTime nac, DateTime actual)
         {
@@ -1606,57 +1600,94 @@ namespace SistemaECU911.Template.Views_Socio_Economico
         {
             string cedula = txt_cedula.Text;
 
-            if (cedula != "")
+            if (!string.IsNullOrEmpty(cedula))
             {
-                var lista = from c in dc.Tbl_Person
+                var query = from c in dc.Tbl_Person
                             where c.Per_cedula == cedula && c.Per_estado == "AP"
-                            select c;
+                            select c.Per_id;
 
-                if (lista.Any())
+                int personaid = query.FirstOrDefault(); // Aquí obtenemos el primer ID que cumple con la condición
+
+                if (personaid != 0) // Verificamos si se encontró un ID
                 {
-                    foreach (var item in lista)
+                    var existeEnSocioEconomico = dc.Tbl_SocioEconomico.Any(se => se.Per_id == personaid);
+
+                    if (existeEnSocioEconomico)
                     {
-                        string priNombre = item.Per_priNombre;
-                        txt_prinombre.Text = priNombre;
+                        var persona = dc.Tbl_Person.FirstOrDefault(p => p.Per_id == personaid);
+                        string nombreCompleto = $"{persona.Per_priNombre} {persona.Per_segNombre} {persona.Per_priApellido} {persona.Per_segApellido}";
 
-                        string segNombre = item.Per_segNombre;
-                        txt_segnombre.Text = segNombre;
+                        // Mostrar SweetAlert si ya existe en Tbl_SocioEconomico
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarSweetAlertSSO1", $"swal('{nombreCompleto} ya tiene una Ficha.', 'Puede editar las Fichas de las personas en el apartado de Inicio.', 'warning')", true);
 
-                        string priApellido = item.Per_priApellido;
-                        txt_priapellido.Text = priApellido;
+                        // Limpiar los campos completados
+                        txt_cedula.Text = txt_prinombre.Text = txt_segnombre.Text = txt_priapellido.Text = txt_segapellido.Text = txt_areatrabajo.Text = txt_cargoinstitucional.Text = txt_fechaingresoalsisecu.Text = txt_fechanacimiento.Text = string.Empty;
+                    }
 
-                        string segApellido = item.Per_segApellido;
-                        txt_segapellido.Text = segApellido;
+                    else
+                    {
+                        var lista = from c in dc.Tbl_Person
+                                    where c.Per_cedula == cedula && c.Per_estado == "AP"
+                                    select c;
 
-                        string areaTrabajo = item.Per_areaTrabajo;
-                        txt_areatrabajo.Text = areaTrabajo;
+                        if (lista.Any())
+                        {
+                            foreach (var item in lista)
+                            {
+                                string priNombre = item.Per_priNombre;
+                                txt_prinombre.Text = priNombre;
 
-                        string cargo = item.Per_cargoOcupacion;
-                        txt_cargoinstitucional.Text = cargo;
+                                string segNombre = item.Per_segNombre;
+                                txt_segnombre.Text = segNombre;
 
-                        DateTime fechaIngresoEcu = Convert.ToDateTime(item.Per_fechInicioTrabajo);
-                        txt_fechaingresoalsisecu.Text = Convert.ToDateTime(fechaIngresoEcu).ToString("yyyy-MM-dd");
+                                string priApellido = item.Per_priApellido;
+                                txt_priapellido.Text = priApellido;
 
-                        DateTime fechaNacimiento = Convert.ToDateTime(item.Per_fechaNacimiento);
-                        txt_fechanacimiento.Text = Convert.ToDateTime(fechaNacimiento).ToString("yyyy-MM-dd");
+                                string segApellido = item.Per_segApellido;
+                                txt_segapellido.Text = segApellido;
 
-                        DateTime edad = Convert.ToDateTime(item.Per_fechaNacimiento);
-                        DateTime naci = Convert.ToDateTime(edad);
+                                string areaTrabajo = item.Per_areaTrabajo;
+                                txt_areatrabajo.Text = areaTrabajo;
 
-                        DateTime actual = DateTime.Now;
-                        Calculo(naci, actual);
+                                string cargo = item.Per_cargoOcupacion;
+                                txt_cargoinstitucional.Text = cargo;
+
+                                DateTime fechaIngresoEcu = Convert.ToDateTime(item.Per_fechInicioTrabajo);
+                                txt_fechaingresoalsisecu.Text = Convert.ToDateTime(fechaIngresoEcu).ToString("yyyy-MM-dd");
+
+                                DateTime fechaNacimiento = Convert.ToDateTime(item.Per_fechaNacimiento);
+                                txt_fechanacimiento.Text = Convert.ToDateTime(fechaNacimiento).ToString("yyyy-MM-dd");
+
+                                DateTime edad = Convert.ToDateTime(item.Per_fechaNacimiento);
+                                DateTime naci = Convert.ToDateTime(edad);
+
+                                DateTime actual = DateTime.Now;
+                                Calculo(naci, actual);
+
+                                // Aquí también podrías mostrar un SweetAlert si lo deseas
+                            }
+                        }
+                        else
+                        {
+                            txt_prinombre.Text = txt_segnombre.Text = txt_priapellido.Text = txt_segapellido.Text = txt_areatrabajo.Text = txt_cargoinstitucional.Text = txt_fechaingresoalsisecu.Text = txt_fechanacimiento.Text = string.Empty;
+                        }
                     }
                 }
                 else
                 {
-                    txt_prinombre.Text = txt_segnombre.Text = txt_priapellido.Text = txt_segapellido.Text = txt_areatrabajo.Text = txt_cargoinstitucional.Text = txt_fechaingresoalsisecu.Text = txt_fechanacimiento.Text = string.Empty;
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mostrarSweetAlertSSO1", "swal('No se pudo encontrar a la persona ingresada.', 'El usuario no existe o está inactivo.', 'warning')", true);
+                    txt_cedula.Text = string.Empty;
                 }
+
             }
             else
             {
                 txt_prinombre.Text = txt_segnombre.Text = txt_priapellido.Text = txt_segapellido.Text = txt_areatrabajo.Text = txt_cargoinstitucional.Text = txt_fechaingresoalsisecu.Text = txt_fechanacimiento.Text = string.Empty;
             }
         }
+
+
+
 
         private void GuardarSocioEconomico()
         {
@@ -1665,7 +1696,6 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 per = CN_HistorialMedico.ObtenerIdPersonasxCedula(txt_cedula.Text);
 
                 int perso = Convert.ToInt32(per.Per_id.ToString());
-
                 sso = new Tbl_SocioEconomico();
 
                 //DATOS GENERALES
@@ -2481,12 +2511,13 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                     }
                 }
                 else
-                {                    
+                {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "Solo se admiten archivos ( .jpg / .jpeg / .png / .gif ), 'error'", true);
                     Timer1.Enabled = false;
                 }
 
                 sso.Per_id = perso;
+                sso.Socio_economico_GuardadoPor = txt_firmadelservidor.Text.ToUpper();
 
                 CN_SocioEconomico.GuardarSocioEconomico(sso);
 
@@ -3868,7 +3899,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 CN_SocioEconomico.ModificarSocioEconomico(sso);
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Exito!', 'Datos Modificados Exitosamente', 'success')", true);
-                Response.Redirect("~/views/Socio_Economico/Inicio.aspx");
+                Timer1.Enabled = true;
             }
             catch (Exception)
             {
