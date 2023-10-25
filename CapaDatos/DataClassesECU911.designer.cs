@@ -44487,6 +44487,10 @@ namespace CapaDatos
 		
 		private string _Socio_economico__estado;
 		
+		private string _Socio_economico_Latitud;
+		
+		private string _Socio_economico_Longitud;
+		
 		private EntityRef<Tbl_Empresa> _Tbl_Empresa;
 		
 		private EntityRef<Tbl_Person> _Tbl_Person;
@@ -45069,6 +45073,10 @@ namespace CapaDatos
     partial void OnSocio_economico_GuardadoPorChanged();
     partial void OnSocio_economico__estadoChanging(string value);
     partial void OnSocio_economico__estadoChanged();
+    partial void OnSocio_economico_LatitudChanging(string value);
+    partial void OnSocio_economico_LatitudChanged();
+    partial void OnSocio_economico_LongitudChanging(string value);
+    partial void OnSocio_economico_LongitudChanged();
     #endregion
 		
 		public Tbl_SocioEconomico()
@@ -50786,7 +50794,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Socio_economico_GuardadoPor", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Socio_economico_GuardadoPor", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string Socio_economico_GuardadoPor
 		{
 			get
@@ -50822,6 +50830,46 @@ namespace CapaDatos
 					this._Socio_economico__estado = value;
 					this.SendPropertyChanged("Socio_economico__estado");
 					this.OnSocio_economico__estadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Socio_economico_Latitud", DbType="VarChar(MAX)")]
+		public string Socio_economico_Latitud
+		{
+			get
+			{
+				return this._Socio_economico_Latitud;
+			}
+			set
+			{
+				if ((this._Socio_economico_Latitud != value))
+				{
+					this.OnSocio_economico_LatitudChanging(value);
+					this.SendPropertyChanging();
+					this._Socio_economico_Latitud = value;
+					this.SendPropertyChanged("Socio_economico_Latitud");
+					this.OnSocio_economico_LatitudChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Socio_economico_Longitud", DbType="VarChar(MAX)")]
+		public string Socio_economico_Longitud
+		{
+			get
+			{
+				return this._Socio_economico_Longitud;
+			}
+			set
+			{
+				if ((this._Socio_economico_Longitud != value))
+				{
+					this.OnSocio_economico_LongitudChanging(value);
+					this.SendPropertyChanging();
+					this._Socio_economico_Longitud = value;
+					this.SendPropertyChanged("Socio_economico_Longitud");
+					this.OnSocio_economico_LongitudChanged();
 				}
 			}
 		}

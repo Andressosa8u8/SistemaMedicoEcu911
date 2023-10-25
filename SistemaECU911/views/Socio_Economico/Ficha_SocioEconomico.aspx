@@ -7,6 +7,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Head" runat="server">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
 
     <style type="text/css">
         .CompletionList {
@@ -52,6 +58,46 @@
             outline: 0;
             background-image: linear-gradient(to bottom, #0088cc, #0077b3);
         }
+
+        #mapa {
+            height: 400px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-contenido {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .cerrar {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .cerrar:hover,
+            .cerrar:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
     </style>
 
     <script type="text/javascript">
@@ -61,6 +107,9 @@
             );
         }
     </script>
+
+
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Message" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -148,7 +197,7 @@
                                         CompletionListHighlightedItemCssClass="CompletionListHighlightedItem"
                                         CompletionListItemCssClass="CompletionListItem">
                                     </ajaxToolkit:AutoCompleteExtender>
-<%--                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator_txtcedula" runat="server" ErrorMessage="!Este campo es obligatorio!" ControlToValidate="txt_cedula" ForeColor="Red" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>--%>
+                                    <%--                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator_txtcedula" runat="server" ErrorMessage="!Este campo es obligatorio!" ControlToValidate="txt_cedula" ForeColor="Red" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>--%>
                                 </asp:TableCell>
                             </asp:TableRow>
                         </asp:Table>
@@ -1649,27 +1698,40 @@
                             </asp:TableRow>
                         </asp:Table>
 
-                        <br />
-                        <div class="row">
-                            <div align="center">
-                                <asp:FileUpload ID="FileUploadPic" runat="server" onchange="showPreviewImage()" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div align="center">
-                                <asp:Image ID="imgPreview" ImageUrl="~/resources/images/croquis.png" runat="server" Width="600" Height="600" />
-                            </div>
-                        </div>
-                        <br />
-                        <br />
+                        <asp:LinkButton ID="lkn_abrirMapa" OnClick="lkn_abrirMapa_Click" runat="server">
+                            <i class="fa-regular fa-map-location-dot" style="font-size: 6em;"></i>
+                        </asp:LinkButton>
 
-                        <div class="container" align="center">
-                            <asp:Button CssClass="btn btn-success" ID="btn_guardar" OnClick="btn_guardar_Click" runat="server" Text="GUARDAR" Style="font-family: Arial; font-size: 12px" UseSubmitBehavior="False" ValidationGroup="GroupValidation" />
-                            <asp:Button CssClass="btn btn-danger" ID="btn_cancelar" OnClick="btn_cancelar_Click" runat="server" Text="CANCELAR" Style="font-family: Arial; font-size: 12px" UseSubmitBehavior="False" />
-                            <asp:Button CssClass="btn btn-info" ID="btn_imprimir" OnClick="btn_imprimir_Click" runat="server" Text="IMPRIMIR" Style="font-family: Arial; font-size: 12px" UseSubmitBehavior="False" />
+                        <div>
+                            <asp:Label ID="lbl_Latitud" runat="server" AssociatedControlID="txt_Latitud" Style="display: none;">Latitud:</asp:Label>
+                            <asp:TextBox ID="txt_Latitud" Style="display: none;" runat="server"></asp:TextBox>
+                        </div>
+                        <div>
+                            <asp:Label ID="lbl_Longitud" runat="server" AssociatedControlID="txt_Longitud" Style="display: none;">Longitud:</asp:Label>
+                            <asp:TextBox ID="txt_Longitud" Style="display: none;" runat="server"></asp:TextBox>
+                        </div>
+
+                        <div id="modalMapa" class="modal">
+                            <div class="modal-contenido">
+                                <asp:Button ID="btnCerrarModal" Style="font-size: 16px; border: none" runat="server" Text="Aceptar" OnClientClick="document.getElementById('modalMapa').style.display='none'; return false;" />
+                                <hr />
+                                <div id="mapa"></div>
+                                <hr />
+                                <div id="geocoder"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <br />
+                <br />
+
+                <div class="container" align="center">
+                    <asp:Button CssClass="btn btn-success" ID="btn_guardar" OnClick="btn_guardar_Click" runat="server" Text="GUARDAR" Style="font-family: Arial; font-size: 12px" UseSubmitBehavior="False" />
+                    <asp:Button CssClass="btn btn-danger" ID="btn_cancelar" OnClick="btn_cancelar_Click" runat="server" Text="CANCELAR" Style="font-family: Arial; font-size: 12px" UseSubmitBehavior="False" />
+                    <asp:Button CssClass="btn btn-info" ID="btn_imprimir" OnClick="btn_imprimir_Click" runat="server" Text="IMPRIMIR" Style="font-family: Arial; font-size: 12px" UseSubmitBehavior="False" />
+                </div>
+            </div>
+            </div>
                 <br />
             </div>
         </ContentTemplate>
@@ -1679,8 +1741,63 @@
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Footer" runat="server">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        function cargarMapa() {
+            var latitud = parseFloat(document.getElementById('<%= txt_Latitud.ClientID %>').value);
+            var longitud = parseFloat(document.getElementById('<%= txt_Longitud.ClientID %>').value);
+
+            if (isNaN(latitud) || isNaN(longitud)) {
+                latitud = -0.2206688;
+                longitud = -78.5002266;
+            }
+
+            var mapa = L.map('mapa').setView([latitud, longitud], 17);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+            }).addTo(mapa);
+
+            var marcador = L.marker([latitud, longitud], { draggable: true }).addTo(mapa);
+
+            mapa.on('click', function (e) {
+                marcador.setLatLng(e.latlng);
+                document.getElementById('<%= txt_Latitud.ClientID %>').value = e.latlng.lat;
+               document.getElementById('<%= txt_Longitud.ClientID %>').value = e.latlng.lng;
+           });
+
+            marcador.on('dragend', function (e) {
+                var latitud = e.target.getLatLng().lat;
+                var longitud = e.target.getLatLng().lng;
+
+                document.getElementById('<%= txt_Latitud.ClientID %>').value = latitud;
+               document.getElementById('<%= txt_Longitud.ClientID %>').value = longitud;
+           });
+
+            var geocoder = L.Control.geocoder({
+                defaultMarkGeocode: false
+            })
+                .on('markgeocode', function (e) {
+                    mapa.setView(e.geocode.center, 16);
+                    marcador.setLatLng(e.geocode.center);
+
+                    document.getElementById('<%= txt_Latitud.ClientID %>').value = e.geocode.center.lat;
+                   document.getElementById('<%= txt_Longitud.ClientID %>').value = e.geocode.center.lng;
+               })
+                .addTo(mapa);
+
+            var geocoderContainer = document.getElementById('geocoder');
+            geocoderContainer.appendChild(geocoder.onAdd(mapa));
+        }
+    </script>
+
+    <script>
+        function mostrarMapa() {
+            var modal = document.getElementById('modalMapa');
+            modal.style.display = 'block';
+            cargarMapa();
+        }
+    </script>
+
 
     <script type="text/javascript">
         function SoloNumeros(e) {
@@ -1705,7 +1822,7 @@
         }
     </script>
 
-    <script>
+    <%--<script>
         function showPreviewImage() {
             var fileInput = document.getElementById('<%= FileUploadPic.ClientID %>');
             var previewImage = document.getElementById('<%= imgPreview.ClientID %>');
@@ -1733,6 +1850,5 @@
                 previewImage.style.display = "none";
             }
         }
-    </script>
-
+    </script>--%>
 </asp:Content>

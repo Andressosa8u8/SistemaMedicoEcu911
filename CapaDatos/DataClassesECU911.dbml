@@ -2119,8 +2119,10 @@
       <Column Name="Per_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Emp_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Socio_economico_fechaHoraGuardado" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Socio_economico_GuardadoPor" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Socio_economico_GuardadoPor" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Socio_economico__estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="Socio_economico_Latitud" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Socio_economico_Longitud" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Association Name="Tbl_Empresa_Tbl_SocioEconomico" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
       <Association Name="Tbl_Person_Tbl_SocioEconomico" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />
     </Type>

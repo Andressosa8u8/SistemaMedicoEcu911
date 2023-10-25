@@ -81,11 +81,11 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                         cb_certificono.Enabled = false;
 
                         // Cargar la imagen del usuario si está disponible
-                        if (!string.IsNullOrEmpty(per.Per_imgNombre) && per.Per_imgByte != null)
-                        {
-                            string base64Image = Convert.ToBase64String(per.Per_imgByte.ToArray());
-                            imgPreview.ImageUrl = "data:image/png;base64," + base64Image;
-                        }
+                        //if (!string.IsNullOrEmpty(per.Per_imgNombre) && per.Per_imgByte != null)
+                        //{
+                        //    string base64Image = Convert.ToBase64String(per.Per_imgByte.ToArray());
+                        //    imgPreview.ImageUrl = "data:image/png;base64," + base64Image;
+                        //}
 
                         if (sso != null)
                         {
@@ -352,6 +352,10 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                             //INFORMACIÓN DE LA PERSONA QUE GUARDO
                             txt_firmadelservidor.Text = sso.Socio_economico_GuardadoPor.ToString();
 
+
+                            //UBICACION
+                            txt_Latitud.Text = sso.Socio_economico_Latitud.ToString();
+                            txt_Longitud.Text = sso.Socio_economico_Longitud.ToString();
 
                             //DATOS GENERALES
                             //Modalidad de Trabajo
@@ -1620,7 +1624,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                         // Mostrar SweetAlert si ya existe en Tbl_SocioEconomico
                         ScriptManager.RegisterStartupScript(this, GetType(), "mostrarSweetAlertSSO1", $"swal('{nombreCompleto} ya tiene una Ficha.', 'Puede editar las Fichas de las personas en el apartado de Inicio.', 'warning')", true);
 
-                        // Limpiar los campos completados
+                        // Limpiar los campos
                         txt_cedula.Text = txt_prinombre.Text = txt_segnombre.Text = txt_priapellido.Text = txt_segapellido.Text = txt_areatrabajo.Text = txt_cargoinstitucional.Text = txt_fechaingresoalsisecu.Text = txt_fechanacimiento.Text = string.Empty;
                     }
 
@@ -1665,6 +1669,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                                 Calculo(naci, actual);
 
                                 // Aquí también podrías mostrar un SweetAlert si lo deseas
+
                             }
                         }
                         else
@@ -2491,39 +2496,20 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 sso.Socio_economico_familia_observaciones = txt_observacionesgenerales.Text.ToUpper();
                 sso.Socio_economico_informacion_adicional = txt_informacionadicional.Text.ToUpper();
                 sso.Emp_id = 1;
-                if (FileUploadPic.HasFile)
-                {
-
-                    string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
-                    string fileExtension = Path.GetExtension(FileUploadPic.FileName).ToLower();
-                    if (allowedExtensions.Contains(fileExtension))
-                    {
-                        string filename = Path.GetFileName(FileUploadPic.FileName);
-
-                        byte[] imageData;
-                        using (Stream fs = FileUploadPic.PostedFile.InputStream)
-                        {
-                            imageData = new byte[fs.Length];
-                            fs.Read(imageData, 0, imageData.Length);
-                        }
-                        sso.Socio_economico_imgNombre = filename;
-                        sso.Socio_economico_imgByte = imageData;
-                    }
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "Solo se admiten archivos ( .jpg / .jpeg / .png / .gif ), 'error'", true);
-                    Timer1.Enabled = false;
-                }
+               
 
                 sso.Per_id = perso;
                 sso.Socio_economico_GuardadoPor = txt_firmadelservidor.Text.ToUpper();
 
+                sso.Socio_economico_Latitud = txt_Latitud.Text.ToUpper();
+                sso.Socio_economico_Longitud = txt_Longitud.Text.ToUpper();
+
                 CN_SocioEconomico.GuardarSocioEconomico(sso);
 
+
                 //Mensaje de confirmacion
-                string script = "Swal.fire('Exito!', 'Datos Guardados Exitosamente', 'success');";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", script, true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Exito!', 'Datos Guardados Exitosamente', 'success')", true);
+
                 Timer1.Enabled = true;
 
                 //ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", , true);
@@ -2721,6 +2707,10 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 sso.Socio_economico_nivel_salud_familia_porque = txt_nivelsaludfamiliarporque.Text.ToUpper();
                 sso.Socio_economico_familia_observaciones = txt_observacionesgenerales.Text.ToUpper();
                 sso.Socio_economico_informacion_adicional = txt_informacionadicional.Text.ToUpper();
+
+                //UBICACIÓN
+                sso.Socio_economico_Latitud = txt_Latitud.Text.ToUpper();
+                sso.Socio_economico_Longitud = txt_Longitud.Text.ToUpper();
 
                 //if (!string.IsNullOrEmpty(FileUpload1.FileName))
                 //{
@@ -7289,6 +7279,12 @@ namespace SistemaECU911.Template.Views_Socio_Economico
         protected void Timer1_Tick(object sender, EventArgs e)
         {
             Response.Redirect("~/views/Socio_Economico/Inicio.aspx");
+        }
+
+        protected void lkn_abrirMapa_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarMapa", "mostrarMapa();", true);
+
         }
     }
 }

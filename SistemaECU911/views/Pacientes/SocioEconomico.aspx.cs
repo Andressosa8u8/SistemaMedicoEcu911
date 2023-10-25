@@ -323,6 +323,10 @@ namespace SistemaECU911.Template.Views_Pacientes
                             //INFORMACIÓN DE LA PERSONA QUE GUARDO
                             txt_firmadelservidor.Text = sso.Socio_economico_GuardadoPor.ToString();
 
+                            //UBICACIÓN
+                            txt_Latitud.Text = sso.Socio_economico_Latitud.ToString();
+                            txt_Longitud.Text = sso.Socio_economico_Longitud.ToString();
+
                             //DATOS GENERALES
                             //Modalidad de Trabajo
                             if (sso.Socio_economico_modalidadvinculacion_leyorgserpublico == null)
