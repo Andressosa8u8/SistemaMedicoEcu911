@@ -123,7 +123,7 @@ namespace SistemaECU911.views.Administrador
                     per.Per_estado = ddl_estado.Text.ToUpper();
 
                     per.Per_nomlogin = txt_cedula.Text.ToUpper();
-                    per.Per_pass = txt_pass.Text.ToUpper();
+                    per.Per_pass = GetMD5(txt_pass.Text);
                 }
                 else
                 {
