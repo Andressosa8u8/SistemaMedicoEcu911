@@ -17,10 +17,10 @@
                         <div class="container">
                             <div class="row align-items-center">
                                 <div class="col-md-6">
-                                    <img src="../Template Principal/images/ChangePassword.png" style="width: 400px; height:400px" alt="Cambio de Contraseña" />
+                                    <img src="../../resources/images/ChangePassword.png" style="width: 400px; height:400px" alt="Cambio de Contraseña" />
                                 </div>
                                 <div class="col-md-6" style="padding: 30px">
-                                    <h3 class="text-center cm-strong">RESTABLECER LA CONTASEÑA</h3>
+                                    <h3 class="text-center cm-strong">RESTABLECER LA CONTRASEÑA</h3>
                                     <br />
                                     <div class="row">
                                         <label for="txt_passAntigua" class="col-form-label">Contraseña Anterior</label>
@@ -28,12 +28,12 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ForeColor="Red" runat="server" ControlToValidate="txt_passAntigua" ValidationGroup="info" ErrorMessage="La contraseña anterior es requerida"></asp:RequiredFieldValidator>
                                     </div>
                                     <div class="row">
-                                        <label for="txt_passNueva" class="col-form-label">Contraseña Anterior</label>
+                                        <label for="txt_passNueva" class="col-form-label">Nueva Contraseña</label>
                                         <asp:TextBox CssClass="form-control form-control-lg" ID="txt_passNueva" TextMode="Password" runat="server"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ForeColor="Red" runat="server" ControlToValidate="txt_passNueva" ValidationGroup="info" ErrorMessage="La nueva contraseña es requerida"></asp:RequiredFieldValidator>
                                     </div>
                                     <div class="row">
-                                        <label for="txt_passNueva2" class="col-form-label">Contraseña Anterior</label>
+                                        <label for="txt_passNueva2" class="col-form-label">Confirmar nueva contraseña</label>
                                         <asp:TextBox CssClass="form-control form-control-lg" ID="txt_passNueva2" TextMode="Password" runat="server"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ForeColor="Red" runat="server" ControlToValidate="txt_passNueva2" ValidationGroup="info" ErrorMessage="Confirmar la contraseña es requerida"></asp:RequiredFieldValidator>
                                     </div>

@@ -352,7 +352,6 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                             //INFORMACIÓN DE LA PERSONA QUE GUARDO
                             txt_firmadelservidor.Text = sso.Socio_economico_GuardadoPor.ToString();
 
-
                             //UBICACION
                             txt_Latitud.Text = sso.Socio_economico_Latitud.ToString();
                             txt_Longitud.Text = sso.Socio_economico_Longitud.ToString();

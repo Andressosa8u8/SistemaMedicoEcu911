@@ -93,15 +93,23 @@ namespace CapaNegocio
         //metodo para verificar si existe el correo
         public static bool autentificarxCorreo(string correo)
         {
-            var auto = dc.Tbl_Person.Any(per => per.Per_estado == "AP" && per.Per_correo == (correo));
+            var auto = dc.Tbl_Person.Any(per => (per.Per_estado == "AA" || per.Per_estado == "AM" || per.Per_estado == "AS" || per.Per_estado == "AP") && per.Per_correo == (correo));
             return auto;
         }
+
         //metodo para obtener el correo
+        //public static Tbl_Person obtenerCorreo(string correo)
+        //{
+        //    var contra = dc.Tbl_Person.Single(per => (per.Per_estado == "AA" || per.Per_estado == "AM" || per.Per_estado == "AS" || per.Per_estado == "AP") && per.Per_correo.Equals(correo));
+        //    return contra;
+        //}
+
         public static Tbl_Person obtenerCorreo(string correo)
         {
-            var contra = dc.Tbl_Person.Single(per => per.Per_estado == "AP" && per.Per_correo.Equals(correo));
-            return contra;
+            var perid = dc.Tbl_Person.FirstOrDefault(per => (per.Per_estado == "AA" || per.Per_estado == "AM" || per.Per_estado == "AS" || per.Per_estado == "AP") && per.Per_correo == (correo));
+            return perid;
         }
+
 
         public static void GuardarUsuario(Tbl_Person usu)
         {
