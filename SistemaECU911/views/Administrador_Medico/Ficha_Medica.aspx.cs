@@ -254,11 +254,11 @@ namespace SistemaECU911.Template.Views
                 }
                 else
                 {
-                    return url = imgPreview.ImageUrl = "~/resources/images/User.jpg";
+                    return url = imgPreview.ImageUrl = "~/resources/images/User.png";
                 }
 
             }            
-            return url = imgPreview.ImageUrl = "~/resources/images/User.jpg";
+            return url = imgPreview.ImageUrl = "~/resources/images/User.png";
         }
 
         private void ObtenerCedula()
@@ -331,7 +331,7 @@ namespace SistemaECU911.Template.Views
                     txt_segApellido.Text = string.Empty;
                     txt_sexo.Text = string.Empty;
                     txt_edad.Text = string.Empty;
-                    imgPreview.ImageUrl = "~/resources/images/User.jpg";
+                    imgPreview.ImageUrl = "~/resources/images/User.png";
                 }
             }
             else
@@ -344,7 +344,7 @@ namespace SistemaECU911.Template.Views
                 txt_segApellido.Text = string.Empty;
                 txt_sexo.Text = string.Empty;
                 txt_edad.Text = string.Empty;
-                imgPreview.ImageUrl = "~/resources/images/User.jpg";
+                imgPreview.ImageUrl = "~/resources/images/User.png";
             }
         }
 
