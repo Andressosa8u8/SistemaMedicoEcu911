@@ -86,6 +86,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="autentificacion\cambioPassword.aspx" />
     <Content Include="autentificacion\recuperarContraseña.aspx" />
     <Content Include="error\404.aspx" />
     <Content Include="resources\css\style-andres.css" />
@@ -141,7 +142,7 @@
     <Content Include="resources\images\lightbox\thumb-v-y-1.jpg" />
     <Content Include="resources\images\lightbox\thumb-v-y-2.jpg" />
     <Content Include="resources\images\LogoECU.png" />
-    <Content Include="resources\images\LogoMedico.PNG" />
+    <Content Include="resources\images\LogoMedico.png" />
     <Content Include="resources\images\logo\logo-mini.png" />
     <Content Include="resources\images\logo\logo-mini.svg" />
     <Content Include="resources\images\logo\logo-mini1.png" />
@@ -920,6 +921,13 @@
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="autentificacion\cambioPassword.aspx.cs">
+      <DependentUpon>cambioPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="autentificacion\cambioPassword.aspx.designer.cs">
+      <DependentUpon>cambioPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="autentificacion\recuperarContraseña.aspx.cs">
       <DependentUpon>recuperarContraseña.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

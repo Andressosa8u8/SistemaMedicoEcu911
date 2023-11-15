@@ -405,7 +405,7 @@ namespace SistemaECU911
 
         protected void Timer1_Tick(object sender, EventArgs e)
         {
-            Response.Redirect("Autentificacion/Recuperar.aspx");
+            Response.Redirect("autentificacion/recuperarContraseña.aspx");
         }
 
     }

@@ -1626,7 +1626,6 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                         // Limpiar los campos
                         txt_cedula.Text = txt_prinombre.Text = txt_segnombre.Text = txt_priapellido.Text = txt_segapellido.Text = txt_areatrabajo.Text = txt_cargoinstitucional.Text = txt_fechaingresoalsisecu.Text = txt_fechanacimiento.Text = string.Empty;
                     }
-
                     else
                     {
                         var lista = from c in dc.Tbl_Person
@@ -1689,9 +1688,6 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 txt_prinombre.Text = txt_segnombre.Text = txt_priapellido.Text = txt_segapellido.Text = txt_areatrabajo.Text = txt_cargoinstitucional.Text = txt_fechaingresoalsisecu.Text = txt_fechanacimiento.Text = string.Empty;
             }
         }
-
-
-
 
         private void GuardarSocioEconomico()
         {

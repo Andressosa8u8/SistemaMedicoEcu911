@@ -1389,13 +1389,18 @@ namespace SistemaECU911.Template.Views
                 }
                 else
                 {
-                    txt_nombreEmp.Text = txt_rucEmp.Text = txt_priNombre.Text = txt_segNombre.Text = txt_priApellido.Text = txt_segApellido.Text = txt_edad.Text = string.Empty;
+                    Limpiar();
                 }                
             }
             else
             {
-                txt_nombreEmp.Text = txt_rucEmp.Text = txt_priNombre.Text = txt_segNombre.Text = txt_priApellido.Text = txt_segApellido.Text = txt_edad.Text = string.Empty;
+                Limpiar();
             }
+        }
+
+        private void Limpiar()
+        {
+            txt_nombreEmp.Text = txt_rucEmp.Text = txt_priNombre.Text = txt_segNombre.Text = txt_priApellido.Text = txt_segApellido.Text = txt_edad.Text = string.Empty;
         }
 
         private void GuardarPedidoExamenes()

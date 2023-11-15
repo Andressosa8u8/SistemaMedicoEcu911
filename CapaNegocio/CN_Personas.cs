@@ -25,6 +25,13 @@ namespace CapaNegocio
             return perid;
         }
 
+        //metodo para obtener los usuarios por token
+        public static Tbl_Person obtenerUsuariosxToken(string token)
+        {
+            var pertk = dc.Tbl_Person.FirstOrDefault(per => (per.Per_estado == "AA" || per.Per_estado == "AM" || per.Per_estado == "AS" || per.Per_estado == "AP") && per.ResetPasswordToken.Equals(token));
+            return pertk;
+        }
+
         //metodo para traer empresa
         public static List<Tbl_Empresa> ObtenerEmpresa()
         {
@@ -42,6 +49,13 @@ namespace CapaNegocio
         {
             var cedu = dc.Tbl_Person.Any(per => per.Per_estado == "AP" && per.Per_cedula.Equals(cedula));
             return cedu;
+        }
+
+        //metodo para verificar si es valido el token
+        public static bool autentificarxtoken(string token)
+        {
+            var tok = dc.Tbl_Person.Any(per => (per.Per_estado == "AA" || per.Per_estado == "AM" || per.Per_estado == "AS" || per.Per_estado == "AP") && per.ResetPasswordToken.Equals(token));
+            return tok;
         }
 
         // Metodo para guardar datos de las persona
@@ -71,20 +85,6 @@ namespace CapaNegocio
             }
         }
 
-        // Metodo para imagen
-        //public static void GuardarImagen(Tbl_Image img)
-        //{
-        //    try
-        //    {
-        //        img.img_estado = "A";
-        //        dc.Tbl_Image.InsertOnSubmit(img);
-        //        dc.SubmitChanges();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new ArgumentException("Verifique los datos de la imagen" + ex.Message);
-        //    }
-        //}
-
     }
+    
 }

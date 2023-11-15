@@ -3929,13 +3929,18 @@ namespace SistemaECU911.Template.Views
                 }
                 else
                 {
-                    txt_nomEmpresa.Text = txt_rucEmp.Text = txt_priNombre.Text = txt_segNombre.Text = txt_priApellido.Text = txt_segApellido.Text = txt_sexo.Text = txt_edad.Text = txt_puestodetrabajociuo.Text = txt_areadetrabajo.Text = string.Empty;
-                }                
+                    Limpiar();
+                }
             }
             else
             {
-                txt_nomEmpresa.Text = txt_rucEmp.Text = txt_priNombre.Text = txt_segNombre.Text = txt_priApellido.Text = txt_segApellido.Text = txt_sexo.Text = txt_edad.Text = txt_puestodetrabajociuo.Text = txt_areadetrabajo.Text = string.Empty;
+                Limpiar();
             }
+        }
+
+        private void Limpiar()
+        {
+            txt_nomEmpresa.Text = txt_rucEmp.Text = txt_priNombre.Text = txt_segNombre.Text = txt_priApellido.Text = txt_segApellido.Text = txt_sexo.Text = txt_edad.Text = txt_puestodetrabajociuo.Text = txt_areadetrabajo.Text = string.Empty;
         }
 
         //Metodo obtener codigo cie10
@@ -10447,7 +10452,7 @@ namespace SistemaECU911.Template.Views
             tblaeaDatos.AddCell(new PdfPCell(new Paragraph(txt_empresa.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblaeaDatos.AddCell(new PdfPCell(new Paragraph(txt_puestotrabajo.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblaeaDatos.AddCell(new PdfPCell(new Paragraph(txt_descrorganosysistemas.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
-            
+
             tblaeaDatos.AddCell(new PdfPCell(new Paragraph(txt_actdesempeña.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             tblaeaDatos.AddCell(new PdfPCell(new Paragraph(txt_tiempotrabajo.Text, cuadro)) { BorderColor = new BaseColor(238, 240, 242), HorizontalAlignment = Element.ALIGN_CENTER });
             if (ckb_fisico.Checked == true)
@@ -13593,7 +13598,7 @@ namespace SistemaECU911.Template.Views
         protected void txt_puestodetrabajo_TextChanged(object sender, EventArgs e)
         {
             var valor = txt_puestodetrabajo.Text;
-            txt_puestodetrabajo21.Text = valor; 
+            txt_puestodetrabajo21.Text = valor;
         }
 
         protected void txt_puestodetrabajo2_TextChanged(object sender, EventArgs e)

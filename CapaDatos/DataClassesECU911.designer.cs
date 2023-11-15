@@ -256,18 +256,18 @@ namespace CapaDatos
 			return ((ISingleResult<Sp_Grafico_AntecedentePerResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Npersona_puestoTrabajo")]
-		public ISingleResult<Sp_Npersona_puestoTrabajoResult> Sp_Npersona_puestoTrabajo()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<Sp_Npersona_puestoTrabajoResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Grafico_OrganosYSistemas")]
 		public ISingleResult<Sp_Grafico_OrganosYSistemasResult> Sp_Grafico_OrganosYSistemas()
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<Sp_Grafico_OrganosYSistemasResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Npersona_puestoTrabajo")]
+		public ISingleResult<Sp_Npersona_puestoTrabajoResult> Sp_Npersona_puestoTrabajo()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Sp_Npersona_puestoTrabajoResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -37421,6 +37421,12 @@ namespace CapaDatos
 		
 		private string _Per_correo;
 		
+		private string _ResetPasswordToken;
+		
+		private System.Nullable<System.DateTime> _ResetPasswordTokenExpiration;
+		
+		private System.Nullable<bool> _ResetPasswordTokenUsed;
+		
 		private int _Emp_id;
 		
 		private int _cent_id;
@@ -37497,6 +37503,12 @@ namespace CapaDatos
     partial void OnPer_passChanged();
     partial void OnPer_correoChanging(string value);
     partial void OnPer_correoChanged();
+    partial void OnResetPasswordTokenChanging(string value);
+    partial void OnResetPasswordTokenChanged();
+    partial void OnResetPasswordTokenExpirationChanging(System.Nullable<System.DateTime> value);
+    partial void OnResetPasswordTokenExpirationChanged();
+    partial void OnResetPasswordTokenUsedChanging(System.Nullable<bool> value);
+    partial void OnResetPasswordTokenUsedChanged();
     partial void OnEmp_idChanging(int value);
     partial void OnEmp_idChanged();
     partial void Oncent_idChanging(int value);
@@ -37901,6 +37913,66 @@ namespace CapaDatos
 					this._Per_correo = value;
 					this.SendPropertyChanged("Per_correo");
 					this.OnPer_correoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResetPasswordToken", DbType="VarChar(255)")]
+		public string ResetPasswordToken
+		{
+			get
+			{
+				return this._ResetPasswordToken;
+			}
+			set
+			{
+				if ((this._ResetPasswordToken != value))
+				{
+					this.OnResetPasswordTokenChanging(value);
+					this.SendPropertyChanging();
+					this._ResetPasswordToken = value;
+					this.SendPropertyChanged("ResetPasswordToken");
+					this.OnResetPasswordTokenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResetPasswordTokenExpiration", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ResetPasswordTokenExpiration
+		{
+			get
+			{
+				return this._ResetPasswordTokenExpiration;
+			}
+			set
+			{
+				if ((this._ResetPasswordTokenExpiration != value))
+				{
+					this.OnResetPasswordTokenExpirationChanging(value);
+					this.SendPropertyChanging();
+					this._ResetPasswordTokenExpiration = value;
+					this.SendPropertyChanged("ResetPasswordTokenExpiration");
+					this.OnResetPasswordTokenExpirationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResetPasswordTokenUsed", DbType="Bit")]
+		public System.Nullable<bool> ResetPasswordTokenUsed
+		{
+			get
+			{
+				return this._ResetPasswordTokenUsed;
+			}
+			set
+			{
+				if ((this._ResetPasswordTokenUsed != value))
+				{
+					this.OnResetPasswordTokenUsedChanging(value);
+					this.SendPropertyChanging();
+					this._ResetPasswordTokenUsed = value;
+					this.SendPropertyChanged("ResetPasswordTokenUsed");
+					this.OnResetPasswordTokenUsedChanged();
 				}
 			}
 		}
@@ -51133,50 +51205,6 @@ namespace CapaDatos
 		}
 	}
 	
-	public partial class Sp_Npersona_puestoTrabajoResult
-	{
-		
-		private string _Per_puestoTrabajo;
-		
-		private System.Nullable<int> _numero_personas;
-		
-		public Sp_Npersona_puestoTrabajoResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_puestoTrabajo", DbType="VarChar(MAX)")]
-		public string Per_puestoTrabajo
-		{
-			get
-			{
-				return this._Per_puestoTrabajo;
-			}
-			set
-			{
-				if ((this._Per_puestoTrabajo != value))
-				{
-					this._Per_puestoTrabajo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numero_personas", DbType="Int")]
-		public System.Nullable<int> numero_personas
-		{
-			get
-			{
-				return this._numero_personas;
-			}
-			set
-			{
-				if ((this._numero_personas != value))
-				{
-					this._numero_personas = value;
-				}
-			}
-		}
-	}
-	
 	public partial class Sp_Grafico_OrganosYSistemasResult
 	{
 		
@@ -51612,6 +51640,50 @@ namespace CapaDatos
 				if ((this._CantPersonaTegumentarioSinPatologia != value))
 				{
 					this._CantPersonaTegumentarioSinPatologia = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Sp_Npersona_puestoTrabajoResult
+	{
+		
+		private string _Per_puestoTrabajo;
+		
+		private System.Nullable<int> _numero_personas;
+		
+		public Sp_Npersona_puestoTrabajoResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_puestoTrabajo", DbType="VarChar(MAX)")]
+		public string Per_puestoTrabajo
+		{
+			get
+			{
+				return this._Per_puestoTrabajo;
+			}
+			set
+			{
+				if ((this._Per_puestoTrabajo != value))
+				{
+					this._Per_puestoTrabajo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numero_personas", DbType="Int")]
+		public System.Nullable<int> numero_personas
+		{
+			get
+			{
+				return this._numero_personas;
+			}
+			set
+			{
+				if ((this._numero_personas != value))
+				{
+					this._numero_personas = value;
 				}
 			}
 		}

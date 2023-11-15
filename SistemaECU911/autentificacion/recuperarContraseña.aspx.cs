@@ -10,6 +10,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Security.Cryptography;
 using System.Text;
+using System.Data.SqlClient;
+using SistemaECU911.Template.Views_Pacientes;
+using System.Configuration;
 
 namespace SistemaECU911.autentificacion
 {
@@ -26,68 +29,93 @@ namespace SistemaECU911.autentificacion
         private void recuperar()
         {
             Tbl_Person per = new Tbl_Person();
-            bool existe = CN_Usuarios.autentificarxCorreo(txt_email.Text);
+            string email = txt_email.Text.Trim();
+
+            if (string.IsNullOrEmpty(email))
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Por favor, complete el campo de correo.', 'error')", true);
+                return;
+            }
+
+            bool existe = CN_Usuarios.autentificarxCorreo(email);
 
             if (existe)
             {
-                per = CN_Usuarios.obtenerCorreo(txt_email.Text);
-                string from = "bryan.sosa@ecu911.gob.ec"; // Tu correo remitente
-                /*string pass = "Bry4n50548u8";*/ // Tu contraseña
-                string to = per.Per_correo;
+                per = CN_Usuarios.obtenerCorreo(email);
 
-                if (string.IsNullOrEmpty(to))
+                // Generar y almacenar el token
+                string token = Guid.NewGuid().ToString();
+                DateTime expiration = DateTime.Now.AddMinutes(5);
+
+                string connectionString = ConfigurationManager.ConnectionStrings["conexion"].ToString();
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Campo Vacío. Porfavor ingrese un correo.', 'error')", true);
-                    txt_email.Text = "";
-                    return; 
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand("UPDATE Tbl_Person SET ResetPasswordToken = @token, ResetPasswordTokenUsed = 0, ResetPasswordTokenExpiration = @expiration WHERE Per_id = @userID", connection))
+                    {
+                        cmd.Parameters.AddWithValue("@token", token);
+                        cmd.Parameters.AddWithValue("@expiration", expiration);
+                        cmd.Parameters.AddWithValue("@userID", per.Per_id);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
 
-                string mensaje = "La contraseña que olvidaste es: " + GetMD5(per.Per_pass);
+                // Enviar el correo electrónico al usuario con el enlace que incluye el token
+                EnviarCorreoConEnlaceReset(per.Per_correo, token);
 
-                //SmtpClient smtpClient = new SmtpClient("https://webmail.ecu911.gob.ec/EWS/Exchange.asmx"); // Cambia esto al servidor Exchange
-                SmtpClient smtpClient = new SmtpClient("10.121.6.246"); // Dirección IP del servidor SMTP
-
-                smtpClient.Port = 25; // Puede variar según la configuración de tu Exchange
-                smtpClient.Credentials = new NetworkCredential("Sosab", "Bry4n50548u8"); // Cambia esto a tus credenciales de Exchange
-                smtpClient.EnableSsl = false;
-
-                MailMessage mailMessage = new MailMessage();
-                mailMessage.From = new MailAddress(from);
-                mailMessage.To.Add(to);
-                mailMessage.Subject = "Recuperación de Contraseña";
-                mailMessage.Body = mensaje;
-              
-                try
-                {
-                    smtpClient.Send(mailMessage);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Correo enviado con éxito.', 'success')", true);
-                    txt_email.Text = "";
-                    Timer1.Enabled = true;
-                }
-                catch (Exception)
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Correo no enviado intentelo de nuevo.', 'error')", true);
-                    txt_email.Text = "";
-                    return;
-                }
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Correo enviado con éxito.', 'success')", true);
+                txt_email.Text = "";
+                Timer1.Enabled = true;
             }
             else
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'El correo no existe.', 'error')", true);
                 txt_email.Text = "";
             }
-
         }
 
-        public static string GetMD5(string str)
+        private void EnviarCorreoConEnlaceReset(string to, string token)
         {
-            MD5 md5 = MD5CryptoServiceProvider.Create();
-            ASCIIEncoding encoding = new ASCIIEncoding();
-            byte[] stream = null;
-            StringBuilder sb = new StringBuilder();
-            stream = md5.ComputeHash(encoding.GetBytes(str));
-            for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
-            return sb.ToString();
+            // Configuración de correo electrónico
+            string from = "Sistema.Medico@ecu911.gob.ec"; // Tu correo remitente
+            string subject = "Recuperación de Contraseña"; // Asunto del correo
+
+            // Cuerpo del correo con formato HTML
+            string body = "<html><body>";
+            body += "<img src='../resources/images/LogoMedico.png' alt='Encabezado' style='width: 100%; height: auto;'>";
+            body += "<h2>Recuperación de Contraseña</h2>";
+            body += "<p>Haga clic en el siguiente enlace para restablecer su contraseña:</p>";
+            body += "<p><a href='https://localhost:44359/autentificacion/cambioPassword.aspx?token=" + token + "'>Restablecer Contraseña</a></p>";
+            body += "<p>El enlace tiene una caducidad de 5 minutos desde la hora en la que se solicito el cambio de contraseña, porfavor tomar en cuenta.</p>";
+            body += "<img src='../resources/images/LogoMedico.png' alt='Pie de página' style='width: 100%; height: auto;'>";
+            body += "</body></html>";
+
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress(from);
+            mailMessage.To.Add(to);
+            mailMessage.Subject = subject;
+            mailMessage.Body = body;
+            mailMessage.IsBodyHtml = true;
+
+            // Configuración del servidor SMTP
+            SmtpClient smtpClient = new SmtpClient("10.121.6.246"); // Cambia esto al servidor SMTP que estés utilizando
+            smtpClient.Port = 25; // Puerto del servidor SMTP
+            smtpClient.Credentials = new NetworkCredential("Sismed", "Sis.med911"); // Cambia esto a tus credenciales de SMTP
+            smtpClient.EnableSsl = false; // Configura según la seguridad de tu servidor SMTP
+
+            try
+            {
+                smtpClient.Send(mailMessage);
+                // Mensaje de éxito
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Éxito!', 'Correo enviado con éxito.', 'success')", true);
+            }
+            catch (Exception)
+            {
+                // Manejo de errores al enviar el correo
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "mensaje", "swal('Error!', 'Correo no enviado intentelo de nuevo.', 'error')", true);
+                txt_email.Text = "";
+            }
         }
 
         protected void Timer1_Tick(object sender, EventArgs e)

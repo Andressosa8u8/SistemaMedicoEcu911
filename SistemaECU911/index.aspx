@@ -7,6 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>ECU 911</title>
+    <link rel="icon" type="image/png" href="resources/images/ECU911.png" />
     <link rel="stylesheet" href="resources/vendors/iconfonts/font-awesome/css/all.min.css" />
     <link rel="stylesheet" href="resources/vendors/iconfonts/font-awesome-6.1.1/css/all.min.css" />
     <link rel="stylesheet" href="resources/vendors/css/vendor.bundle.base.css" />   

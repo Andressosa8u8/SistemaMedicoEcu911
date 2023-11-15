@@ -22,6 +22,7 @@ using iTextSharp.tool.xml.css.apply;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Linq;
 using iTextSharp.xmp.impl;
+using System.Collections;
 
 namespace SistemaECU911.Template.Views
 {
@@ -34,7 +35,7 @@ namespace SistemaECU911.Template.Views
         private Tbl_FichasMedicas fichasmedicas = new Tbl_FichasMedicas();
 
         protected void Page_Load(object sender, EventArgs e)
-        { 
+        {
             if (!IsPostBack)
             {
                 if (Request["cod"] != null)
@@ -45,7 +46,7 @@ namespace SistemaECU911.Template.Views
                     per = CN_HistorialMedico.ObtenerPersonasxId(personasid);
                     int empresaid = Convert.ToInt32(fichasmedicas.Emp_id.ToString());
                     emp = CN_HistorialMedico.ObtenerEmpresaxId(empresaid);
-                    
+
 
                     btn_guardar.Text = "Actualizar";
 
@@ -160,8 +161,8 @@ namespace SistemaECU911.Template.Views
                 }
                 txt_numHClinica.MaxLength = 10;
                 Timer1.Enabled = false;
-                cargarEspecialidad(); 
-                cargarProfesional(); 
+                cargarEspecialidad();
+                cargarProfesional();
 
                 txt_fechahora.Text = DateTime.Now.ToLocalTime().ToString("yyyy-MM-ddTHH:mm");
             }
@@ -249,7 +250,7 @@ namespace SistemaECU911.Template.Views
                     foreach (var item in lista)
                     {
                         string base64Image = Convert.ToBase64String(item.Per_imgByte.ToArray());
-                        return url = imgPreview.ImageUrl = "data:image/png;base64," + base64Image;                        
+                        return url = imgPreview.ImageUrl = "data:image/png;base64," + base64Image;
                     }
                 }
                 else
@@ -257,7 +258,7 @@ namespace SistemaECU911.Template.Views
                     return url = imgPreview.ImageUrl = "~/resources/images/User.png";
                 }
 
-            }            
+            }
             return url = imgPreview.ImageUrl = "~/resources/images/User.png";
         }
 
@@ -306,7 +307,7 @@ namespace SistemaECU911.Template.Views
 
                         if (item.Per_imgByte == null)
                         {
-                            imgPreview.ImageUrl = "~/resources/images/User.jpg";
+                            imgPreview.ImageUrl = "~/resources/images/User.png";
                         }
                         else
                         {
@@ -323,29 +324,28 @@ namespace SistemaECU911.Template.Views
                 }
                 else
                 {
-                    txt_nomEmpresa.Text = string.Empty;
-                    txt_priNombre.Text = string.Empty;
-                    txt_segNombre.Text = string.Empty;
-                    txt_segNombre.Text = string.Empty;
-                    txt_priApellido.Text = string.Empty;
-                    txt_segApellido.Text = string.Empty;
-                    txt_sexo.Text = string.Empty;
-                    txt_edad.Text = string.Empty;
+                    Limpiar();
                     imgPreview.ImageUrl = "~/resources/images/User.png";
                 }
+
             }
             else
             {
-                txt_nomEmpresa.Text = string.Empty;
-                txt_priNombre.Text = string.Empty;
-                txt_segNombre.Text = string.Empty;
-                txt_segNombre.Text = string.Empty;
-                txt_priApellido.Text = string.Empty;
-                txt_segApellido.Text = string.Empty;
-                txt_sexo.Text = string.Empty;
-                txt_edad.Text = string.Empty;
+                Limpiar();
                 imgPreview.ImageUrl = "~/resources/images/User.png";
             }
+        }
+
+        private void Limpiar()
+        {
+            txt_nomEmpresa.Text = string.Empty;
+            txt_priNombre.Text = string.Empty;
+            txt_segNombre.Text = string.Empty;
+            txt_segNombre.Text = string.Empty;
+            txt_priApellido.Text = string.Empty;
+            txt_segApellido.Text = string.Empty;
+            txt_sexo.Text = string.Empty;
+            txt_edad.Text = string.Empty;
         }
 
         //Metodo obtener codigo cie10

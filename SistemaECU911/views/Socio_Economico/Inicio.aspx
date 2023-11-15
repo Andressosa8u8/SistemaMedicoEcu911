@@ -12,7 +12,7 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <div class="main-panel" style="width: auto">
-                <div class="content-wrapper">
+                <div class="content-wrapper" style="background-color: white">
                     <div class="card" style="width: auto;">
                         <div class="list-group list-group-flush" style="padding: 10px; text-align: center">
                             <div class="container">

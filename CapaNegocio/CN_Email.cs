@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,6 +11,23 @@ namespace CapaNegocio
 {
     public class CN_Email
     {
+
+        private static DataClassesECU911DataContext dc = new DataClassesECU911DataContext();
+
+        // Metodo para modificar datos de las personas correo
+        public static void ModificarToken(Tbl_Person per)
+        {
+            try
+            {
+                dc.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Verifique los datos del correo" + ex.Message);
+            }
+        }
+
+
 
         MailMessage ma = new MailMessage();
         SmtpClient smtp = new SmtpClient();

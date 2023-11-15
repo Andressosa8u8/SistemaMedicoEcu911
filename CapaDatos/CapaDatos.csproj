@@ -71,11 +71,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="SistemaECU911DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SistemaECU911DataSet.xsd</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -91,17 +86,6 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="SistemaECU911DataSet.xsc">
-      <DependentUpon>SistemaECU911DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="SistemaECU911DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SistemaECU911DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="SistemaECU911DataSet.xss">
-      <DependentUpon>SistemaECU911DataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

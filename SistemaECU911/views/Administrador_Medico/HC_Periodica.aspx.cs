@@ -2679,14 +2679,18 @@ namespace SistemaECU911.Template.Views
                 }
                 else
                 {
-                    // Si la lista está vacía, borra los campos
-                    txt_nomEmpresa.Text = txt_rucEmp.Text = txt_priNombre.Text = txt_segNombre.Text = txt_priApellido.Text = txt_segApellido.Text = txt_sexo.Text = txt_puestodetrabajoperiodica.Text = string.Empty;
+                    Limpiar();
                 }
             }
             else
             {
-                txt_nomEmpresa.Text = txt_rucEmp.Text = txt_priNombre.Text = txt_segNombre.Text = txt_priApellido.Text = txt_segApellido.Text = txt_sexo.Text = txt_puestodetrabajoperiodica.Text = string.Empty;
+                Limpiar();
             }
+        }
+
+        private void Limpiar()
+        {
+            txt_nomEmpresa.Text = txt_rucEmp.Text = txt_priNombre.Text = txt_segNombre.Text = txt_priApellido.Text = txt_segApellido.Text = txt_sexo.Text = txt_puestodetrabajoperiodica.Text = string.Empty;
         }
 
         //Metodo obtener codigo cie10
