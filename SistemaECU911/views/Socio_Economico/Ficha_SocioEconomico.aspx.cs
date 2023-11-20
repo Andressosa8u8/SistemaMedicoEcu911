@@ -1615,7 +1615,7 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 {
                     var existeEnSocioEconomico = dc.Tbl_SocioEconomico.Any(se => se.Per_id == personaid);
 
-                    if (existeEnSocioEconomico)
+                    if (existeEnSocioEconomico) 
                     {
                         var persona = dc.Tbl_Person.FirstOrDefault(p => p.Per_id == personaid);
                         string nombreCompleto = $"{persona.Per_priNombre} {persona.Per_segNombre} {persona.Per_priApellido} {persona.Per_segApellido}";
@@ -1679,7 +1679,8 @@ namespace SistemaECU911.Template.Views_Socio_Economico
                 else
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "mostrarSweetAlertSSO1", "swal('No se pudo encontrar a la persona ingresada.', 'El usuario no existe o está inactivo.', 'warning')", true);
-                    txt_cedula.Text = string.Empty;
+                    txt_cedula.Text = txt_prinombre.Text = txt_segnombre.Text = txt_priapellido.Text = txt_segapellido.Text = txt_areatrabajo.Text = txt_cargoinstitucional.Text = txt_fechaingresoalsisecu.Text = txt_fechanacimiento.Text = string.Empty;
+
                 }
 
             }

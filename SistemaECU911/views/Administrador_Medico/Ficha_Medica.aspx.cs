@@ -266,78 +266,88 @@ namespace SistemaECU911.Template.Views
         {
             string cedula = txt_numHClinica.Text;
 
-            if (cedula != "")
+            if (!string.IsNullOrEmpty(cedula))
             {
-                var lista = from c in dc.Tbl_Person
-                            join e in dc.Tbl_Empresa on c.Emp_id equals e.Emp_id
+                var query = from c in dc.Tbl_Person
                             where c.Per_cedula == cedula && c.Per_estado == "AP"
-                            select new
-                            {
-                                e.Emp_nombre,
-                                c.Per_priNombre,
-                                c.Per_segNombre,
-                                c.Per_priApellido,
-                                c.Per_segApellido,
-                                c.Per_genero,
-                                c.Per_fechaNacimiento,
-                                c.Per_imgByte
-                            };
+                            select c.Per_id;
 
-                if (lista.Any())
+                int personaid = query.FirstOrDefault(); // Aquí obtenemos el primer ID que cumple con la condición
+
+                if(personaid != 0)
                 {
-                    foreach (var item in lista)
+                    var lista = from c in dc.Tbl_Person
+                                join e in dc.Tbl_Empresa on c.Emp_id equals e.Emp_id
+                                where c.Per_cedula == cedula && c.Per_estado == "AP"
+                                select new
+                                {
+                                    e.Emp_nombre,
+                                    c.Per_priNombre,
+                                    c.Per_segNombre,
+                                    c.Per_priApellido,
+                                    c.Per_segApellido,
+                                    c.Per_genero,
+                                    c.Per_fechaNacimiento,
+                                    c.Per_imgByte
+                                };
+
+                    if (lista.Any())
                     {
-                        string nomEmpresa = item.Emp_nombre;
-                        txt_nomEmpresa.Text = nomEmpresa;
-
-                        string priNombre = item.Per_priNombre;
-                        txt_priNombre.Text = priNombre;
-
-                        string segNombre = item.Per_segNombre;
-                        txt_segNombre.Text = segNombre;
-
-                        string priApellido = item.Per_priApellido;
-                        txt_priApellido.Text = priApellido;
-
-                        string segApellido = item.Per_segApellido;
-                        txt_segApellido.Text = segApellido;
-
-                        string sexo = item.Per_genero;
-                        txt_sexo.Text = sexo;
-
-                        if (item.Per_imgByte == null)
+                        foreach (var item in lista)
                         {
-                            imgPreview.ImageUrl = "~/resources/images/User.png";
-                        }
-                        else
-                        {
-                            string base64Image = Convert.ToBase64String(item.Per_imgByte.ToArray());
-                            imgPreview.ImageUrl = "data:image/png;base64," + base64Image;
-                        }
+                            string nomEmpresa = item.Emp_nombre;
+                            txt_nomEmpresa.Text = nomEmpresa;
 
-                        DateTime edad = Convert.ToDateTime(item.Per_fechaNacimiento);
-                        DateTime naci = Convert.ToDateTime(edad);
+                            string priNombre = item.Per_priNombre;
+                            txt_priNombre.Text = priNombre;
 
-                        DateTime actual = DateTime.Now;
-                        Calculo(naci, actual);
+                            string segNombre = item.Per_segNombre;
+                            txt_segNombre.Text = segNombre;
+
+                            string priApellido = item.Per_priApellido;
+                            txt_priApellido.Text = priApellido;
+
+                            string segApellido = item.Per_segApellido;
+                            txt_segApellido.Text = segApellido;
+
+                            string sexo = item.Per_genero;
+                            txt_sexo.Text = sexo;
+
+                            if (item.Per_imgByte == null)
+                            {
+                                imgPreview.ImageUrl = "~/resources/images/User.png";
+                            }
+                            else
+                            {
+                                string base64Image = Convert.ToBase64String(item.Per_imgByte.ToArray());
+                                imgPreview.ImageUrl = "data:image/png;base64," + base64Image;
+                            }
+
+                            DateTime edad = Convert.ToDateTime(item.Per_fechaNacimiento);
+                            DateTime naci = Convert.ToDateTime(edad);
+
+                            DateTime actual = DateTime.Now;
+                            Calculo(naci, actual);
+                        }
+                    }
+                    else
+                    {
+                        Limpiar();
+                        imgPreview.ImageUrl = "~/resources/images/User.png";
                     }
                 }
                 else
                 {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mostrarSweetAlertSSO1", "swal('No se pudo encontrar a la persona ingresada.', 'Digitalice correctamente la cédula', 'warning')", true);
                     Limpiar();
                     imgPreview.ImageUrl = "~/resources/images/User.png";
                 }
-
-            }
-            else
-            {
-                Limpiar();
-                imgPreview.ImageUrl = "~/resources/images/User.png";
-            }
+            }         
         }
 
         private void Limpiar()
         {
+            txt_numHClinica.Text = string.Empty;
             txt_nomEmpresa.Text = string.Empty;
             txt_priNombre.Text = string.Empty;
             txt_segNombre.Text = string.Empty;

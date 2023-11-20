@@ -256,18 +256,18 @@ namespace CapaDatos
 			return ((ISingleResult<Sp_Grafico_AntecedentePerResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Grafico_OrganosYSistemas")]
-		public ISingleResult<Sp_Grafico_OrganosYSistemasResult> Sp_Grafico_OrganosYSistemas()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<Sp_Grafico_OrganosYSistemasResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Npersona_puestoTrabajo")]
 		public ISingleResult<Sp_Npersona_puestoTrabajoResult> Sp_Npersona_puestoTrabajo()
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<Sp_Npersona_puestoTrabajoResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Grafico_OrganosYSistemas")]
+		public ISingleResult<Sp_Grafico_OrganosYSistemasResult> Sp_Grafico_OrganosYSistemas()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Sp_Grafico_OrganosYSistemasResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -37577,7 +37577,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_imgByte", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_imgByte", DbType="VarBinary(MAX)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary Per_imgByte
 		{
 			get
@@ -50718,7 +50718,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Socio_economico_imagen_geolocalizacion", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Socio_economico_imagen_geolocalizacion", DbType="Image", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary Socio_economico_imagen_geolocalizacion
 		{
 			get
@@ -50778,7 +50778,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Socio_economico_imgByte", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Socio_economico_imgByte", DbType="VarBinary(MAX)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary Socio_economico_imgByte
 		{
 			get
@@ -51200,6 +51200,50 @@ namespace CapaDatos
 				if ((this._CantPersonaOtrosAntecePerson != value))
 				{
 					this._CantPersonaOtrosAntecePerson = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Sp_Npersona_puestoTrabajoResult
+	{
+		
+		private string _Per_puestoTrabajo;
+		
+		private System.Nullable<int> _numero_personas;
+		
+		public Sp_Npersona_puestoTrabajoResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_puestoTrabajo", DbType="VarChar(MAX)")]
+		public string Per_puestoTrabajo
+		{
+			get
+			{
+				return this._Per_puestoTrabajo;
+			}
+			set
+			{
+				if ((this._Per_puestoTrabajo != value))
+				{
+					this._Per_puestoTrabajo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numero_personas", DbType="Int")]
+		public System.Nullable<int> numero_personas
+		{
+			get
+			{
+				return this._numero_personas;
+			}
+			set
+			{
+				if ((this._numero_personas != value))
+				{
+					this._numero_personas = value;
 				}
 			}
 		}
@@ -51640,50 +51684,6 @@ namespace CapaDatos
 				if ((this._CantPersonaTegumentarioSinPatologia != value))
 				{
 					this._CantPersonaTegumentarioSinPatologia = value;
-				}
-			}
-		}
-	}
-	
-	public partial class Sp_Npersona_puestoTrabajoResult
-	{
-		
-		private string _Per_puestoTrabajo;
-		
-		private System.Nullable<int> _numero_personas;
-		
-		public Sp_Npersona_puestoTrabajoResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_puestoTrabajo", DbType="VarChar(MAX)")]
-		public string Per_puestoTrabajo
-		{
-			get
-			{
-				return this._Per_puestoTrabajo;
-			}
-			set
-			{
-				if ((this._Per_puestoTrabajo != value))
-				{
-					this._Per_puestoTrabajo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_numero_personas", DbType="Int")]
-		public System.Nullable<int> numero_personas
-		{
-			get
-			{
-				return this._numero_personas;
-			}
-			set
-			{
-				if ((this._numero_personas != value))
-				{
-					this._numero_personas = value;
 				}
 			}
 		}

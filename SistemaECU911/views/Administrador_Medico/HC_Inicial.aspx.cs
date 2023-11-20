@@ -3864,83 +3864,93 @@ namespace SistemaECU911.Template.Views
         {
             string cedula = txt_numHClinica.Text;
 
-            if (cedula != "")
+            if (!string.IsNullOrEmpty(cedula))
             {
-                var lista = from c in dc.Tbl_Person
-                            join e in dc.Tbl_Empresa on c.Emp_id equals e.Emp_id
-                            join ce in dc.Tbl_Centro on c.cent_id equals ce.cent_id
+                var query = from c in dc.Tbl_Person
                             where c.Per_cedula == cedula && c.Per_estado == "AP"
-                            select new
-                            {
-                                e.Emp_nombre,
-                                ce.cent_ruc,
-                                c.Per_priNombre,
-                                c.Per_segNombre,
-                                c.Per_priApellido,
-                                c.Per_segApellido,
-                                c.Per_genero,
-                                c.Per_fechaNacimiento,
-                                c.Per_fechInicioTrabajo,
-                                c.Per_puestoTrabajo,
-                                c.Per_areaTrabajo
-                            };
+                            select c.Per_id;
 
-                if (lista.Any())
+                int personaid = query.FirstOrDefault(); // Aquí obtenemos el primer ID que cumple con la condición
+
+                if(personaid != 0)
                 {
-                    foreach (var item in lista)
+                    var lista = from c in dc.Tbl_Person
+                                join e in dc.Tbl_Empresa on c.Emp_id equals e.Emp_id
+                                join ce in dc.Tbl_Centro on c.cent_id equals ce.cent_id
+                                where c.Per_cedula == cedula && c.Per_estado == "AP"
+                                select new
+                                {
+                                    e.Emp_nombre,
+                                    ce.cent_ruc,
+                                    c.Per_priNombre,
+                                    c.Per_segNombre,
+                                    c.Per_priApellido,
+                                    c.Per_segApellido,
+                                    c.Per_genero,
+                                    c.Per_fechaNacimiento,
+                                    c.Per_fechInicioTrabajo,
+                                    c.Per_puestoTrabajo,
+                                    c.Per_areaTrabajo
+                                };
+
+                    if (lista.Any())
                     {
-                        string nomEmpresa = item.Emp_nombre;
-                        txt_nomEmpresa.Text = nomEmpresa;
+                        foreach (var item in lista)
+                        {
+                            string nomEmpresa = item.Emp_nombre;
+                            txt_nomEmpresa.Text = nomEmpresa;
 
-                        string rucEmpresa = item.cent_ruc;
-                        txt_rucEmp.Text = rucEmpresa;
+                            string rucEmpresa = item.cent_ruc;
+                            txt_rucEmp.Text = rucEmpresa;
 
-                        string priNombre = item.Per_priNombre;
-                        txt_priNombre.Text = priNombre;
+                            string priNombre = item.Per_priNombre;
+                            txt_priNombre.Text = priNombre;
 
-                        string segNombre = item.Per_segNombre;
-                        txt_segNombre.Text = segNombre;
+                            string segNombre = item.Per_segNombre;
+                            txt_segNombre.Text = segNombre;
 
-                        string priApellido = item.Per_priApellido;
-                        txt_priApellido.Text = priApellido;
+                            string priApellido = item.Per_priApellido;
+                            txt_priApellido.Text = priApellido;
 
-                        string segApellido = item.Per_segApellido;
-                        txt_segApellido.Text = segApellido;
+                            string segApellido = item.Per_segApellido;
+                            txt_segApellido.Text = segApellido;
 
-                        string sexo = item.Per_genero;
-                        txt_sexo.Text = sexo;
+                            string sexo = item.Per_genero;
+                            txt_sexo.Text = sexo;
 
-                        DateTime edad = Convert.ToDateTime(item.Per_fechaNacimiento);
-                        DateTime naci = Convert.ToDateTime(edad);
+                            DateTime edad = Convert.ToDateTime(item.Per_fechaNacimiento);
+                            DateTime naci = Convert.ToDateTime(edad);
 
-                        DateTime actual = DateTime.Now;
-                        Calculo(naci, actual);
+                            DateTime actual = DateTime.Now;
+                            Calculo(naci, actual);
 
-                        DateTime fechaIngresoTrabajo = Convert.ToDateTime(item.Per_fechInicioTrabajo);
-                        txt_fechaingresotrabajo.Text = Convert.ToDateTime(fechaIngresoTrabajo).ToString("yyyy-MM-dd");
+                            DateTime fechaIngresoTrabajo = Convert.ToDateTime(item.Per_fechInicioTrabajo);
+                            txt_fechaingresotrabajo.Text = Convert.ToDateTime(fechaIngresoTrabajo).ToString("yyyy-MM-dd");
 
-                        string puestoTrabajo = item.Per_puestoTrabajo;
-                        txt_puestodetrabajociuo.Text = puestoTrabajo;
+                            string puestoTrabajo = item.Per_puestoTrabajo;
+                            txt_puestodetrabajociuo.Text = puestoTrabajo;
 
-                        string areaTrabajo = item.Per_areaTrabajo;
-                        txt_areadetrabajo.Text = areaTrabajo;
+                            string areaTrabajo = item.Per_areaTrabajo;
+                            txt_areadetrabajo.Text = areaTrabajo;
 
+                        }
+                    }
+                    else
+                    {
+                        Limpiar();
                     }
                 }
                 else
                 {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mostrarSweetAlertSSO1", "swal('No se pudo encontrar a la persona ingresada.', 'Digitalice correctamente la cédula', 'warning')", true);
                     Limpiar();
                 }
-            }
-            else
-            {
-                Limpiar();
-            }
+            } 
         }
 
         private void Limpiar()
         {
-            txt_nomEmpresa.Text = txt_rucEmp.Text = txt_priNombre.Text = txt_segNombre.Text = txt_priApellido.Text = txt_segApellido.Text = txt_sexo.Text = txt_edad.Text = txt_puestodetrabajociuo.Text = txt_areadetrabajo.Text = string.Empty;
+            txt_numHClinica.Text = txt_nomEmpresa.Text = txt_rucEmp.Text = txt_priNombre.Text = txt_segNombre.Text = txt_priApellido.Text = txt_segApellido.Text = txt_sexo.Text = txt_edad.Text = txt_puestodetrabajociuo.Text = txt_areadetrabajo.Text = string.Empty;
         }
 
         //Metodo obtener codigo cie10

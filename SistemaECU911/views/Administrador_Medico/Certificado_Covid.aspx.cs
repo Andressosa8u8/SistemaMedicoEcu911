@@ -75,24 +75,60 @@ namespace SistemaECU911.Template.Views
         {
             string cedula = txt_cedula.Text;
 
-            var lista = from c in dc.Tbl_Person
-                        where c.Per_cedula == cedula
-                        select c;
-
-            foreach (var item in lista)
+            if (!string.IsNullOrEmpty(cedula))
             {
-                string priNombre = item.Per_priNombre;
-                txt_priNombre.Text = priNombre;
+                var query = from c in dc.Tbl_Person
+                            where c.Per_cedula == cedula
+                            select c.Per_id;
 
-                string segNombre = item.Per_segNombre;
-                txt_segNombre.Text = segNombre;
+                int personaid = query.FirstOrDefault(); // Aquí obtenemos el primer ID que cumple con la condición
 
-                string priApellido = item.Per_priApellido;
-                txt_priApellido.Text = priApellido;
+                if (personaid != 0)
+                {
+                    var lista = from c in dc.Tbl_Person
+                                where c.Per_cedula == cedula
+                                select new
+                                {
+                                    c.Per_priNombre,
+                                    c.Per_segNombre,
+                                    c.Per_priApellido,
+                                    c.Per_segApellido,
+                                };
 
-                string segApellido = item.Per_segApellido;
-                txt_segApellido.Text = segApellido;
+                    if (lista.Any())
+                    {
+                        foreach (var item in lista)
+                        {
+                            string priNombre = item.Per_priNombre;
+                            txt_priNombre.Text = priNombre;
+
+                            string segNombre = item.Per_segNombre;
+                            txt_segNombre.Text = segNombre;
+
+                            string priApellido = item.Per_priApellido;
+                            txt_priApellido.Text = priApellido;
+
+                            string segApellido = item.Per_segApellido;
+                            txt_segApellido.Text = segApellido;
+
+                        }
+                    }
+                    else
+                    {
+                        Limpiar();
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mostrarSweetAlertSSO1", "swal('No se pudo encontrar a la persona ingresada.', 'Digitalice correctamente la cédula', 'warning')", true);
+                    Limpiar();
+                }
             }
+        }
+
+        private void Limpiar()
+        {
+            txt_cedula.Text = txt_priNombre.Text = txt_segNombre.Text = txt_priApellido.Text = txt_segApellido.Text = string.Empty;
         }
 
         //Metodo obtener codigo cie10

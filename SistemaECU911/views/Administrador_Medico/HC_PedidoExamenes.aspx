@@ -51,6 +51,15 @@
             background-image: linear-gradient(to bottom, #0088cc, #0077b3);
         }
     </style>
+
+    <script type="text/javascript">
+        function mostrarSweetAlertSSO1() {
+            Swal.fire(
+                'warning'
+            );
+        }
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Message" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
