@@ -12,7 +12,7 @@ namespace CapaDatos.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -201,6 +201,39 @@ namespace CapaDatos.Properties {
         public string SistemaECU911ConnectionString9 {
             get {
                 return ((string)(this["SistemaECU911ConnectionString9"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=SistemaECU911;Integrated Security=True;TrustServerC" +
+            "ertificate=True")]
+        public string SistemaECU911ConnectionString10 {
+            get {
+                return ((string)(this["SistemaECU911ConnectionString10"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.121.6.222;Initial Catalog=SistemaECU911;User ID=sismed;Password=Si" +
+            "stemaMedico911;TrustServerCertificate=True")]
+        public string SistemaECU911ConnectionString11 {
+            get {
+                return ((string)(this["SistemaECU911ConnectionString11"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PROYECTOS;Initial Catalog=SistemaECU911;Integrated Security=True;Trus" +
+            "tServerCertificate=True")]
+        public string SistemaECU911ConnectionString12 {
+            get {
+                return ((string)(this["SistemaECU911ConnectionString12"]));
             }
         }
     }

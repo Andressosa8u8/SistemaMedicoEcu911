@@ -84,7 +84,7 @@ namespace CapaDatos
     #endregion
 		
 		public DataClassesECU911DataContext() : 
-				base(global::CapaDatos.Properties.Settings.Default.SistemaECU911ConnectionString8, mappingSource)
+				base(global::CapaDatos.Properties.Settings.Default.SistemaECU911ConnectionString12, mappingSource)
 		{
 			OnCreated();
 		}
@@ -749,8 +749,6 @@ namespace CapaDatos
 		
 		private EntityRef<Tbl_Empresa> _Tbl_Empresa;
 		
-		private EntityRef<Tbl_Person> _Tbl_Person;
-		
 		private EntityRef<Tbl_Profesional> _Tbl_Profesional;
 		
     #region Definiciones de métodos de extensibilidad
@@ -822,7 +820,6 @@ namespace CapaDatos
 		public Tbl_Certificado()
 		{
 			this._Tbl_Empresa = default(EntityRef<Tbl_Empresa>);
-			this._Tbl_Person = default(EntityRef<Tbl_Person>);
 			this._Tbl_Profesional = default(EntityRef<Tbl_Profesional>);
 			OnCreated();
 		}
@@ -1362,10 +1359,6 @@ namespace CapaDatos
 			{
 				if ((this._Per_id != value))
 				{
-					if (this._Tbl_Person.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnPer_idChanging(value);
 					this.SendPropertyChanging();
 					this._Per_id = value;
@@ -1473,40 +1466,6 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_Certificado", Storage="_Tbl_Person", ThisKey="Per_id", OtherKey="Per_id", IsForeignKey=true)]
-		public Tbl_Person Tbl_Person
-		{
-			get
-			{
-				return this._Tbl_Person.Entity;
-			}
-			set
-			{
-				Tbl_Person previousValue = this._Tbl_Person.Entity;
-				if (((previousValue != value) 
-							|| (this._Tbl_Person.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tbl_Person.Entity = null;
-						previousValue.Tbl_Certificado.Remove(this);
-					}
-					this._Tbl_Person.Entity = value;
-					if ((value != null))
-					{
-						value.Tbl_Certificado.Add(this);
-						this._Per_id = value.Per_id;
-					}
-					else
-					{
-						this._Per_id = default(int);
-					}
-					this.SendPropertyChanged("Tbl_Person");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Profesional_Tbl_Certificado", Storage="_Tbl_Profesional", ThisKey="prof_id", OtherKey="prof_id", IsForeignKey=true)]
 		public Tbl_Profesional Tbl_Profesional
 		{
@@ -1588,8 +1547,6 @@ namespace CapaDatos
 		
 		private EntitySet<Tbl_Periodica> _Tbl_Periodica;
 		
-		private EntitySet<Tbl_Person> _Tbl_Person;
-		
 		private EntitySet<Tbl_Reintegro> _Tbl_Reintegro;
 		
 		private EntitySet<Tbl_Retiro> _Tbl_Retiro;
@@ -1618,7 +1575,6 @@ namespace CapaDatos
 			this._Tbl_Inmunizaciones = new EntitySet<Tbl_Inmunizaciones>(new Action<Tbl_Inmunizaciones>(this.attach_Tbl_Inmunizaciones), new Action<Tbl_Inmunizaciones>(this.detach_Tbl_Inmunizaciones));
 			this._Tbl_PedidoExamenes = new EntitySet<Tbl_PedidoExamenes>(new Action<Tbl_PedidoExamenes>(this.attach_Tbl_PedidoExamenes), new Action<Tbl_PedidoExamenes>(this.detach_Tbl_PedidoExamenes));
 			this._Tbl_Periodica = new EntitySet<Tbl_Periodica>(new Action<Tbl_Periodica>(this.attach_Tbl_Periodica), new Action<Tbl_Periodica>(this.detach_Tbl_Periodica));
-			this._Tbl_Person = new EntitySet<Tbl_Person>(new Action<Tbl_Person>(this.attach_Tbl_Person), new Action<Tbl_Person>(this.detach_Tbl_Person));
 			this._Tbl_Reintegro = new EntitySet<Tbl_Reintegro>(new Action<Tbl_Reintegro>(this.attach_Tbl_Reintegro), new Action<Tbl_Reintegro>(this.detach_Tbl_Reintegro));
 			this._Tbl_Retiro = new EntitySet<Tbl_Retiro>(new Action<Tbl_Retiro>(this.attach_Tbl_Retiro), new Action<Tbl_Retiro>(this.detach_Tbl_Retiro));
 			this._Tbl_SocioEconomico = new EntitySet<Tbl_SocioEconomico>(new Action<Tbl_SocioEconomico>(this.attach_Tbl_SocioEconomico), new Action<Tbl_SocioEconomico>(this.detach_Tbl_SocioEconomico));
@@ -1783,19 +1739,6 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Empresa_Tbl_Person", Storage="_Tbl_Person", ThisKey="Emp_id", OtherKey="Emp_id")]
-		public EntitySet<Tbl_Person> Tbl_Person
-		{
-			get
-			{
-				return this._Tbl_Person;
-			}
-			set
-			{
-				this._Tbl_Person.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Empresa_Tbl_Reintegro", Storage="_Tbl_Reintegro", ThisKey="Emp_id", OtherKey="Emp_id")]
 		public EntitySet<Tbl_Reintegro> Tbl_Reintegro
 		{
@@ -1922,18 +1865,6 @@ namespace CapaDatos
 		}
 		
 		private void detach_Tbl_Periodica(Tbl_Periodica entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Empresa = null;
-		}
-		
-		private void attach_Tbl_Person(Tbl_Person entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Empresa = this;
-		}
-		
-		private void detach_Tbl_Person(Tbl_Person entity)
 		{
 			this.SendPropertyChanging();
 			entity.Tbl_Empresa = null;
@@ -2314,8 +2245,6 @@ namespace CapaDatos
 		
 		private string _evo_estado;
 		
-		private EntityRef<Tbl_Person> _Tbl_Person;
-		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2490,7 +2419,6 @@ namespace CapaDatos
 		
 		public Tbl_Evolucion()
 		{
-			this._Tbl_Person = default(EntityRef<Tbl_Person>);
 			OnCreated();
 		}
 		
@@ -4085,10 +4013,6 @@ namespace CapaDatos
 			{
 				if ((this._Per_id != value))
 				{
-					if (this._Tbl_Person.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnPer_idChanging(value);
 					this.SendPropertyChanging();
 					this._Per_id = value;
@@ -4154,40 +4078,6 @@ namespace CapaDatos
 					this._evo_estado = value;
 					this.SendPropertyChanged("evo_estado");
 					this.Onevo_estadoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_Evolucion", Storage="_Tbl_Person", ThisKey="Per_id", OtherKey="Per_id", IsForeignKey=true)]
-		public Tbl_Person Tbl_Person
-		{
-			get
-			{
-				return this._Tbl_Person.Entity;
-			}
-			set
-			{
-				Tbl_Person previousValue = this._Tbl_Person.Entity;
-				if (((previousValue != value) 
-							|| (this._Tbl_Person.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tbl_Person.Entity = null;
-						previousValue.Tbl_Evolucion.Remove(this);
-					}
-					this._Tbl_Person.Entity = value;
-					if ((value != null))
-					{
-						value.Tbl_Evolucion.Add(this);
-						this._Per_id = value.Per_id;
-					}
-					else
-					{
-						this._Per_id = default(int);
-					}
-					this.SendPropertyChanged("Tbl_Person");
 				}
 			}
 		}
@@ -4355,8 +4245,6 @@ namespace CapaDatos
 		
 		private EntityRef<Tbl_Especialidad> _Tbl_Especialidad;
 		
-		private EntityRef<Tbl_Person> _Tbl_Person;
-		
 		private EntityRef<Tbl_Profesional> _Tbl_Profesional;
 		
     #region Definiciones de métodos de extensibilidad
@@ -4501,7 +4389,6 @@ namespace CapaDatos
 		{
 			this._Tbl_Empresa = default(EntityRef<Tbl_Empresa>);
 			this._Tbl_Especialidad = default(EntityRef<Tbl_Especialidad>);
-			this._Tbl_Person = default(EntityRef<Tbl_Person>);
 			this._Tbl_Profesional = default(EntityRef<Tbl_Profesional>);
 			OnCreated();
 		}
@@ -5765,10 +5652,6 @@ namespace CapaDatos
 			{
 				if ((this._Per_id != value))
 				{
-					if (this._Tbl_Person.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnPer_idChanging(value);
 					this.SendPropertyChanging();
 					this._Per_id = value;
@@ -5906,40 +5789,6 @@ namespace CapaDatos
 						this._espec_id = default(int);
 					}
 					this.SendPropertyChanged("Tbl_Especialidad");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_FichasMedicas", Storage="_Tbl_Person", ThisKey="Per_id", OtherKey="Per_id", IsForeignKey=true)]
-		public Tbl_Person Tbl_Person
-		{
-			get
-			{
-				return this._Tbl_Person.Entity;
-			}
-			set
-			{
-				Tbl_Person previousValue = this._Tbl_Person.Entity;
-				if (((previousValue != value) 
-							|| (this._Tbl_Person.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tbl_Person.Entity = null;
-						previousValue.Tbl_FichasMedicas.Remove(this);
-					}
-					this._Tbl_Person.Entity = value;
-					if ((value != null))
-					{
-						value.Tbl_FichasMedicas.Add(this);
-						this._Per_id = value.Per_id;
-					}
-					else
-					{
-						this._Per_id = default(int);
-					}
-					this.SendPropertyChanged("Tbl_Person");
 				}
 			}
 		}
@@ -7093,8 +6942,6 @@ namespace CapaDatos
 		
 		private EntityRef<Tbl_Empresa> _Tbl_Empresa;
 		
-		private EntityRef<Tbl_Person> _Tbl_Person;
-		
 		private EntityRef<Tbl_Profesional> _Tbl_Profesional;
 		
     #region Definiciones de métodos de extensibilidad
@@ -8192,7 +8039,6 @@ namespace CapaDatos
 		public Tbl_Inicial()
 		{
 			this._Tbl_Empresa = default(EntityRef<Tbl_Empresa>);
-			this._Tbl_Person = default(EntityRef<Tbl_Person>);
 			this._Tbl_Profesional = default(EntityRef<Tbl_Profesional>);
 			OnCreated();
 		}
@@ -18992,10 +18838,6 @@ namespace CapaDatos
 			{
 				if ((this._Per_id != value))
 				{
-					if (this._Tbl_Person.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnPer_idChanging(value);
 					this.SendPropertyChanging();
 					this._Per_id = value;
@@ -19099,40 +18941,6 @@ namespace CapaDatos
 						this._Emp_id = default(int);
 					}
 					this.SendPropertyChanged("Tbl_Empresa");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_Inicial", Storage="_Tbl_Person", ThisKey="Per_id", OtherKey="Per_id", IsForeignKey=true)]
-		public Tbl_Person Tbl_Person
-		{
-			get
-			{
-				return this._Tbl_Person.Entity;
-			}
-			set
-			{
-				Tbl_Person previousValue = this._Tbl_Person.Entity;
-				if (((previousValue != value) 
-							|| (this._Tbl_Person.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tbl_Person.Entity = null;
-						previousValue.Tbl_Inicial.Remove(this);
-					}
-					this._Tbl_Person.Entity = value;
-					if ((value != null))
-					{
-						value.Tbl_Inicial.Add(this);
-						this._Per_id = value.Per_id;
-					}
-					else
-					{
-						this._Per_id = default(int);
-					}
-					this.SendPropertyChanged("Tbl_Person");
 				}
 			}
 		}
@@ -19644,8 +19452,6 @@ namespace CapaDatos
 		
 		private EntityRef<Tbl_Empresa> _Tbl_Empresa;
 		
-		private EntityRef<Tbl_Person> _Tbl_Person;
-		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -20099,7 +19905,6 @@ namespace CapaDatos
 		public Tbl_Inmunizaciones()
 		{
 			this._Tbl_Empresa = default(EntityRef<Tbl_Empresa>);
-			this._Tbl_Person = default(EntityRef<Tbl_Person>);
 			OnCreated();
 		}
 		
@@ -24474,10 +24279,6 @@ namespace CapaDatos
 			{
 				if ((this._Per_id != value))
 				{
-					if (this._Tbl_Person.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnPer_idChanging(value);
 					this.SendPropertyChanging();
 					this._Per_id = value;
@@ -24581,40 +24382,6 @@ namespace CapaDatos
 						this._Emp_id = default(int);
 					}
 					this.SendPropertyChanged("Tbl_Empresa");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_Inmunizaciones", Storage="_Tbl_Person", ThisKey="Per_id", OtherKey="Per_id", IsForeignKey=true)]
-		public Tbl_Person Tbl_Person
-		{
-			get
-			{
-				return this._Tbl_Person.Entity;
-			}
-			set
-			{
-				Tbl_Person previousValue = this._Tbl_Person.Entity;
-				if (((previousValue != value) 
-							|| (this._Tbl_Person.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tbl_Person.Entity = null;
-						previousValue.Tbl_Inmunizaciones.Remove(this);
-					}
-					this._Tbl_Person.Entity = value;
-					if ((value != null))
-					{
-						value.Tbl_Inmunizaciones.Add(this);
-						this._Per_id = value.Per_id;
-					}
-					else
-					{
-						this._Per_id = default(int);
-					}
-					this.SendPropertyChanged("Tbl_Person");
 				}
 			}
 		}
@@ -24962,8 +24729,6 @@ namespace CapaDatos
 		
 		private EntityRef<Tbl_Empresa> _Tbl_Empresa;
 		
-		private EntityRef<Tbl_Person> _Tbl_Person;
-		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -25287,7 +25052,6 @@ namespace CapaDatos
 		public Tbl_PedidoExamenes()
 		{
 			this._Tbl_Empresa = default(EntityRef<Tbl_Empresa>);
-			this._Tbl_Person = default(EntityRef<Tbl_Person>);
 			OnCreated();
 		}
 		
@@ -28362,10 +28126,6 @@ namespace CapaDatos
 			{
 				if ((this._Per_id != value))
 				{
-					if (this._Tbl_Person.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnPer_idChanging(value);
 					this.SendPropertyChanging();
 					this._Per_id = value;
@@ -28469,40 +28229,6 @@ namespace CapaDatos
 						this._Emp_id = default(int);
 					}
 					this.SendPropertyChanged("Tbl_Empresa");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_PedidoExamenes", Storage="_Tbl_Person", ThisKey="Per_id", OtherKey="Per_id", IsForeignKey=true)]
-		public Tbl_Person Tbl_Person
-		{
-			get
-			{
-				return this._Tbl_Person.Entity;
-			}
-			set
-			{
-				Tbl_Person previousValue = this._Tbl_Person.Entity;
-				if (((previousValue != value) 
-							|| (this._Tbl_Person.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tbl_Person.Entity = null;
-						previousValue.Tbl_PedidoExamenes.Remove(this);
-					}
-					this._Tbl_Person.Entity = value;
-					if ((value != null))
-					{
-						value.Tbl_PedidoExamenes.Add(this);
-						this._Per_id = value.Per_id;
-					}
-					else
-					{
-						this._Per_id = default(int);
-					}
-					this.SendPropertyChanged("Tbl_Person");
 				}
 			}
 		}
@@ -29260,8 +28986,6 @@ namespace CapaDatos
 		
 		private EntityRef<Tbl_Empresa> _Tbl_Empresa;
 		
-		private EntityRef<Tbl_Person> _Tbl_Person;
-		
 		private EntityRef<Tbl_Profesional> _Tbl_Profesional;
 		
     #region Definiciones de métodos de extensibilidad
@@ -29997,7 +29721,6 @@ namespace CapaDatos
 		public Tbl_Periodica()
 		{
 			this._Tbl_Empresa = default(EntityRef<Tbl_Empresa>);
-			this._Tbl_Person = default(EntityRef<Tbl_Person>);
 			this._Tbl_Profesional = default(EntityRef<Tbl_Profesional>);
 			OnCreated();
 		}
@@ -37177,10 +36900,6 @@ namespace CapaDatos
 			{
 				if ((this._Per_id != value))
 				{
-					if (this._Tbl_Person.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnPer_idChanging(value);
 					this.SendPropertyChanging();
 					this._Per_id = value;
@@ -37284,40 +37003,6 @@ namespace CapaDatos
 						this._Emp_id = default(int);
 					}
 					this.SendPropertyChanged("Tbl_Empresa");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_Periodica", Storage="_Tbl_Person", ThisKey="Per_id", OtherKey="Per_id", IsForeignKey=true)]
-		public Tbl_Person Tbl_Person
-		{
-			get
-			{
-				return this._Tbl_Person.Entity;
-			}
-			set
-			{
-				Tbl_Person previousValue = this._Tbl_Person.Entity;
-				if (((previousValue != value) 
-							|| (this._Tbl_Person.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tbl_Person.Entity = null;
-						previousValue.Tbl_Periodica.Remove(this);
-					}
-					this._Tbl_Person.Entity = value;
-					if ((value != null))
-					{
-						value.Tbl_Periodica.Add(this);
-						this._Per_id = value.Per_id;
-					}
-					else
-					{
-						this._Per_id = default(int);
-					}
-					this.SendPropertyChanged("Tbl_Person");
 				}
 			}
 		}
@@ -37435,29 +37120,7 @@ namespace CapaDatos
 		
 		private string _Per_estado;
 		
-		private EntitySet<Tbl_Certificado> _Tbl_Certificado;
-		
-		private EntitySet<Tbl_Evolucion> _Tbl_Evolucion;
-		
-		private EntitySet<Tbl_FichasMedicas> _Tbl_FichasMedicas;
-		
-		private EntitySet<Tbl_Inicial> _Tbl_Inicial;
-		
-		private EntitySet<Tbl_Inmunizaciones> _Tbl_Inmunizaciones;
-		
-		private EntitySet<Tbl_PedidoExamenes> _Tbl_PedidoExamenes;
-		
-		private EntitySet<Tbl_Periodica> _Tbl_Periodica;
-		
-		private EntitySet<Tbl_Reintegro> _Tbl_Reintegro;
-		
-		private EntitySet<Tbl_Retiro> _Tbl_Retiro;
-		
-		private EntitySet<Tbl_SocioEconomico> _Tbl_SocioEconomico;
-		
 		private EntityRef<Tbl_Centro> _Tbl_Centro;
-		
-		private EntityRef<Tbl_Empresa> _Tbl_Empresa;
 		
 		private EntityRef<Tbl_TipoUsuario> _Tbl_TipoUsuario;
 		
@@ -37521,18 +37184,7 @@ namespace CapaDatos
 		
 		public Tbl_Person()
 		{
-			this._Tbl_Certificado = new EntitySet<Tbl_Certificado>(new Action<Tbl_Certificado>(this.attach_Tbl_Certificado), new Action<Tbl_Certificado>(this.detach_Tbl_Certificado));
-			this._Tbl_Evolucion = new EntitySet<Tbl_Evolucion>(new Action<Tbl_Evolucion>(this.attach_Tbl_Evolucion), new Action<Tbl_Evolucion>(this.detach_Tbl_Evolucion));
-			this._Tbl_FichasMedicas = new EntitySet<Tbl_FichasMedicas>(new Action<Tbl_FichasMedicas>(this.attach_Tbl_FichasMedicas), new Action<Tbl_FichasMedicas>(this.detach_Tbl_FichasMedicas));
-			this._Tbl_Inicial = new EntitySet<Tbl_Inicial>(new Action<Tbl_Inicial>(this.attach_Tbl_Inicial), new Action<Tbl_Inicial>(this.detach_Tbl_Inicial));
-			this._Tbl_Inmunizaciones = new EntitySet<Tbl_Inmunizaciones>(new Action<Tbl_Inmunizaciones>(this.attach_Tbl_Inmunizaciones), new Action<Tbl_Inmunizaciones>(this.detach_Tbl_Inmunizaciones));
-			this._Tbl_PedidoExamenes = new EntitySet<Tbl_PedidoExamenes>(new Action<Tbl_PedidoExamenes>(this.attach_Tbl_PedidoExamenes), new Action<Tbl_PedidoExamenes>(this.detach_Tbl_PedidoExamenes));
-			this._Tbl_Periodica = new EntitySet<Tbl_Periodica>(new Action<Tbl_Periodica>(this.attach_Tbl_Periodica), new Action<Tbl_Periodica>(this.detach_Tbl_Periodica));
-			this._Tbl_Reintegro = new EntitySet<Tbl_Reintegro>(new Action<Tbl_Reintegro>(this.attach_Tbl_Reintegro), new Action<Tbl_Reintegro>(this.detach_Tbl_Reintegro));
-			this._Tbl_Retiro = new EntitySet<Tbl_Retiro>(new Action<Tbl_Retiro>(this.attach_Tbl_Retiro), new Action<Tbl_Retiro>(this.detach_Tbl_Retiro));
-			this._Tbl_SocioEconomico = new EntitySet<Tbl_SocioEconomico>(new Action<Tbl_SocioEconomico>(this.attach_Tbl_SocioEconomico), new Action<Tbl_SocioEconomico>(this.detach_Tbl_SocioEconomico));
 			this._Tbl_Centro = default(EntityRef<Tbl_Centro>);
-			this._Tbl_Empresa = default(EntityRef<Tbl_Empresa>);
 			this._Tbl_TipoUsuario = default(EntityRef<Tbl_TipoUsuario>);
 			OnCreated();
 		}
@@ -37577,7 +37229,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_imgByte", DbType="VarBinary(MAX)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Per_imgByte", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary Per_imgByte
 		{
 			get
@@ -37988,10 +37640,6 @@ namespace CapaDatos
 			{
 				if ((this._Emp_id != value))
 				{
-					if (this._Tbl_Empresa.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnEmp_idChanging(value);
 					this.SendPropertyChanging();
 					this._Emp_id = value;
@@ -38069,136 +37717,6 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_Certificado", Storage="_Tbl_Certificado", ThisKey="Per_id", OtherKey="Per_id")]
-		public EntitySet<Tbl_Certificado> Tbl_Certificado
-		{
-			get
-			{
-				return this._Tbl_Certificado;
-			}
-			set
-			{
-				this._Tbl_Certificado.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_Evolucion", Storage="_Tbl_Evolucion", ThisKey="Per_id", OtherKey="Per_id")]
-		public EntitySet<Tbl_Evolucion> Tbl_Evolucion
-		{
-			get
-			{
-				return this._Tbl_Evolucion;
-			}
-			set
-			{
-				this._Tbl_Evolucion.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_FichasMedicas", Storage="_Tbl_FichasMedicas", ThisKey="Per_id", OtherKey="Per_id")]
-		public EntitySet<Tbl_FichasMedicas> Tbl_FichasMedicas
-		{
-			get
-			{
-				return this._Tbl_FichasMedicas;
-			}
-			set
-			{
-				this._Tbl_FichasMedicas.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_Inicial", Storage="_Tbl_Inicial", ThisKey="Per_id", OtherKey="Per_id")]
-		public EntitySet<Tbl_Inicial> Tbl_Inicial
-		{
-			get
-			{
-				return this._Tbl_Inicial;
-			}
-			set
-			{
-				this._Tbl_Inicial.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_Inmunizaciones", Storage="_Tbl_Inmunizaciones", ThisKey="Per_id", OtherKey="Per_id")]
-		public EntitySet<Tbl_Inmunizaciones> Tbl_Inmunizaciones
-		{
-			get
-			{
-				return this._Tbl_Inmunizaciones;
-			}
-			set
-			{
-				this._Tbl_Inmunizaciones.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_PedidoExamenes", Storage="_Tbl_PedidoExamenes", ThisKey="Per_id", OtherKey="Per_id")]
-		public EntitySet<Tbl_PedidoExamenes> Tbl_PedidoExamenes
-		{
-			get
-			{
-				return this._Tbl_PedidoExamenes;
-			}
-			set
-			{
-				this._Tbl_PedidoExamenes.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_Periodica", Storage="_Tbl_Periodica", ThisKey="Per_id", OtherKey="Per_id")]
-		public EntitySet<Tbl_Periodica> Tbl_Periodica
-		{
-			get
-			{
-				return this._Tbl_Periodica;
-			}
-			set
-			{
-				this._Tbl_Periodica.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_Reintegro", Storage="_Tbl_Reintegro", ThisKey="Per_id", OtherKey="Per_id")]
-		public EntitySet<Tbl_Reintegro> Tbl_Reintegro
-		{
-			get
-			{
-				return this._Tbl_Reintegro;
-			}
-			set
-			{
-				this._Tbl_Reintegro.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_Retiro", Storage="_Tbl_Retiro", ThisKey="Per_id", OtherKey="Per_id")]
-		public EntitySet<Tbl_Retiro> Tbl_Retiro
-		{
-			get
-			{
-				return this._Tbl_Retiro;
-			}
-			set
-			{
-				this._Tbl_Retiro.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_SocioEconomico", Storage="_Tbl_SocioEconomico", ThisKey="Per_id", OtherKey="Per_id")]
-		public EntitySet<Tbl_SocioEconomico> Tbl_SocioEconomico
-		{
-			get
-			{
-				return this._Tbl_SocioEconomico;
-			}
-			set
-			{
-				this._Tbl_SocioEconomico.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Centro_Tbl_Person", Storage="_Tbl_Centro", ThisKey="cent_id", OtherKey="cent_id", IsForeignKey=true)]
 		public Tbl_Centro Tbl_Centro
 		{
@@ -38229,40 +37747,6 @@ namespace CapaDatos
 						this._cent_id = default(int);
 					}
 					this.SendPropertyChanged("Tbl_Centro");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Empresa_Tbl_Person", Storage="_Tbl_Empresa", ThisKey="Emp_id", OtherKey="Emp_id", IsForeignKey=true)]
-		public Tbl_Empresa Tbl_Empresa
-		{
-			get
-			{
-				return this._Tbl_Empresa.Entity;
-			}
-			set
-			{
-				Tbl_Empresa previousValue = this._Tbl_Empresa.Entity;
-				if (((previousValue != value) 
-							|| (this._Tbl_Empresa.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tbl_Empresa.Entity = null;
-						previousValue.Tbl_Person.Remove(this);
-					}
-					this._Tbl_Empresa.Entity = value;
-					if ((value != null))
-					{
-						value.Tbl_Person.Add(this);
-						this._Emp_id = value.Emp_id;
-					}
-					else
-					{
-						this._Emp_id = default(int);
-					}
-					this.SendPropertyChanged("Tbl_Empresa");
 				}
 			}
 		}
@@ -38319,126 +37803,6 @@ namespace CapaDatos
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Tbl_Certificado(Tbl_Certificado entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = this;
-		}
-		
-		private void detach_Tbl_Certificado(Tbl_Certificado entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = null;
-		}
-		
-		private void attach_Tbl_Evolucion(Tbl_Evolucion entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = this;
-		}
-		
-		private void detach_Tbl_Evolucion(Tbl_Evolucion entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = null;
-		}
-		
-		private void attach_Tbl_FichasMedicas(Tbl_FichasMedicas entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = this;
-		}
-		
-		private void detach_Tbl_FichasMedicas(Tbl_FichasMedicas entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = null;
-		}
-		
-		private void attach_Tbl_Inicial(Tbl_Inicial entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = this;
-		}
-		
-		private void detach_Tbl_Inicial(Tbl_Inicial entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = null;
-		}
-		
-		private void attach_Tbl_Inmunizaciones(Tbl_Inmunizaciones entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = this;
-		}
-		
-		private void detach_Tbl_Inmunizaciones(Tbl_Inmunizaciones entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = null;
-		}
-		
-		private void attach_Tbl_PedidoExamenes(Tbl_PedidoExamenes entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = this;
-		}
-		
-		private void detach_Tbl_PedidoExamenes(Tbl_PedidoExamenes entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = null;
-		}
-		
-		private void attach_Tbl_Periodica(Tbl_Periodica entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = this;
-		}
-		
-		private void detach_Tbl_Periodica(Tbl_Periodica entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = null;
-		}
-		
-		private void attach_Tbl_Reintegro(Tbl_Reintegro entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = this;
-		}
-		
-		private void detach_Tbl_Reintegro(Tbl_Reintegro entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = null;
-		}
-		
-		private void attach_Tbl_Retiro(Tbl_Retiro entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = this;
-		}
-		
-		private void detach_Tbl_Retiro(Tbl_Retiro entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = null;
-		}
-		
-		private void attach_Tbl_SocioEconomico(Tbl_SocioEconomico entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = this;
-		}
-		
-		private void detach_Tbl_SocioEconomico(Tbl_SocioEconomico entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tbl_Person = null;
 		}
 	}
 	
@@ -39035,8 +38399,6 @@ namespace CapaDatos
 		
 		private EntityRef<Tbl_Empresa> _Tbl_Empresa;
 		
-		private EntityRef<Tbl_Person> _Tbl_Person;
-		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -39239,7 +38601,6 @@ namespace CapaDatos
 		{
 			this._Tbl_Profesional = default(EntityRef<Tbl_Profesional>);
 			this._Tbl_Empresa = default(EntityRef<Tbl_Empresa>);
-			this._Tbl_Person = default(EntityRef<Tbl_Person>);
 			OnCreated();
 		}
 		
@@ -41098,10 +40459,6 @@ namespace CapaDatos
 			{
 				if ((this._Per_id != value))
 				{
-					if (this._Tbl_Person.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnPer_idChanging(value);
 					this.SendPropertyChanging();
 					this._Per_id = value;
@@ -41239,40 +40596,6 @@ namespace CapaDatos
 						this._Emp_id = default(int);
 					}
 					this.SendPropertyChanged("Tbl_Empresa");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_Reintegro", Storage="_Tbl_Person", ThisKey="Per_id", OtherKey="Per_id", IsForeignKey=true)]
-		public Tbl_Person Tbl_Person
-		{
-			get
-			{
-				return this._Tbl_Person.Entity;
-			}
-			set
-			{
-				Tbl_Person previousValue = this._Tbl_Person.Entity;
-				if (((previousValue != value) 
-							|| (this._Tbl_Person.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tbl_Person.Entity = null;
-						previousValue.Tbl_Reintegro.Remove(this);
-					}
-					this._Tbl_Person.Entity = value;
-					if ((value != null))
-					{
-						value.Tbl_Reintegro.Add(this);
-						this._Per_id = value.Per_id;
-					}
-					else
-					{
-						this._Per_id = default(int);
-					}
-					this.SendPropertyChanged("Tbl_Person");
 				}
 			}
 		}
@@ -41518,8 +40841,6 @@ namespace CapaDatos
 		
 		private EntityRef<Tbl_Empresa> _Tbl_Empresa;
 		
-		private EntityRef<Tbl_Person> _Tbl_Person;
-		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -41740,7 +41061,6 @@ namespace CapaDatos
 		{
 			this._Tbl_Profesional = default(EntityRef<Tbl_Profesional>);
 			this._Tbl_Empresa = default(EntityRef<Tbl_Empresa>);
-			this._Tbl_Person = default(EntityRef<Tbl_Person>);
 			OnCreated();
 		}
 		
@@ -43779,10 +43099,6 @@ namespace CapaDatos
 			{
 				if ((this._Per_id != value))
 				{
-					if (this._Tbl_Person.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnPer_idChanging(value);
 					this.SendPropertyChanging();
 					this._Per_id = value;
@@ -43920,40 +43236,6 @@ namespace CapaDatos
 						this._Emp_id = default(int);
 					}
 					this.SendPropertyChanged("Tbl_Empresa");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_Retiro", Storage="_Tbl_Person", ThisKey="Per_id", OtherKey="Per_id", IsForeignKey=true)]
-		public Tbl_Person Tbl_Person
-		{
-			get
-			{
-				return this._Tbl_Person.Entity;
-			}
-			set
-			{
-				Tbl_Person previousValue = this._Tbl_Person.Entity;
-				if (((previousValue != value) 
-							|| (this._Tbl_Person.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tbl_Person.Entity = null;
-						previousValue.Tbl_Retiro.Remove(this);
-					}
-					this._Tbl_Person.Entity = value;
-					if ((value != null))
-					{
-						value.Tbl_Retiro.Add(this);
-						this._Per_id = value.Per_id;
-					}
-					else
-					{
-						this._Per_id = default(int);
-					}
-					this.SendPropertyChanged("Tbl_Person");
 				}
 			}
 		}
@@ -44565,8 +43847,6 @@ namespace CapaDatos
 		
 		private EntityRef<Tbl_Empresa> _Tbl_Empresa;
 		
-		private EntityRef<Tbl_Person> _Tbl_Person;
-		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -45154,7 +44434,6 @@ namespace CapaDatos
 		public Tbl_SocioEconomico()
 		{
 			this._Tbl_Empresa = default(EntityRef<Tbl_Empresa>);
-			this._Tbl_Person = default(EntityRef<Tbl_Person>);
 			OnCreated();
 		}
 		
@@ -50718,7 +49997,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Socio_economico_imagen_geolocalizacion", DbType="Image", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Socio_economico_imagen_geolocalizacion", DbType="Image", UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary Socio_economico_imagen_geolocalizacion
 		{
 			get
@@ -50778,7 +50057,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Socio_economico_imgByte", DbType="VarBinary(MAX)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Socio_economico_imgByte", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary Socio_economico_imgByte
 		{
 			get
@@ -50809,10 +50088,6 @@ namespace CapaDatos
 			{
 				if ((this._Per_id != value))
 				{
-					if (this._Tbl_Person.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnPer_idChanging(value);
 					this.SendPropertyChanging();
 					this._Per_id = value;
@@ -50976,40 +50251,6 @@ namespace CapaDatos
 						this._Emp_id = default(int);
 					}
 					this.SendPropertyChanged("Tbl_Empresa");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tbl_Person_Tbl_SocioEconomico", Storage="_Tbl_Person", ThisKey="Per_id", OtherKey="Per_id", IsForeignKey=true)]
-		public Tbl_Person Tbl_Person
-		{
-			get
-			{
-				return this._Tbl_Person.Entity;
-			}
-			set
-			{
-				Tbl_Person previousValue = this._Tbl_Person.Entity;
-				if (((previousValue != value) 
-							|| (this._Tbl_Person.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tbl_Person.Entity = null;
-						previousValue.Tbl_SocioEconomico.Remove(this);
-					}
-					this._Tbl_Person.Entity = value;
-					if ((value != null))
-					{
-						value.Tbl_SocioEconomico.Add(this);
-						this._Per_id = value.Per_id;
-					}
-					else
-					{
-						this._Per_id = default(int);
-					}
-					this.SendPropertyChanged("Tbl_Person");
 				}
 			}
 		}
