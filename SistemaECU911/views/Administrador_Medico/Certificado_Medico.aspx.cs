@@ -194,7 +194,7 @@ namespace SistemaECU911.Template.Views
             Font cuadro = new Font(fuente3, 10f, Font.NORMAL, new BaseColor(0, 0, 0));
 
             pdfDoc.Open();
-            string imageURL = Server.MapPath("../Template Principal/images") + "/Bandera.PNG";
+            string imageURL = Server.MapPath("../../resources/images") + "/ImagenEncabezado.png";
             iTextSharp.text.Image bandera = iTextSharp.text.Image.GetInstance(imageURL);
             bandera.ScaleAbsolute(510, 50);
             pdfDoc.Add(bandera);
@@ -245,7 +245,7 @@ namespace SistemaECU911.Template.Views
             pdfDoc.Add(new Paragraph("Médico General", parrafo) { Alignment = Element.ALIGN_CENTER });
             pdfDoc.Add(new Paragraph("1711131415", parrafo) { Alignment = Element.ALIGN_CENTER });
             pdfDoc.Add(new Paragraph("cobitos2002.fc@gmail.com", parrafo) { Alignment = Element.ALIGN_CENTER });
-            string imageURL2 = Server.MapPath("../Template Principal/images") + "/footer.png";
+            string imageURL2 = Server.MapPath("../../resources/images") + "/ImagenEncabezado.png";
             iTextSharp.text.Image footer = iTextSharp.text.Image.GetInstance(imageURL2);
             footer.ScaleAbsolute(520, 50);
             footer.SetAbsolutePosition(41f, 5f);

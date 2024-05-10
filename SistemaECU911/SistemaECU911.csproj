@@ -918,7 +918,6 @@
     <Content Include="views\Administrador_Medico\HC_Retiro.aspx" />
     <Content Include="views\Administrador_Medico\Certificado_Medico.aspx" />
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="autentificacion\cambioPassword.aspx.cs">
@@ -1369,13 +1368,6 @@
     </Compile>
     <Compile Include="views\Socio_Economico\Socio_Economico.Master.designer.cs">
       <DependentUpon>Socio_Economico.Master</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

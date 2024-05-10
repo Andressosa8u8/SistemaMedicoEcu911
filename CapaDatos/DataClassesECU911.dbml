@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SistemaECU911" Class="DataClassesECU911DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=SistemaECU911;Integrated Security=True" SettingsObjectName="CapaDatos.Properties.Settings" SettingsPropertyName="SistemaECU911ConnectionString8" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=10.121.6.222;Initial Catalog=SistemaECU911;User ID=sismed;Trust Server Certificate=True" SettingsObjectName="CapaDatos.Properties.Settings" SettingsPropertyName="SistemaECU911ConnectionString11" Provider="System.Data.SqlClient" />
   <Table Name="dbo.cie10" Member="cie10">
     <Type Name="cie10">
       <Column Name="id10" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -57,7 +57,6 @@
       <Column Name="certi_fechaHoraGuardado" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="certi_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Empresa_Tbl_Certificado" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
-      <Association Name="Tbl_Person_Tbl_Certificado" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />
       <Association Name="Tbl_Profesional_Tbl_Certificado" Member="Tbl_Profesional" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_Profesional" IsForeignKey="true" />
     </Type>
   </Table>
@@ -73,7 +72,6 @@
       <Association Name="Tbl_Empresa_Tbl_Inmunizaciones" Member="Tbl_Inmunizaciones" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Inmunizaciones" />
       <Association Name="Tbl_Empresa_Tbl_PedidoExamenes" Member="Tbl_PedidoExamenes" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_PedidoExamenes" />
       <Association Name="Tbl_Empresa_Tbl_Periodica" Member="Tbl_Periodica" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Periodica" />
-      <Association Name="Tbl_Empresa_Tbl_Person" Member="Tbl_Person" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Person" />
       <Association Name="Tbl_Empresa_Tbl_Reintegro" Member="Tbl_Reintegro" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Reintegro" />
       <Association Name="Tbl_Empresa_Tbl_Retiro" Member="Tbl_Retiro" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Retiro" />
       <Association Name="Tbl_Empresa_Tbl_SocioEconomico" Member="Tbl_SocioEconomico" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_SocioEconomico" />
@@ -173,7 +171,6 @@
       <Column Name="Emp_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="evo_fechaHoraGuardado" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="evo_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
-      <Association Name="Tbl_Person_Tbl_Evolucion" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Tbl_FichasMedicas" Member="Tbl_FichasMedicas">
@@ -246,7 +243,6 @@
       <Column Name="estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Empresa_Tbl_FichasMedicas" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
       <Association Name="Tbl_Especialidad_Tbl_FichasMedicas" Member="Tbl_Especialidad" ThisKey="espec_id" OtherKey="espec_id" Type="Tbl_Especialidad" IsForeignKey="true" />
-      <Association Name="Tbl_Person_Tbl_FichasMedicas" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />
       <Association Name="Tbl_Profesional_Tbl_FichasMedicas" Member="Tbl_Profesional" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_Profesional" IsForeignKey="true" />
     </Type>
   </Table>
@@ -796,7 +792,6 @@
       <Column Name="inicial_fechaHoraGuardado" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="inicial_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Empresa_Tbl_Inicial" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
-      <Association Name="Tbl_Person_Tbl_Inicial" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />
       <Association Name="Tbl_Profesional_Tbl_Inicial" Member="Tbl_Profesional" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_Profesional" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1025,7 +1020,6 @@
       <Column Name="inmu_fechaHoraGuardado" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="inmu_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Empresa_Tbl_Inmunizaciones" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
-      <Association Name="Tbl_Person_Tbl_Inmunizaciones" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Tbl_PedidoExamenes" Member="Tbl_PedidoExamenes">
@@ -1188,7 +1182,6 @@
       <Column Name="pedExa_fechaHoraGuardado" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="pedExa_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Empresa_Tbl_PedidoExamenes" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
-      <Association Name="Tbl_Person_Tbl_PedidoExamenes" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Tbl_Periodica" Member="Tbl_Periodica">
@@ -1556,7 +1549,6 @@
       <Column Name="perio_fechaHoraGuardado" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="perio_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Empresa_Tbl_Periodica" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
-      <Association Name="Tbl_Person_Tbl_Periodica" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />
       <Association Name="Tbl_Profesional_Tbl_Periodica" Member="Tbl_Profesional" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_Profesional" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1588,18 +1580,7 @@
       <Column Name="cent_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="tusu_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Per_estado" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
-      <Association Name="Tbl_Person_Tbl_Certificado" Member="Tbl_Certificado" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Certificado" />
-      <Association Name="Tbl_Person_Tbl_Evolucion" Member="Tbl_Evolucion" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Evolucion" />
-      <Association Name="Tbl_Person_Tbl_FichasMedicas" Member="Tbl_FichasMedicas" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_FichasMedicas" />
-      <Association Name="Tbl_Person_Tbl_Inicial" Member="Tbl_Inicial" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Inicial" />
-      <Association Name="Tbl_Person_Tbl_Inmunizaciones" Member="Tbl_Inmunizaciones" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Inmunizaciones" />
-      <Association Name="Tbl_Person_Tbl_PedidoExamenes" Member="Tbl_PedidoExamenes" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_PedidoExamenes" />
-      <Association Name="Tbl_Person_Tbl_Periodica" Member="Tbl_Periodica" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Periodica" />
-      <Association Name="Tbl_Person_Tbl_Reintegro" Member="Tbl_Reintegro" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Reintegro" />
-      <Association Name="Tbl_Person_Tbl_Retiro" Member="Tbl_Retiro" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Retiro" />
-      <Association Name="Tbl_Person_Tbl_SocioEconomico" Member="Tbl_SocioEconomico" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_SocioEconomico" />
       <Association Name="Tbl_Centro_Tbl_Person" Member="Tbl_Centro" ThisKey="cent_id" OtherKey="cent_id" Type="Tbl_Centro" IsForeignKey="true" />
-      <Association Name="Tbl_Empresa_Tbl_Person" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
       <Association Name="Tbl_TipoUsuario_Tbl_Person" Member="Tbl_TipoUsuario" ThisKey="tusu_id" OtherKey="tusu_id" Type="Tbl_TipoUsuario" IsForeignKey="true" />
     </Type>
   </Table>
@@ -1720,7 +1701,6 @@
       <Column Name="rein_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Profesional_Tbl_Reintegro" Member="Tbl_Profesional" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_Profesional" IsForeignKey="true" />
       <Association Name="Tbl_Empresa_Tbl_Reintegro" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
-      <Association Name="Tbl_Person_Tbl_Reintegro" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Tbl_Retiro" Member="Tbl_Retiro">
@@ -1832,7 +1812,6 @@
       <Column Name="ret_estado" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
       <Association Name="Tbl_Profesional_Tbl_Retiro" Member="Tbl_Profesional" ThisKey="prof_id" OtherKey="prof_id" Type="Tbl_Profesional" IsForeignKey="true" />
       <Association Name="Tbl_Empresa_Tbl_Retiro" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
-      <Association Name="Tbl_Person_Tbl_Retiro" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Tbl_SocioEconomico" Member="Tbl_SocioEconomico">
@@ -2127,7 +2106,6 @@
       <Column Name="Socio_economico_Latitud" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Socio_economico_Longitud" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Association Name="Tbl_Empresa_Tbl_SocioEconomico" Member="Tbl_Empresa" ThisKey="Emp_id" OtherKey="Emp_id" Type="Tbl_Empresa" IsForeignKey="true" />
-      <Association Name="Tbl_Person_Tbl_SocioEconomico" Member="Tbl_Person" ThisKey="Per_id" OtherKey="Per_id" Type="Tbl_Person" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.Sp_Grafico_AntecedentePer" Method="Sp_Grafico_AntecedentePer">
