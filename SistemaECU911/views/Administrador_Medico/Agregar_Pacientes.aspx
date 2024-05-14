@@ -46,7 +46,7 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ForeColor="Red" ControlToValidate="txt_segApellido" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
                     </div>
                 </div>
-                <div class="row">         
+                <div class="row">
                     <div class="col-md-3">
                         <label class="form-label">FECHA DE NACIMIENTO</label>
                         <asp:TextBox class="form-control" runat="server" ID="txt_fechaNacimiento" Style="width: 100%; background-color: transparent; text-transform: uppercase" TextMode="Date"></asp:TextBox>
@@ -307,9 +307,17 @@
                             <asp:ListItem Text="ASESORIA JURIDICA"></asp:ListItem>
                             <asp:ListItem Text="CENTRO OPERATIVO LOCAL"></asp:ListItem>
                             <asp:ListItem Text="COMUNICACION"></asp:ListItem>
-                            <asp:ListItem Text="COORDINACION"></asp:ListItem>
                             <asp:ListItem Text="DOCTRINA"></asp:ListItem>
                             <asp:ListItem Text="ESTADISTICA"></asp:ListItem>
+                            <asp:ListItem Text="GESTION DE APOYO - BABAHOYO"></asp:ListItem>
+                            <asp:ListItem Text="GESTION DE APOYO - SAMBORONDON"></asp:ListItem>
+                            <asp:ListItem Text="GESTION DE APOYO - GALAPAGOS"></asp:ListItem>
+                            <asp:ListItem Text="GESTION DE OPERACIONES - BABAHOYO"></asp:ListItem>
+                            <asp:ListItem Text="GESTION DE OPERACIONES - SAMBORONDON"></asp:ListItem>
+                            <asp:ListItem Text="GESTION DE OPERACIONES - GALAPAGOS"></asp:ListItem>
+                            <asp:ListItem Text="GESTION DE TECNOLOGIA - BABAHOYO"></asp:ListItem>
+                            <asp:ListItem Text="GESTION DE TECNOLOGIA - SAMBORONDON"></asp:ListItem>
+                            <asp:ListItem Text="GESTION DE TECNOLOGIA - GALAPAGOS"></asp:ListItem>
                             <asp:ListItem Text="JURIDICO"></asp:ListItem>
                             <asp:ListItem Text="OPERACIONES"></asp:ListItem>
                             <asp:ListItem Text="PLANIFICACION"></asp:ListItem>
