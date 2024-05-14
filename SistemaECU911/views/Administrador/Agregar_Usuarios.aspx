@@ -336,17 +336,17 @@
                 <div class="row">
                     <div class="col-md-3">
                         <label class="form-label">NOMBRE DE USUARIO</label>
-                        <asp:TextBox class="form-control" runat="server" ID="txt_usuario" AutoComplete="off" Style="width: 100%; background-color: transparent; text-transform: uppercase"></asp:TextBox>
+                        <asp:TextBox class="form-control" runat="server" ID="txt_usuario" AutoComplete="off" Style="width: 100%; background-color: transparent"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ForeColor="Red" ControlToValidate="txt_usuario" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
                     </div>
                     <div class="col-md-3">
                         <label class="form-label">CONTRASEÑA</label>
                         <div style="position: relative; width: 100%;">
-                            <asp:TextBox class="form-control" runat="server" ID="txt_pass" autocomplete="new-password" Style="width: 100%; background-color: transparent; text-transform: uppercase;"></asp:TextBox>
-                            <span class="fa-stack" style="cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); right: 10px;" onclick="mostrarOcultarContraseña()">
+                            <asp:TextBox class="form-control" runat="server" ID="txt_pass" autocomplete="new-password" Style="width: 100%; background-color: transparent"></asp:TextBox>
+                            <%--<span class="fa-stack" style="cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); right: 10px;" onclick="mostrarOcultarContraseña()">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fas fa-eye fa-stack-1x fa-inverse" id="eyeIcon"></i>
-                            </span>
+                            </span>--%>
                         </div>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ForeColor="Red" ControlToValidate="txt_pass" ErrorMessage="CAMPO OBLIGATORIO" ValidationGroup="GroupValidation"></asp:RequiredFieldValidator>
                     </div>
@@ -374,7 +374,7 @@
         }
     </script>
 
-    <script>
+    <%--<script>
         function mostrarOcultarContraseña() {
             var txtPass = document.getElementById('<%= txt_pass.ClientID %>');
             var eyeIcon = document.getElementById('eyeIcon');
@@ -390,6 +390,6 @@
             }
         }
 
-    </script>
+    </script>--%>
 
 </asp:Content>
